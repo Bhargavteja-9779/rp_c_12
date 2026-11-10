@@ -12,8 +12,13 @@ Branch: claude/autonomous-research-discovery-1uqqmr. Resume by reading this file
 
 ## Phase status
 - [x] Phase 0-2 journal + topic
-- [ ] Phase 3-5 literature matrix / novelty / RQs  (supplementary/literature/)
-- [ ] Phase 6 protocol pre-registration (code/config/PROTOCOL.md)
-- [ ] Phase 9-10 implementation, run_all
+- [x] Phase 3-5 literature matrix / novelty / RQs  (supplementary/literature/)
+- [x] Phase 6 protocol pre-registration (code/config/PROTOCOL.md)
+- [x] Phase 9-10 implementation, run_all (quick mode verification in progress)
 - [ ] Experiments
 - [ ] Manuscript, reviews 1-10, DOCX, cover letter, risk report
+
+## Running state (update as you go)
+* Full E1 launched 22:00 UTC 2026-11-10: `cd code && python3 experiments/e1_benchmark.py full` (cells cached in results/experiment_logs/e1_cells; rerun resumes).
+* Next full stages: e3_strata.py full -> e5_generalization.py full (locked test LAST, after all decisions) -> e6_e7_e8.py full -> analyze -> tables -> figures.
+* Manuscript sources: manuscript/src/*.md (tokens {{...}} filled by builder from results); references built by manuscript/src/build_refs.py ONLY from verified metadata.

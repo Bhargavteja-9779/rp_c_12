@@ -14,3 +14,4 @@
 2026-11-10 22:14:12,383 e1_benchmark INFO biooil base+P ridge    random RMSE=14.15 grouped RMSE=17.73 tune 1s
 2026-11-10 22:14:14,265 e1_benchmark INFO biooil base+P knn      random RMSE=10.01 grouped RMSE=17.15 tune 1s
 2026-11-10 22:14:26,882 e1_benchmark INFO biooil base+P svr      random RMSE=11.04 grouped RMSE=16.45 tune 10s
+2026-11-10 22:18:02,603 e1_benchmark INFO biooil base+P mlp      random RMSE=8.63 grouped RMSE=23.32 tune 159s

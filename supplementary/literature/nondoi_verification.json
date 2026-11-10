@@ -53,18 +53,90 @@
  },
  "Pedregosa2011": {
   "url": "https://jmlr.org/papers/v12/pedregosa11a.html",
-  "page_title": "Scikit-learn: Machine Learning in Python"
+  "page_title": "Scikit-learn: Machine Learning in Python",
+  "title": "Scikit-learn: Machine Learning in Python",
+  "author": [
+   "Fabian Pedregosa",
+   "Ga\u00ebl Varoquaux",
+   "Alexandre Gramfort",
+   "Vincent Michel",
+   "Bertrand Thirion",
+   "Olivier Grisel",
+   "Mathieu Blondel",
+   "Peter Prettenhofer",
+   "Ron Weiss",
+   "Vincent Dubourg",
+   "Jake Vanderplas",
+   "Alexandre Passos",
+   "David Cournapeau",
+   "Matthieu Brucher",
+   "Matthieu Perrot",
+   "\u00c9douard Duchesnay"
+  ],
+  "journal_title": "Journal of Machine Learning Research",
+  "volume": "12",
+  "issue": "85",
+  "firstpage": "2825",
+  "lastpage": "2830",
+  "pdf_url": "http://jmlr.org/papers/volume12/pedregosa11a/pedregosa11a.pdf",
+  "publication_date": "2011",
+  "public_url": "http://jmlr.org/papers/v12/pedregosa11a.html",
+  "abstract_html_url": "http://jmlr.org/papers/v12/pedregosa11a.html",
+  "issn": "1533-7928"
  },
  "Demsar2006": {
   "url": "https://jmlr.org/papers/v7/demsar06a.html",
-  "page_title": "Statistical Comparisons of Classifiers over Multiple Data Sets"
+  "page_title": "Statistical Comparisons of Classifiers over Multiple Data Sets",
+  "title": "Statistical Comparisons of Classifiers over Multiple Data Sets",
+  "author": [
+   "Janez Dem\u0161ar"
+  ],
+  "journal_title": "Journal of Machine Learning Research",
+  "volume": "7",
+  "issue": "1",
+  "firstpage": "1",
+  "lastpage": "30",
+  "pdf_url": "http://jmlr.org/papers/volume7/demsar06a/demsar06a.pdf",
+  "publication_date": "2006",
+  "public_url": "http://jmlr.org/papers/v7/demsar06a.html",
+  "abstract_html_url": "http://jmlr.org/papers/v7/demsar06a.html",
+  "issn": "1533-7928"
  },
  "Sigrist2022": {
   "url": "https://jmlr.org/papers/v23/20-322.html",
-  "page_title": "Gaussian Process Boosting"
+  "page_title": "Gaussian Process Boosting",
+  "title": "Gaussian Process Boosting",
+  "author": [
+   "Fabio Sigrist"
+  ],
+  "journal_title": "Journal of Machine Learning Research",
+  "volume": "23",
+  "issue": "232",
+  "firstpage": "1",
+  "lastpage": "46",
+  "pdf_url": "http://jmlr.org/papers/volume23/20-322/20-322.pdf",
+  "publication_date": "2022",
+  "public_url": "http://jmlr.org/papers/v23/20-322.html",
+  "abstract_html_url": "http://jmlr.org/papers/v23/20-322.html",
+  "issn": "1533-7928"
  },
  "Ke2017": {
   "url": "https://papers.nips.cc/paper_files/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html",
-  "page_title": "LightGBM: A Highly Efficient Gradient Boosting Decision Tree"
+  "page_title": "LightGBM: A Highly Efficient Gradient Boosting Decision Tree",
+  "title": "LightGBM: A Highly Efficient Gradient Boosting Decision Tree",
+  "author": [
+   "Ke, Guolin",
+   "Meng, Qi",
+   "Finley, Thomas",
+   "Wang, Taifeng",
+   "Chen, Wei",
+   "Ma, Weidong",
+   "Ye, Qiwei",
+   "Liu, Tie-Yan"
+  ],
+  "journal_title": "Advances in Neural Information Processing Systems",
+  "volume": "30",
+  "pdf_url": "https://proceedings.neurips.cc/paper_files/paper/2017/file/6449f44a102fde848669bdd9eb6b76fa-Paper.pdf",
+  "publication_date": "2017"
  }
 }

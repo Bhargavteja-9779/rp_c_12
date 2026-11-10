@@ -1,0 +1,232 @@
+{
+ "Elfetni2026BT": {
+  "text": "Elfetni, S., Thinius, S., Dwivedi, P., Seeberger, P.H., Tyrikos-Ergas, T., 2027. Conservation-informed machine learning for physically admissible four-phase hydrothermal liquefaction surrogate modelling. Bioresour. Technol. 463, 135587. https://doi.org/10.1016/j.biortech.2026.135587",
+  "cite": "Elfetni et al., 2027",
+  "doi": "10.1016/j.biortech.2026.135587"
+ },
+ "Elfetni2026SSRN": {
+  "text": "Elfetni, S., Thinius, S., Dwivedi, P., Seeberger, P.H., Tyrikos-Ergas, T., 2026. Energy and carbon routing in hydrothermal lignocellulosic biomass conversion: an uncertainty-aware machine-learning framework. Elsevier BV. https://doi.org/10.2139/ssrn.6816225",
+  "cite": "Elfetni et al., 2026",
+  "doi": "10.2139/ssrn.6816225"
+ },
+ "Djandja2027": {
+  "text": "Djandja, O.S., Hu, Y., Zeng, Y., He, Q.S., 2027. Predicting bio-oil yield from hydrothermal liquefaction of lignocellulosic biomass: machine learning approach and uncertainty propagation via joint bootstrap Monte Carlo. Fuel 430, 141091. https://doi.org/10.1016/j.fuel.2026.141091",
+  "cite": "Djandja et al., 2027",
+  "doi": "10.1016/j.fuel.2026.141091"
+ },
+ "Zhang2021BT": {
+  "text": "Zhang, W., Li, J., Liu, T., Leng, S., Yang, L., Peng, H., Jiang, S., Zhou, W., Leng, L., Li, H., 2021. Machine learning prediction and optimization of bio-oil production from hydrothermal liquefaction of algae. Bioresour. Technol. 342, 126011. https://doi.org/10.1016/j.biortech.2021.126011",
+  "cite": "Zhang et al., 2021",
+  "doi": "10.1016/j.biortech.2021.126011"
+ },
+ "Katongtung2024": {
+  "text": "Katongtung, T., Phromphithak, S., Onsree, T., Tippayawong, N., 2024. Machine Learning Approach for Predicting Hydrothermal Liquefaction of Lignocellulosic Biomass. BioEnergy Res. 17(4), 2246-2258. https://doi.org/10.1007/s12155-024-10773-0",
+  "cite": "Katongtung et al., 2024",
+  "doi": "10.1007/s12155-024-10773-0"
+ },
+ "Gungor2025": {
+  "text": "Gungor, S., Insel, M.A., Sadikoglu, H., Melikoglu, M., 2025. Prediction of Biocrude Oil Yield From Biomass Hydrothermal Liquefaction Via Interpretable Machine Learning Using Higher Heating Value and Process Parameters. BioEnergy Res. 18(1), 100. https://doi.org/10.1007/s12155-025-10906-z",
+  "cite": "Gungor et al., 2025",
+  "doi": "10.1007/s12155-025-10906-z"
+ },
+ "Leng2022BT": {
+  "text": "Leng, L., Zhang, W., Chen, Q., Zhou, J., Peng, H., Zhan, H., Li, H., 2022. Machine learning prediction of nitrogen heterocycles in bio-oil produced from hydrothermal liquefaction of biomass. Bioresour. Technol. 362, 127791. https://doi.org/10.1016/j.biortech.2022.127791",
+  "cite": "Leng et al., 2022",
+  "doi": "10.1016/j.biortech.2022.127791"
+ },
+ "Jang2026": {
+  "text": "Jang, H.J., Ng, W., Chen, S., Setia, R., Minasny, B., 2026. Illusions of Accuracy: Widespread Data Leakage Distorts Machine Learning Results in Biochar Research. GCB Bioenergy 18(9), e70173. https://doi.org/10.1111/gcbb.70173",
+  "cite": "Jang et al., 2026",
+  "doi": "10.1111/gcbb.70173"
+ },
+ "Kapoor2023": {
+  "text": "Kapoor, S., Narayanan, A., 2023. Leakage and the reproducibility crisis in machine-learning-based science. Patterns 4(9), 100804. https://doi.org/10.1016/j.patter.2023.100804",
+  "cite": "Kapoor and Narayanan, 2023",
+  "doi": "10.1016/j.patter.2023.100804"
+ },
+ "Tian2025": {
+  "text": "Tian, Y., Kim, J., Liu, Y., 2025. Interpretable machine learning model for bio-oil property prediction from hydrothermal liquefaction of biomass via graph neural networks-based molecular structure. Energy 329, 136708. https://doi.org/10.1016/j.energy.2025.136708",
+  "cite": "Tian et al., 2025",
+  "doi": "10.1016/j.energy.2025.136708"
+ },
+ "Djandja2023": {
+  "text": "Djandja, O.S., Kang, S., Huang, Z., Li, J., Feng, J., Tan, Z., Salami, A.A., Lougou, B.G., 2023. Machine learning prediction of fuel properties of hydrochar from co-hydrothermal carbonization of sewage sludge and lignocellulosic biomass. Energy 271, 126968. https://doi.org/10.1016/j.energy.2023.126968",
+  "cite": "Djandja et al., 2023",
+  "doi": "10.1016/j.energy.2023.126968"
+ },
+ "Zhang2024Biochar": {
+  "text": "Zhang, W., Zhou, J., Liu, Q., Xu, Z., Peng, H., Leng, L., Li, H., 2024. A novel intelligent system based on machine learning for hydrochar multi-target prediction from the hydrothermal carbonization of biomass. Biochar 6(1), 19. https://doi.org/10.1007/s42773-024-00303-8",
+  "cite": "Zhang et al., 2024",
+  "doi": "10.1007/s42773-024-00303-8"
+ },
+ "Toor2011": {
+  "text": "Toor, S.S., Rosendahl, L., Rudolf, A., 2011. Hydrothermal liquefaction of biomass: A review of subcritical water technologies. Energy 36(5), 2328-2342. https://doi.org/10.1016/j.energy.2011.03.013",
+  "cite": "Toor et al., 2011",
+  "doi": "10.1016/j.energy.2011.03.013"
+ },
+ "Gollakota2018": {
+  "text": "Gollakota, A., Kishore, N., Gu, S., 2018. A review on hydrothermal liquefaction of biomass. Renew. Sustain. Energy Rev. 81, 1378-1392. https://doi.org/10.1016/j.rser.2017.05.178",
+  "cite": "Gollakota et al., 2018",
+  "doi": "10.1016/j.rser.2017.05.178"
+ },
+ "Elliott2015": {
+  "text": "Elliott, D.C., Biller, P., Ross, A.B., Schmidt, A.J., Jones, S.B., 2015. Hydrothermal liquefaction of biomass: Developments from batch to continuous process. Bioresour. Technol. 178, 147-156. https://doi.org/10.1016/j.biortech.2014.09.132",
+  "cite": "Elliott et al., 2015",
+  "doi": "10.1016/j.biortech.2014.09.132"
+ },
+ "Funke2010": {
+  "text": "Funke, A., Ziegler, F., 2010. Hydrothermal carbonization of biomass: A summary and discussion of chemical mechanisms for process engineering. Biofuels Bioprod. Biorefin. 4(2), 160-177. https://doi.org/10.1002/bbb.198",
+  "cite": "Funke and Ziegler, 2010",
+  "doi": "10.1002/bbb.198"
+ },
+ "Libra2011": {
+  "text": "Libra, J.A., Ro, K.S., Kammann, C., Funke, A., Berge, N.D., Neubauer, Y., Titirici, M.-M., Fühner, C., Bens, O., Kern, J., Emmerich, K.-H., 2011. Hydrothermal carbonization of biomass residuals: a comparative review of the chemistry, processes and applications of wet and dry pyrolysis. Biofuels 2(1), 71-106. https://doi.org/10.4155/bfs.10.81",
+  "cite": "Libra et al., 2011",
+  "doi": "10.4155/bfs.10.81"
+ },
+ "Watson2019": {
+  "text": "Watson, J., Lu, J., de Souza, R., Si, B., Zhang, Y., Liu, Z., 2019. Effects of the extraction solvents in hydrothermal liquefaction processes: Biocrude oil quality and energy conversion efficiency. Energy 167, 189-197. https://doi.org/10.1016/j.energy.2018.11.003",
+  "cite": "Watson et al., 2019",
+  "doi": "10.1016/j.energy.2018.11.003"
+ },
+ "Valdez2011": {
+  "text": "Valdez, P.J., Dickinson, J.G., Savage, P.E., 2011. Characterization of product fractions from hydrothermal liquefaction of Nannochloropsis sp. and the influence of solvents. Energy Fuels 25(7), 3235-3243. https://doi.org/10.1021/ef2004046",
+  "cite": "Valdez et al., 2011",
+  "doi": "10.1021/ef2004046"
+ },
+ "Vovk2005": {
+  "text": "Vovk, V., Gammerman, A., Shafer, G., 2022. Algorithmic Learning in a Random World, 2nd ed. Springer, Cham. https://doi.org/10.1007/978-3-031-06649-8",
+  "cite": "Vovk et al., 2022",
+  "doi": "10.1007/978-3-031-06649-8"
+ },
+ "Lei2018": {
+  "text": "Lei, J., G’Sell, M., Rinaldo, A., Tibshirani, R.J., Wasserman, L., 2018. Distribution-Free Predictive Inference for Regression. J. Am. Stat. Assoc. 113(523), 1094-1111. https://doi.org/10.1080/01621459.2017.1307116",
+  "cite": "Lei et al., 2018",
+  "doi": "10.1080/01621459.2017.1307116"
+ },
+ "Angelopoulos2023": {
+  "text": "Angelopoulos, A.N., Bates, S., 2023. Conformal Prediction: A Gentle Introduction. Now Publishers. https://doi.org/10.1561/9781638281597",
+  "cite": "Angelopoulos and Bates, 2023",
+  "doi": "10.1561/9781638281597"
+ },
+ "Dunn2023": {
+  "text": "Dunn, R., Wasserman, L., Ramdas, A., 2022. Distribution-Free Prediction Sets for Two-Layer Hierarchical Models. J. Am. Stat. Assoc. 118(544), 2491-2502. https://doi.org/10.1080/01621459.2022.2060112",
+  "cite": "Dunn et al., 2022",
+  "doi": "10.1080/01621459.2022.2060112"
+ },
+ "Barber2023": {
+  "text": "Barber, R.F., Candès, E.J., Ramdas, A., Tibshirani, R.J., 2023. Conformal prediction beyond exchangeability. Ann. Stat. 51(2), 816-845. https://doi.org/10.1214/23-aos2276",
+  "cite": "Barber et al., 2023",
+  "doi": "10.1214/23-aos2276"
+ },
+ "Efron1975": {
+  "text": "Efron, B., Morris, C., 1975. Data Analysis Using Stein's Estimator and its Generalizations. J. Am. Stat. Assoc. 70(350), 311-319. https://doi.org/10.1080/01621459.1975.10479864",
+  "cite": "Efron and Morris, 1975",
+  "doi": "10.1080/01621459.1975.10479864"
+ },
+ "DerSimonian1986": {
+  "text": "DerSimonian, R., Laird, N., 1986. Meta-analysis in clinical trials. Control. Clin. Trials 7(3), 177-188. https://doi.org/10.1016/0197-2456(86)90046-2",
+  "cite": "DerSimonian and Laird, 1986",
+  "doi": "10.1016/0197-2456(86)90046-2"
+ },
+ "Higgins2002": {
+  "text": "Higgins, J.P.T., Thompson, S.G., 2002. Quantifying heterogeneity in a meta‐analysis. Stat. Med. 21(11), 1539-1558. https://doi.org/10.1002/sim.1186",
+  "cite": "Higgins and Thompson, 2002",
+  "doi": "10.1002/sim.1186"
+ },
+ "Roberts2017": {
+  "text": "Roberts, D.R., Bahn, V., Ciuti, S., Boyce, M.S., Elith, J., Guillera‐Arroita, G., Hauenstein, S., Lahoz‐Monfort, J.J., Schröder, B., Thuiller, W., Warton, D.I., Wintle, B.A., Hartig, F., Dormann, C.F., 2017. Cross‐validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. Ecography 40(8), 913-929. https://doi.org/10.1111/ecog.02881",
+  "cite": "Roberts et al., 2017",
+  "doi": "10.1111/ecog.02881"
+ },
+ "Breiman2001": {
+  "text": "Breiman, L., 2001. Random Forests. Mach. Learn. 45(1), 5-32. https://doi.org/10.1023/a:1010933404324",
+  "cite": "Breiman, 2001",
+  "doi": "10.1023/a:1010933404324"
+ },
+ "Chen2016": {
+  "text": "Chen, T., Guestrin, C., 2016. XGBoost: A scalable tree boosting system, in: Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 785-794. https://doi.org/10.1145/2939672.2939785",
+  "cite": "Chen and Guestrin, 2016",
+  "doi": "10.1145/2939672.2939785"
+ },
+ "Geurts2006": {
+  "text": "Geurts, P., Ernst, D., Wehenkel, L., 2006. Extremely randomized trees. Mach. Learn. 63(1), 3-42. https://doi.org/10.1007/s10994-006-6226-1",
+  "cite": "Geurts et al., 2006",
+  "doi": "10.1007/s10994-006-6226-1"
+ },
+ "Grinsztajn2022": {
+  "text": "Grinsztajn, L., Oyallon, E., Varoquaux, G., 2022. Why Do Tree-Based Models Still Outperform Deep Learning on Typical Tabular Data?, in: Adv. Neural Inf. Process. Syst. 35, 507-520. https://doi.org/10.52202/068431-0037",
+  "cite": "Grinsztajn et al., 2022",
+  "doi": "10.52202/068431-0037"
+ },
+ "Hollmann2025": {
+  "text": "Hollmann, N., Müller, S., Purucker, L., Krishnakumar, A., Körfer, M., Hoo, S.B., Schirrmeister, R.T., Hutter, F., 2025. Accurate predictions on small data with a tabular foundation model. Nature 637(8045), 319-326. https://doi.org/10.1038/s41586-024-08328-6",
+  "cite": "Hollmann et al., 2025",
+  "doi": "10.1038/s41586-024-08328-6"
+ },
+ "Wilcoxon1945": {
+  "text": "Wilcoxon, F., 1945. Individual Comparisons by Ranking Methods. Biom. Bull. 1(6), 80. https://doi.org/10.2307/3001968",
+  "cite": "Wilcoxon, 1945",
+  "doi": "10.2307/3001968"
+ },
+ "Overend1987": {
+  "text": "Overend, R.P., Chornet, E., 1987. Fractionation of lignocellulosics by steam-aqueous pretreatments. Philos. Trans. R. Soc. Lond. A 321(1561), 523-536. https://doi.org/10.1098/rsta.1987.0029",
+  "cite": "Overend and Chornet, 1987",
+  "doi": "10.1098/rsta.1987.0029"
+ },
+ "Efron1979": {
+  "text": "Efron, B., 1979. Bootstrap Methods: Another Look at the Jackknife. Ann. Stat. 7(1), 1-26. https://doi.org/10.1214/aos/1176344552",
+  "cite": "Efron, 1979",
+  "doi": "10.1214/aos/1176344552"
+ },
+ "Romano2019": {
+  "text": "Romano, Y., Patterson, E., Candès, E.J., 2019. Conformalized Quantile Regression, in: Adv. Neural Inf. Process. Syst. 32. arXiv:1905.03222",
+  "cite": "Romano et al., 2019",
+  "doi": null
+ },
+ "Tibshirani2019": {
+  "text": "Tibshirani, R.J., Barber, R.F., Candes, E.J., Ramdas, A., 2019. Conformal Prediction Under Covariate Shift, in: Adv. Neural Inf. Process. Syst. 32. arXiv:1904.06019",
+  "cite": "Tibshirani et al., 2019",
+  "doi": null
+ },
+ "Lundberg2017": {
+  "text": "Lundberg, S., Lee, S.-I., 2017. A Unified Approach to Interpreting Model Predictions, in: Adv. Neural Inf. Process. Syst. 30. arXiv:1705.07874",
+  "cite": "Lundberg and Lee, 2017",
+  "doi": null
+ },
+ "Prokhorenkova2018": {
+  "text": "Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A.V., Gulin, A., 2018. CatBoost: unbiased boosting with categorical features, in: Adv. Neural Inf. Process. Syst. 31. arXiv:1706.09516",
+  "cite": "Prokhorenkova et al., 2018",
+  "doi": null
+ },
+ "Pedregosa2011": {
+  "text": "Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., Duchesnay, É., 2011. Scikit-learn: Machine Learning in Python. J. Mach. Learn. Res. 12(85), 2825–2830. https://jmlr.org/papers/v12/pedregosa11a.html",
+  "cite": "Pedregosa et al., 2011",
+  "doi": null
+ },
+ "Demsar2006": {
+  "text": "Demšar, J., 2006. Statistical Comparisons of Classifiers over Multiple Data Sets. J. Mach. Learn. Res. 7(1), 1–30. https://jmlr.org/papers/v7/demsar06a.html",
+  "cite": "Demšar, 2006",
+  "doi": null
+ },
+ "Sigrist2022": {
+  "text": "Sigrist, F., 2022. Gaussian Process Boosting. J. Mach. Learn. Res. 23(232), 1–46. https://jmlr.org/papers/v23/20-322.html",
+  "cite": "Sigrist, 2022",
+  "doi": null
+ },
+ "Ke2017": {
+  "text": "Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., Liu, T.-Y., 2017. LightGBM: A Highly Efficient Gradient Boosting Decision Tree, in: Advances in Neural Information Processing Systems. https://papers.nips.cc/paper_files/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html",
+  "cite": "Ke et al., 2017",
+  "doi": null
+ },
+ "Elfetni2026data": {
+  "text": "Elfetni, S., 2026. Unified, curated dataset of biomass hydrothermal treatment/liquefaction experiments for lignocellulosic and lignin-rich biomass — Version 1.0.0 [dataset]. Center for the Transformation of Chemistry. https://doi.org/10.22000/8bnbhqccf4aq7kea",
+  "cite": "Elfetni, 2026",
+  "doi": "10.22000/8bnbhqccf4aq7kea"
+ },
+ "TU4data": {
+  "text": "Abdeldayem, O., Al-Sakkari, E., Ortiz, D., Dupont, C., Ferras, D., Ouali, M.-S., Ragab, A., Kennedy, M., 2025. Database underlying the research for the development of machine learning models for predicting the physicochemical properties of hydrochar [dataset]. 4TU.ResearchData. https://doi.org/10.4121/834c3f22-f46a-4808-a0fe-46298be6a133.v1",
+  "cite": "Abdeldayem et al., 2025",
+  "doi": "10.4121/834c3f22-f46a-4808-a0fe-46298be6a133.v1"
+ }
+}

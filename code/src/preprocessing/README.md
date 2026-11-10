@@ -1,0 +1,1 @@
+Fold-dependent preprocessing (median imputation with missing-indicators, standardisation) is implemented inside each learner pipeline in src/models/registry.py so that it is refitted within every training fold.
