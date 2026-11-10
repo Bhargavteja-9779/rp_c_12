@@ -1,0 +1,68 @@
+{
+ "10.1016/j.fuel.2026.141091": {
+  "doi": "10.1016/j.fuel.2026.141091",
+  "title": "Predicting bio-oil yield from hydrothermal liquefaction of lignocellulosic biomass: machine learning approach and uncertainty propagation via joint bootstrap Monte Carlo",
+  "authors": "Djandja O, Hu Y, Zeng Y, He Q",
+  "venue": "Fuel",
+  "year": 2027,
+  "volume": "430",
+  "page": "141091",
+  "abstract": "This study investigates machine-learning-based prediction of bio-oil yield and quality indicators during the hydrothermal liquefaction (HTL) of lignocellulosic biomass. A curated literature-derived database was used to develop multilayer perceptron, support vector regression, decision tree, random forest (RF), and extreme gradient boosting (XGB) models for predicting bio-oil yield, elemental ratios, carbon retention, oxygen removal efficiency, and higher heating value. Predictor selection combined process knowledge with correlation analysis, while model hyperparameters were optimized using particle swarm optimization. XGB and RF generally provided the strongest performance; however, the models developed for most secondary outputs exhibited limited generalization. Consequently, detailed post-prediction analysis was restricted to bio-oil yield, for which the XGB model showed the most reliable predictive performance. Inclusion of the effective water fill ratio (Vw/Vr) substantially improved yield prediction by representing variations in solvent availability, reactor filling, and associated physicochemical interactions. SHapley Additive exPlanations ranked Vw/Vr as the most influential predictor, whereas Spearman analysis identified reaction time as the strongest monotonic factor (\u03c1 \u2248 \u22120.43), followed by Vw/Vr (\u03c1 \u2248 +0.34). Segmented regression and localized partial-dependence analyses reconciled these rankings by showing that the influence of reaction time was concentrated mainly below approximately 80 min, while Vw/Vr produced stronger nonlinear and regime-dependent changes, particularly below a model-derived breakpoint near 13.9. Joint-bootstrap Monte Carlo and residual-conformal analyses were further used to quantify predictive uncertainty and establish a model-credibility envelope based on interval width and applicability-domain support. Overall, the proposed framework provides an interpretable and uncertainty-aware approach for modeling lignocellulosic HTL and prioritizing conditions for subsequent process optimization.",
+  "abstract_source": "openalex"
+ },
+ "10.1007/s12155-024-10773-0": {
+  "doi": "10.1007/s12155-024-10773-0",
+  "title": "Machine Learning Approach for Predicting Hydrothermal Liquefaction of Lignocellulosic Biomass",
+  "authors": "Katongtung T, Phromphithak S, Onsree T, Tippayawong N",
+  "venue": "BioEnergy Research",
+  "year": 2024,
+  "volume": "17",
+  "page": "2246-2258",
+  "abstract": "",
+  "abstract_source": null
+ },
+ "10.1007/s12155-025-10906-z": {
+  "doi": "10.1007/s12155-025-10906-z",
+  "title": "Prediction of Biocrude Oil Yield From Biomass Hydrothermal Liquefaction Via Interpretable Machine Learning Using Higher Heating Value and Process Parameters",
+  "authors": "Gungor S, Insel M, Sadikoglu H, Melikoglu M",
+  "venue": "BioEnergy Research",
+  "year": 2025,
+  "volume": "18",
+  "page": "100",
+  "abstract": "",
+  "abstract_source": null
+ },
+ "10.1016/j.energy.2025.136708": {
+  "doi": "10.1016/j.energy.2025.136708",
+  "title": "Interpretable machine learning model for bio-oil property prediction from hydrothermal liquefaction of biomass via graph neural networks-based molecular structure",
+  "authors": "Tian Y, Kim J, Liu Y",
+  "venue": "Energy",
+  "year": 2025,
+  "volume": "329",
+  "page": "136708",
+  "abstract": "",
+  "abstract_source": null
+ },
+ "10.1016/j.biortech.2021.126011": {
+  "doi": "10.1016/j.biortech.2021.126011",
+  "title": "Machine learning prediction and optimization of bio-oil production from hydrothermal liquefaction of algae",
+  "authors": "Zhang W, Li J, Liu T, Leng S, Yang L, Peng H, Jiang S, Zhou W, Leng L, Li H",
+  "venue": "Bioresource Technology",
+  "year": 2021,
+  "volume": "342",
+  "page": "126011",
+  "abstract": "",
+  "abstract_source": null
+ },
+ "10.1016/j.jece.2025.118848": {
+  "doi": "10.1016/j.jece.2025.118848",
+  "title": "Machine Learning-driven insights into catalytic hydrothermal liquefaction of nitrogen-rich biomass: Enhancing bio-oil yield and reducing nitrogen content",
+  "authors": "Djandja O, Hu Y, Zeng Y, He Q",
+  "venue": "Journal of Environmental Chemical Engineering",
+  "year": 2025,
+  "volume": "13",
+  "page": "118848",
+  "abstract": "",
+  "abstract_source": null
+ }
+}

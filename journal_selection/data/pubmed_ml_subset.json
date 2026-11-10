@@ -1,0 +1,142 @@
+{
+ "retrieved": "2026-11-10",
+ "query": "\"machine learning\"[tiab] OR \"deep learning\"[tiab] OR chemometric*[tiab] OR \"neural network\"[tiab]",
+ "window": "pub 2025-07-01..2026-10-31",
+ "results": [
+  {
+   "journal": "Bioresour Technol",
+   "subset": "ML",
+   "n": 142,
+   "median": 70.5,
+   "q1": 53.75,
+   "q3": 97.25,
+   "pct_le_72": 54.9
+  },
+  {
+   "journal": "Anal Chim Acta",
+   "subset": "ML",
+   "n": 147,
+   "median": 72,
+   "q1": 52.0,
+   "q3": 98.0,
+   "pct_le_72": 51.0
+  },
+  {
+   "journal": "Talanta",
+   "subset": "ML",
+   "n": 205,
+   "median": 69,
+   "q1": 50.0,
+   "q3": 89.5,
+   "pct_le_72": 54.1
+  },
+  {
+   "journal": "Anal Bioanal Chem",
+   "subset": "ML",
+   "n": 55,
+   "median": 67,
+   "q1": 55.0,
+   "q3": 97.0,
+   "pct_le_72": 56.4
+  },
+  {
+   "journal": "J Chem Inf Model",
+   "subset": "ML",
+   "n": 140,
+   "median": 79.5,
+   "q1": 57.25,
+   "q3": 113.0,
+   "pct_le_72": 38.6
+  },
+  {
+   "journal": "Water Res",
+   "subset": "ML",
+   "n": 338,
+   "median": 98.5,
+   "q1": 76.0,
+   "q3": 135.25,
+   "pct_le_72": 19.2
+  },
+  {
+   "journal": "Environ Res",
+   "subset": "ML",
+   "n": 193,
+   "median": 87,
+   "q1": 59.5,
+   "q3": 125.0,
+   "pct_le_72": 39.4
+  },
+  {
+   "journal": "J Hazard Mater",
+   "subset": "ML",
+   "n": 353,
+   "median": 97,
+   "q1": 78.0,
+   "q3": 126.0,
+   "pct_le_72": 21.8
+  },
+  {
+   "journal": "Biosens Bioelectron",
+   "subset": "ML",
+   "n": 151,
+   "median": 78,
+   "q1": 59.0,
+   "q3": 114.0,
+   "pct_le_72": 43.7
+  },
+  {
+   "journal": "Ultrason Sonochem",
+   "subset": "ML",
+   "n": 39,
+   "median": 73,
+   "q1": 53.0,
+   "q3": 106.0,
+   "pct_le_72": 48.7
+  },
+  {
+   "journal": "Environ Pollut",
+   "subset": "ML",
+   "n": 177,
+   "median": 90,
+   "q1": 68.5,
+   "q3": 123.0,
+   "pct_le_72": 29.4
+  },
+  {
+   "journal": "Chemosphere",
+   "subset": "ML",
+   "n": 22,
+   "median": 78.0,
+   "q1": 56.0,
+   "q3": 137.75,
+   "pct_le_72": 50.0
+  },
+  {
+   "journal": "J Pharm Biomed Anal",
+   "subset": "ML",
+   "n": 67,
+   "median": 74,
+   "q1": 60.0,
+   "q3": 97.0,
+   "pct_le_72": 47.8
+  },
+  {
+   "journal": "Food Res Int",
+   "subset": "ML",
+   "n": 197,
+   "median": 96,
+   "q1": 67.5,
+   "q3": 126.0,
+   "pct_le_72": 29.4
+  },
+  {
+   "journal": "Spectrochim Acta A Mol Biomol Spectrosc",
+   "subset": "ML",
+   "n": 400,
+   "median": 85.0,
+   "q1": 64.0,
+   "q3": 118.75,
+   "pct_le_72": 35.2
+  }
+ ]
+}

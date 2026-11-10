@@ -2,3 +2,60 @@
 {'journal': 'Anal Chim Acta', 'n_ids': 400, 'n': 400, 'median': 60.0, 'q1': 43.0, 'q3': 80.75, 'pct_le_60': 50.2, 'pct_le_72': 67.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
 {'journal': 'Talanta', 'n_ids': 400, 'n': 400, 'median': 70.0, 'q1': 51.25, 'q3': 97.5, 'pct_le_60': 34.5, 'pct_le_72': 53.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
 {'journal': 'Anal Bioanal Chem', 'n_ids': 400, 'n': 398, 'median': 70.0, 'q1': 51.0, 'q3': 97.25, 'pct_le_60': 37.4, 'pct_le_72': 54.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'J Chem Inf Model', 'n_ids': 400, 'n': 354, 'median': 83.0, 'q1': 62.0, 'q3': 109.25, 'pct_le_60': 24.6, 'pct_le_72': 36.7, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Bioinformatics', 'n_ids': 400, 'n': 358, 'median': 149.0, 'q1': 109.0, 'q3': 200.25, 'pct_le_60': 5.9, 'pct_le_72': 6.7, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Brief Bioinform', 'n_ids': 400, 'n': 398, 'median': 127.0, 'q1': 93.0, 'q3': 170.25, 'pct_le_60': 7.0, 'pct_le_72': 11.6, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'J Am Med Inform Assoc', 'n_ids': 307, 'n': 299, 'median': 120, 'q1': 85.0, 'q3': 164.0, 'pct_le_60': 13.0, 'pct_le_72': 16.7, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Nucleic Acids Res', 'n_ids': 400, 'n': 394, 'median': 138.0, 'q1': 57.0, 'q3': 228.0, 'pct_le_60': 26.4, 'pct_le_72': 31.0, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Gigascience', 'n_ids': 107, 'n': 104, 'median': 198.0, 'q1': 137.0, 'q3': 250.75, 'pct_le_60': 8.7, 'pct_le_72': 11.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Database (Oxford)', 'n_ids': 70, 'n': 70, 'median': 167.0, 'q1': 130.0, 'q3': 232.5, 'pct_le_60': 0.0, 'pct_le_72': 0.0, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'NAR Genom Bioinform', 'n_ids': 244, 'n': 243, 'median': 155, 'q1': 115.0, 'q3': 202.0, 'pct_le_60': 2.9, 'pct_le_72': 5.8, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Bioinform Adv', 'n_ids': 400, 'n': 398, 'median': 126.0, 'q1': 94.0, 'q3': 160.0, 'pct_le_60': 9.3, 'pct_le_72': 13.3, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Comput Biol Med', 'n_ids': 400, 'n': 388, 'median': 130.0, 'q1': 80.25, 'q3': 200.75, 'pct_le_60': 11.1, 'pct_le_72': 19.3, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Neural Netw', 'n_ids': 400, 'n': 400, 'median': 219.0, 'q1': 165.0, 'q3': 284.0, 'pct_le_60': 0.2, 'pct_le_72': 0.2, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Artif Intell Med', 'n_ids': 218, 'n': 218, 'median': 287.0, 'q1': 167.25, 'q3': 386.25, 'pct_le_60': 0.5, 'pct_le_72': 0.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'J Biomed Inform', 'n_ids': 226, 'n': 226, 'median': 148.0, 'q1': 111.0, 'q3': 187.25, 'pct_le_60': 1.3, 'pct_le_72': 3.1, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Comput Methods Programs Biomed', 'n_ids': 400, 'n': 400, 'median': 180.5, 'q1': 131.0, 'q3': 230.75, 'pct_le_60': 1.0, 'pct_le_72': 3.0, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Med Image Anal', 'n_ids': 400, 'n': 399, 'median': 231, 'q1': 168.0, 'q3': 316.0, 'pct_le_60': 0.3, 'pct_le_72': 0.8, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Water Res', 'n_ids': 400, 'n': 400, 'median': 86.0, 'q1': 69.0, 'q3': 114.75, 'pct_le_60': 15.0, 'pct_le_72': 30.8, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Environ Res', 'n_ids': 400, 'n': 385, 'median': 80, 'q1': 61.0, 'q3': 116.0, 'pct_le_60': 24.4, 'pct_le_72': 41.6, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'J Hazard Mater', 'n_ids': 400, 'n': 400, 'median': 96.0, 'q1': 74.0, 'q3': 124.75, 'pct_le_60': 11.0, 'pct_le_72': 22.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Chemosphere', 'n_ids': 400, 'n': 386, 'median': 99.0, 'q1': 73.75, 'q3': 132.25, 'pct_le_60': 13.7, 'pct_le_72': 23.6, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Environ Pollut', 'n_ids': 400, 'n': 400, 'median': 93.5, 'q1': 69.0, 'q3': 125.5, 'pct_le_60': 15.2, 'pct_le_72': 28.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Environ Int', 'n_ids': 400, 'n': 399, 'median': 114, 'q1': 91.0, 'q3': 150.0, 'pct_le_60': 3.0, 'pct_le_72': 9.3, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Sci Total Environ', 'n_ids': 400, 'n': 238, 'median': 143.0, 'q1': 96.0, 'q3': 190.25, 'pct_le_60': 7.1, 'pct_le_72': 11.3, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Biosens Bioelectron', 'n_ids': 400, 'n': 400, 'median': 82.0, 'q1': 59.0, 'q3': 110.75, 'pct_le_60': 26.8, 'pct_le_72': 38.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Ultrason Sonochem', 'n_ids': 400, 'n': 399, 'median': 76, 'q1': 57.0, 'q3': 108.0, 'pct_le_60': 31.1, 'pct_le_72': 45.6, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Food Chem', 'n_ids': 400, 'n': 400, 'median': 186.0, 'q1': 141.0, 'q3': 232.0, 'pct_le_60': 0.5, 'pct_le_72': 0.8, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Food Res Int', 'n_ids': 400, 'n': 399, 'median': 90, 'q1': 66.0, 'q3': 122.0, 'pct_le_60': 19.0, 'pct_le_72': 32.3, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Spectrochim Acta A Mol Biomol Spectrosc', 'n_ids': 400, 'n': 400, 'median': 74.5, 'q1': 54.25, 'q3': 105.0, 'pct_le_60': 33.2, 'pct_le_72': 48.2, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'J Pharm Biomed Anal', 'n_ids': 400, 'n': 400, 'median': 82.0, 'q1': 66.0, 'q3': 110.75, 'pct_le_60': 17.2, 'pct_le_72': 35.8, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Comput Struct Biotechnol J', 'n_ids': 400, 'n': 398, 'median': 91.0, 'q1': 63.0, 'q3': 118.0, 'pct_le_60': 22.1, 'pct_le_72': 34.4, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Int J Med Inform', 'n_ids': 400, 'n': 400, 'median': 89.0, 'q1': 56.0, 'q3': 151.0, 'pct_le_60': 27.8, 'pct_le_72': 37.0, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Methods', 'n_ids': 202, 'n': 201, 'median': 88, 'q1': 61.0, 'q3': 124.5, 'pct_le_60': 24.4, 'pct_le_72': 37.8, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Sci Rep', 'n_ids': 400, 'n': 385, 'median': 132, 'q1': 91.5, 'q3': 195.0, 'pct_le_60': 8.6, 'pct_le_72': 12.7, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'npj Digit Med', 'n_ids': 400, 'n': 400, 'median': 185.0, 'q1': 131.0, 'q3': 249.0, 'pct_le_60': 2.5, 'pct_le_72': 4.2, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Patterns (N Y)', 'n_ids': 112, 'n': 111, 'median': 165, 'q1': 125.0, 'q3': 208.0, 'pct_le_60': 1.8, 'pct_le_72': 2.7, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'J Cheminform', 'n_ids': 219, 'n': 218, 'median': 133.0, 'q1': 106.5, 'q3': 173.0, 'pct_le_60': 1.8, 'pct_le_72': 4.1, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Physiol Meas', 'n_ids': 217, 'n': 206, 'median': 127.0, 'q1': 99.0, 'q3': 168.0, 'pct_le_60': 5.3, 'pct_le_72': 10.2, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Anal Chem', 'n_ids': 400, 'n': 398, 'median': 97.0, 'q1': 74.0, 'q3': 129.25, 'pct_le_60': 14.6, 'pct_le_72': 23.6, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'J Environ Manage', 'n_ids': 400, 'n': 400, 'median': 126.0, 'q1': 86.0, 'q3': 185.0, 'pct_le_60': 8.5, 'pct_le_72': 14.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Ecotoxicol Environ Saf', 'n_ids': 400, 'n': 400, 'median': 129.0, 'q1': 92.0, 'q3': 182.75, 'pct_le_60': 3.8, 'pct_le_72': 12.2, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Eur Heart J Digit Health', 'n_ids': 234, 'n': 232, 'median': 118.0, 'q1': 89.0, 'q3': 155.5, 'pct_le_60': 4.7, 'pct_le_72': 10.8, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Comput Med Imaging Graph', 'n_ids': 285, 'n': 285, 'median': 152, 'q1': 107.0, 'q3': 211.0, 'pct_le_60': 4.9, 'pct_le_72': 7.4, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Comput Biol Chem', 'n_ids': 400, 'n': 400, 'median': 98.0, 'q1': 70.0, 'q3': 139.75, 'pct_le_60': 17.0, 'pct_le_72': 28.0, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Bioresour Technol', 'subset': 'ML', 'n': 142, 'median': 70.5, 'q1': 53.75, 'q3': 97.25, 'pct_le_72': 54.9}
+{'journal': 'Anal Chim Acta', 'subset': 'ML', 'n': 147, 'median': 72, 'q1': 52.0, 'q3': 98.0, 'pct_le_72': 51.0}
+{'journal': 'Talanta', 'subset': 'ML', 'n': 205, 'median': 69, 'q1': 50.0, 'q3': 89.5, 'pct_le_72': 54.1}
+{'journal': 'Anal Bioanal Chem', 'subset': 'ML', 'n': 55, 'median': 67, 'q1': 55.0, 'q3': 97.0, 'pct_le_72': 56.4}
+{'journal': 'J Chem Inf Model', 'subset': 'ML', 'n': 140, 'median': 79.5, 'q1': 57.25, 'q3': 113.0, 'pct_le_72': 38.6}
+{'journal': 'Water Res', 'subset': 'ML', 'n': 338, 'median': 98.5, 'q1': 76.0, 'q3': 135.25, 'pct_le_72': 19.2}
+{'journal': 'Environ Res', 'subset': 'ML', 'n': 193, 'median': 87, 'q1': 59.5, 'q3': 125.0, 'pct_le_72': 39.4}
+{'journal': 'J Hazard Mater', 'subset': 'ML', 'n': 353, 'median': 97, 'q1': 78.0, 'q3': 126.0, 'pct_le_72': 21.8}
+{'journal': 'Biosens Bioelectron', 'subset': 'ML', 'n': 151, 'median': 78, 'q1': 59.0, 'q3': 114.0, 'pct_le_72': 43.7}
+{'journal': 'Ultrason Sonochem', 'subset': 'ML', 'n': 39, 'median': 73, 'q1': 53.0, 'q3': 106.0, 'pct_le_72': 48.7}
+{'journal': 'Environ Pollut', 'subset': 'ML', 'n': 177, 'median': 90, 'q1': 68.5, 'q3': 123.0, 'pct_le_72': 29.4}
+{'journal': 'Chemosphere', 'subset': 'ML', 'n': 22, 'median': 78.0, 'q1': 56.0, 'q3': 137.75, 'pct_le_72': 50.0}
+{'journal': 'J Pharm Biomed Anal', 'subset': 'ML', 'n': 67, 'median': 74, 'q1': 60.0, 'q3': 97.0, 'pct_le_72': 47.8}
+{'journal': 'Food Res Int', 'subset': 'ML', 'n': 197, 'median': 96, 'q1': 67.5, 'q3': 126.0, 'pct_le_72': 29.4}
+{'journal': 'Spectrochim Acta A Mol Biomol Spectrosc', 'subset': 'ML', 'n': 400, 'median': 85.0, 'q1': 64.0, 'q3': 118.75, 'pct_le_72': 35.2}
