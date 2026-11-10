@@ -69,3 +69,6 @@ Outer grouped-CV seeds {11, 22, 33}; learner seeds 0; bootstrap seed 0; k-shot s
 
 ## 12. Deviations log
 (empty at registration)
+* 2026-11-10 — TabPFN v2 (tabpfn 9.2.0) could not be run: model weights require a one-time licence acceptance with a personal Prior Labs account (`TabPFNLicenseError`). As pre-specified in §7, it is reported as "not run". No other learner was affected.
+* 2026-11-10 — Clarification of §6: in E1/E2 every learner is tuned separately for each feature set (base; base+P) with the same budget, so that the P ablation is not biased by hyper-parameters tuned on one set only.
+* 2026-11-10 — GPBoost note (no protocol change): with default joint estimation the study random intercept absorbs most variance (estimated σ²_study ≈ 270 vs σ²_ε ≈ 80 on bio-oil yield); for unseen studies its prediction reverts towards the fixed-effect function, which is nearly flat. Reported as observed.

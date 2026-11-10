@@ -1,0 +1,278 @@
+{
+ "rows": [
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "cat",
+   "scheme": "random_row_cv",
+   "seed": 11,
+   "fit_s": 32.39815207900028,
+   "predict_s": 0.044456390999130235,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 7.678765256158037,
+   "mae": 4.702516699765596,
+   "r2": 0.818173008232555,
+   "median_study_rmse": 5.491965841924102,
+   "mean_study_rmse": 6.844443608536374
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "cat",
+   "scheme": "grouped_study_cv",
+   "seed": 11,
+   "fit_s": 65.17520544199988,
+   "predict_s": 0.015676895000069635,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 16.397454758341773,
+   "mae": 11.652500050460313,
+   "r2": 0.17085887991234017,
+   "median_study_rmse": 12.928744696253705,
+   "mean_study_rmse": 14.698447532525533
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "cat",
+   "scheme": "grouped_study_cv",
+   "seed": 22,
+   "fit_s": 62.98963736500036,
+   "predict_s": 0.021889632999773312,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 16.480840096954132,
+   "mae": 11.665304688549904,
+   "r2": 0.16240464027457846,
+   "median_study_rmse": 13.099211497829243,
+   "mean_study_rmse": 14.742690405524572
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "cat",
+   "scheme": "grouped_study_cv",
+   "seed": 33,
+   "fit_s": 66.52641037999956,
+   "predict_s": 0.015891653999460686,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 16.751814011714746,
+   "mae": 11.737746513119754,
+   "r2": 0.13463513873646782,
+   "median_study_rmse": 11.612361217207715,
+   "mean_study_rmse": 14.695907218906616
+  }
+ ],
+ "params": {
+  "depth": 8,
+  "iterations": 933,
+  "l2_leaf_reg": 1.092510014119887,
+  "learning_rate": 0.0717891240377943
+ },
+ "tune_rmse": 15.894359346600703,
+ "tune_seconds": 73.07835880399989,
+ "tune_log": [
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 859,
+    "l2_leaf_reg": 5.190263017695163,
+    "learning_rate": 0.06737284345804269
+   },
+   "grouped_cv_rmse": 16.09770137055752
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 7,
+    "iterations": 659,
+    "l2_leaf_reg": 2.652496376759476,
+    "learning_rate": 0.07348977441409614
+   },
+   "grouped_cv_rmse": 16.32126823527056
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 899,
+    "l2_leaf_reg": 7.79422611516095,
+    "learning_rate": 0.13941000679018942
+   },
+   "grouped_cv_rmse": 16.424918177942654
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 6,
+    "iterations": 1005,
+    "l2_leaf_reg": 6.190490166774185,
+    "learning_rate": 0.05805577839705645
+   },
+   "grouped_cv_rmse": 16.385679986934253
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 4,
+    "iterations": 1149,
+    "l2_leaf_reg": 8.425518534432111,
+    "learning_rate": 0.02307761365470947
+   },
+   "grouped_cv_rmse": 16.703120623162558
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 5,
+    "iterations": 415,
+    "l2_leaf_reg": 2.334756213362472,
+    "learning_rate": 0.13759396898063678
+   },
+   "grouped_cv_rmse": 16.417146188082583
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 4,
+    "iterations": 1150,
+    "l2_leaf_reg": 2.975829503887464,
+    "learning_rate": 0.10043289237516363
+   },
+   "grouped_cv_rmse": 16.66750063676241
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 7,
+    "iterations": 447,
+    "l2_leaf_reg": 1.3130293256147134,
+    "learning_rate": 0.07261061130203572
+   },
+   "grouped_cv_rmse": 16.39197251869987
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 5,
+    "iterations": 997,
+    "l2_leaf_reg": 8.803774642925566,
+    "learning_rate": 0.05723731428349693
+   },
+   "grouped_cv_rmse": 16.45780544898574
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 451,
+    "l2_leaf_reg": 1.8388894115254157,
+    "learning_rate": 0.09517697687495001
+   },
+   "grouped_cv_rmse": 16.44361947972288
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 1102,
+    "l2_leaf_reg": 1.365268824654346,
+    "learning_rate": 0.03843025228076564
+   },
+   "grouped_cv_rmse": 16.090900639352718
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 4,
+    "iterations": 1056,
+    "l2_leaf_reg": 2.434944020023476,
+    "learning_rate": 0.12327044336250591
+   },
+   "grouped_cv_rmse": 16.69885932207773
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 6,
+    "iterations": 742,
+    "l2_leaf_reg": 4.102640452317434,
+    "learning_rate": 0.12320839122509294
+   },
+   "grouped_cv_rmse": 16.412379156453348
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 5,
+    "iterations": 357,
+    "l2_leaf_reg": 4.642658243447122,
+    "learning_rate": 0.07724657225869438
+   },
+   "grouped_cv_rmse": 16.635994858343278
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 6,
+    "iterations": 391,
+    "l2_leaf_reg": 5.6323046962378225,
+    "learning_rate": 0.06806425081012088
+   },
+   "grouped_cv_rmse": 16.08527500382392
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 933,
+    "l2_leaf_reg": 1.092510014119887,
+    "learning_rate": 0.0717891240377943
+   },
+   "grouped_cv_rmse": 15.894359346600703
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 347,
+    "l2_leaf_reg": 1.617620924717978,
+    "learning_rate": 0.027681250545135584
+   },
+   "grouped_cv_rmse": 16.391547590989553
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 480,
+    "l2_leaf_reg": 1.7918085415441,
+    "learning_rate": 0.051177667655764654
+   },
+   "grouped_cv_rmse": 16.274621581493765
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 7,
+    "iterations": 1091,
+    "l2_leaf_reg": 2.1777479562471345,
+    "learning_rate": 0.07788962541696605
+   },
+   "grouped_cv_rmse": 16.296279159218003
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 4,
+    "iterations": 605,
+    "l2_leaf_reg": 6.0026840094509994,
+    "learning_rate": 0.13550734660965064
+   },
+   "grouped_cv_rmse": 16.92157015146053
+  }
+ ]
+}

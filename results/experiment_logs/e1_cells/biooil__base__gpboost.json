@@ -1,0 +1,320 @@
+{
+ "rows": [
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "gpboost",
+   "scheme": "random_row_cv",
+   "seed": 11,
+   "fit_s": 3.2510929170002782,
+   "predict_s": 0.47002709999924264,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 17.316012405883495,
+   "mae": 13.191987920948154,
+   "r2": 0.0753628301628051,
+   "median_study_rmse": 13.14980345377591,
+   "mean_study_rmse": 15.877896886796066
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "gpboost",
+   "scheme": "grouped_study_cv",
+   "seed": 11,
+   "fit_s": 6.074792855999931,
+   "predict_s": 0.7867447710000306,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 17.476654574527956,
+   "mae": 13.387200362019636,
+   "r2": 0.05812737131257406,
+   "median_study_rmse": 13.021201816732033,
+   "mean_study_rmse": 16.11635104454943
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "gpboost",
+   "scheme": "grouped_study_cv",
+   "seed": 22,
+   "fit_s": 7.0315486289991895,
+   "predict_s": 0.9111329580000529,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 17.652521280934746,
+   "mae": 13.500784831758509,
+   "r2": 0.03907595958977372,
+   "median_study_rmse": 13.573192651607108,
+   "mean_study_rmse": 16.301856851145146
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "gpboost",
+   "scheme": "grouped_study_cv",
+   "seed": 33,
+   "fit_s": 6.339396530000613,
+   "predict_s": 0.9319969379998838,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 17.7107155838405,
+   "mae": 13.442505642243416,
+   "r2": 0.03272984292918679,
+   "median_study_rmse": 13.187014562599405,
+   "mean_study_rmse": 16.19224158245879
+  }
+ ],
+ "params": {
+  "feature_fraction": 0.918972453749402,
+  "lambda_l2": 0.002423224390060893,
+  "learning_rate": 0.09472387696052412,
+  "min_data_in_leaf": 39,
+  "num_boost_round": 754,
+  "num_leaves": 20
+ },
+ "tune_rmse": 17.6025621547823,
+ "tune_seconds": 19.568492526999762,
+ "tune_log": [
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.7744067519636624,
+    "lambda_l2": 0.7257005721594281,
+    "learning_rate": 0.040064836619643954,
+    "min_data_in_leaf": 8,
+    "num_boost_round": 559,
+    "num_leaves": 16
+   },
+   "grouped_cv_rmse": 18.02246559152835
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.8117818483929862,
+    "lambda_l2": 0.03447679044520656,
+    "learning_rate": 0.019839677420421205,
+    "min_data_in_leaf": 29,
+    "num_boost_round": 800,
+    "num_leaves": 19
+   },
+   "grouped_cv_rmse": 18.025102556476657
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.6917207594128889,
+    "lambda_l2": 1.4685885989200866,
+    "learning_rate": 0.0337983049214134,
+    "min_data_in_leaf": 29,
+    "num_boost_round": 877,
+    "num_leaves": 32
+   },
+   "grouped_cv_rmse": 17.925166681711772
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.5355180290989434,
+    "lambda_l2": 0.002231090560744304,
+    "learning_rate": 0.010476552591086518,
+    "min_data_in_leaf": 10,
+    "num_boost_round": 631,
+    "num_leaves": 7
+   },
+   "grouped_cv_rmse": 18.142178966275893
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.989309171116382,
+    "lambda_l2": 1.5726578854179514,
+    "learning_rate": 0.028938722964976897,
+    "min_data_in_leaf": 24,
+    "num_boost_round": 347,
+    "num_leaves": 21
+   },
+   "grouped_cv_rmse": 18.073803589599844
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.8603163273629584,
+    "lambda_l2": 0.21285270235317322,
+    "learning_rate": 0.03446459897310037,
+    "min_data_in_leaf": 37,
+    "num_boost_round": 743,
+    "num_leaves": 17
+   },
+   "grouped_cv_rmse": 17.968762656274436
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.7073309699952618,
+    "lambda_l2": 0.011434638743472196,
+    "learning_rate": 0.05946120272201709,
+    "min_data_in_leaf": 33,
+    "num_boost_round": 328,
+    "num_leaves": 7
+   },
+   "grouped_cv_rmse": 18.06790282926579
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.662070503896607,
+    "lambda_l2": 0.00396916788467424,
+    "learning_rate": 0.01668481471798396,
+    "min_data_in_leaf": 22,
+    "num_boost_round": 535,
+    "num_leaves": 11
+   },
+   "grouped_cv_rmse": 18.11744003043311
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.8409101495517417,
+    "lambda_l2": 0.02741773675242096,
+    "learning_rate": 0.027354699847778982,
+    "min_data_in_leaf": 6,
+    "num_boost_round": 257,
+    "num_leaves": 42
+   },
+   "grouped_cv_rmse": 18.090843133841496
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.8265700178989688,
+    "lambda_l2": 0.00482656701463041,
+    "learning_rate": 0.022811411923055237,
+    "min_data_in_leaf": 5,
+    "num_boost_round": 598,
+    "num_leaves": 42
+   },
+   "grouped_cv_rmse": 18.02209171965036
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.6818553854713113,
+    "lambda_l2": 0.19089171584870906,
+    "learning_rate": 0.027453739814940308,
+    "min_data_in_leaf": 9,
+    "num_boost_round": 974,
+    "num_leaves": 11
+   },
+   "grouped_cv_rmse": 18.02599135450898
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.8263951585027454,
+    "lambda_l2": 0.346924918082535,
+    "learning_rate": 0.09892352141083788,
+    "min_data_in_leaf": 45,
+    "num_boost_round": 343,
+    "num_leaves": 27
+   },
+   "grouped_cv_rmse": 17.916077130600264
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.6222127960008014,
+    "lambda_l2": 0.004323926814280047,
+    "learning_rate": 0.012893628152558005,
+    "min_data_in_leaf": 26,
+    "num_boost_round": 760,
+    "num_leaves": 56
+   },
+   "grouped_cv_rmse": 18.087570651225565
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.8891727410129545,
+    "lambda_l2": 6.284695113453549,
+    "learning_rate": 0.04597554297029557,
+    "min_data_in_leaf": 35,
+    "num_boost_round": 456,
+    "num_leaves": 56
+   },
+   "grouped_cv_rmse": 17.986220334215236
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.918972453749402,
+    "lambda_l2": 0.002423224390060893,
+    "learning_rate": 0.09472387696052412,
+    "min_data_in_leaf": 39,
+    "num_boost_round": 754,
+    "num_leaves": 20
+   },
+   "grouped_cv_rmse": 17.6025621547823
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.5278573468508032,
+    "lambda_l2": 0.0637730015564386,
+    "learning_rate": 0.010470988085083956,
+    "min_data_in_leaf": 15,
+    "num_boost_round": 570,
+    "num_leaves": 50
+   },
+   "grouped_cv_rmse": 18.120028149014402
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.5600982806065844,
+    "lambda_l2": 0.015295398277813725,
+    "learning_rate": 0.013144005100507946,
+    "min_data_in_leaf": 39,
+    "num_boost_round": 774,
+    "num_leaves": 42
+   },
+   "grouped_cv_rmse": 18.100101024104042
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.9591177331810723,
+    "lambda_l2": 0.007366964049337372,
+    "learning_rate": 0.03674420594853441,
+    "min_data_in_leaf": 25,
+    "num_boost_round": 409,
+    "num_leaves": 57
+   },
+   "grouped_cv_rmse": 18.019180456445298
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.7616240267333498,
+    "lambda_l2": 0.0023755383341274162,
+    "learning_rate": 0.037665739248650416,
+    "min_data_in_leaf": 15,
+    "num_boost_round": 286,
+    "num_leaves": 50
+   },
+   "grouped_cv_rmse": 18.06478018634884
+  },
+  {
+   "learner": "gpboost",
+   "params": {
+    "feature_fraction": 0.5046783524282663,
+    "lambda_l2": 2.3408216129688664,
+    "learning_rate": 0.04437865545090027,
+    "min_data_in_leaf": 5,
+    "num_boost_round": 475,
+    "num_leaves": 53
+   },
+   "grouped_cv_rmse": 18.007665589921757
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "rows": [
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "rf",
+   "scheme": "random_row_cv",
+   "seed": 11,
+   "fit_s": 6.962795201999825,
+   "predict_s": 0.15176688499991542,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 8.837128221095886,
+   "mae": 5.826861902482148,
+   "r2": 0.7591770433766437,
+   "median_study_rmse": 7.498740525905699,
+   "mean_study_rmse": 8.302839787994047
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "rf",
+   "scheme": "grouped_study_cv",
+   "seed": 11,
+   "fit_s": 13.18432020299997,
+   "predict_s": 0.19398767800021233,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 16.165799769465234,
+   "mae": 12.212644802266025,
+   "r2": 0.19412077178203568,
+   "median_study_rmse": 12.70985783976321,
+   "mean_study_rmse": 14.48299039130456
+  }
+ ],
+ "params": {
+  "max_depth": null,
+  "max_features": 1.0,
+  "min_samples_leaf": 4
+ },
+ "tune_rmse": 16.27297409857835,
+ "tune_seconds": 4.157580285999984,
+ "tune_log": [
+  {
+   "learner": "rf",
+   "params": {
+    "max_depth": null,
+    "max_features": 1.0,
+    "min_samples_leaf": 6
+   },
+   "grouped_cv_rmse": 16.395856656325513
+  },
+  {
+   "learner": "rf",
+   "params": {
+    "max_depth": null,
+    "max_features": 1.0,
+    "min_samples_leaf": 4
+   },
+   "grouped_cv_rmse": 16.27297409857835
+  }
+ ]
+}

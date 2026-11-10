@@ -1,0 +1,16 @@
+2026-11-10 22:00:21,344 e1_benchmark INFO biooil base   mean     random RMSE=18.02 grouped RMSE=18.12 tune 1s
+2026-11-10 22:00:22,293 e1_benchmark INFO biooil base   ridge    random RMSE=15.02 grouped RMSE=17.51 tune 0s
+2026-11-10 22:00:23,285 e1_benchmark INFO biooil base   knn      random RMSE=10.27 grouped RMSE=16.26 tune 0s
+2026-11-10 22:00:29,299 e1_benchmark INFO biooil base   svr      random RMSE=10.38 grouped RMSE=15.80 tune 4s
+2026-11-10 22:05:35,904 e1_benchmark INFO biooil base   mlp      random RMSE=9.19 grouped RMSE=23.95 tune 176s
+2026-11-10 22:07:38,205 e1_benchmark INFO biooil base   rf       random RMSE=8.45 grouped RMSE=16.01 tune 97s
+2026-11-10 22:08:57,638 e1_benchmark INFO biooil base   et       random RMSE=8.64 grouped RMSE=15.73 tune 63s
+2026-11-10 22:10:18,568 e1_benchmark INFO biooil base   hgb      random RMSE=7.80 grouped RMSE=16.74 tune 55s
+2026-11-10 22:10:52,371 e1_benchmark INFO biooil base   lgbm     random RMSE=7.61 grouped RMSE=16.11 tune 23s
+2026-11-10 22:11:23,364 e1_benchmark INFO biooil base   xgb      random RMSE=7.81 grouped RMSE=15.80 tune 26s
+2026-11-10 22:13:42,245 e1_benchmark INFO biooil base   cat      random RMSE=7.68 grouped RMSE=16.54 tune 73s
+2026-11-10 22:14:09,949 e1_benchmark INFO biooil base   gpboost  random RMSE=17.32 grouped RMSE=17.61 tune 20s
+2026-11-10 22:14:10,599 e1_benchmark INFO biooil base+P mean     random RMSE=18.02 grouped RMSE=18.12 tune 0s
+2026-11-10 22:14:12,383 e1_benchmark INFO biooil base+P ridge    random RMSE=14.15 grouped RMSE=17.73 tune 1s
+2026-11-10 22:14:14,265 e1_benchmark INFO biooil base+P knn      random RMSE=10.01 grouped RMSE=17.15 tune 1s
+2026-11-10 22:14:26,882 e1_benchmark INFO biooil base+P svr      random RMSE=11.04 grouped RMSE=16.45 tune 10s

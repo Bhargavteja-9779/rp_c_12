@@ -1,0 +1,215 @@
+{
+ "rows": [
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "ridge",
+   "scheme": "random_row_cv",
+   "seed": 11,
+   "fit_s": 0.08758070899966697,
+   "predict_s": 0.009375484000429424,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 14.14922024134917,
+   "mae": 10.840860561324526,
+   "r2": 0.3826370184813416,
+   "median_study_rmse": 12.77536221232701,
+   "mean_study_rmse": 13.749937380079835
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "ridge",
+   "scheme": "grouped_study_cv",
+   "seed": 11,
+   "fit_s": 0.13516747800122175,
+   "predict_s": 0.010605170999497204,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 17.52275970320113,
+   "mae": 13.240542717637096,
+   "r2": 0.05315131156754216,
+   "median_study_rmse": 14.159164590904922,
+   "mean_study_rmse": 15.922127548009453
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "ridge",
+   "scheme": "grouped_study_cv",
+   "seed": 22,
+   "fit_s": 0.15583331800098676,
+   "predict_s": 0.02718828599927292,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 17.948759366655334,
+   "mae": 13.615538339367594,
+   "r2": 0.0065535972135145615,
+   "median_study_rmse": 14.864405002352218,
+   "mean_study_rmse": 16.129252286034504
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "ridge",
+   "scheme": "grouped_study_cv",
+   "seed": 33,
+   "fit_s": 0.11547151400054645,
+   "predict_s": 0.0210604379999495,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 17.7232644956872,
+   "mae": 13.310809908876063,
+   "r2": 0.03135864049225523,
+   "median_study_rmse": 13.415869449163694,
+   "mean_study_rmse": 15.693205272553982
+  }
+ ],
+ "params": {
+  "alpha": 605.3082080079017
+ },
+ "tune_rmse": 18.169570956876736,
+ "tune_seconds": 1.0665836140001375,
+ "tune_log": [
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 1.96282248134428
+   },
+   "grouped_cv_rmse": 20.58870485770158
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 19.549524484259873
+   },
+   "grouped_cv_rmse": 20.257128127716914
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 4.135997393839888
+   },
+   "grouped_cv_rmse": 20.539927011695625
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 1.8590843630169627
+   },
+   "grouped_cv_rmse": 20.591107477755198
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 0.348280208702833
+   },
+   "grouped_cv_rmse": 20.626926811647603
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 7.505241622349544
+   },
+   "grouped_cv_rmse": 20.469562911405603
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 0.4222048983149828
+   },
+   "grouped_cv_rmse": 20.625136860122417
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 224.2012371372442
+   },
+   "grouped_cv_rmse": 18.913439362990786
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 605.3082080079017
+   },
+   "grouped_cv_rmse": 18.169570956876736
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 0.1998246739232945
+   },
+   "grouped_cv_rmse": 20.630533404069066
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 56.27949975223143
+   },
+   "grouped_cv_rmse": 19.81464535081256
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 1.490628836610164
+   },
+   "grouped_cv_rmse": 20.599698726992514
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 2.5601615250028704
+   },
+   "grouped_cv_rmse": 20.575005956975602
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 357.7501543082695
+   },
+   "grouped_cv_rmse": 18.56487073889024
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 0.002668187524237051
+   },
+   "grouped_cv_rmse": 20.635348167161712
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 0.003332543279005117
+   },
+   "grouped_cv_rmse": 20.635331894590482
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 0.001322240284589594
+   },
+   "grouped_cv_rmse": 20.63538113549097
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 99.01912249089663
+   },
+   "grouped_cv_rmse": 19.481239676760044
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 46.659545670218456
+   },
+   "grouped_cv_rmse": 19.910952845216578
+  },
+  {
+   "learner": "ridge",
+   "params": {
+    "alpha": 165.98654663071267
+   },
+   "grouped_cv_rmse": 19.13077360794222
+  }
+ ]
+}

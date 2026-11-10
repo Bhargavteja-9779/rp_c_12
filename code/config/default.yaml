@@ -1,0 +1,37 @@
+# All seeds/sizes fixed before running (PROTOCOL §11). Quick mode = pipeline verification only.
+full:
+  learners: [mean, ridge, knn, svr, mlp, rf, et, hgb, lgbm, xgb, cat, gpboost]  # tabpfn: not run (licence acceptance requires a personal account; PROTOCOL §12)
+  tune_iter: 20
+  tune_folds: 5
+  outer_folds: 10
+  outer_seeds: [11, 22, 33]
+  random_folds: 5
+  random_seed: 11
+  inner_folds: 5
+  alphas: [0.05, 0.1, 0.2]
+  alpha: 0.1
+  k_values: [0, 1, 2, 3, 5, 10]
+  kshot_draws: 20
+  bootstrap: 2000
+  noise_levels: [0.0, 0.05, 0.1, 0.2]
+  study_fractions: [0.25, 0.5, 0.75, 1.0]
+  temporal_cutoff: 2018
+  n_jobs: 4
+quick:
+  learners: [mean, ridge, rf, lgbm, gpboost]
+  tune_iter: 2
+  tune_folds: 3
+  outer_folds: 5
+  outer_seeds: [11]
+  random_folds: 3
+  random_seed: 11
+  inner_folds: 3
+  alphas: [0.1]
+  alpha: 0.1
+  k_values: [0, 1, 3]
+  kshot_draws: 3
+  bootstrap: 200
+  noise_levels: [0.0, 0.1]
+  study_fractions: [0.5, 1.0]
+  temporal_cutoff: 2018
+  n_jobs: 4

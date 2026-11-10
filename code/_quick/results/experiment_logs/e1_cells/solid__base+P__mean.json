@@ -1,0 +1,46 @@
+{
+ "rows": [
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "mean",
+   "scheme": "random_row_cv",
+   "seed": 11,
+   "fit_s": 0.0022840719998384884,
+   "predict_s": 0.0005232700002579804,
+   "n": 2156,
+   "n_studies": 120,
+   "rmse": 20.243882341305305,
+   "mae": 16.64184350297911,
+   "r2": -0.0009274646417600785,
+   "median_study_rmse": 16.867955671771952,
+   "mean_study_rmse": 17.34299157773637
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "mean",
+   "scheme": "grouped_study_cv",
+   "seed": 11,
+   "fit_s": 0.0031268709999494604,
+   "predict_s": 0.0007509740003115439,
+   "n": 2156,
+   "n_studies": 120,
+   "rmse": 20.522566337015807,
+   "mae": 16.905721058072228,
+   "r2": -0.02867535091717155,
+   "median_study_rmse": 17.004559471737362,
+   "mean_study_rmse": 17.415217637421105
+  }
+ ],
+ "params": {},
+ "tune_rmse": 20.872906810622574,
+ "tune_seconds": 0.037105588000031275,
+ "tune_log": [
+  {
+   "learner": "mean",
+   "params": {},
+   "grouped_cv_rmse": 20.872906810622574
+  }
+ ]
+}
