@@ -1,0 +1,850 @@
+{
+ "Elfetni2026BT": {
+  "key": "Elfetni2026BT",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.biortech.2026.135587",
+  "title": "Conservation-informed machine learning for physically admissible four-phase hydrothermal liquefaction surrogate modelling",
+  "authors": [
+   "Elfetni, Seifallah",
+   "Thinius, Sascha",
+   "Dwivedi, Pooja",
+   "Seeberger, Peter H.",
+   "Tyrikos-Ergas, Theodore"
+  ],
+  "year": 2027,
+  "venue": "Bioresource Technology",
+  "volume": "463",
+  "issue": null,
+  "pages": "135587",
+  "type": "journal-article"
+ },
+ "Elfetni2026SSRN": {
+  "key": "Elfetni2026SSRN",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.2139/ssrn.6816225",
+  "title": "Energy and carbon routing in hydrothermal lignocellulosic biomass conversion: an uncertainty-aware machine-learning framework",
+  "authors": [
+   "Elfetni, Seifallah",
+   "Thinius, Sascha",
+   "Dwivedi, Pooja",
+   "Seeberger, Peter  H.",
+   "Tyrikos-Ergas, Theodore"
+  ],
+  "year": 2026,
+  "venue": "",
+  "volume": null,
+  "issue": null,
+  "pages": null,
+  "type": "posted-content"
+ },
+ "Djandja2027": {
+  "key": "Djandja2027",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.fuel.2026.141091",
+  "title": "Predicting bio-oil yield from hydrothermal liquefaction of lignocellulosic biomass: machine learning approach and uncertainty propagation via joint bootstrap Monte Carlo",
+  "authors": [
+   "Djandja, Oral\u00e9ou Sangu\u00e9",
+   "Hu, Yulin",
+   "Zeng, Yimin",
+   "He, Quan Sophia"
+  ],
+  "year": 2027,
+  "venue": "Fuel",
+  "volume": "430",
+  "issue": null,
+  "pages": "141091",
+  "type": "journal-article"
+ },
+ "Zhang2021BT": {
+  "key": "Zhang2021BT",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.biortech.2021.126011",
+  "title": "Machine learning prediction and optimization of bio-oil production from hydrothermal liquefaction of algae",
+  "authors": [
+   "Zhang, Weijin",
+   "Li, Jie",
+   "Liu, Tonggui",
+   "Leng, Songqi",
+   "Yang, Lihong",
+   "Peng, Haoyi",
+   "Jiang, Shaojian",
+   "Zhou, Wenguang",
+   "Leng, Lijian",
+   "Li, Hailong"
+  ],
+  "year": 2021,
+  "venue": "Bioresource Technology",
+  "volume": "342",
+  "issue": null,
+  "pages": "126011",
+  "type": "journal-article"
+ },
+ "Katongtung2024": {
+  "key": "Katongtung2024",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1007/s12155-024-10773-0",
+  "title": "Machine Learning Approach for Predicting Hydrothermal Liquefaction of Lignocellulosic Biomass",
+  "authors": [
+   "Katongtung, Tossapon",
+   "Phromphithak, Sanphawat",
+   "Onsree, Thossaporn",
+   "Tippayawong, Nakorn"
+  ],
+  "year": 2024,
+  "venue": "BioEnergy Research",
+  "volume": "17",
+  "issue": "4",
+  "pages": "2246-2258",
+  "type": "journal-article"
+ },
+ "Gungor2025": {
+  "key": "Gungor2025",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1007/s12155-025-10906-z",
+  "title": "Prediction of Biocrude Oil Yield From Biomass Hydrothermal Liquefaction Via Interpretable Machine Learning Using Higher Heating Value and Process Parameters",
+  "authors": [
+   "Gungor, Serafettin",
+   "Insel, Mert Akin",
+   "Sadikoglu, Hasan",
+   "Melikoglu, Mehmet"
+  ],
+  "year": 2025,
+  "venue": "BioEnergy Research",
+  "volume": "18",
+  "issue": "1",
+  "pages": "100",
+  "type": "journal-article"
+ },
+ "Leng2022BT": {
+  "key": "Leng2022BT",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.biortech.2022.127791",
+  "title": "Machine learning prediction of nitrogen heterocycles in bio-oil produced from hydrothermal liquefaction of biomass",
+  "authors": [
+   "Leng, Lijian",
+   "Zhang, Weijin",
+   "Chen, Qingyue",
+   "Zhou, Junhui",
+   "Peng, Haoyi",
+   "Zhan, Hao",
+   "Li, Hailong"
+  ],
+  "year": 2022,
+  "venue": "Bioresource Technology",
+  "volume": "362",
+  "issue": null,
+  "pages": "127791",
+  "type": "journal-article"
+ },
+ "Jang2026": {
+  "key": "Jang2026",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1111/gcbb.70173",
+  "title": "Illusions of Accuracy: Widespread Data Leakage Distorts Machine Learning Results in Biochar Research",
+  "authors": [
+   "Jang, Ho Jun",
+   "Ng, Wartini",
+   "Chen, Songchao",
+   "Setia, Raj",
+   "Minasny, Budiman"
+  ],
+  "year": 2026,
+  "venue": "GCB Bioenergy",
+  "volume": "18",
+  "issue": "9",
+  "pages": "e70173",
+  "type": "journal-article"
+ },
+ "Kapoor2023": {
+  "key": "Kapoor2023",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.patter.2023.100804",
+  "title": "Leakage and the reproducibility crisis in machine-learning-based science",
+  "authors": [
+   "Kapoor, Sayash",
+   "Narayanan, Arvind"
+  ],
+  "year": 2023,
+  "venue": "Patterns",
+  "volume": "4",
+  "issue": "9",
+  "pages": "100804",
+  "type": "journal-article"
+ },
+ "Tian2025": {
+  "key": "Tian2025",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.energy.2025.136708",
+  "title": "Interpretable machine learning model for bio-oil property prediction from hydrothermal liquefaction of biomass via graph neural networks-based molecular structure",
+  "authors": [
+   "Tian, Yue",
+   "Kim, Junghwan",
+   "Liu, Yi"
+  ],
+  "year": 2025,
+  "venue": "Energy",
+  "volume": "329",
+  "issue": null,
+  "pages": "136708",
+  "type": "journal-article"
+ },
+ "Djandja2023": {
+  "key": "Djandja2023",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.energy.2023.126968",
+  "title": "Machine learning prediction of fuel properties of hydrochar from co-hydrothermal carbonization of sewage sludge and lignocellulosic biomass",
+  "authors": [
+   "Djandja, Oral\u00e9ou Sangu\u00e9",
+   "Kang, Shimin",
+   "Huang, Zizhi",
+   "Li, Junqiao",
+   "Feng, Jiaqi",
+   "Tan, Zaiming",
+   "Salami, Adekunl\u00e9 Akim",
+   "Lougou, Bachirou Guene"
+  ],
+  "year": 2023,
+  "venue": "Energy",
+  "volume": "271",
+  "issue": null,
+  "pages": "126968",
+  "type": "journal-article"
+ },
+ "Zhang2024Biochar": {
+  "key": "Zhang2024Biochar",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1007/s42773-024-00303-8",
+  "title": "A novel intelligent system based on machine learning for hydrochar multi-target prediction from the hydrothermal carbonization of biomass",
+  "authors": [
+   "Zhang, Weijin",
+   "Zhou, Junhui",
+   "Liu, Qian",
+   "Xu, Zhengyong",
+   "Peng, Haoyi",
+   "Leng, Lijian",
+   "Li, Hailong"
+  ],
+  "year": 2024,
+  "venue": "Biochar",
+  "volume": "6",
+  "issue": "1",
+  "pages": "19",
+  "type": "journal-article"
+ },
+ "Toor2011": {
+  "key": "Toor2011",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.energy.2011.03.013",
+  "title": "Hydrothermal liquefaction of biomass: A review of subcritical water technologies",
+  "authors": [
+   "Toor, Saqib Sohail",
+   "Rosendahl, Lasse",
+   "Rudolf, Andreas"
+  ],
+  "year": 2011,
+  "venue": "Energy",
+  "volume": "36",
+  "issue": "5",
+  "pages": "2328-2342",
+  "type": "journal-article"
+ },
+ "Gollakota2018": {
+  "key": "Gollakota2018",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.rser.2017.05.178",
+  "title": "A review on hydrothermal liquefaction of biomass",
+  "authors": [
+   "Gollakota, A.R.K.",
+   "Kishore, Nanda",
+   "Gu, Sai"
+  ],
+  "year": 2018,
+  "venue": "Renewable and Sustainable Energy Reviews",
+  "volume": "81",
+  "issue": null,
+  "pages": "1378-1392",
+  "type": "journal-article"
+ },
+ "Elliott2015": {
+  "key": "Elliott2015",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.biortech.2014.09.132",
+  "title": "Hydrothermal liquefaction of biomass: Developments from batch to continuous process",
+  "authors": [
+   "Elliott, Douglas C.",
+   "Biller, Patrick",
+   "Ross, Andrew B.",
+   "Schmidt, Andrew J.",
+   "Jones, Susanne B."
+  ],
+  "year": 2015,
+  "venue": "Bioresource Technology",
+  "volume": "178",
+  "issue": null,
+  "pages": "147-156",
+  "type": "journal-article"
+ },
+ "Funke2010": {
+  "key": "Funke2010",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1002/bbb.198",
+  "title": "Hydrothermal carbonization of biomass: A summary and discussion of chemical mechanisms for process engineering",
+  "authors": [
+   "Funke, Axel",
+   "Ziegler, Felix"
+  ],
+  "year": 2010,
+  "venue": "Biofuels, Bioproducts and Biorefining",
+  "volume": "4",
+  "issue": "2",
+  "pages": "160-177",
+  "type": "journal-article"
+ },
+ "Libra2011": {
+  "key": "Libra2011",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.4155/bfs.10.81",
+  "title": "Hydrothermal carbonization of biomass residuals: a comparative review of the chemistry, processes and applications of wet and dry pyrolysis",
+  "authors": [
+   "Libra, Judy A",
+   "Ro, Kyoung S",
+   "Kammann, Claudia",
+   "Funke, Axel",
+   "Berge, Nicole D",
+   "Neubauer, York",
+   "Titirici, Maria-Magdalena",
+   "F\u00fchner, Christoph",
+   "Bens, Oliver",
+   "Kern, J\u00fcrgen",
+   "Emmerich, Karl-Heinz"
+  ],
+  "year": 2011,
+  "venue": "Biofuels",
+  "volume": "2",
+  "issue": "1",
+  "pages": "71-106",
+  "type": "journal-article"
+ },
+ "Watson2019": {
+  "key": "Watson2019",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.energy.2018.11.003",
+  "title": "Effects of the extraction solvents in hydrothermal liquefaction processes: Biocrude oil quality and energy conversion efficiency",
+  "authors": [
+   "Watson, Jamison",
+   "Lu, Jianwen",
+   "de Souza, Raquel",
+   "Si, Buchun",
+   "Zhang, Yuanhui",
+   "Liu, Zhidan"
+  ],
+  "year": 2019,
+  "venue": "Energy",
+  "volume": "167",
+  "issue": null,
+  "pages": "189-197",
+  "type": "journal-article"
+ },
+ "Valdez2011": {
+  "key": "Valdez2011",
+  "ok": false,
+  "score": 0.857,
+  "doi": "10.1021/ef2004046",
+  "title": "Characterization of Product Fractions from Hydrothermal Liquefaction of\n                    <i>Nannochloropsis</i>\n                    sp. and the Influence of Solvents",
+  "authors": [
+   "Valdez, Peter J.",
+   "Dickinson, Jacob G.",
+   "Savage, Phillip E."
+  ],
+  "year": 2011,
+  "venue": "Energy &amp; Fuels",
+  "volume": "25",
+  "issue": "7",
+  "pages": "3235-3243",
+  "type": "journal-article"
+ },
+ "Vovk2005": {
+  "key": "Vovk2005",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1007/978-3-031-06649-8",
+  "title": "Algorithmic Learning in a Random World",
+  "authors": [
+   "Vovk, Vladimir",
+   "Gammerman, Alexander",
+   "Shafer, Glenn"
+  ],
+  "year": 2022,
+  "venue": "",
+  "volume": null,
+  "issue": null,
+  "pages": null,
+  "type": "book"
+ },
+ "Lei2018": {
+  "key": "Lei2018",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1080/01621459.2017.1307116",
+  "title": "Distribution-Free Predictive Inference for Regression",
+  "authors": [
+   "Lei, Jing",
+   "G\u2019Sell, Max",
+   "Rinaldo, Alessandro",
+   "Tibshirani, Ryan J.",
+   "Wasserman, Larry"
+  ],
+  "year": 2018,
+  "venue": "Journal of the American Statistical Association",
+  "volume": "113",
+  "issue": "523",
+  "pages": "1094-1111",
+  "type": "journal-article"
+ },
+ "Romano2019": {
+  "key": "Romano2019",
+  "ok": false,
+  "score": 0.868,
+  "doi": "10.2139/ssrn.5201367",
+  "title": "Conformalized Composite Quantile Regression",
+  "authors": [
+   "Kim, Suin",
+   "Jung, Yoonsuh"
+  ],
+  "year": 2025,
+  "venue": "",
+  "volume": null,
+  "issue": null,
+  "pages": null,
+  "type": "posted-content"
+ },
+ "Angelopoulos2023": {
+  "key": "Angelopoulos2023",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1561/9781638281597",
+  "title": "Conformal Prediction: A Gentle Introduction",
+  "authors": [
+   "Angelopoulos, Anastasios N.",
+   "Bates, Stephen"
+  ],
+  "year": 2023,
+  "venue": "",
+  "volume": null,
+  "issue": null,
+  "pages": null,
+  "type": "monograph"
+ },
+ "Dunn2023": {
+  "key": "Dunn2023",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1080/01621459.2022.2060112",
+  "title": "Distribution-Free Prediction Sets for Two-Layer Hierarchical Models",
+  "authors": [
+   "Dunn, Robin",
+   "Wasserman, Larry",
+   "Ramdas, Aaditya"
+  ],
+  "year": 2022,
+  "venue": "Journal of the American Statistical Association",
+  "volume": "118",
+  "issue": "544",
+  "pages": "2491-2502",
+  "type": "journal-article"
+ },
+ "Tibshirani2019": {
+  "key": "Tibshirani2019",
+  "ok": false,
+  "score": 0.884,
+  "doi": "10.1080/10618600.2026.2703276",
+  "title": "Generative Conformal Prediction Under Covariate Shift",
+  "authors": [
+   "Li, Cheng",
+   "Zheng, Siming",
+   "Lin, Yuanyuan"
+  ],
+  "year": 2026,
+  "venue": "Journal of Computational and Graphical Statistics",
+  "volume": null,
+  "issue": null,
+  "pages": "1-9",
+  "type": "journal-article"
+ },
+ "Barber2023": {
+  "key": "Barber2023",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1214/23-aos2276",
+  "title": "Conformal prediction beyond exchangeability",
+  "authors": [
+   "Barber, Rina Foygel",
+   "Cand\u00e8s, Emmanuel J.",
+   "Ramdas, Aaditya",
+   "Tibshirani, Ryan J."
+  ],
+  "year": 2023,
+  "venue": "The Annals of Statistics",
+  "volume": "51",
+  "issue": "2",
+  "pages": "816-845",
+  "type": "journal-article"
+ },
+ "Efron1975": {
+  "key": "Efron1975",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1080/01621459.1975.10479864",
+  "title": "Data Analysis Using Stein's Estimator and its Generalizations",
+  "authors": [
+   "Efron, Bradley",
+   "Morris, Carl"
+  ],
+  "year": 1975,
+  "venue": "Journal of the American Statistical Association",
+  "volume": "70",
+  "issue": "350",
+  "pages": "311-319",
+  "type": "journal-article"
+ },
+ "DerSimonian1986": {
+  "key": "DerSimonian1986",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/0197-2456(86)90046-2",
+  "title": "Meta-analysis in clinical trials",
+  "authors": [
+   "DerSimonian, Rebecca",
+   "Laird, Nan"
+  ],
+  "year": 1986,
+  "venue": "Controlled Clinical Trials",
+  "volume": "7",
+  "issue": "3",
+  "pages": "177-188",
+  "type": "journal-article"
+ },
+ "Higgins2002": {
+  "key": "Higgins2002",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1002/sim.1186",
+  "title": "Quantifying heterogeneity in a meta\u2010analysis",
+  "authors": [
+   "Higgins, Julian P. T.",
+   "Thompson, Simon G."
+  ],
+  "year": 2002,
+  "venue": "Statistics in Medicine",
+  "volume": "21",
+  "issue": "11",
+  "pages": "1539-1558",
+  "type": "journal-article"
+ },
+ "Roberts2017": {
+  "key": "Roberts2017",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1111/ecog.02881",
+  "title": "Cross\u2010validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure",
+  "authors": [
+   "Roberts, David R.",
+   "Bahn, Volker",
+   "Ciuti, Simone",
+   "Boyce, Mark S.",
+   "Elith, Jane",
+   "Guillera\u2010Arroita, Gurutzeta",
+   "Hauenstein, Severin",
+   "Lahoz\u2010Monfort, Jos\u00e9 J.",
+   "Schr\u00f6der, Boris",
+   "Thuiller, Wilfried",
+   "Warton, David I.",
+   "Wintle, Brendan A.",
+   "Hartig, Florian",
+   "Dormann, Carsten F."
+  ],
+  "year": 2017,
+  "venue": "Ecography",
+  "volume": "40",
+  "issue": "8",
+  "pages": "913-929",
+  "type": "journal-article"
+ },
+ "Breiman2001": {
+  "key": "Breiman2001",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1023/a:1010933404324",
+  "title": "Random Forests",
+  "authors": [
+   "Breiman, Leo"
+  ],
+  "year": 2001,
+  "venue": "Machine Learning",
+  "volume": "45",
+  "issue": "1",
+  "pages": "5-32",
+  "type": "journal-article"
+ },
+ "Chen2016": {
+  "key": "Chen2016",
+  "ok": false,
+  "score": 0.304,
+  "doi": "10.1145/2939672.2939785",
+  "title": "XGBoost",
+  "authors": [
+   "Chen, Tianqi",
+   "Guestrin, Carlos"
+  ],
+  "year": 2016,
+  "venue": "Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining",
+  "volume": null,
+  "issue": null,
+  "pages": "785-794",
+  "type": "proceedings-article"
+ },
+ "Ke2017": {
+  "key": "Ke2017",
+  "ok": false,
+  "score": 0.598,
+  "doi": "10.1109/spw63631.2024.00015",
+  "title": "NodeGuard: A Highly Efficient Two-Party Computation Framework for Training Large-Scale Gradient Boosting Decision Tree",
+  "authors": [
+   "Dai, Tianxiang",
+   "Jiang, Yufan",
+   "Li, Yong",
+   "Mei, Fei"
+  ],
+  "year": 2024,
+  "venue": "2024 IEEE Security and Privacy Workshops (SPW)",
+  "volume": null,
+  "issue": null,
+  "pages": "95-103",
+  "type": "proceedings-article"
+ },
+ "Geurts2006": {
+  "key": "Geurts2006",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1007/s10994-006-6226-1",
+  "title": "Extremely randomized trees",
+  "authors": [
+   "Geurts, Pierre",
+   "Ernst, Damien",
+   "Wehenkel, Louis"
+  ],
+  "year": 2006,
+  "venue": "Machine Learning",
+  "volume": "63",
+  "issue": "1",
+  "pages": "3-42",
+  "type": "journal-article"
+ },
+ "Grinsztajn2022": {
+  "key": "Grinsztajn2022",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.52202/068431-0037",
+  "title": "Why Do Tree-Based Models Still Outperform Deep Learning on Typical Tabular Data?",
+  "authors": [
+   "Grinsztajn, Leo",
+   "Oyallon, Edouard",
+   "Varoquaux, Gael"
+  ],
+  "year": 2022,
+  "venue": "Advances in Neural Information Processing Systems 35",
+  "volume": null,
+  "issue": null,
+  "pages": "507-520",
+  "type": "proceedings-article"
+ },
+ "Hollmann2025": {
+  "key": "Hollmann2025",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1038/s41586-024-08328-6",
+  "title": "Accurate predictions on small data with a tabular foundation model",
+  "authors": [
+   "Hollmann, Noah",
+   "M\u00fcller, Samuel",
+   "Purucker, Lennart",
+   "Krishnakumar, Arjun",
+   "K\u00f6rfer, Max",
+   "Hoo, Shi Bin",
+   "Schirrmeister, Robin Tibor",
+   "Hutter, Frank"
+  ],
+  "year": 2025,
+  "venue": "Nature",
+  "volume": "637",
+  "issue": "8045",
+  "pages": "319-326",
+  "type": "journal-article"
+ },
+ "Pedregosa2011": {
+  "key": "Pedregosa2011",
+  "ok": false,
+  "score": 0.615,
+  "doi": "10.1002/9781119557500.ch5",
+  "title": "Getting Started with Scikit\u2010learn for Machine Learning",
+  "authors": [],
+  "year": 2019,
+  "venue": "Python\u00ae Machine Learning",
+  "volume": null,
+  "issue": null,
+  "pages": "93-117",
+  "type": "other"
+ },
+ "Lundberg2017": {
+  "key": "Lundberg2017",
+  "ok": false,
+  "score": 0.504,
+  "doi": "10.32920/22734407",
+  "title": "Interpreting Uncertainty in Model Predictions for Covid-19 Diagnosis",
+  "authors": [
+   "Murugamoorthy, Gayathiri",
+   "Khan, Naimul"
+  ],
+  "year": 2023,
+  "venue": "",
+  "volume": null,
+  "issue": null,
+  "pages": null,
+  "type": "posted-content"
+ },
+ "Holm1979": {
+  "key": "Holm1979",
+  "ok": false,
+  "score": 0.8,
+  "doi": "10.2307/2531823",
+  "title": "An Improved Sequentially Rejective Bonferroni Test Procedure",
+  "authors": [
+   "Holland, Burt S.",
+   "Copenhaver, Margaret DiPonzio"
+  ],
+  "year": 1987,
+  "venue": "Biometrics",
+  "volume": "43",
+  "issue": "2",
+  "pages": "417",
+  "type": "journal-article"
+ },
+ "Wilcoxon1945": {
+  "key": "Wilcoxon1945",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.2307/3001968",
+  "title": "Individual Comparisons by Ranking Methods",
+  "authors": [
+   "Wilcoxon, Frank"
+  ],
+  "year": 1945,
+  "venue": "Biometrics Bulletin",
+  "volume": "1",
+  "issue": "6",
+  "pages": "80",
+  "type": "journal-article"
+ },
+ "Demsar2006": {
+  "key": "Demsar2006",
+  "ok": false,
+  "score": 0.714,
+  "doi": "10.1007/978-3-319-12640-1_66",
+  "title": "Evaluation Protocol of Early Classifiers over Multiple Data Sets",
+  "authors": [
+   "Dachraoui, Asma",
+   "Bondu, Alexis",
+   "Cornu\u00e9jols, Antoine"
+  ],
+  "year": 2014,
+  "venue": "Lecture Notes in Computer Science",
+  "volume": null,
+  "issue": null,
+  "pages": "548-555",
+  "type": "book-chapter"
+ },
+ "Sigrist2022": {
+  "key": "Sigrist2022",
+  "ok": false,
+  "score": 0.727,
+  "doi": "10.1109/tpami.2022.3168152",
+  "title": "Latent Gaussian Model Boosting",
+  "authors": [
+   "Sigrist, Fabio"
+  ],
+  "year": 2023,
+  "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+  "volume": "45",
+  "issue": "2",
+  "pages": "1894-1905",
+  "type": "journal-article"
+ },
+ "Overend1987": {
+  "key": "Overend1987",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1098/rsta.1987.0029",
+  "title": "Fractionation of lignocellulosics by steam-aqueous pretreatments",
+  "authors": [
+   "Overend, R. P.",
+   "Chornet, E."
+  ],
+  "year": 1987,
+  "venue": "Philosophical Transactions of the Royal Society of London. Series A, Mathematical and Physical Sciences",
+  "volume": "321",
+  "issue": "1561",
+  "pages": "523-536",
+  "type": "journal-article"
+ },
+ "Prokhorenkova2018": {
+  "key": "Prokhorenkova2018",
+  "ok": false,
+  "score": 0.496,
+  "doi": "10.7759/s44389-025-03791-2",
+  "title": "EfficientNetB0-CatBoost: Deep Learning With Categorical Boosting for Food Image Recognition",
+  "authors": [
+   "Singh, Pranjal Kumar",
+   "Susan, Seba"
+  ],
+  "year": 2025,
+  "venue": "Cureus Journal of Computer Science",
+  "volume": null,
+  "issue": null,
+  "pages": null,
+  "type": "journal-article"
+ },
+ "Efron1979": {
+  "key": "Efron1979",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1214/aos/1176344552",
+  "title": "Bootstrap Methods: Another Look at the Jackknife",
+  "authors": [
+   "Efron, B."
+  ],
+  "year": 1979,
+  "venue": "The Annals of Statistics",
+  "volume": "7",
+  "issue": "1",
+  "pages": "1-26",
+  "type": "journal-article"
+ }
+}

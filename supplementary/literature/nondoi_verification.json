@@ -1,0 +1,70 @@
+{
+ "Romano2019": {
+  "arxiv": "1905.03222",
+  "title": "Conformalized Quantile Regression",
+  "authors": [
+   "Yaniv Romano",
+   "Evan Patterson",
+   "Emmanuel J. Cand\u00e8s"
+  ],
+  "comment": "19 pages, 8 figures, 1 table"
+ },
+ "Tibshirani2019": {
+  "arxiv": "1904.06019",
+  "title": "Conformal Prediction Under Covariate Shift",
+  "authors": [
+   "Ryan J. Tibshirani",
+   "Rina Foygel Barber",
+   "Emmanuel J. Candes",
+   "Aaditya Ramdas"
+  ],
+  "comment": "17 pages, 4 figures"
+ },
+ "Lundberg2017": {
+  "arxiv": "1705.07874",
+  "title": "A Unified Approach to Interpreting Model Predictions",
+  "authors": [
+   "Scott Lundberg",
+   "Su-In Lee"
+  ],
+  "comment": "To appear in NIPS 2017"
+ },
+ "Prokhorenkova2018": {
+  "arxiv": "1706.09516",
+  "title": "CatBoost: unbiased boosting with categorical features",
+  "authors": [
+   "Liudmila Prokhorenkova",
+   "Gleb Gusev",
+   "Aleksandr Vorobev",
+   "Anna Veronika Dorogush",
+   "Andrey Gulin"
+  ],
+  "comment": null
+ },
+ "Grinsztajn2022arx": {
+  "arxiv": "2207.08815",
+  "title": "Why do tree-based models still outperform deep learning on tabular data?",
+  "authors": [
+   "L\u00e9o Grinsztajn",
+   "Edouard Oyallon",
+   "Ga\u00ebl Varoquaux"
+  ],
+  "comment": null
+ },
+ "Pedregosa2011": {
+  "url": "https://jmlr.org/papers/v12/pedregosa11a.html",
+  "page_title": "Scikit-learn: Machine Learning in Python"
+ },
+ "Demsar2006": {
+  "url": "https://jmlr.org/papers/v7/demsar06a.html",
+  "page_title": "Statistical Comparisons of Classifiers over Multiple Data Sets"
+ },
+ "Sigrist2022": {
+  "url": "https://jmlr.org/papers/v23/20-322.html",
+  "page_title": "Gaussian Process Boosting"
+ },
+ "Ke2017": {
+  "url": "https://papers.nips.cc/paper_files/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html",
+  "page_title": "LightGBM: A Highly Efficient Gradient Boosting Decision Tree"
+ }
+}
