@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below, together with the relevant primary publications."
+title: "Unified, curated dataset of biomass hydrothermal treatment/liquefaction experiments for lignocellulosic and lignin-rich biomass"
+type: dataset
+authors:
+  - family-names: "Elfetni"
+    given-names: "Seifallah"
+    affiliation: "CTC gGmbH"
+    orcid: "https://orcid.org/0000-0003-3615-627X"
+version: "1.0.0"
+date-released: "2026-07-20"
+license: "CC-BY-4.0"
+keywords:
+  - biomass
+  - hydrothermal liquefaction
+  - hydrothermal carbonization
+  - hydrothermal treatment
+  - HTL
+  - HTC
+  - solvothermal
+  - biocrude
+  - hydrochar
+  - lignocellulosic biomass
+  - lignin
+  - Van Krevelen
+  - machine learning
+  - energy and carbon allocation
+  - life-cycle assessment
+  - FAIR data
+abstract: >-
+  A unified, curated dataset of 3,693 literature-derived records on the
+  hydrothermal conversion of biomass, centered on lignocellulosic and lignin-rich
+  feedstocks (with mixed and boundary feedstocks also present), covering
+  hydrothermal liquefaction, hydrothermal carbonization, solvothermal HTL and
+  aqueous-phase reforming. It covers 433 biomass samples published between 1982
+  and 2026. Each record is normalized to a standardized schema of 145 documented
+  variables spanning source provenance, feedstock identity and composition,
+  operating conditions, product yields, condensed-phase properties, energy and
+  carbon allocation metrics, and derived descriptors, with provenance tracking,
+  quality-control closure flags, and explicit imputation flags and methods.
+  Source title and identifier are provided for every record; more granular
+  Provenance and Ref information is retained where available. Version 1
+  supersedes Version 0 and provides the complete publication dataset.

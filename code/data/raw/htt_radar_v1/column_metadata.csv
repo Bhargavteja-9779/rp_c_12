@@ -1,0 +1,146 @@
+column_name,description,unit,dtype,group,completeness_pct
+paper_title,Title of the source publication from which the record was extracted.,,string,provenance,100.0
+DOI,Digital Object Identifier of the source publication. Most values are given in resolvable URL form (https://doi.org/...); some are in bare 10.x form. A small number of rows carry a source repository URL in place of a DOI where the source has no assigned DOI.,,string,provenance,100.0
+year,Publication year of the source study.,calendar year,integer,provenance,100.0
+Provenance,"Location of the data within the source (e.g. specific table, figure, or digitized/text passage) documenting where each value was obtained.",,string,provenance,99.19
+Ref,Internal short citation key / reference identifier used during curation to tie the record to its source.,,string,provenance,96.75
+Feedstock,Feedstock / biomass sample name as reported in the source study. 433 distinct identities across the dataset.,,string,feedstock_identity,99.86
+Family_std,"Standardized feedstock family label assigned during harmonization (e.g. Softwood, Hardwood, Agricultural residue, Herbaceous, Kraft/technical lignin).",,string,feedstock_identity,100.0
+C_feed_wt_pct,"Carbon content of the feedstock (ultimate analysis), dry basis.",wt% dry,float,feedstock_composition,100.0
+H_feed_wt_pct,"Hydrogen content of the feedstock (ultimate analysis), dry basis.",wt% dry,float,feedstock_composition,98.7
+O_feed_wt_pct,"Oxygen content of the feedstock, dry basis. Often obtained by difference (see O_method).",wt% dry,float,feedstock_composition,100.0
+N_feed_wt_pct,"Nitrogen content of the feedstock (ultimate analysis), dry basis.",wt% dry,float,feedstock_composition,78.53
+S_feed_wt_pct,"Sulfur content of the feedstock (ultimate analysis), dry basis.",wt% dry,float,feedstock_composition,54.78
+Ash_feed_wt_pct,"Ash content of the feedstock, dry basis.",wt% dry,float,feedstock_composition,99.68
+Lignin_feed_wt_pct,"Lignin content of the feedstock, dry basis (structural/lignocellulosic analysis). May be imputed; see Lignin_imputed / Lignin_method.",wt% dry,float,feedstock_composition,96.18
+Cellulose_feed_wt_pct,"Cellulose content of the feedstock, dry basis. May be imputed; see cellulose_imputed / cellulose_method.",wt% dry,float,feedstock_composition,95.61
+Hemicellulose_feed_wt_pct,"Hemicellulose content of the feedstock, dry basis. May be imputed; see hemicellulose_imputed / hemicellulose_method.",wt% dry,float,feedstock_composition,95.61
+Extractives_feed_wt_pct,"Extractives content of the feedstock, dry basis (where reported).",wt% dry,float,feedstock_composition,42.43
+LCH_total_wt_pct,Sum of Lignin + Cellulose + Hemicellulose (dry basis); the lignocellulosic (polymer) total used for structural closure checks.,wt% dry,float,feedstock_composition,95.04
+Lignin_share_pct,Lignin expressed as a percentage of the lignocellulosic total: Lignin / LCH_total x 100.,% of LCH,float,feedstock_composition,94.88
+Holo_share_pct,Holocellulose (cellulose + hemicellulose) expressed as a percentage of the lignocellulosic total: (Cellulose + Hemicellulose) / LCH_total x 100.,% of LCH,float,feedstock_composition,94.88
+Lignin_from_LCH_wt_pct,Lignin reconstructed from LCH_total and the learned lignin share (LCH_total x Lignin_share). Present only for records where this reconstruction path was used.,wt% dry,float,feedstock_composition,7.66
+Cellulose_from_LCH_wt_pct,Cellulose reconstructed from LCH features and the family-median cellulose fraction. Present only where this reconstruction path was used.,wt% dry,float,feedstock_composition,7.66
+Hemicellulose_from_LCH_wt_pct,Hemicellulose reconstructed from LCH features and the family-median hemicellulose fraction. Present only where this reconstruction path was used.,wt% dry,float,feedstock_composition,7.66
+Moisture_min_wt_pct_ar,"Minimum reported feedstock moisture content, as-received basis (where reported).",wt% as-received,float,feedstock_composition,2.0
+Moisture_max_wt_pct_ar,"Maximum reported feedstock moisture content, as-received basis (where reported).",wt% as-received,float,feedstock_composition,2.0
+O_C_feed_molar,Oxygen-to-carbon molar ratio of the feedstock (Van Krevelen coordinate).,molar ratio,float,feedstock_composition,100.0
+H_C_feed_molar,Hydrogen-to-carbon molar ratio of the feedstock (Van Krevelen coordinate).,molar ratio,float,feedstock_composition,100.0
+HHV_feed_MJ_per_kg,"Higher heating value of the feedstock, dry basis. Measured where reported; otherwise estimated (see HHV_feedstock_method / HHV_feedstock_imputed).",MJ/kg dry,float,feedstock_composition,100.0
+LRI,"Lignin Readiness Index, a composite 0-1 indicator of feedstock suitability for lignin-focused conversion. LRI = (Lignin/100 + C/60 + HHV/22 + (1/(O/C))/2 + (1/(H/C))/2) / 6, with conservative lignin-rich scaling and a cap on 1/(O/C).",dimensionless (0-1),float,feedstock_composition,95.04
+LRI_imputed,LRI value after imputation of missing inputs; a softer proxy derived from broadly reported ultimate-analysis and HHV descriptors when the full polymer triplet is unavailable (see LRI_imputed_source).,dimensionless (0-1),float,feedstock_composition,98.7
+sum_LCH_wt_pct,Sum of Lignin + Cellulose + Hemicellulose (wt% dry) used as a polymer mass-balance closure check.,wt% dry,float,quality_closure,96.18
+sum_CHONSAsh_wt_pct,Sum of C + H + O + N + S + Ash (wt% dry) used as an elemental mass-balance closure check (expected ~100%).,wt% dry,float,quality_closure,100.0
+sum_CHONS_wt_pct,"Sum of C + H + O + N + S (wt% dry, ash excluded) used as an elemental closure check.",wt% dry,float,quality_closure,100.0
+LCH_closure_flag,"Categorical quality flag for lignocellulosic closure: OK, LCH>105, LCH>110, or LCH<0, indicating polymer-sum consistency.",,string,quality_closure,100.0
+process_type,High-level process family of the run (Hydrothermal).,,string,process_conditions,100.0
+process_subtype,"Specific process subtype: HTL, HTL_solvothermal, HTC, or APR (aqueous-phase reforming).",,string,process_conditions,100.0
+reactor,"Reactor type / configuration reported for the run (e.g. batch autoclave, continuous, micro-reactor).",,string,process_conditions,92.5
+atmosphere,"Initial reactor atmosphere / cover gas (e.g. N2, Ar, air, reducing gas), where reported.",,string,process_conditions,65.88
+solvent_or_medium,"Primary reaction medium or solvent (e.g. water, ethanol, methanol, water-ethanol).",,string,process_conditions,99.86
+T_reaction_C,Reaction (holding) temperature. Actual range across the dataset: 20-603 degrees C; typical hydrothermal operating window 200-400 degrees C.,degrees Celsius,float,process_conditions,99.97
+t_residence_min,Isothermal residence / holding time at reaction temperature. Actual range 0-2640 min.,min,float,process_conditions,99.65
+t_ramp_min,Heating / ramp time from ambient to reaction temperature (where reported).,min,float,process_conditions,0.19
+IC_feed_wt_pct_slurry,Initial solids concentration (initial concentration) of feedstock in the slurry.,wt% of slurry,float,process_conditions,98.08
+pressure_reaction_MPa,Reaction pressure. Stored as text to accommodate the literal value 'autogenous' as well as numeric MPa values.,MPa,string,process_conditions,100.0
+heating_rate_C_per_min,Average heating rate to reaction temperature (where reported).,degrees C/min,float,process_conditions,24.51
+stirring_rpm,Stirring / agitation speed (where reported).,rpm,float,process_conditions,21.18
+water_biomass_ratio_kg_kg,Water(or solvent)-to-biomass mass ratio.,kg water / kg biomass,float,process_conditions,90.74
+catalyst,Catalyst name or system. The literal value 'none' explicitly denotes a non-catalytic run.,,string,process_conditions,100.0
+cat_biomass_ratio_kg_kg,Catalyst-to-biomass mass ratio.,kg catalyst / kg biomass,float,process_conditions,98.62
+yield_basis,"Basis on which yields are normalized (e.g. dry feed, dry-ash-free feed, as-received).",,string,process_conditions,99.86
+separation_method,Post-reaction phase-separation / work-up method used to isolate product fractions (where reported).,,string,process_conditions,90.69
+Yield_biooil_wt_pct,"Bio-oil / biocrude yield, wt% of initial dry feedstock.",wt% dry feed,float,yields,80.67
+Yield_char_wt_pct,"Char / hydrochar / solid-residue yield, wt% of initial dry feedstock.",wt% dry feed,float,yields,71.41
+Yield_aqueous_wt_pct,"Aqueous-phase yield, wt% of initial dry feedstock.",wt% dry feed,float,yields,26.1
+Yield_gas_wt_pct,"Gas-phase yield, wt% of initial dry feedstock.",wt% dry feed,float,yields,30.73
+Yield_gas_water_wt_pct,Combined gas + water (or gas + loss) yield term reported by studies that do not separate the two.,wt% dry feed,float,yields,14.46
+Energy_yield_biooil_pct,"Energy recovery in the bio-oil fraction, % of initial feedstock chemical energy (yield x HHV_product / HHV_feed).",% of feed energy,float,yields,31.76
+Energy_yield_char_pct,"Energy recovery in the char/solid fraction, % of initial feedstock chemical energy.",% of feed energy,float,yields,22.2
+Carbon_yield_biooil_pct,"Carbon recovery in the bio-oil fraction, % of initial feedstock carbon.",% of feed carbon,float,biooil_properties,32.39
+Carbon_yield_char_pct,"Carbon recovery in the char/solid fraction, % of initial feedstock carbon.",% of feed carbon,float,char_properties,19.04
+HHV_biooil_MJ_per_kg,Higher heating value of the bio-oil.,MJ/kg,float,biooil_properties,36.61
+C_biooil_wt_pct,Carbon content of the bio-oil (ultimate analysis).,wt%,float,biooil_properties,36.15
+H_biooil_wt_pct,Hydrogen content of the bio-oil (ultimate analysis).,wt%,float,biooil_properties,35.07
+O_biooil_wt_pct,Oxygen content of the bio-oil (ultimate analysis).,wt%,float,biooil_properties,34.09
+N_biooil_wt_pct,Nitrogen content of the bio-oil (ultimate analysis).,wt%,float,biooil_properties,25.83
+S_biooil_wt_pct,Sulfur content of the bio-oil (ultimate analysis).,wt%,float,biooil_properties,25.02
+O_C_biooil_molar,Oxygen-to-carbon molar ratio of the bio-oil (Van Krevelen coordinate).,molar ratio,float,biooil_properties,34.09
+H_C_biooil_molar,Hydrogen-to-carbon molar ratio of the bio-oil (Van Krevelen coordinate).,molar ratio,float,biooil_properties,35.07
+HHV_char_MJ_per_kg,Higher heating value of the char / hydrochar.,MJ/kg,float,char_properties,25.24
+C_char_wt_pct,Carbon content of the char (ultimate analysis).,wt%,float,char_properties,20.82
+H_char_wt_pct,Hydrogen content of the char (ultimate analysis).,wt%,float,char_properties,21.31
+O_char_wt_pct,Oxygen content of the char (ultimate analysis).,wt%,float,char_properties,20.8
+N_char_wt_pct,Nitrogen content of the char (ultimate analysis).,wt%,float,char_properties,17.71
+S_char_wt_pct,Sulfur content of the char (ultimate analysis).,wt%,float,char_properties,14.05
+O_C_char_molar,Oxygen-to-carbon molar ratio of the char (Van Krevelen coordinate).,molar ratio,float,char_properties,19.82
+H_C_char_molar,Hydrogen-to-carbon molar ratio of the char (Van Krevelen coordinate).,molar ratio,float,char_properties,20.34
+Ash_adjusted,Boolean flag: True if the feedstock ash value was adjusted/renormalized during harmonization.,,boolean,derived_descriptors,100.0
+Ash_adjustment,Numeric ash adjustment (wt% dry) applied during harmonization (0 when no adjustment).,wt% dry,float,derived_descriptors,100.0
+Lignin_HHV_est,"Lignin content estimated from feedstock HHV via the linear proxy Lignin = (HHV_feed - 16.8218) / 0.0889, clipped to [5, 60] wt%. Engineered descriptor.",wt% dry,float,derived_descriptors,100.0
+Lignin_C_est,"Lignin content estimated from feedstock carbon via Lignin = ((C - 44)/(63 - 44)) x 100, clipped to [5, 60] wt%. Engineered descriptor.",wt% dry,float,derived_descriptors,100.0
+Lignin_est,Consensus lignin estimate: element-wise median of Lignin_HHV_est and Lignin_C_est. Engineered proxy used when measured lignin is unavailable.,wt% dry,float,derived_descriptors,100.0
+Holocellulose,"Holocellulose content (cellulose + hemicellulose), dry basis. Defined directly when both are present, otherwise via mass balance 100 - Ash - Extractives - Lignin (see Holocellulose_source).",wt% dry,float,derived_descriptors,96.18
+CeFrac_mb,"Cellulose fraction of holocellulose from mass balance, Ce/(Ce+He); filled by family median where direct values are missing (see CeFrac_mb_source).",fraction (0-1),float,derived_descriptors,87.71
+inv_OC,"Inverse feedstock O/C ratio, 1/(O/C + eps); a deoxygenation-potential descriptor used in engineered feature sets.",dimensionless,float,derived_descriptors,100.0
+inv_HC,"Inverse feedstock H/C ratio, 1/(H/C + eps); engineered descriptor.",dimensionless,float,derived_descriptors,100.0
+ash_inv,"Inverse-ash descriptor, clip((20 - Ash)/20, 0, 1); higher for low-ash feedstocks. Engineered descriptor.",dimensionless (0-1),float,derived_descriptors,99.68
+C_norm,"Feedstock carbon normalized by 60, C/60; engineered scaling used in composite indices.",dimensionless,float,derived_descriptors,100.0
+HHV_norm,"Feedstock HHV normalized by 22, HHV_feed/22; engineered scaling used in composite indices.",dimensionless,float,derived_descriptors,100.0
+LPI,Lignin Potential Index: composite engineered descriptor combining lignin-related estimates (carbon- and HHV-based) into a single lignin-propensity score.,dimensionless,float,derived_descriptors,100.0
+HoPI,Holocellulose Potential Index: composite engineered descriptor combining holocellulose-related estimates into a single holocellulose-propensity score.,dimensionless,float,derived_descriptors,100.0
+L_share_idx,"Learned lignin share of the polymer triplet, L/(L+Ce+He), for records with the full triplet; basis for the data-driven readiness indices.",fraction (0-1),float,derived_descriptors,100.0
+CeFrac_idx,"Learned cellulose fraction of holocellulose, Ce/(Ce+He), for records with cellulose+hemicellulose.",fraction (0-1),float,derived_descriptors,100.0
+LRI_dd,"Data-driven Lignin Readiness Index, defined as L_share_idx (lignin share of the polymer triplet).",fraction (0-1),float,derived_descriptors,100.0
+CeRI_dd,"Data-driven Cellulose Readiness Index, (1 - L_share_idx) x CeFrac_idx.",fraction (0-1),float,derived_descriptors,100.0
+HeRI_dd,"Data-driven Hemicellulose Readiness Index, (1 - L_share_idx) x (1 - CeFrac_idx).",fraction (0-1),float,derived_descriptors,100.0
+LCH_total_imputed_wt_pct,Lignocellulosic total (L+C+H) after imputation of missing values (ML model or family-median fallback; see LCH_total_imputed_source).,wt% dry,float,derived_descriptors,100.0
+Lignin_imputed_from_LCH,Lignin value imputed from the (imputed) LCH total and lignin share (see Lignin_imputed_from_LCH_source).,wt% dry,float,derived_descriptors,100.0
+cellulose_imputed_from_LCH,Cellulose value imputed from the (imputed) LCH total and cellulose fraction (see cellulose_imputed_from_LCH_source).,wt% dry,float,derived_descriptors,100.0
+hemicellulose_imputed_from_LCH,Hemicellulose value imputed from the (imputed) LCH total and hemicellulose fraction (see hemicellulose_imputed_from_LCH_source).,wt% dry,float,derived_descriptors,100.0
+CeFrac_dd,"Data-driven cellulose fraction of holocellulose, CeRI_dd/(CeRI_dd + HeRI_dd) (0.5 when undefined).",fraction (0-1),float,derived_descriptors,100.0
+HRI_dd,"Data-driven Holocellulose Readiness Index from a chemistry-only proxy formula, with global-median fallback (see HRI_dd_source).",fraction (0-1),float,derived_descriptors,100.0
+CRI_dd,"Data-driven Cellulose Readiness Index (composite), HRI_dd x CeFrac_dd.",fraction (0-1),float,derived_descriptors,100.0
+HeRI_comp_dd,"Data-driven composite Hemicellulose Readiness Index, HRI_dd x (1 - CeFrac_dd).",fraction (0-1),float,derived_descriptors,100.0
+C_Note,"Free-text curator note on the feedstock carbon value (e.g. basis, source caveat). Populated only where a note applies.",,string,tracking,1.3
+C_method,"Provenance/method for the feedstock carbon value (e.g. measured/reported, calculated, imputed).",,string,tracking,100.0
+O_Note,Free-text curator note on the feedstock oxygen value. Populated only where a note applies.,,string,tracking,1.35
+O_method,Provenance/method for the feedstock oxygen value; commonly 'by difference' when oxygen was not directly measured.,,string,tracking,100.0
+O/C_Note,Free-text curator note on the feedstock O/C ratio. Populated only where a note applies.,,string,tracking,1.35
+OC_method,Provenance/method for the feedstock O/C ratio (measured vs. calculated from C and O).,,string,tracking,100.0
+H/C_Note,Free-text curator note on the feedstock H/C ratio. Populated only where a note applies.,,string,tracking,1.3
+HC_method,Provenance/method for the feedstock H/C ratio (measured vs. calculated from C and H).,,string,tracking,100.0
+t_note,Free-text curator note on the residence/ramp-time interpretation for the run.,,string,tracking,100.0
+HHV_feedstock_method,"Method for the feedstock HHV: measured/reported, or estimated via the Channiwala-Parikh correlation from ultimate analysis.",,string,tracking,99.21
+HHV_feedstock_imputed,Boolean flag: True if the feedstock HHV was estimated/imputed rather than experimentally reported.,,boolean,tracking,100.0
+HHV_biooil_method,"Method for the bio-oil HHV (measured/reported vs. estimated), where available.",,string,tracking,0.89
+HHV_biochar_method,"Method for the char/hydrochar HHV (measured/reported vs. estimated), where available.",,string,tracking,0.27
+S_method,Provenance/method for the feedstock sulfur value (measured vs. imputed).,,string,tracking,54.78
+S_biooil_method,Provenance/method for the bio-oil sulfur value.,,string,tracking,25.02
+S_biochar_method,Provenance/method for the char sulfur value.,,string,tracking,14.05
+Lignin_method,"Provenance/method for the feedstock lignin value (e.g. reported, mass-balance, imputed).",,string,tracking,8.77
+Lignin_imputed,Boolean flag: True if the feedstock lignin value was imputed.,,boolean,tracking,100.0
+cellulose_method,Provenance/method for the feedstock cellulose value.,,string,tracking,36.23
+cellulose_imputed,Boolean flag: True if the feedstock cellulose value was imputed.,,boolean,tracking,100.0
+hemicellulose_method,Provenance/method for the feedstock hemicellulose value.,,string,tracking,37.29
+hemicellulose_imputed,Boolean flag: True if the feedstock hemicellulose value was imputed.,,boolean,tracking,100.0
+N_imputed,Boolean flag: True if the feedstock nitrogen value was imputed.,,boolean,tracking,100.0
+N_method,Provenance/method for the feedstock nitrogen value (measured vs. imputed).,,string,tracking,3.85
+Ash_method,Provenance/method for the feedstock ash value (measured vs. imputed).,,string,tracking,0.3
+Ash_imputed,Boolean flag: True if the feedstock ash value was imputed.,,boolean,tracking,100.0
+LRI_imputed_source,"Source/method of the imputed LRI (e.g. formula, ML_RF, median_family).",,string,tracking,98.7
+Holocellulose_source,Derivation tag for Holocellulose (e.g. 'def:cellulose+hemicellulose' or 'mb:100-Ash-Extractives-Lignin').,,string,tracking,96.18
+CeFrac_mb_source,Derivation tag for CeFrac_mb (e.g. 'def:Ce/(Ce+He)' or family-median fill).,,string,tracking,87.71
+L_share_idx_source,Derivation tag for L_share_idx (learned vs. fallback).,,string,tracking,100.0
+CeFrac_idx_source,Derivation tag for CeFrac_idx (learned vs. fallback).,,string,tracking,100.0
+LRI_dd_source,Derivation tag for LRI_dd.,,string,tracking,100.0
+CeRI_dd_source,Derivation tag for CeRI_dd.,,string,tracking,100.0
+HeRI_dd_source,Derivation tag for HeRI_dd.,,string,tracking,100.0
+LCH_total_imputed_source,"Source/method of the imputed LCH total (e.g. ML_RF, median_family).",,string,tracking,100.0
+Lignin_imputed_from_LCH_source,Derivation tag for Lignin_imputed_from_LCH.,,string,tracking,100.0
+cellulose_imputed_from_LCH_source,Derivation tag for cellulose_imputed_from_LCH.,,string,tracking,100.0
+hemicellulose_imputed_from_LCH_source,Derivation tag for hemicellulose_imputed_from_LCH.,,string,tracking,100.0
+CeFrac_dd_source,Derivation tag for CeFrac_dd (e.g. 'derived:CeRI_dd/(CeRI_dd+HeRI_dd)').,,string,tracking,100.0
+HRI_dd_source,Derivation tag for HRI_dd (e.g. 'formula:chem_proxy' or 'fallback:global_median').,,string,tracking,100.0
+CRI_dd_source,Derivation tag for CRI_dd (e.g. 'derived:HRI_dd*CeFrac_dd').,,string,tracking,100.0
+HeRI_comp_dd_source,Derivation tag for HeRI_comp_dd (e.g. 'derived:HRI_dd*(1-CeFrac_dd)').,,string,tracking,100.0

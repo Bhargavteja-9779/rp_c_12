@@ -1,0 +1,4 @@
+{'journal': 'Bioresour Technol', 'n_ids': 400, 'n': 399, 'median': 76, 'q1': 59.0, 'q3': 101.0, 'pct_le_60': 27.3, 'pct_le_72': 46.4, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Anal Chim Acta', 'n_ids': 400, 'n': 400, 'median': 60.0, 'q1': 43.0, 'q3': 80.75, 'pct_le_60': 50.2, 'pct_le_72': 67.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Talanta', 'n_ids': 400, 'n': 400, 'median': 70.0, 'q1': 51.25, 'q3': 97.5, 'pct_le_60': 34.5, 'pct_le_72': 53.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
+{'journal': 'Anal Bioanal Chem', 'n_ids': 400, 'n': 398, 'median': 70.0, 'q1': 51.0, 'q3': 97.25, 'pct_le_60': 37.4, 'pct_le_72': 54.5, 'window': 'pub 2025-07-01..2026-10-31, all research articles'}
