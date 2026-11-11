@@ -189,8 +189,16 @@ def fig_efficiency(D):
     e = e.set_index("learner").join(w["rmse_grouped_study_cv"])
     fig, ax = plt.subplots(figsize=(3.5, 2.8))
     ax.plot(e["fit_s"], e["rmse_grouped_study_cv"], "o", color=BLUE, ms=5)
-    for l, r in e.iterrows():
-        ax.annotate(LEARNER_LABEL[l], (r["fit_s"], r["rmse_grouped_study_cv"]), fontsize=6, xytext=(3, 2), textcoords="offset points", color=INK)
+    placed = []
+    for l, r in e.sort_values("rmse_grouped_study_cv").iterrows():
+        x, y = r["fit_s"], r["rmse_grouped_study_cv"]
+        dy = 2
+        for (px, py) in placed:  # nudge labels that would collide (log-x distance < 0.35 decades, |dy| < 0.25 wt%)
+            if abs(np.log10(px) - np.log10(x)) < 0.35 and abs(py - y) < 0.25:
+                dy -= 7
+        placed.append((x, y))
+        manual = {"lgbm": (-30, 6), "rf": (4, -9), "et": (4, -9), "svr": (-4, 6), "xgb": (4, -9)}  # label placement only
+        ax.annotate(LEARNER_LABEL[l], (x, y), fontsize=6, xytext=manual.get(l, (4, dy)), textcoords="offset points", color=INK)
     ax.set_xscale("log"); ax.set_xlabel("Fit time on development set, 1 thread (s)"); ax.set_ylabel("Study-grouped CV RMSE, bio-oil (wt%)")
     fig.tight_layout(); save(fig, D, "fig08_efficiency")
 
@@ -204,7 +212,7 @@ def fig_error(D):
         y = np.arange(len(s))
         ax.hlines(y, 0, s["bias"], color="#cfcec9", lw=1.2); ax.plot(s["bias"], y, "o", color=BLUE, ms=5)
         ax.axvline(0, color=MUTED, lw=0.6)
-        ax.set_yticks(y, [f"{l} (n={n}, {k} studies)" for l, n, k in zip(s["level"], s["n"], s["n_studies"])], fontsize=6.3)
+        ax.set_yticks(y, [f"{l.replace('_', ' ')} (n={n}, {k} studies)" for l, n, k in zip(s["level"], s["n"], s["n_studies"])], fontsize=6.3)
         ax.set_xlabel("Mean out-of-study residual (observed − predicted, wt%)"); ax.set_title(TARGET_LABEL[t] + " — by extraction solvent", loc="left")
     fig.tight_layout(); save(fig, D, "fig09_error_by_solvent")
 
@@ -231,15 +239,15 @@ def graphical_abstract(D, S, M):
     w = pd.read_csv(os.path.join(D["tables"], "table_e1_benchmark_wide.csv"))
     b = w[(w.target == "biooil") & (w.features == "base")].sort_values("rmse_grouped_study_cv").iloc[0]
     cov = {c["calibration"]: c["coverage_studies"] for c in S["e3"]["biooil"]["coverage"] if c["alpha"] == 0.1 and c["features"] == "base+P"}
-    fig, axs = plt.subplots(1, 3, figsize=(6.7, 2.0), gridspec_kw={"width_ratios": [1, 1, 1.1]})
+    fig, axs = plt.subplots(1, 3, figsize=(6.64, 2.66), gridspec_kw={"width_ratios": [1, 1, 1.1]})  # Elsevier GA ratio 1328:531
     axs[0].bar([0, 1], [b["r2_random_row_cv"], b["r2_grouped_study_cv"]], color=[ORANGE, BLUE], width=0.6)
-    axs[0].set_xticks([0, 1], ["random\nsplit", "new\nstudy"]); axs[0].set_ylabel("R² (bio-oil yield)"); axs[0].set_title("Accuracy is overstated", loc="left", fontsize=7.5)
+    axs[0].set_xticks([0, 1], ["random\nsplit", "new\nstudy"]); axs[0].set_ylabel(f"R², bio-oil yield ({LEARNER_LABEL[b['learner']]})"); axs[0].set_title("Accuracy is overstated", loc="left", fontsize=7.5)
     axs[1].bar([0, 1], [cov["RC"], cov["SC"]], color=[ORANGE, BLUE], width=0.6); axs[1].axhline(0.9, color=MUTED, ls="--", lw=0.8)
-    axs[1].set_xticks([0, 1], ["row-\ncalibrated", "study-\ncalibrated"]); axs[1].set_ylim(0.5, 1); axs[1].set_ylabel("Coverage (90% PI)")
+    axs[1].set_xticks([0, 1], ["row-\ncalibrated", "study-\ncalibrated"]); axs[1].set_ylim(0, 1); axs[1].set_ylabel("Coverage of 90% intervals")
     axs[1].set_title("Intervals for a new study", loc="left", fontsize=7.5)
     ks = pd.DataFrame(S["e3"]["biooil"]["kshot_summary"]); ks = ks[(ks.features == "base+P") & (ks["mode"].isin(["none", "eb"]))].sort_values("k")
     axs[2].plot(ks["k"], ks["median_study_rmse"], "-s", color=BLUE, ms=4)
-    axs[2].set_xlabel("k runs from the new study"); axs[2].set_ylabel("Median RMSE (wt%)"); axs[2].set_title("A few local runs help", loc="left", fontsize=7.5)
+    axs[2].set_xticks([0, 1, 2, 3, 5, 10]); axs[2].set_xlabel("k runs from the new study"); axs[2].set_ylabel("Median RMSE (wt%)"); axs[2].set_title("A few local runs help", loc="left", fontsize=7.5)
     fig.tight_layout(); save(fig, D, "graphical_abstract")
 
 

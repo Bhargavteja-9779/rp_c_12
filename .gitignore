@@ -4,3 +4,4 @@ __pycache__/
 code/data/processed/
 *.joblib
 .pytest_cache/
+code/_quick/

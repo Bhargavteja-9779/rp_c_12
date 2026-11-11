@@ -43,6 +43,16 @@ def run(mode="full"):
             res["without_duplicates"] = dict(**summary(d2.y, p, d2.groups), share_between=vc["share_between"])
         out[t] = res
         print(t, {kk: vv for kk, vv in res.items() if kk not in ("studies_involved", "example_pairs")})
+    # locked-test rows that duplicate development rows (counted only; the locked results are not re-evaluated)
+    out["locked_vs_dev"] = {}
+    for t in ["biooil", "solid"]:
+        dev, te = load_target(t, "dev"), load_target(t, "test")
+        m = keys(te).isin(set(keys(dev))).to_numpy()
+        out["locked_vs_dev"][t] = dict(locked_rows=int(len(m)), locked_rows_matching_dev=int(m.sum()), locked_studies_involved=sorted(set(te.groups[m])))
+    # like-for-like reference: same learner/seed/folds WITH duplicates (from E1)
+    e1 = pd.read_csv(os.path.join(D["results"], "e1_benchmark.csv"))
+    r = e1[(e1.features == "base") & (e1.learner == learner) & (e1.scheme == "grouped_study_cv") & (e1.seed == cfg["outer_seeds"][0])]
+    out["reference_with_duplicates_seed11"] = {row.target: dict(rmse=float(row.rmse), median_study_rmse=float(row.median_study_rmse)) for row in r.itertuples()}
     dump(out, os.path.join(D["results"], "e10_duplicate_audit.json"))
 
 

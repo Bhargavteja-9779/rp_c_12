@@ -1,5 +1,0 @@
-{
- "learner": "lgbm",
- "grouped_cv_rmse_biooil_base": 16.49769950124806,
- "rule": "PROTOCOL \u00a76"
-}

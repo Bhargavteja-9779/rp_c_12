@@ -84,7 +84,7 @@ E1/E2 (accuracy and baselines) applied the two evaluation schemes to all learner
 
 ## 2.7. Statistical analysis
 
-The unit of analysis for all inference was the source study. Learners and STRATA variants were compared through per-study RMSE (averaged over seeds) with the Wilcoxon signed-rank test (Wilcoxon, 1945); families of comparisons were corrected with Holm's step-down procedure as described by Demšar (2006). Effect sizes are the median paired difference with a 95% bootstrap CI over studies and the matched-pairs rank-biserial correlation. One-sided tests were used only for directional hypotheses registered in advance (P reduces error; SC coverage exceeds RC coverage). Coverage was summarised both over runs and with equal study weights, with 95% cluster-bootstrap CIs. Statistical significance is claimed only for Holm-adjusted *p* < 0.05.
+The unit of analysis for all inference was the source study. Learners and STRATA variants were compared through per-study RMSE (averaged over seeds) with the Wilcoxon signed-rank test (Wilcoxon, 1945); families of comparisons were corrected with Holm's step-down procedure as described by Demšar (2006). Effect sizes are the median paired difference with a 95% bootstrap CI over studies and the matched-pairs rank-biserial correlation. One-sided tests were used only for directional hypotheses registered in advance (P reduces error; SC coverage exceeds RC coverage). Coverage was summarised both over runs and with equal study weights, with 95% cluster-bootstrap CIs; on development folds, point estimates average the three outer seeds and CIs were computed for the first seed. Statistical significance is claimed only for Holm-adjusted *p* < 0.05.
 
 ## 2.8. Software and reproducibility
 
@@ -306,7 +306,7 @@ Adding Gaussian noise of 20% of the training standard deviation to continuous te
 All learners trained in at most 9 s on one CPU thread (MLP); the STRATA base learner took 0.2 s and predicted 1,000 runs in 4 ms (Table 8, Fig. 8). The complete STRATA procedure — two inner five-fold cross-validations, quantiles, variance components and k-shot quantiles for all k — took 2.3–7.0 s on all development studies, against 0.3–0.5 s for fitting the base learner alone (measured, 1 and 4 threads); this overhead is negligible compared with the cost of a single hydrothermal experiment.
 
 
-**Table 8.** Computational cost (bio-oil, development set, single thread).
+**Table 8.** Computational cost (bio-oil, development set, single thread). Peak RSS increase is measured relative to the process peak after data loading.
 
 | Learner | Fit time (s) | Predict (ms / 1000 rows) | Peak RSS increase (MB) | Serialized size (MB) |
 |---|---|---|---|---|
@@ -377,7 +377,7 @@ The authors thank the curators of the hydrothermal treatment/liquefaction databa
 
 # Appendix A. Supplementary data
 
-Supplementary material (Tables S1–S6, Sections S1–S4: literature screening, protocol deviations, sensitivity analyses and additional figures) accompanies this article.
+Supplementary material (Sections S1–S7, Tables S1–S10: literature screening, protocol deviations, additional benchmark and sensitivity results, exploratory adaptive intervals, error analysis by subgroup, STRATA with different base learners, reproducibility) accompanies this article.
 
 # References
 

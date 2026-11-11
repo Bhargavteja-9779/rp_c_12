@@ -1,4 +1,4 @@
-**Table 8. Computational cost (bio-oil, development set, single thread).**
+**Table 8. Computational cost (bio-oil, development set, single thread). Peak RSS increase is measured relative to the process peak after data loading.**
 
 | Learner       |   Fit time (s) |   Predict (ms / 1000 rows) |   Peak RSS increase (MB) |   Serialized size (MB) |
 |:--------------|---------------:|---------------------------:|-------------------------:|-----------------------:|

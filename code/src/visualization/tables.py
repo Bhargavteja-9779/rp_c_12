@@ -131,7 +131,7 @@ def run(mode="full"):
         ef["Learner"] = ef.learner.map(LEARNER_LABEL)
         write(ef[["Learner", "fit_s", "predict_ms_per_1000_rows", "peak_rss_increase_MB", "model_size_MB"]].round(3).rename(
             columns={"fit_s": "Fit time (s)", "predict_ms_per_1000_rows": "Predict (ms / 1000 rows)", "peak_rss_increase_MB": "Peak RSS increase (MB)",
-                     "model_size_MB": "Serialized size (MB)"}), D, "table8_efficiency", "Table 8. Computational cost (bio-oil, development set, single thread).")
+                     "model_size_MB": "Serialized size (MB)"}), D, "table8_efficiency", "Table 8. Computational cost (bio-oil, development set, single thread). Peak RSS increase is measured relative to the process peak after data loading.")
     # Table S — paired tests of learners
     pt = pd.DataFrame(S.get("e1_paired_tests", []))
     if not pt.empty:

@@ -60,7 +60,9 @@ def nested_fit(name, params, Xtr, ytr, gtr, Xte, inner_k=5, seed=0, n_jobs=4, al
 
 def kshot_eval(y, pred, groups, nf, k_values, alpha, n_draws, modes=("raw", "eb"), min_n=None, lam_override=None):
     """Evaluate k-shot adaptation on test studies. Returns per-(study, k, mode) rows averaged over draws.
-    min_n: only studies with n_j >= min_n are evaluated (common evaluable set across k)."""
+    min_n: only studies with n_j >= min_n are evaluated (common evaluable set across k).
+    Note: the k-shot *calibration* (kshot_quantile) uses every calibration study with n_j >= k + 1, a set that
+    changes with k, whereas *evaluation* uses the fixed set n_j >= min_n so that results are comparable across k."""
     y, pred, groups = np.asarray(y), np.asarray(pred), np.asarray(groups)
     lam = nf["vc"]["lam"] if lam_override is None else lam_override
     r = y - pred

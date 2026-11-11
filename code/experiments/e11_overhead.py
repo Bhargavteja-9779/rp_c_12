@@ -11,7 +11,8 @@ from src.models.strata import kshot_quantile
 from src.utils import out_dirs, load_config
 from experiments.common import choose_base_learner, load_cell, nested_fit
 
-cfg, D = load_config("full"), out_dirs("full"); learner, _ = choose_base_learner(D); rows = []
+MODE = sys.argv[1] if len(sys.argv) > 1 else "full"
+cfg, D = load_config(MODE), out_dirs(MODE); learner, _ = choose_base_learner(D); rows = []
 for t in ["biooil", "solid"]:
     ds = load_target(t, "dev"); X = ds.X[ds.base_features + ds.protocol_features]; params = load_cell(D, t, "base+P", learner)["params"]
     for nj in [1, 4]:

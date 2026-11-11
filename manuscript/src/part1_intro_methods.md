@@ -48,7 +48,7 @@ E1/E2 (accuracy and baselines) applied the two evaluation schemes to all learner
 
 ## 2.7. Statistical analysis
 
-The unit of analysis for all inference was the source study. Learners and STRATA variants were compared through per-study RMSE (averaged over seeds) with the Wilcoxon signed-rank test [@Wilcoxon1945]; families of comparisons were corrected with Holm's step-down procedure as described by @Demsar2006. Effect sizes are the median paired difference with a 95% bootstrap CI over studies and the matched-pairs rank-biserial correlation. One-sided tests were used only for directional hypotheses registered in advance (P reduces error; SC coverage exceeds RC coverage). Coverage was summarised both over runs and with equal study weights, with 95% cluster-bootstrap CIs. Statistical significance is claimed only for Holm-adjusted *p* < 0.05.
+The unit of analysis for all inference was the source study. Learners and STRATA variants were compared through per-study RMSE (averaged over seeds) with the Wilcoxon signed-rank test [@Wilcoxon1945]; families of comparisons were corrected with Holm's step-down procedure as described by @Demsar2006. Effect sizes are the median paired difference with a 95% bootstrap CI over studies and the matched-pairs rank-biserial correlation. One-sided tests were used only for directional hypotheses registered in advance (P reduces error; SC coverage exceeds RC coverage). Coverage was summarised both over runs and with equal study weights, with 95% cluster-bootstrap CIs; on development folds, point estimates average the three outer seeds and CIs were computed for the first seed. Statistical significance is claimed only for Holm-adjusted *p* < 0.05.
 
 ## 2.8. Software and reproducibility
 

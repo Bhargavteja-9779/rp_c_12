@@ -1,5 +1,0 @@
-2026-11-10 22:01:13,568 e3_strata INFO STRATA base learner = lgbm (grouped RMSE 16.498)
-2026-11-10 22:03:09,920 e3_strata INFO biooil__base seed 11 done
-2026-11-10 22:07:27,763 e3_strata INFO biooil__base+P seed 11 done
-2026-11-10 22:10:51,519 e3_strata INFO solid__base seed 11 done
-2026-11-10 22:14:30,492 e3_strata INFO solid__base+P seed 11 done

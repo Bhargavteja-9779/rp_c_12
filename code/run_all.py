@@ -21,7 +21,7 @@ STAGES = [
     ("e3b", [sys.executable, "experiments/e3b_adaptive.py", "{mode}"]),
     ("e9", [sys.executable, "experiments/e9_base_learners.py", "{mode}"]),
     ("e10", [sys.executable, "experiments/e10_duplicate_audit.py", "{mode}"]),
-    ("e11", [sys.executable, "experiments/e11_overhead.py"]),
+    ("e11", [sys.executable, "experiments/e11_overhead.py", "{mode}"]),
     ("analyze", [sys.executable, "-m", "src.statistics.analyze", "{mode}"]),
     ("tables", [sys.executable, "-m", "src.visualization.tables", "{mode}"]),
     ("figures", [sys.executable, "-m", "src.visualization.figures", "{mode}"]),
