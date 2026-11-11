@@ -1,0 +1,278 @@
+{
+ "rows": [
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "cat",
+   "scheme": "random_row_cv",
+   "seed": 11,
+   "fit_s": 40.31958084200005,
+   "predict_s": 0.015145854999900621,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 7.655218907409748,
+   "mae": 4.667883098710519,
+   "r2": 0.8192864157616425,
+   "median_study_rmse": 5.235360570935981,
+   "mean_study_rmse": 6.802307863371086
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "cat",
+   "scheme": "grouped_study_cv",
+   "seed": 11,
+   "fit_s": 76.01544926799943,
+   "predict_s": 0.024195793000217236,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 16.546469757871346,
+   "mae": 11.857136431289018,
+   "r2": 0.1557204480236013,
+   "median_study_rmse": 11.762792805905502,
+   "mean_study_rmse": 14.83211896782715
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "cat",
+   "scheme": "grouped_study_cv",
+   "seed": 22,
+   "fit_s": 82.40772184700154,
+   "predict_s": 0.013740308999786066,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 16.63485914349249,
+   "mae": 12.056861376207408,
+   "r2": 0.1466762625128648,
+   "median_study_rmse": 12.630495777930982,
+   "mean_study_rmse": 15.001309794071409
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "cat",
+   "scheme": "grouped_study_cv",
+   "seed": 33,
+   "fit_s": 80.84360900300044,
+   "predict_s": 0.01410516100077075,
+   "n": 2261,
+   "n_studies": 122,
+   "rmse": 16.678821386849734,
+   "mae": 11.964700528827148,
+   "r2": 0.14216001189589422,
+   "median_study_rmse": 11.979675476778148,
+   "mean_study_rmse": 14.737424005320893
+  }
+ ],
+ "params": {
+  "depth": 8,
+  "iterations": 933,
+  "l2_leaf_reg": 1.092510014119887,
+  "learning_rate": 0.0717891240377943
+ },
+ "tune_rmse": 16.39230931622672,
+ "tune_seconds": 93.13018690799981,
+ "tune_log": [
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 859,
+    "l2_leaf_reg": 5.190263017695163,
+    "learning_rate": 0.06737284345804269
+   },
+   "grouped_cv_rmse": 16.696383734600296
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 7,
+    "iterations": 659,
+    "l2_leaf_reg": 2.652496376759476,
+    "learning_rate": 0.07348977441409614
+   },
+   "grouped_cv_rmse": 16.49716761046118
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 899,
+    "l2_leaf_reg": 7.79422611516095,
+    "learning_rate": 0.13941000679018942
+   },
+   "grouped_cv_rmse": 16.583293234179962
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 6,
+    "iterations": 1005,
+    "l2_leaf_reg": 6.190490166774185,
+    "learning_rate": 0.05805577839705645
+   },
+   "grouped_cv_rmse": 16.704324219241887
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 4,
+    "iterations": 1149,
+    "l2_leaf_reg": 8.425518534432111,
+    "learning_rate": 0.02307761365470947
+   },
+   "grouped_cv_rmse": 16.936004446786747
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 5,
+    "iterations": 415,
+    "l2_leaf_reg": 2.334756213362472,
+    "learning_rate": 0.13759396898063678
+   },
+   "grouped_cv_rmse": 16.96148316261577
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 4,
+    "iterations": 1150,
+    "l2_leaf_reg": 2.975829503887464,
+    "learning_rate": 0.10043289237516363
+   },
+   "grouped_cv_rmse": 16.70506851862937
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 7,
+    "iterations": 447,
+    "l2_leaf_reg": 1.3130293256147134,
+    "learning_rate": 0.07261061130203572
+   },
+   "grouped_cv_rmse": 16.724590406980393
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 5,
+    "iterations": 997,
+    "l2_leaf_reg": 8.803774642925566,
+    "learning_rate": 0.05723731428349693
+   },
+   "grouped_cv_rmse": 17.018119880927063
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 451,
+    "l2_leaf_reg": 1.8388894115254157,
+    "learning_rate": 0.09517697687495001
+   },
+   "grouped_cv_rmse": 16.517543784433677
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 1102,
+    "l2_leaf_reg": 1.365268824654346,
+    "learning_rate": 0.03843025228076564
+   },
+   "grouped_cv_rmse": 16.599207219335934
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 4,
+    "iterations": 1056,
+    "l2_leaf_reg": 2.434944020023476,
+    "learning_rate": 0.12327044336250591
+   },
+   "grouped_cv_rmse": 16.825859511494176
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 6,
+    "iterations": 742,
+    "l2_leaf_reg": 4.102640452317434,
+    "learning_rate": 0.12320839122509294
+   },
+   "grouped_cv_rmse": 16.69274759760356
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 5,
+    "iterations": 357,
+    "l2_leaf_reg": 4.642658243447122,
+    "learning_rate": 0.07724657225869438
+   },
+   "grouped_cv_rmse": 16.756243290148173
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 6,
+    "iterations": 391,
+    "l2_leaf_reg": 5.6323046962378225,
+    "learning_rate": 0.06806425081012088
+   },
+   "grouped_cv_rmse": 16.790497467055474
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 933,
+    "l2_leaf_reg": 1.092510014119887,
+    "learning_rate": 0.0717891240377943
+   },
+   "grouped_cv_rmse": 16.39230931622672
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 347,
+    "l2_leaf_reg": 1.617620924717978,
+    "learning_rate": 0.027681250545135584
+   },
+   "grouped_cv_rmse": 17.001784558958445
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 8,
+    "iterations": 480,
+    "l2_leaf_reg": 1.7918085415441,
+    "learning_rate": 0.051177667655764654
+   },
+   "grouped_cv_rmse": 16.56675411420272
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 7,
+    "iterations": 1091,
+    "l2_leaf_reg": 2.1777479562471345,
+    "learning_rate": 0.07788962541696605
+   },
+   "grouped_cv_rmse": 16.62247883581364
+  },
+  {
+   "learner": "cat",
+   "params": {
+    "depth": 4,
+    "iterations": 605,
+    "l2_leaf_reg": 6.0026840094509994,
+    "learning_rate": 0.13550734660965064
+   },
+   "grouped_cv_rmse": 16.815926517367465
+  }
+ ]
+}

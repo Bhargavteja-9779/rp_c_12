@@ -64,5 +64,82 @@
   "page": "118848",
   "abstract": "",
   "abstract_source": null
+ },
+ "10.1021/ef2004046": {
+  "doi": "10.1021/ef2004046",
+  "title": "Characterization of Product Fractions from Hydrothermal Liquefaction of\n                    <i>Nannochloropsis</i>\n                    sp. and the Influence of Solvents",
+  "authors": "Valdez P, Dickinson J, Savage P",
+  "venue": "Energy &amp; Fuels",
+  "year": 2011,
+  "volume": "25",
+  "page": "3235-3243",
+  "abstract": "Abstract We collected and analyzed the gas, crude bio-oil, dissolved aqueous solids, and insoluble residual solids product fractions arising from hydrothermal liquefaction of Nannochloropsis sp. at 350 \u00b0C for 60 min. Most of the carbon and hydrogen in the algal biomass appears in the crude bio-oil product, as desired. A majority of the original nitrogen appears as ammonia in the aqueous phase. We also determined how the solvent used to recover the crude bio-oil affected the yields and compositions of the product fractions. We used both nonpolar solvents (hexadecane, decane, hexane, and cyclohexane) and polar solvents (methoxycyclopentane, dichloromethane, and chloroform). Hexadecane and decane provided the highest gravimetric yields of bio-oil (39 \u00b1 3 and 39 \u00b1 1 wt %, respectively), but these crude bio-oils had a lower carbon content (69 wt % for decane) than did those recovered with polar solvents such as chloroform (74 wt %) and dichloromethane (76 wt %). We quantified the amount of 19 different individual molecular components in the crude bio-oil for the first time. Fatty acids were the most abundant components, but some aromatic and sulfur- and nitrogen-containing compounds were also quantified. The amount of free fatty acids in the crude bio-oil significantly depended on the solvent used, with polar solvents recovering more fatty acids than nonpolar solvents. The bio-oil recovered with chloroform, for example, had a fatty acid content equal to 9.0 wt % of the initial dry algal biomass.",
+  "abstract_source": "crossref"
+ },
+ "10.1016/j.energy.2018.11.003": {
+  "doi": "10.1016/j.energy.2018.11.003",
+  "title": "Effects of the extraction solvents in hydrothermal liquefaction processes: Biocrude oil quality and energy conversion efficiency",
+  "authors": "Watson J, Lu J, de Souza R, Si B, Zhang Y, Liu Z",
+  "venue": "Energy",
+  "year": 2019,
+  "volume": "167",
+  "page": "189-197",
+  "abstract": "",
+  "abstract_source": null
+ },
+ "10.1016/j.biortech.2014.09.132": {
+  "doi": "10.1016/j.biortech.2014.09.132",
+  "title": "Hydrothermal liquefaction of biomass: Developments from batch to continuous process",
+  "authors": "Elliott D, Biller P, Ross A, Schmidt A, Jones S",
+  "venue": "Bioresource Technology",
+  "year": 2015,
+  "volume": "178",
+  "page": "147-156",
+  "abstract": "This review describes the recent results in hydrothermal liquefaction (HTL) of biomass in continuous-flow processing systems. Although much has been published about batch reactor tests of biomass HTL, there is only limited information yet available on continuous-flow tests, which can provide a more reasonable basis for process design and scale-up for commercialization. High-moisture biomass feedstocks are the most likely to be used in HTL. These materials are described and results of their processing are discussed. Engineered systems for HTL are described; however, they are of limited size and do not yet approach a demonstration scale of operation. With the results available, process models have been developed, and mass and energy balances determined. From these models, process costs have been calculated and provide some optimism as to the commercial likelihood of the technology.",
+  "abstract_source": "openalex"
+ },
+ "10.1002/bbb.198": {
+  "doi": "10.1002/bbb.198",
+  "title": "Hydrothermal carbonization of biomass: A summary and discussion of chemical mechanisms for process engineering",
+  "authors": "Funke A, Ziegler F",
+  "venue": "Biofuels, Bioproducts and Biorefining",
+  "year": 2010,
+  "volume": "4",
+  "page": "160-177",
+  "abstract": "Abstract Hydrothermal carbonization can be defined as combined dehydration and decarboxy lation of a fuel to raise its carbon content with the aim of achieving a higher calorific value. It is realized by applying elevated temperatures (180\u2013220\u00b0C) to biomass in a suspension with water under saturated pressure for several hours. With this conversion process, a lignite\u2010like, easy to handle fuel with well\u2010defined properties can be created from biomass residues, even with high moisture content. Thus it may contribute to a wider application of biomass for energetic purposes. Although hydrothermal carbonization has been known for nearly a century, it has received little attention in current biomass conversion research. This review summarizes knowledge about the chemical nature of this process from a process design point of view. Reaction mechanisms of hydrolysis, dehydration, decarboxylation, aromatization, and condensation polymerization are discussed and evaluated to describe important operational parameters qualitatively. The results are used to derive fundamental process design improvements. Copyright \u00a9 2010 Society of Chemical Industry and John Wiley &amp; Sons, Ltd",
+  "abstract_source": "crossref"
+ },
+ "10.4155/bfs.10.81": {
+  "doi": "10.4155/bfs.10.81",
+  "title": "Hydrothermal carbonization of biomass residuals: a comparative review of the chemistry, processes and applications of wet and dry pyrolysis",
+  "authors": "Libra J, Ro K, Kammann C, Funke A, Berge N, Neubauer Y, Titirici M, F\u00fchner C, Bens O, Kern J, Emmerich K",
+  "venue": "Biofuels",
+  "year": 2011,
+  "volume": "2",
+  "page": "71-106",
+  "abstract": "The carbonization of biomass residuals to char has strong potential to become an environmentally sound conversion process for the production of a wide variety of products. In addition to its traditional use for the production of charcoal and other energy vectors, pyrolysis can produce products for environmental, catalytic, electronic and agricultural applications. As an alternative to dry pyrolysis, the wet pyrolysis process, also known as hydrothermal carbonization, opens up the field of potential feedstocks for char production to a range of nontraditional renewable and plentiful wet agricultural residues and municipal wastes. Its chemistry offers huge potential to influence product characteristics on demand, and produce designer carbon materials. Future uses of these hydrochars may range from innovative materials to soil amelioration, nutrient conservation via intelligent waste stream management and the increase of carbon stock in degraded soils.",
+  "abstract_source": "openalex"
+ },
+ "10.1016/j.energy.2011.03.013": {
+  "doi": "10.1016/j.energy.2011.03.013",
+  "title": "Hydrothermal liquefaction of biomass: A review of subcritical water technologies",
+  "authors": "Toor S, Rosendahl L, Rudolf A",
+  "venue": "Energy",
+  "year": 2011,
+  "volume": "36",
+  "page": "2328-2342",
+  "abstract": "",
+  "abstract_source": null
+ },
+ "10.1016/j.rser.2017.05.178": {
+  "doi": "10.1016/j.rser.2017.05.178",
+  "title": "A review on hydrothermal liquefaction of biomass",
+  "authors": "Gollakota A, Kishore N, Gu S",
+  "venue": "Renewable and Sustainable Energy Reviews",
+  "year": 2018,
+  "volume": "81",
+  "page": "1378-1392",
+  "abstract": "The rapid depletion of conventional fossil fuels and day-by-day growth of environmental pollution due to extensive use of fossil fuels have raised concerns over the use of the fossil fuels; and thus search for alternate renewable and sustainable sources for fuels has started in the last few decades. In this context biomass derived fuels seems to be the promising path; and various routes are available for the biomass processing such as pyrolysis, transesterification, hydrothermal liquefaction, steam reforming, etc.; and the hydrothermal liquefaction (HTL) of wet biomass seems to be the promising route. Therefore, this article briefly enlightened a few concepts of HTL such as the elemental composition of bio-crude obtained by HTL, different types of feedstock adopted for HTL, mechanism of HTL processes, possible process flow diagrams for HTL of both wet and dry biomass and energy efficiency of the process. In addition, this article also enlisted possible future research scope for concerned researchers and a few of them are setting up HTL plant suitable for both wet and dry biomass feedstock; analyzing influence of parameters such as temperature, pressure, residence time, catalytic effects, etc.; deriving optimized pathways for better conversion; and development of theoretical models representing the process to the best possible accuracy depending on nature of feedstock.",
+  "abstract_source": "openalex"
  }
 }

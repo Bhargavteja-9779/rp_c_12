@@ -1,0 +1,12 @@
+{
+ "rows_total": 3693,
+ "rows_in_split": 2938,
+ "rows_after_process_filter": 2929,
+ "rows_with_target": 2173,
+ "excluded_target_out_of_range": 0,
+ "excluded_carbon_basis": 0,
+ "excluded_missing_core_inputs": 12,
+ "excluded_single_row_studies": 5,
+ "rows_final": 2156,
+ "studies_final": 120
+}
