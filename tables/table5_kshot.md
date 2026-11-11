@@ -1,0 +1,26 @@
+**Table 5. k-shot adaptation to a new study (studies with ≥ 11 runs; 20 random support sets per study).**
+
+| Target   |   k | Offset       |   Median study RMSE |   Coverage (studies) |   Width (wt%) |   Studies | EB vs raw: Δ median; p_Holm   |
+|:---------|----:|:-------------|--------------------:|---------------------:|--------------:|----------:|:------------------------------|
+| Bio-oil  |   0 | —            |               12.37 |                0.926 |          59.3 |        80 |                               |
+| Bio-oil  |   1 | EB shrinkage |                9.22 |                0.908 |          42.6 |        80 | -0.75; <0.001                 |
+| Bio-oil  |   1 | raw mean     |               10.23 |                0.907 |          45.9 |        80 |                               |
+| Bio-oil  |   2 | EB shrinkage |                8.78 |                0.914 |          39   |        80 | -0.29; <0.001                 |
+| Bio-oil  |   2 | raw mean     |                9.17 |                0.911 |          39.9 |        80 |                               |
+| Bio-oil  |   3 | EB shrinkage |                8.47 |                0.913 |          37.2 |        80 | -0.14; <0.001                 |
+| Bio-oil  |   3 | raw mean     |                8.7  |                0.91  |          37.7 |        80 |                               |
+| Bio-oil  |   5 | EB shrinkage |                8.19 |                0.918 |          36.3 |        80 | -0.07; <0.001                 |
+| Bio-oil  |   5 | raw mean     |                8.29 |                0.915 |          36.5 |        80 |                               |
+| Bio-oil  |  10 | EB shrinkage |                7.63 |                0.902 |          33.4 |        80 | -0.02; 0.004                  |
+| Bio-oil  |  10 | raw mean     |                7.63 |                0.903 |          33.9 |        80 |                               |
+| Solid    |   0 | —            |               11.05 |                0.898 |          46.6 |        72 |                               |
+| Solid    |   1 | EB shrinkage |                8.84 |                0.908 |          39.3 |        72 | -0.92; <0.001                 |
+| Solid    |   1 | raw mean     |                9.18 |                0.911 |          45.7 |        72 |                               |
+| Solid    |   2 | EB shrinkage |                8.18 |                0.899 |          35.8 |        72 | -0.34; 0.002                  |
+| Solid    |   2 | raw mean     |                8.31 |                0.901 |          38.2 |        72 |                               |
+| Solid    |   3 | EB shrinkage |                7.66 |                0.899 |          34.6 |        72 | -0.19; 0.003                  |
+| Solid    |   3 | raw mean     |                7.87 |                0.9   |          35.9 |        72 |                               |
+| Solid    |   5 | EB shrinkage |                7.48 |                0.898 |          33   |        72 | -0.09; 0.007                  |
+| Solid    |   5 | raw mean     |                7.38 |                0.899 |          33.6 |        72 |                               |
+| Solid    |  10 | EB shrinkage |                7.02 |                0.904 |          33.6 |        72 | -0.03; 0.006                  |
+| Solid    |  10 | raw mean     |                6.99 |                0.903 |          33.7 |        72 |                               |

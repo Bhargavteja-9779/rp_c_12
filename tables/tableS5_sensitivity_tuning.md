@@ -1,0 +1,12 @@
+**Table S5. Study-grouped CV of the STRATA base learner with tuned vs library-default hyper-parameters.**
+
+| target   | features   | config   |   rmse |    r2 |   median_study_rmse |
+|:---------|:-----------|:---------|-------:|------:|--------------------:|
+| Bio-oil  | base       | tuned    | 15.848 | 0.226 |              12.729 |
+| Bio-oil  | base       | default  | 16.046 | 0.206 |              12.418 |
+| Bio-oil  | base+P     | tuned    | 16.181 | 0.193 |              12.244 |
+| Bio-oil  | base+P     | default  | 17.206 | 0.087 |              13.555 |
+| Solid    | base       | tuned    | 14.076 | 0.516 |              10.835 |
+| Solid    | base       | default  | 14.035 | 0.519 |              10.078 |
+| Solid    | base+P     | tuned    | 13.818 | 0.534 |              10.913 |
+| Solid    | base+P     | default  | 14.821 | 0.463 |              11.439 |

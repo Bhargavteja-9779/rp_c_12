@@ -1,0 +1,8 @@
+**Table 1. Data used for each target after pre-specified exclusions.**
+
+| Target   | Split       |   Runs |   Studies |   Median runs/study | Yield mean ± SD (wt%)   | Excluded (carbon basis / missing inputs / single-run study)   |
+|:---------|:------------|-------:|----------:|--------------------:|:------------------------|:--------------------------------------------------------------|
+| Bio-oil  | Development |   2261 |       122 |                  15 | 30.8 ± 18.0             | 3 / 11 / 4                                                    |
+| Bio-oil  | Locked test |    556 |        28 |                  12 | 26.9 ± 13.1             | 0 / 1 / 0                                                     |
+| Solid    | Development |   2156 |       120 |                  13 | 33.4 ± 20.2             | 0 / 12 / 5                                                    |
+| Solid    | Locked test |    457 |        30 |                  12 | 40.0 ± 22.1             | 0 / 0 / 1                                                     |

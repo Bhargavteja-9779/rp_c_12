@@ -180,22 +180,49 @@ def compute() -> dict:
             parts.append(f"for {nm} yield ({int(sl.n)} runs, {int(sl.n_studies)} studies) the STRATA base learner reached RMSE = {sl.rmse:.1f} wt% "
                          f"(R² = {sl.r2:.2f}; best learner {LBL[best.learner]}, {best.rmse:.1f} wt%; mean predictor {mn.rmse:.1f} wt%)")
         LC = pd.DataFrame(M.get("e5a_locked_test_coverage", [])); LC = LC[(LC.alpha == 0.1) & (LC.features == "base+P")]
+        _lp = pd.read_csv(os.path.join(R, "predictions", "e5a_locked_test_predictions.csv.gz"))
+        _g = _lp[(_lp.target == "biooil") & (_lp.features == "base") & (_lp.learner == learner)]
+        _sse = ((_g.y - _g.pred) ** 2).groupby(_g.study).sum(); LT_top_n = int((_g.study == _sse.idxmax()).sum())
         c = LC.set_index(["target", "calibration"])["coverage_studies"]
         for t in ["biooil", "solid"]:
             v[f"{t}_lock_cov_RC"] = f2(c[(t, "RC")]); v[f"{t}_lock_cov_SC"] = f2(c[(t, "SC")])
-        v["locked_paragraph"] = ("The locked test studies, evaluated once after all modelling decisions were frozen, confirmed the development results: "
-                                 + "; ".join(parts) + f". Row-calibrated 90% intervals covered {c[('biooil', 'RC')]:.2f} (bio-oil) and {c[('solid', 'RC')]:.2f} (solids) "
-                                 f"of locked-study runs with equal study weights, study-calibrated intervals {c[('biooil', 'SC')]:.2f} and {c[('solid', 'SC')]:.2f} (Table 6, Fig. 5).")
-        v["abstract_locked_sentence"] = (f"On the locked studies, study-calibrated intervals covered {c[('biooil', 'SC')]:.2f} and {c[('solid', 'SC')]:.2f} of runs "
-                                         f"(row-calibrated: {c[('biooil', 'RC')]:.2f} and {c[('solid', 'RC')]:.2f}).")
+        ci = {(r["target"], r["calibration"]): r for r in S.get("locked_coverage_ci", [])}
+        sens = pd.DataFrame(S.get("locked_sensitivity_exclude_top_study", []))
+        xs = sens[(sens.target == "biooil") & (sens.features == "base") & (sens.learner == learner)].iloc[0]
+        bb = LT[(LT.target == "biooil") & (LT.features == "base")]
+        nbeat = int((bb[bb.learner != "mean"].rmse < bb[bb.learner == "mean"].rmse.iloc[0]).sum())
+        better_median = int((bb[bb.learner != "mean"].median_study_rmse < bb[bb.learner == "mean"].median_study_rmse.iloc[0]).sum())
+        def cc(t, cal):
+            r = ci[(t, cal)]; return f"{r['reported']:.2f} (95% CI {r['ci_low']:.2f}–{r['ci_high']:.2f})"
+        v["locked_paragraph"] = (
+            "The locked test studies, evaluated once after all modelling decisions had been frozen, gave a more pessimistic picture than development CV. "
+            + "; ".join(parts) + ". "
+            f"For bio-oil, only {nbeat} of the 11 non-trivial learners had a lower pooled RMSE than the mean predictor, although {better_median} had a lower median per-study RMSE: "
+            f"pooled errors were dominated by a few studies outside the bulk of the training distribution — for {LBL[learner]}, a single solvothermal series of {int(LT_top_n)} runs "
+            f"contributed {xs.excluded_sse_share:.0%} of the squared error, and excluding it (post hoc) lowered the RMSE from {xs.rmse_all:.1f} to {xs.rmse_excl:.1f} wt% "
+            f"(R² = {xs.r2_excl:.2f}). Study-weighted coverage of row-calibrated 90% intervals was {cc('biooil', 'RC')} for bio-oil and {cc('solid', 'RC')} for solids; "
+            f"study-calibrated intervals reached {cc('biooil', 'SC')} and {cc('solid', 'SC')} (Table 6, Fig. 5). Study calibration thus removed most, but for solids "
+            "not all, of the under-coverage; with 28–30 locked studies the intervals are wide, and the solid-yield shortfall reflects a few studies with feedstocks "
+            "(technical lignin, plastic–biomass blends) that are rare in the training data.")
+        v["abstract_locked_sentence"] = (f"On 38 locked studies, study-calibrated intervals covered {ci[('biooil', 'SC')]['reported']:.2f} (bio-oil) and "
+                                         f"{ci[('solid', 'SC')]['reported']:.2f} (solids) of runs, versus {ci[('biooil', 'RC')]['reported']:.2f} and {ci[('solid', 'RC')]['reported']:.2f} "
+                                         "for row-calibrated intervals, and no learner predicted bio-oil yields of new studies substantially better than the training mean.")
+        covs = [ci[(t, c)]["reported"] for t in ["biooil", "solid"] for c in ["RC"]] + [float(v["biooil_cov_RC"]), float(v["solid_cov_RC"])]
+        scs = [ci[(t, "SC")]["reported"] for t in ["biooil", "solid"]] + [float(v["biooil_cov_SC"]), float(v["solid_cov_SC"])]
+        v["hl_cov"] = f"Study-calibrated intervals raised coverage from {min(covs):.2f}–{max(covs):.2f} to {min(scs):.2f}–{max(scs):.2f}"
+        v["cov_range_RC"] = f"{min(covs):.2f}–{max(covs):.2f}"; v["cov_range_SC"] = f"{min(scs):.2f}–{max(scs):.2f}"
     # ---------------- temporal / family / external (E5b-d)
     TF = pd.DataFrame(M.get("e5bc_temporal_family_metrics", [])); EX = pd.DataFrame(M.get("e5d_external_metrics", []))
     if len(TF):
         tp = TF[(TF.scheme == "temporal") & (TF.features == "base+P")].set_index("target")
         fam = TF[(TF.scheme == "family_out") & (TF.features == "base+P")]
         famw = fam.sort_values("rmse", ascending=False).groupby("target").first()
-        txt = (f"Predicting studies published after 2018 from earlier studies gave RMSE = {tp.loc['biooil', 'rmse']:.1f} (bio-oil) and "
-               f"{tp.loc['solid', 'rmse']:.1f} wt% (solids), in line with study-grouped CV. Leaving out one feedstock family at a time gave mean RMSE of "
+        def cmp(t):
+            a, b = tp.loc[t, "rmse"], float(v[f"{t}_strata_grouped_rmse"])
+            return "similar to" if abs(a - b) / b < 0.1 else ("higher than" if a > b else "lower than")
+        txt = (f"Predicting studies published after 2018 from earlier studies gave RMSE = {tp.loc['biooil', 'rmse']:.1f} (bio-oil; {cmp('biooil')} the study-grouped CV value of "
+               f"{v['biooil_strata_grouped_rmse']} wt%) and {tp.loc['solid', 'rmse']:.1f} wt% (solids; {cmp('solid')} {v['solid_strata_grouped_rmse']} wt%), i.e. models trained on older "
+               "literature transfer no better to newer studies than to randomly chosen unseen studies. Leaving out one feedstock family at a time gave mean RMSE of "
                f"{fam[fam.target == 'biooil'].rmse.mean():.1f} and {fam[fam.target == 'solid'].rmse.mean():.1f} wt%, with the largest errors for "
                f"{famw.loc['biooil', 'family']} (bio-oil, {famw.loc['biooil', 'rmse']:.1f} wt%) and {famw.loc['solid', 'family']} (solids, {famw.loc['solid', 'rmse']:.1f} wt%).")
         if len(EX):

@@ -1,0 +1,52 @@
+**Table S4. k-shot results with method-of-moments vs REML estimates of the between-study variance.**
+
+| target   | features   | estimator   |   k |   Median study RMSE |   Median study coverage |   Width (wt%) |
+|:---------|:-----------|:------------|----:|--------------------:|------------------------:|--------------:|
+| Bio-oil  | base       | MoM         |   0 |              12.343 |                   1     |        55.749 |
+| Bio-oil  | base       | MoM         |   1 |               9.447 |                   0.978 |        40.956 |
+| Bio-oil  | base       | MoM         |   2 |               8.691 |                   0.97  |        37.729 |
+| Bio-oil  | base       | MoM         |   3 |               8.523 |                   0.967 |        36.551 |
+| Bio-oil  | base       | MoM         |   5 |               8.015 |                   0.98  |        35.879 |
+| Bio-oil  | base       | MoM         |  10 |               7.847 |                   0.972 |        33.629 |
+| Bio-oil  | base       | REML        |   0 |              12.343 |                   1     |        55.749 |
+| Bio-oil  | base       | REML        |   1 |               9.335 |                   0.97  |        40.504 |
+| Bio-oil  | base       | REML        |   2 |               8.718 |                   0.971 |        37.64  |
+| Bio-oil  | base       | REML        |   3 |               8.474 |                   0.965 |        36.256 |
+| Bio-oil  | base       | REML        |   5 |               8.005 |                   0.973 |        35.931 |
+| Bio-oil  | base       | REML        |  10 |               7.845 |                   0.967 |        33.755 |
+| Bio-oil  | base+P     | MoM         |   0 |              12.613 |                   1     |        58.715 |
+| Bio-oil  | base+P     | MoM         |   1 |              10.057 |                   0.98  |        42.279 |
+| Bio-oil  | base+P     | MoM         |   2 |               8.838 |                   0.979 |        38.928 |
+| Bio-oil  | base+P     | MoM         |   3 |               8.4   |                   0.973 |        37.576 |
+| Bio-oil  | base+P     | MoM         |   5 |               8.065 |                   0.983 |        36.164 |
+| Bio-oil  | base+P     | MoM         |  10 |               7.59  |                   0.975 |        33.853 |
+| Bio-oil  | base+P     | REML        |   0 |              12.613 |                   1     |        58.715 |
+| Bio-oil  | base+P     | REML        |   1 |               9.371 |                   0.98  |        42.301 |
+| Bio-oil  | base+P     | REML        |   2 |               8.812 |                   0.974 |        38.887 |
+| Bio-oil  | base+P     | REML        |   3 |               8.416 |                   0.965 |        37.413 |
+| Bio-oil  | base+P     | REML        |   5 |               8.073 |                   0.981 |        36.142 |
+| Bio-oil  | base+P     | REML        |  10 |               7.584 |                   0.975 |        33.958 |
+| Solid    | base       | MoM         |   0 |              10.537 |                   1     |        46.419 |
+| Solid    | base       | MoM         |   1 |               8.876 |                   0.992 |        39.127 |
+| Solid    | base       | MoM         |   2 |               8.268 |                   0.996 |        35.71  |
+| Solid    | base       | MoM         |   3 |               7.749 |                   0.995 |        35.146 |
+| Solid    | base       | MoM         |   5 |               7.136 |                   0.995 |        33.432 |
+| Solid    | base       | MoM         |  10 |               6.721 |                   1     |        34.108 |
+| Solid    | base       | REML        |   0 |              10.537 |                   1     |        46.419 |
+| Solid    | base       | REML        |   1 |               9.192 |                   0.998 |        44.343 |
+| Solid    | base       | REML        |   2 |               8.612 |                   0.997 |        39.718 |
+| Solid    | base       | REML        |   3 |               8.594 |                   0.997 |        38.939 |
+| Solid    | base       | REML        |   5 |               8.312 |                   0.999 |        36.034 |
+| Solid    | base       | REML        |  10 |               7.747 |                   1     |        35.651 |
+| Solid    | base+P     | MoM         |   0 |              10.674 |                   1     |        46.636 |
+| Solid    | base+P     | MoM         |   1 |               8.89  |                   0.994 |        39.247 |
+| Solid    | base+P     | MoM         |   2 |               8.161 |                   0.991 |        35.68  |
+| Solid    | base+P     | MoM         |   3 |               7.876 |                   0.992 |        34.247 |
+| Solid    | base+P     | MoM         |   5 |               7.742 |                   0.992 |        32.88  |
+| Solid    | base+P     | MoM         |  10 |               6.933 |                   0.999 |        33.515 |
+| Solid    | base+P     | REML        |   0 |              10.674 |                   1     |        46.636 |
+| Solid    | base+P     | REML        |   1 |               9.335 |                   1     |        42.411 |
+| Solid    | base+P     | REML        |   2 |               8.457 |                   0.999 |        39.1   |
+| Solid    | base+P     | REML        |   3 |               8.424 |                   0.999 |        37.731 |
+| Solid    | base+P     | REML        |   5 |               8.294 |                   1     |        35.803 |
+| Solid    | base+P     | REML        |  10 |               8.064 |                   1     |        35.138 |

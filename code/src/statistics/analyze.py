@@ -189,6 +189,34 @@ def run(mode="full"):
         for x, pa in zip(lt, adj):
             x["p_holm"] = float(pa)
         S["locked_protocol_ablation_all_learners"] = lt
+
+    # locked test: study-cluster bootstrap CI for coverage (STRATA learner, base+P) and post-hoc sensitivity excluding
+    # the single study with the largest squared-error share (reported as post hoc)
+    fc = os.path.join(D["results"], "e5a_locked_test_coverage.csv")
+    if os.path.exists(fp) and os.path.exists(fc):
+        lc = pd.read_csv(fc); learner = json.load(open(os.path.join(D["results"], "strata_base_learner.json")))["learner"]
+        cis = []
+        for t in ["biooil", "solid"]:
+            g = lp[(lp.target == t) & (lp.features == "base+P") & (lp.learner == learner)].copy()
+            for cal in ["RC", "SC"]:
+                row = lc[(lc.target == t) & (lc.features == "base+P") & (lc.alpha == cfg["alpha"]) & (lc.calibration == cal)].iloc[0]
+                g["hit"] = (np.abs(g["y"] - g["pred"]) <= row["width"] / 2).astype(float)
+                g["w"] = 1 / g["study"].map(g["study"].value_counts())
+                est = float((g["w"] * g["hit"]).sum() / g["w"].sum())
+                lo, hi = cluster_bootstrap_ci(g[["study", "hit", "w"]], lambda d: float((d["w"] * d["hit"]).sum() / d["w"].sum()), n_boot=cfg["bootstrap"], seed=0)
+                cis.append(dict(target=t, calibration=cal, coverage_studies_recomputed=est, reported=float(row["coverage_studies"]), ci_low=lo, ci_high=hi,
+                                n_studies=int(g["study"].nunique())))
+        S["locked_coverage_ci"] = cis
+        sens = []
+        for (t, fs, ln), g in lp.groupby(["target", "features", "learner"]):
+            r = g["y"] - g["pred"]
+            sse = (r ** 2).groupby(g["study"]).sum()
+            top = sse.idxmax(); keep = g["study"] != top
+            sens.append(dict(target=t, features=fs, learner=ln, excluded_study=top, excluded_sse_share=float(sse.max() / sse.sum()),
+                             rmse_all=float(np.sqrt(np.mean(r ** 2))), rmse_excl=float(np.sqrt(np.mean(r[keep] ** 2))),
+                             r2_excl=float(1 - np.sum(r[keep] ** 2) / np.sum((g["y"][keep] - g["y"][keep].mean()) ** 2))))
+        pd.DataFrame(sens).to_csv(os.path.join(D["stats"], "locked_sensitivity_exclude_top_study.csv"), index=False)
+        S["locked_sensitivity_exclude_top_study"] = sens
     dump(S, os.path.join(D["results"], "statistics.json"))
     dump(M, os.path.join(D["results"], "metrics.json"))
     # raw_results.csv: concatenation of every per-run row from all experiments

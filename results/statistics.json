@@ -2224,5 +2224,1019 @@
     }
    }
   }
- }
+ },
+ "meta_regression": [
+  {
+   "target": "biooil",
+   "n_studies": 122,
+   "univariate": {
+    "kruskal_extraction_solvent": {
+     "H": 7.680028371275,
+     "p": 0.10402785969869792,
+     "groups": {
+      "dcm": {
+       "n": 26,
+       "median_offset": -5.063640450068883
+      },
+      "thf": {
+       "n": 5,
+       "median_offset": 2.3159086990356452
+      },
+      "none_named": {
+       "n": 26,
+       "median_offset": 0.12788274491435245
+      },
+      "acetone": {
+       "n": 52,
+       "median_offset": -1.358270943812835
+      },
+      "ethyl_acetate": {
+       "n": 7,
+       "median_offset": -12.684343139330545
+      }
+     }
+    },
+    "mannwhitney_daf_vs_dry": {
+     "U": 901.0,
+     "p": 0.6904941254482053,
+     "n_daf": 16,
+     "median_daf": 1.710328483431947,
+     "median_dry": -1.4541205338418706
+    },
+    "spearman_reactor_volume": {
+     "rho": -0.1227805666619055,
+     "p": 0.17788417489139005,
+     "n": 122
+    }
+   },
+   "offset_sd": 13.917176108913345,
+   "loso_r2": -0.03130240881305291,
+   "perm_p": 0.7142857142857143,
+   "n_perm": 1000,
+   "null_r2_q95": -0.005310016159946487,
+   "ridge_alpha": 100000.0,
+   "coefficients": {
+    "P_basis_daf": 4.048685282095841e-05,
+    "P_basis_incl_coreactant": 0.0028759727492914684,
+    "P_multi_fraction_product": 0.000977955487422543,
+    "P_by_difference": 0.0011086723874603995,
+    "P_extract_dcm": -0.0008296073663466644,
+    "P_extract_acetone": -0.0009273550016594398,
+    "P_extract_ethyl_acetate": -0.0025588599360234538,
+    "P_extract_diethyl_ether": -0.0005082586329267626,
+    "P_extract_thf": 0.002474161253658755,
+    "P_extract_alcohol": 0.0008191340996346892,
+    "P_extract_hydrocarbon": -0.000341111389221686,
+    "P_extract_chlorinated_other": 0.00040350321561237934,
+    "P_extract_none_named": 0.0020864666329501206,
+    "P_separation_not_stated": -0.0004962507504422665,
+    "P_log10_reactor_mL": -0.0008021466509672654
+   }
+  },
+  {
+   "target": "solid",
+   "n_studies": 120,
+   "univariate": {
+    "kruskal_extraction_solvent": {
+     "H": 0.7063543800832122,
+     "p": 0.9505429906468197,
+     "groups": {
+      "none_named": {
+       "n": 36,
+       "median_offset": -2.0189551506042474
+      },
+      "dcm": {
+       "n": 24,
+       "median_offset": -0.9103906849452434
+      },
+      "thf": {
+       "n": 5,
+       "median_offset": -3.2389494527181
+      },
+      "acetone": {
+       "n": 45,
+       "median_offset": -1.7049062112172457
+      },
+      "ethyl_acetate": {
+       "n": 7,
+       "median_offset": -4.504110194614956
+      }
+     }
+    },
+    "mannwhitney_daf_vs_dry": {
+     "U": 690.0,
+     "p": 0.44146955595089066,
+     "n_daf": 15,
+     "median_daf": -3.7471360473044806,
+     "median_dry": -1.5150787022908527
+    },
+    "spearman_reactor_volume": {
+     "rho": 0.2124938247684588,
+     "p": 0.019802703869508467,
+     "n": 120
+    }
+   },
+   "offset_sd": 9.603380104474414,
+   "loso_r2": -0.04659258236075292,
+   "perm_p": 0.9100899100899101,
+   "n_perm": 1000,
+   "null_r2_q95": -0.0018445686399720278,
+   "ridge_alpha": 562.341325190349,
+   "coefficients": {
+    "P_basis_daf": -0.053820836752955716,
+    "P_basis_incl_coreactant": -0.25845200006689023,
+    "P_multi_fraction_product": 0.17743810373911956,
+    "P_by_difference": 0.2118559741182715,
+    "P_extract_dcm": 0.00531111706552685,
+    "P_extract_acetone": 0.16858152168566704,
+    "P_extract_ethyl_acetate": -0.14981138113037373,
+    "P_extract_diethyl_ether": 0.18930795990009655,
+    "P_extract_thf": -0.03534486867815541,
+    "P_extract_alcohol": -0.1536053594191276,
+    "P_extract_hydrocarbon": 0.13385004294094424,
+    "P_extract_chlorinated_other": -3.4988670120628846e-17,
+    "P_extract_none_named": -0.028436321545943877,
+    "P_separation_not_stated": -0.05126931723115599,
+    "P_log10_reactor_mL": 0.30040782819329925
+   }
+  }
+ ],
+ "locked_protocol_ablation_all_learners": [
+  {
+   "target": "biooil",
+   "learner": "cat",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": 179.0,
+   "p": 0.5979221016168594,
+   "median_diff": 0.1722321131440232,
+   "ci_low": -0.518289340203077,
+   "ci_high": 1.0793809972829047,
+   "rank_biserial": 0.11822660098522167,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "biooil",
+   "learner": "et",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": 192.0,
+   "p": 0.813923291862011,
+   "median_diff": -0.41330691461713176,
+   "ci_low": -1.4481923594724133,
+   "ci_high": 1.1730828227755472,
+   "rank_biserial": -0.054187192118226604,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "biooil",
+   "learner": "gpboost",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": 177.0,
+   "p": 0.5670346617698669,
+   "median_diff": 0.02847979177055837,
+   "ci_low": -0.07602562891307052,
+   "ci_high": 0.13778812541158203,
+   "rank_biserial": 0.12807881773399016,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "biooil",
+   "learner": "hgb",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": 194.0,
+   "p": 0.8489041775465012,
+   "median_diff": -0.06431369737055093,
+   "ci_low": -0.6149165370633596,
+   "ci_high": 0.5567923420940208,
+   "rank_biserial": -0.04433497536945813,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "biooil",
+   "learner": "knn",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": 150.0,
+   "p": 0.23591722548007965,
+   "median_diff": -0.6042695597093681,
+   "ci_low": -2.7440699913934328,
+   "ci_high": 0.6527781812219775,
+   "rank_biserial": -0.26108374384236455,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "biooil",
+   "learner": "lgbm",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": 113.0,
+   "p": 0.040213532745838165,
+   "median_diff": -0.9249510977679951,
+   "ci_low": -1.858433081815141,
+   "ci_high": -0.11444688841366535,
+   "rank_biserial": -0.4433497536945813,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 0.965124785900116
+  },
+  {
+   "target": "biooil",
+   "learner": "mean",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": NaN,
+   "p": 1.0,
+   "median_diff": 0.0,
+   "ci_low": 0.0,
+   "ci_high": 0.0,
+   "rank_biserial": 0.0,
+   "p_holm": 1.0
+  },
+  {
+   "target": "biooil",
+   "learner": "mlp",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": 146.0,
+   "p": 0.2015676274895668,
+   "median_diff": -1.2514430644547057,
+   "ci_low": -3.074564817940523,
+   "ci_high": 0.5913795012653242,
+   "rank_biserial": -0.28078817733990147,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "biooil",
+   "learner": "rf",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": 153.0,
+   "p": 0.26417163759469986,
+   "median_diff": -0.502471962388015,
+   "ci_low": -0.9744781180333956,
+   "ci_high": 0.44037745260200767,
+   "rank_biserial": -0.24630541871921183,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "biooil",
+   "learner": "ridge",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": 191.0,
+   "p": 0.7965622618794441,
+   "median_diff": 0.21501847068240942,
+   "ci_low": -0.8909893319856481,
+   "ci_high": 1.4446750628378968,
+   "rank_biserial": 0.059113300492610835,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "biooil",
+   "learner": "svr",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": 142.0,
+   "p": 0.17090606689453125,
+   "median_diff": -0.9681022049220012,
+   "ci_low": -1.9704484599307959,
+   "ci_high": 0.2608658542219735,
+   "rank_biserial": -0.30049261083743845,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "biooil",
+   "learner": "xgb",
+   "comparison": "base+P_vs_base",
+   "n": 28,
+   "W": 196.0,
+   "p": 0.8841757625341415,
+   "median_diff": -0.08001561808673685,
+   "ci_low": -0.6525627173471739,
+   "ci_high": 1.2554022947720087,
+   "rank_biserial": 0.034482758620689655,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "cat",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": 218.0,
+   "p": 0.7765688337385654,
+   "median_diff": 0.10849827808610968,
+   "ci_low": -1.1424263847212135,
+   "ci_high": 1.4290823349127315,
+   "rank_biserial": 0.06236559139784946,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "et",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": 212.0,
+   "p": 0.685047073289752,
+   "median_diff": -0.041836363729007786,
+   "ci_low": -0.5710295591427199,
+   "ci_high": 0.7264350489960241,
+   "rank_biserial": 0.08817204301075268,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "gpboost",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": 161.0,
+   "p": 0.1459994912147522,
+   "median_diff": -0.004636854765379894,
+   "ci_low": -0.05000745753254954,
+   "ci_high": 0.004104367761689431,
+   "rank_biserial": -0.30752688172043013,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "hgb",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": 209.0,
+   "p": 0.6408254038542509,
+   "median_diff": -0.49122982849091423,
+   "ci_low": -1.1655350090845822,
+   "ci_high": 0.5821338902934876,
+   "rank_biserial": -0.1010752688172043,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "knn",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": 196.0,
+   "p": 0.46454504504799843,
+   "median_diff": 0.4344380554780223,
+   "ci_low": -0.6810996995191401,
+   "ci_high": 1.7782302119172018,
+   "rank_biserial": 0.15698924731182795,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "lgbm",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": 177.0,
+   "p": 0.2621222734451294,
+   "median_diff": -0.12948579955107675,
+   "ci_low": -2.0307582954503927,
+   "ci_high": 0.6378275063514094,
+   "rank_biserial": -0.23870967741935484,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "mean",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": NaN,
+   "p": 1.0,
+   "median_diff": 0.0,
+   "ci_low": 0.0,
+   "ci_high": 0.0,
+   "rank_biserial": 0.0,
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "mlp",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": 136.0,
+   "p": 0.047259049490094185,
+   "median_diff": 2.506627476308904,
+   "ci_low": -0.2990811333833223,
+   "ci_high": 4.179285620541961,
+   "rank_biserial": 0.4150537634408602,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "rf",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": 208.0,
+   "p": 0.6263462882488966,
+   "median_diff": -0.009210997516148733,
+   "ci_low": -0.21944410293831496,
+   "ci_high": 0.34116625473215345,
+   "rank_biserial": 0.1053763440860215,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "ridge",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": 209.0,
+   "p": 0.6408254038542509,
+   "median_diff": -0.14636811751585688,
+   "ci_low": -1.0423932078785572,
+   "ci_high": 0.5890139848119942,
+   "rank_biserial": -0.1010752688172043,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "svr",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": 194.0,
+   "p": 0.4399667661637068,
+   "median_diff": 0.7749410474771583,
+   "ci_low": -0.35129450306771925,
+   "ci_high": 1.8066996111934328,
+   "rank_biserial": 0.16559139784946236,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  },
+  {
+   "target": "solid",
+   "learner": "xgb",
+   "comparison": "base+P_vs_base",
+   "n": 30,
+   "W": 224.0,
+   "p": 0.871207794174552,
+   "median_diff": -0.21370549297965713,
+   "ci_low": -0.9399094305530884,
+   "ci_high": 0.9653788974616977,
+   "rank_biserial": 0.03655913978494624,
+   "test": "Wilcoxon signed-rank",
+   "alternative": "two-sided",
+   "p_holm": 1.0
+  }
+ ],
+ "locked_coverage_ci": [
+  {
+   "target": "biooil",
+   "calibration": "RC",
+   "coverage_studies_recomputed": 0.6030558888744768,
+   "reported": 0.6030558888744768,
+   "ci_low": 0.4685157472079741,
+   "ci_high": 0.7295069177105326,
+   "n_studies": 28
+  },
+  {
+   "target": "biooil",
+   "calibration": "SC",
+   "coverage_studies_recomputed": 0.8946819053961911,
+   "reported": 0.8946819053961911,
+   "ci_low": 0.8101244985173557,
+   "ci_high": 0.9656263528138527,
+   "n_studies": 28
+  },
+  {
+   "target": "solid",
+   "calibration": "RC",
+   "coverage_studies_recomputed": 0.45677984173636343,
+   "reported": 0.4567798417363634,
+   "ci_low": 0.336773496230018,
+   "ci_high": 0.5769056564610912,
+   "n_studies": 30
+  },
+  {
+   "target": "solid",
+   "calibration": "SC",
+   "coverage_studies_recomputed": 0.8205253401992532,
+   "reported": 0.8205253401992532,
+   "ci_low": 0.704324921254269,
+   "ci_high": 0.9159820997239475,
+   "n_studies": 30
+  }
+ ],
+ "locked_sensitivity_exclude_top_study": [
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "cat",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.3101558782040017,
+   "rmse_all": 13.388743461458784,
+   "rmse_excl": 12.146740171204065,
+   "r2_excl": 0.19818127748501968
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "et",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.41545855266295106,
+   "rmse_all": 14.642516878758157,
+   "rmse_excl": 12.22834902664422,
+   "r2_excl": 0.18737091615934742
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "gpboost",
+   "excluded_study": "10.1016/0961-9534(96)00025-6",
+   "excluded_sse_share": 0.2904191332057512,
+   "rmse_all": 13.209122633235998,
+   "rmse_excl": 11.25932619983791,
+   "r2_excl": -0.15687037407290405
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "hgb",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.6560545237111665,
+   "rmse_all": 22.839240510228624,
+   "rmse_excl": 14.630895090527302,
+   "r2_excl": -0.16331814471788397
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "knn",
+   "excluded_study": "https://doi.org/10.1016/j.enconman.2023.117216",
+   "excluded_sse_share": 0.1908316253879017,
+   "rmse_all": 12.878003021954905,
+   "rmse_excl": 11.72210086249895,
+   "r2_excl": 0.18767029967558668
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "lgbm",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.6092062199176228,
+   "rmse_all": 20.121600157012974,
+   "rmse_excl": 13.739811469320214,
+   "r2_excl": -0.02593124528735613
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "mean",
+   "excluded_study": "10.1016/0961-9534(96)00025-6",
+   "excluded_sse_share": 0.2896104594094054,
+   "rmse_all": 13.633786712932615,
+   "rmse_excl": 11.627925908673253,
+   "r2_excl": -0.23385580371779158
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "mlp",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.4861113702085547,
+   "rmse_all": 22.521211057983393,
+   "rmse_excl": 17.63480583825004,
+   "r2_excl": -0.6900442440855359
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "rf",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.45126849716382844,
+   "rmse_all": 15.691839432397376,
+   "rmse_excl": 12.696915810683585,
+   "r2_excl": 0.1239009904623608
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "ridge",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.2206126310477586,
+   "rmse_all": 12.965111285424182,
+   "rmse_excl": 12.502514528776654,
+   "r2_excl": 0.15052335078162205
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "svr",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.2856389242513305,
+   "rmse_all": 13.913055469737897,
+   "rmse_excl": 12.844755602861465,
+   "r2_excl": 0.10338004498941045
+  },
+  {
+   "target": "biooil",
+   "features": "base",
+   "learner": "xgb",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.5370271035580247,
+   "rmse_all": 18.27280804099131,
+   "rmse_excl": 13.58086752531713,
+   "r2_excl": -0.00233232227976643
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "cat",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.2848205901068038,
+   "rmse_all": 13.280182222189989,
+   "rmse_excl": 12.267497352267835,
+   "r2_excl": 0.1821594208495455
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "et",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.3739749995917524,
+   "rmse_all": 15.061628754812668,
+   "rmse_excl": 13.017039261796853,
+   "r2_excl": 0.07916643969334602
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "gpboost",
+   "excluded_study": "10.1016/0961-9534(96)00025-6",
+   "excluded_sse_share": 0.29269479516399316,
+   "rmse_all": 13.19129050034082,
+   "rmse_excl": 11.226081543326604,
+   "r2_excl": -0.15004883275513325
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "hgb",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.6538128663582367,
+   "rmse_all": 22.666300694533824,
+   "rmse_excl": 14.56734966196549,
+   "r2_excl": -0.15323495898033257
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "knn",
+   "excluded_study": "10.1016/0961-9534(96)00025-6",
+   "excluded_sse_share": 0.18811818813223213,
+   "rmse_all": 12.287768128970844,
+   "rmse_excl": 11.203581937536919,
+   "r2_excl": -0.14544353660544473
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "lgbm",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.5752597930845083,
+   "rmse_all": 18.1164232569065,
+   "rmse_excl": 12.896699575656898,
+   "r2_excl": 0.09611355020660839
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "mean",
+   "excluded_study": "10.1016/0961-9534(96)00025-6",
+   "excluded_sse_share": 0.2896104594094054,
+   "rmse_all": 13.633786712932615,
+   "rmse_excl": 11.627925908673253,
+   "r2_excl": -0.23385580371779158
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "mlp",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.2416879382011627,
+   "rmse_all": 17.37669141813407,
+   "rmse_excl": 16.52857863371457,
+   "r2_excl": -0.4846624550852958
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "rf",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.42442634011785924,
+   "rmse_all": 14.93073330880941,
+   "rmse_excl": 12.373029009234706,
+   "r2_excl": 0.16802788230450494
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "ridge",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.25277067528805314,
+   "rmse_all": 14.135214552884843,
+   "rmse_excl": 13.346696840860938,
+   "r2_excl": 0.031935484347035525
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "svr",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.19424873406626025,
+   "rmse_all": 12.843814280610031,
+   "rmse_excl": 12.5932827028955,
+   "r2_excl": 0.13814418709573373
+  },
+  {
+   "target": "biooil",
+   "features": "base+P",
+   "learner": "xgb",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.6327653987176669,
+   "rmse_all": 20.936808324861342,
+   "rmse_excl": 13.858834600518353,
+   "r2_excl": -0.04378279229263771
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "cat",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.32433381292444274,
+   "rmse_all": 19.808843923909606,
+   "rmse_excl": 18.16980602375534,
+   "r2_excl": 0.29366565224179997
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "et",
+   "excluded_study": "https://doi.org/10.1016/j.enconman.2023.117216",
+   "excluded_sse_share": 0.1664219539072945,
+   "rmse_all": 16.545978146253823,
+   "rmse_excl": 15.326119073783211,
+   "r2_excl": 0.4827512189666465
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "gpboost",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.2754120718053346,
+   "rmse_all": 21.936648148636102,
+   "rmse_excl": 20.837273136596973,
+   "r2_excl": 0.0710517670489943
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "hgb",
+   "excluded_study": "10.1016/j.fuel.2024.132389",
+   "excluded_sse_share": 0.23293782577771083,
+   "rmse_all": 19.19616314526751,
+   "rmse_excl": 16.98043489002623,
+   "r2_excl": 0.35754569162190286
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "knn",
+   "excluded_study": "https://doi.org/10.1016/j.enconman.2023.117216",
+   "excluded_sse_share": 0.25044482150448916,
+   "rmse_all": 18.400850942222583,
+   "rmse_excl": 16.162417711550646,
+   "r2_excl": 0.42476177364872303
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "lgbm",
+   "excluded_study": "10.1016/j.fuel.2024.132389",
+   "excluded_sse_share": 0.19695907684234384,
+   "rmse_all": 18.888902018223472,
+   "rmse_excl": 17.096005372764726,
+   "r2_excl": 0.3487707188791229
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "mean",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.28526878514471493,
+   "rmse_all": 23.029964741084857,
+   "rmse_excl": 21.726497294672544,
+   "r2_excl": -0.009925122154112787
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "mlp",
+   "excluded_study": "https://doi.org/10.1021/acs.energyfuels.9b01473",
+   "excluded_sse_share": 0.13075137858244565,
+   "rmse_all": 14.416285115770801,
+   "rmse_excl": 13.65153871710866,
+   "r2_excl": 0.6063576188195192
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "rf",
+   "excluded_study": "10.1016/j.fuel.2024.132389",
+   "excluded_sse_share": 0.31865038287862724,
+   "rmse_all": 19.315843504740638,
+   "rmse_excl": 16.10340736229737,
+   "r2_excl": 0.4221964754360191
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "ridge",
+   "excluded_study": "https://doi.org/10.1016/j.enconman.2023.117216",
+   "excluded_sse_share": 0.1864014490719308,
+   "rmse_all": 18.74351241252569,
+   "rmse_excl": 17.152312333297086,
+   "r2_excl": 0.3521410874701736
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "svr",
+   "excluded_study": "https://doi.org/10.1016/j.enconman.2023.117216",
+   "excluded_sse_share": 0.22233942749629634,
+   "rmse_all": 17.051727872244186,
+   "rmse_excl": 15.255626536815445,
+   "r2_excl": 0.4874984514115278
+  },
+  {
+   "target": "solid",
+   "features": "base",
+   "learner": "xgb",
+   "excluded_study": "https://doi.org/10.1016/j.enconman.2023.117216",
+   "excluded_sse_share": 0.19791002796364718,
+   "rmse_all": 18.528386857701527,
+   "rmse_excl": 16.83510262654257,
+   "r2_excl": 0.37588212461071
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "cat",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.2703103249587319,
+   "rmse_all": 20.12127999889663,
+   "rmse_excl": 19.180051679728045,
+   "r2_excl": 0.2129373745404518
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "et",
+   "excluded_study": "https://doi.org/10.1016/j.enconman.2023.117216",
+   "excluded_sse_share": 0.17000671043331936,
+   "rmse_all": 17.009315056203047,
+   "rmse_excl": 15.721382385775623,
+   "r2_excl": 0.4557273051887909
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "gpboost",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.27470969983182764,
+   "rmse_all": 21.893129034499957,
+   "rmse_excl": 20.806011745526675,
+   "r2_excl": 0.07383700961159068
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "hgb",
+   "excluded_study": "10.1016/j.fuel.2024.132389",
+   "excluded_sse_share": 0.19646849889717127,
+   "rmse_all": 19.27090082806862,
+   "rmse_excl": 17.4470723931943,
+   "r2_excl": 0.32175007511637654
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "knn",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.29457830105155336,
+   "rmse_all": 20.48312288990212,
+   "rmse_excl": 19.1975428560542,
+   "r2_excl": 0.21150120235336733
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "lgbm",
+   "excluded_study": "10.1016/j.fuel.2024.132389",
+   "excluded_sse_share": 0.2533116150667019,
+   "rmse_all": 17.652343142314614,
+   "rmse_excl": 15.406044641805746,
+   "r2_excl": 0.47115679069303296
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "mean",
+   "excluded_study": "https://doi.org/10.1016/j.supflu.2019.03.019",
+   "excluded_sse_share": 0.28526878514471493,
+   "rmse_all": 23.029964741084857,
+   "rmse_excl": 21.726497294672544,
+   "r2_excl": -0.009925122154112787
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "mlp",
+   "excluded_study": "https://doi.org/10.1016/j.enconman.2023.117216",
+   "excluded_sse_share": 0.1882621493465491,
+   "rmse_all": 16.468936651851536,
+   "rmse_excl": 15.053589626184555,
+   "r2_excl": 0.5009831271990146
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "rf",
+   "excluded_study": "10.1016/j.fuel.2024.132389",
+   "excluded_sse_share": 0.30756204795242076,
+   "rmse_all": 19.522533040998276,
+   "rmse_excl": 16.407623851682757,
+   "r2_excl": 0.40015918864623967
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "ridge",
+   "excluded_study": "https://doi.org/10.1016/j.enconman.2023.117216",
+   "excluded_sse_share": 0.25569614464207396,
+   "rmse_all": 19.71831081704796,
+   "rmse_excl": 17.258834226889537,
+   "r2_excl": 0.3440692370300702
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "svr",
+   "excluded_study": "https://doi.org/10.1016/j.enconman.2023.117216",
+   "excluded_sse_share": 0.23141342201606685,
+   "rmse_all": 17.033137945252403,
+   "rmse_excl": 15.149827106984757,
+   "r2_excl": 0.4945823102716429
+  },
+  {
+   "target": "solid",
+   "features": "base+P",
+   "learner": "xgb",
+   "excluded_study": "10.1016/j.fuel.2024.132389",
+   "excluded_sse_share": 0.20274087322966872,
+   "rmse_all": 19.16064316210589,
+   "rmse_excl": 17.27941064335882,
+   "r2_excl": 0.3347230454358443
+  }
+ ]
 }

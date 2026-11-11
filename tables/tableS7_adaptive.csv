@@ -1,0 +1,7 @@
+target,method,coverage_rows,coverage_studies,mean_width,median_width,winkler,coverage_by_process,max_abs_process_dev
+Bio-oil,RC,0.612,0.57,22.832,22.756,107.655,"{'HTL': 0.609, 'HTL_solvothermal': 0.52}",0.38
+Bio-oil,SC,0.93,0.909,59.079,59.499,77.294,"{'HTL': 0.932, 'HTL_solvothermal': 0.881}",0.032
+Bio-oil,SC-N,0.915,0.914,63.008,55.638,84.231,"{'HTL': 0.929, 'HTL_solvothermal': 0.897}",0.029
+Solid,RC,0.615,0.614,20.564,20.554,93.706,"{'HTC': 0.527, 'HTL': 0.644, 'HTL_solvothermal': 0.577}",0.373
+Solid,SC,0.901,0.908,46.672,45.651,65.196,"{'HTC': 0.827, 'HTL': 0.916, 'HTL_solvothermal': 0.905}",0.073
+Solid,SC-N,0.921,0.92,57.302,53.283,69.497,"{'HTC': 0.868, 'HTL': 0.925, 'HTL_solvothermal': 0.92}",0.032
