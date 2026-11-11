@@ -138,6 +138,39 @@ def run(mode="full"):
         pt = pt[["target", "features", "learner", "reference", "n", "median_diff", "ci_low", "ci_high", "rank_biserial", "p", "p_holm"]].round(4)
         write(pt, D, "tableS_paired_learner_tests", "Table S. Per-study RMSE of each learner vs the best learner under grouped CV (Wilcoxon, Holm).")
 
+    # ---- supplementary tables
+    from src.utils import REPO
+    lit = pd.read_csv(os.path.join(REPO, "supplementary", "literature", "literature_matrix_corpus.csv"))
+    write(lit[["year", "venue", "first_author", "doi", "problem", "methods", "validation", "reported_R2", "uncertainty", "physics_constraints"]].rename(
+        columns={"year": "Year", "venue": "Journal", "first_author": "First author", "doi": "DOI", "problem": "Target(s)", "methods": "Methods",
+                 "validation": "Validation (abstract)", "reported_R2": "R² in abstract", "uncertainty": "UQ", "physics_constraints": "Physics"}),
+          D, "tableS1_literature", "Table S1. PubMed-indexed ML studies of hydrothermal conversion (abstract-level screening; n.s. = not stated in abstract).")
+    sens_p = os.path.join(D["results"], "e7_sensitivity.csv")
+    if os.path.exists(sens_p):
+        se = pd.read_csv(sens_p)
+        o = se[se.analysis == "outer_folds_alpha"].groupby(["target", "features", "outer_folds", "alpha", "calibration"], as_index=False)[["coverage_studies", "width", "rmse"]].mean()
+        o["target"] = o.target.map(TL)
+        write(o.round(3).rename(columns={"coverage_studies": "Coverage (studies)", "width": "Width (wt%)", "rmse": "RMSE"}), D, "tableS3_sensitivity_alpha_folds",
+              "Table S3. Sensitivity of coverage and accuracy to α and to the number of outer folds (seed 11).")
+        k = se[se.analysis == "tau2_estimator"].groupby(["target", "features", "estimator", "k"], as_index=False)[["rmse", "coverage", "width"]].median()
+        k["target"] = k.target.map(TL)
+        write(k.round(3).rename(columns={"rmse": "Median study RMSE", "coverage": "Median study coverage", "width": "Width (wt%)"}), D, "tableS4_sensitivity_tau2",
+              "Table S4. k-shot results with method-of-moments vs REML estimates of the between-study variance.")
+        tu = se[se.analysis == "tuning"][["target", "features", "config", "rmse", "r2", "median_study_rmse"]].copy(); tu["target"] = tu.target.map(TL)
+        write(tu.round(3), D, "tableS5_sensitivity_tuning", "Table S5. Study-grouped CV of the STRATA base learner with tuned vs library-default hyper-parameters.")
+    ea = os.path.join(D["results"], "e8_error_analysis.csv")
+    if os.path.exists(ea):
+        e = pd.read_csv(ea); e["target"] = e.target.map(TL)
+        write(e.round(2), D, "tableS6_error_analysis", "Table S6. Out-of-study errors by subgroup (seed-averaged outer-fold predictions, base features).")
+    ad = os.path.join(D["results"], "e3b_adaptive_summary.csv")
+    if os.path.exists(ad):
+        x = pd.read_csv(ad); x["target"] = x.target.map(TL)
+        write(x.round(3), D, "tableS7_adaptive", "Table S7. Exploratory (post hoc): constant-width vs locally adaptive study-calibrated intervals (α = 0.1, base+P).")
+    wP = w[w.features == "base+P"]
+    rows = [{"Target": TL[r.target], "Learner": LEARNER_LABEL[r.learner], "Random CV RMSE": round(r.rmse_random_row_cv, 2),
+             "Grouped CV RMSE": round(r.rmse_grouped_study_cv, 2), "Grouped CV R²": round(r.r2_grouped_study_cv, 3)} for _, r in wP.iterrows()]
+    write(pd.DataFrame(rows).sort_values(["Target", "Grouped CV RMSE"]), D, "tableS2_benchmark_baseP", "Table S2. Benchmark with base + protocol (P) features.")
+
 
 if __name__ == "__main__":
     run(sys.argv[1] if len(sys.argv) > 1 else "full")

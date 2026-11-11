@@ -1,0 +1,25 @@
+target,features,estimator,k,Median study RMSE,Median study coverage,Width (wt%)
+Bio-oil,base,MoM,0.0,12.669,1.0,61.734
+Bio-oil,base,MoM,1.0,9.637,0.976,42.126
+Bio-oil,base,MoM,3.0,8.424,1.0,37.31
+Bio-oil,base,REML,0.0,12.669,1.0,61.734
+Bio-oil,base,REML,1.0,9.583,0.976,42.227
+Bio-oil,base,REML,3.0,8.414,1.0,37.335
+Bio-oil,base+P,MoM,0.0,12.463,1.0,62.353
+Bio-oil,base+P,MoM,1.0,9.457,1.0,42.33
+Bio-oil,base+P,MoM,3.0,8.166,1.0,37.058
+Bio-oil,base+P,REML,0.0,12.463,1.0,62.353
+Bio-oil,base+P,REML,1.0,9.276,1.0,42.206
+Bio-oil,base+P,REML,3.0,8.046,1.0,37.126
+Solid,base,MoM,0.0,11.234,1.0,56.978
+Solid,base,MoM,1.0,8.556,1.0,41.487
+Solid,base,MoM,3.0,6.89,1.0,34.84
+Solid,base,REML,0.0,11.234,1.0,56.978
+Solid,base,REML,1.0,8.635,1.0,41.434
+Solid,base,REML,3.0,6.924,1.0,34.951
+Solid,base+P,MoM,0.0,11.647,1.0,56.462
+Solid,base+P,MoM,1.0,8.874,1.0,41.845
+Solid,base+P,MoM,3.0,7.482,1.0,34.717
+Solid,base+P,REML,0.0,11.647,1.0,56.462
+Solid,base+P,REML,1.0,8.785,1.0,41.909
+Solid,base+P,REML,3.0,7.525,1.0,34.514

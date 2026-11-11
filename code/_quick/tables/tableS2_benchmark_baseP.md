@@ -1,0 +1,14 @@
+**Table S2. Benchmark with base + protocol (P) features.**
+
+| Target   | Learner       |   Random CV RMSE |   Grouped CV RMSE |   Grouped CV R² |
+|:---------|:--------------|-----------------:|------------------:|----------------:|
+| Bio-oil  | LightGBM      |             8.01 |             16.52 |           0.158 |
+| Bio-oil  | Random forest |             8.74 |             16.72 |           0.138 |
+| Bio-oil  | GPBoost       |            17.79 |             17.95 |           0.006 |
+| Bio-oil  | Mean          |            18.02 |             18.12 |          -0.012 |
+| Bio-oil  | Ridge         |            14    |             19.19 |          -0.136 |
+| Solid    | Random forest |             8.32 |             14.33 |           0.499 |
+| Solid    | LightGBM      |             7.19 |             14.38 |           0.495 |
+| Solid    | Ridge         |            12.81 |             18.13 |           0.197 |
+| Solid    | GPBoost       |            19.84 |             20.22 |           0.001 |
+| Solid    | Mean          |            20.24 |             20.52 |          -0.029 |

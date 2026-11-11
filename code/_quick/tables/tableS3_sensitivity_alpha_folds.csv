@@ -1,0 +1,9 @@
+target,features,outer_folds,alpha,calibration,Coverage (studies),Width (wt%),RMSE
+Bio-oil,base,5.0,0.1,RC,0.598,24.474,16.461
+Bio-oil,base,5.0,0.1,SC,0.923,62.085,16.461
+Bio-oil,base+P,5.0,0.1,RC,0.592,24.209,16.443
+Bio-oil,base+P,5.0,0.1,SC,0.923,62.011,16.443
+Solid,base,5.0,0.1,RC,0.633,22.536,13.936
+Solid,base,5.0,0.1,SC,0.935,52.995,13.936
+Solid,base+P,5.0,0.1,RC,0.626,22.473,14.424
+Solid,base+P,5.0,0.1,SC,0.933,53.943,14.424

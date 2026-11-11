@@ -1,0 +1,4 @@
+2026-11-11 02:59:49,621 e3_strata INFO STRATA base learner = xgb (grouped RMSE 15.802)
+2026-11-11 03:00:15,875 e3_strata INFO biooil__base seed 11 done
+2026-11-11 03:02:35,018 e3_strata INFO biooil__base seed 22 done
+2026-11-11 03:10:31,732 e3_strata INFO biooil__base seed 33 done

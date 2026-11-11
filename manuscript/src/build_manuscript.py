@@ -33,32 +33,32 @@ def cite(m, used):
     return "(" + "; ".join(out) + ")"
 
 
-def table_md(name, tnum):
+def table_md(name, tlabel):
     df = pd.read_csv(os.path.join(REPO, "tables", f"{name}.csv"))
     cap = open(os.path.join(REPO, "tables", f"{name}.md")).read().splitlines()[0].strip("*")
     cap = re.sub(r"^Table \w+\.\s*", "", cap)
     df = df.fillna("")
     head = "| " + " | ".join(str(c) for c in df.columns) + " |\n|" + "|".join(["---"] * len(df.columns)) + "|\n"
     body = "".join("| " + " | ".join(str(v) for v in r) + " |\n" for r in df.itertuples(index=False))
-    return f"\n**Table {tnum}.** {cap}\n\n{head}{body}\n"
+    return f"\n**{tlabel}.** {cap}\n\n{head}{body}\n"
 
 
-def render(values):
+def render(values, parts=PARTS, table_prefix="Table ", fig_prefix="Fig. "):
     used, text = [], ""
-    for p in PARTS:
+    for p in parts:
         text += open(os.path.join(HERE, p)).read() + "\n\n"
     tcount = [0]
 
     def tab(m):
         tcount[0] += 1
-        return table_md(m.group(1), tcount[0])
+        return table_md(m.group(1), f"{table_prefix}{tcount[0]}")
     text = re.sub(r"\{\{TABLE:([\w\-]+)\}\}", tab, text)
     fcount = [0]
 
     def fig(m):
         fcount[0] += 1
         name, cap = m.group(1), m.group(2)
-        return f"\n![**Fig. {fcount[0]}.** {cap}]({os.path.join(REPO, 'figures', name + '.png')}){{width=16cm}}\n"
+        return f"\n![**{fig_prefix}{fcount[0]}.** {cap}]({os.path.join(REPO, 'figures', name + '.png')}){{width=16cm}}\n"
     text = re.sub(r"\{\{FIG:([\w\-]+)\|(.+?)\}\}", fig, text)
 
     def tok(m):
@@ -152,20 +152,27 @@ def to_pdf(path):
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
-def main():
-    values = compute()
-    text, refs = render(values)
-    md = os.path.join(OUT, "Final_Manuscript.md")
-    open(md, "w").write(text)
-    ref = os.path.join(HERE, "reference.docx")
-    make_reference_docx(ref)
-    docx = os.path.join(OUT, "Final_Manuscript.docx")
-    subprocess.run(["pandoc", md, "-f", "markdown+tex_math_dollars+pipe_tables+fenced_divs+implicit_figures", "-o", docx,
+def build(parts, name, values, table_prefix="Table ", fig_prefix="Fig. ", pdf=True):
+    text, refs = render(values, parts, table_prefix, fig_prefix)
+    md = os.path.join(OUT, f"{name}.md"); open(md, "w").write(text)
+    ref = os.path.join(HERE, "reference.docx"); make_reference_docx(ref)
+    docx = os.path.join(OUT, f"{name}.docx")
+    subprocess.run(["pandoc", md, "-f", "markdown+tex_math_dollars+pipe_tables+fenced_divs+implicit_figures+superscript+subscript", "-o", docx,
                     f"--reference-doc={ref}", "--resource-path", REPO], check=True)
     postprocess(docx)
-    to_pdf(docx)
-    json.dump(dict(cited_keys=refs, n_refs=len(refs), values=values), open(os.path.join(OUT, "build_log.json"), "w"), indent=1, default=str)
-    print(f"built {docx}; {len(refs)} references; {len(values)} values")
+    if pdf:
+        to_pdf(docx)
+    return refs
+
+
+def main():
+    values = compute()
+    refs = build(PARTS, "Final_Manuscript", values)
+    srefs = build(["supp.md"], "Supplementary_Material", values, table_prefix="Table S", fig_prefix="Fig. S")
+    build(["cover_letter.md"], "cover_letter", values, pdf=False)
+    json.dump(dict(cited_keys=refs, supplementary_cited=srefs, n_refs=len(refs), values=values), open(os.path.join(OUT, "build_log.json"), "w"),
+              indent=1, default=str)
+    print(f"built manuscript ({len(refs)} references), supplementary, cover letter; {len(values)} values")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,5 @@
+{
+ "learner": "xgb",
+ "grouped_cv_rmse_biooil_base": 15.802385357724907,
+ "rule": "PROTOCOL \u00a76"
+}
