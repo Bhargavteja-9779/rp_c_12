@@ -348,6 +348,7 @@
   "tau2_sentence": "Estimating $\\tau^2$ by restricted maximum likelihood instead of the method of moments gave median per-study RMSE at k = 1 of 9.37 vs 10.06 wt% (bio-oil) and 9.33 vs 8.89 wt% (solids; Supplementary Table S6).",
   "adaptive_main_sentence": "An exploratory, post-hoc variant with locally adaptive widths (Supplementary Section S4) did not narrow the intervals (mean width 63.0 vs 59.1 wt% for bio-oil) and worsened the interval score, consistent with an error dominated by an unpredictable study offset.",
   "htc_cov_SC": "0.83",
+  "quick_minutes": "6",
   "biooil_e9_sc_min": "0.90",
   "biooil_e9_sc_max": "0.91",
   "biooil_e9_rc_mean": "0.86",

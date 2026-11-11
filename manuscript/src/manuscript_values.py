@@ -195,6 +195,8 @@ def compute() -> dict:
     cp = _ast.literal_eval(ad.loc[("solid", "SC"), "coverage_by_process"])
     v["htc_cov_SC"] = f2(cp.get("HTC", float("nan")))
 
+    rq = json.load(open(os.path.join(R, "experiment_logs", "repro_quick.json")))
+    v["quick_minutes"] = f"{rq['quick_mode_wall_seconds'] / 60:.0f}"
     # ---------------- E9 base learners, E10 duplicates, E11 overhead (review rounds)
     e9 = pd.read_csv(os.path.join(R, "e9_base_learners.csv"))
     for t in ["biooil", "solid"]:

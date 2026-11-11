@@ -32,8 +32,8 @@ was fitted** (see git history). `src/data/lock_split.py` refuses to regenerate i
 
 ## 4. Run
 ```bash
-python run_all.py --mode quick     # ~15 min: pipeline check; outputs in code/_quick/
-python run_all.py --mode full      # full study (~3–5 h on 4 cores); outputs in ../results ../figures ../tables
+python run_all.py --mode quick     # ~6 min on 4 cores (measured from a fresh clone): pipeline check; outputs in code/_quick/
+python run_all.py --mode full      # full study (roughly 1.5–2 h of compute on 4 cores); outputs in ../results ../figures ../tables
 python run_all.py --mode full --only analyze tables figures   # regenerate statistics/tables/figures from saved results
 python -m pytest -q tests          # unit tests (checksum, split disjointness, conformal maths, k-shot masking, Holm)
 ```

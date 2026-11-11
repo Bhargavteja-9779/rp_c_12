@@ -52,4 +52,4 @@ The unit of analysis for all inference was the source study. Learners and STRATA
 
 ## 2.8. Software and reproducibility
 
-All analyses ran on a 4-core CPU without GPU using Python 3.13, scikit-learn, LightGBM, XGBoost, CatBoost, GPBoost, statsmodels and SciPy (exact versions in `requirements.txt`). A single command (`python run_all.py --mode full`) regenerates every number, table and figure from the vendored data; a quick mode verifies the pipeline in about 15 minutes. All values reported in this article are inserted programmatically from the generated result files.
+All analyses ran on a 4-core CPU without GPU using Python 3.13, scikit-learn, LightGBM, XGBoost, CatBoost, GPBoost, statsmodels and SciPy (exact versions in `requirements.txt`). A single command (`python run_all.py --mode full`) regenerates every number, table and figure from the vendored data; a quick mode, run from a fresh clone of the repository, verified the whole pipeline in {{quick_minutes}} minutes on the same machine, and the full analysis stages reproduced every value in this article exactly. All values reported in this article are inserted programmatically from the generated result files.

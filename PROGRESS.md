@@ -15,8 +15,10 @@ Branch: claude/autonomous-research-discovery-1uqqmr. Resume by reading this file
 - [x] Phase 3-5 literature matrix / novelty / RQs  (supplementary/literature/)
 - [x] Phase 6 protocol pre-registration (code/config/PROTOCOL.md)
 - [x] Phase 9-10 implementation, run_all (quick mode verification in progress)
-- [ ] Experiments
-- [ ] Manuscript, reviews 1-10, DOCX, cover letter, risk report
+- [x] Experiments (E1–E11, locked test once at commit 639845a)
+- [x] Manuscript, reviews 1-10, DOCX/PDF, supplementary, highlights, graphical abstract, cover letter, audits, risk report
+
+## STATUS: COMPLETE (2026-11-11). Decision: READY FOR SUBMISSION conditional on author actions (see REVIEW/rejection_risk_report.md).
 
 ## Running state (update as you go)
 * 2026-11-11 03:15 UTC: E1 full DONE (48 cells). STRATA learner = xgb. E3 full running. Then: E3b full (exploratory), E5 parts robustness,temporal_family,external, E6-8 full, THEN locked test once (`e5_generalization.py full locked`), analyze, tables, figures, build manuscript, reviews.
