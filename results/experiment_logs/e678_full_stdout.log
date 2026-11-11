@@ -1,0 +1,99 @@
+2026-11-11 03:26:10,163 e6_e7_e8 INFO efficiency mean: {'fit_s': 0.005854255000031117, 'predict_ms_per_1000_rows': 0.02419469261864074, 'peak_rss_increase_MB': 0.0, 'model_size_MB': 0.00038814544677734375, 'n_train': 2261}
+2026-11-11 03:26:11,317 e6_e7_e8 INFO efficiency ridge: {'fit_s': 0.012531287999991036, 'predict_ms_per_1000_rows': 0.524621052632332, 'peak_rss_increase_MB': 0.0, 'model_size_MB': 0.0026874542236328125, 'n_train': 2261}
+2026-11-11 03:26:13,348 e6_e7_e8 INFO efficiency knn: {'fit_s': 0.013437749000331678, 'predict_ms_per_1000_rows': 16.626803847855165, 'peak_rss_increase_MB': 0.0, 'model_size_MB': 0.6235685348510742, 'n_train': 2261}
+2026-11-11 03:26:17,962 e6_e7_e8 INFO efficiency svr: {'fit_s': 0.16855635899992194, 'predict_ms_per_1000_rows': 68.93521211853904, 'peak_rss_increase_MB': 2.48828125, 'model_size_MB': 0.4379739761352539, 'n_train': 2261}
+2026-11-11 03:26:28,455 e6_e7_e8 INFO efficiency mlp: {'fit_s': 9.26474396499998, 'predict_ms_per_1000_rows': 1.185890977443619, 'peak_rss_increase_MB': 0.0, 'model_size_MB': 0.1460113525390625, 'n_train': 2261}
+2026-11-11 03:26:32,865 e6_e7_e8 INFO efficiency rf: {'fit_s': 1.5400370279999152, 'predict_ms_per_1000_rows': 35.68942308712414, 'peak_rss_increase_MB': 14.71484375, 'model_size_MB': 25.69933795928955, 'n_train': 2261}
+2026-11-11 03:26:37,041 e6_e7_e8 INFO efficiency et: {'fit_s': 0.9190985210002509, 'predict_ms_per_1000_rows': 45.193907894732604, 'peak_rss_increase_MB': 17.25390625, 'model_size_MB': 28.431836128234863, 'n_train': 2261}
+2026-11-11 03:26:40,717 e6_e7_e8 INFO efficiency hgb: {'fit_s': 1.2954009939999196, 'predict_ms_per_1000_rows': 25.175667470143246, 'peak_rss_increase_MB': 0.0, 'model_size_MB': 2.6718311309814453, 'n_train': 2261}
+2026-11-11 03:26:46,372 e6_e7_e8 INFO efficiency lgbm: {'fit_s': 0.57667114700007, 'predict_ms_per_1000_rows': 81.66340513046855, 'peak_rss_increase_MB': 9.90625, 'model_size_MB': 3.2143564224243164, 'n_train': 2261}
+2026-11-11 03:26:47,994 e6_e7_e8 INFO efficiency xgb: {'fit_s': 0.19364420700003393, 'predict_ms_per_1000_rows': 4.016874812029379, 'peak_rss_increase_MB': 5.890625, 'model_size_MB': 0.8665676116943359, 'n_train': 2261}
+2026-11-11 03:26:52,788 e6_e7_e8 INFO efficiency cat: {'fit_s': 3.4452072320000298, 'predict_ms_per_1000_rows': 1.2363226006221724, 'peak_rss_increase_MB': 39.953125, 'model_size_MB': 3.704880714416504, 'n_train': 2261}
+2026-11-11 03:26:56,709 e6_e7_e8 INFO efficiency gpboost: {'fit_s': 0.44789310000032856, 'predict_ms_per_1000_rows': 46.4364080274163, 'peak_rss_increase_MB': 17.91796875, 'model_size_MB': None, 'n_train': 2261}
+2026-11-11 03:27:29,961 e6_e7_e8 INFO sensitivity biooil base done
+2026-11-11 03:28:21,749 e6_e7_e8 INFO sensitivity biooil base+P done
+/usr/local/lib/python3.13/site-packages/statsmodels/base/model.py:589: SingularMatrixWarning: Random effects covariance is singular
+  return -self.score(params, *args) / nobs
+/usr/local/lib/python3.13/site-packages/statsmodels/regression/mixed_linear_model.py:2429: SingularMatrixWarning: The random effects covariance matrix is singular.
+  scale = self.get_scale(fe_params, cov_re_unscaled, vcomp_unscaled)
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The MLE may be on the boundary of the parameter space.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: SingularMatrixWarning: The random effects covariance matrix is singular.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The Hessian matrix at the estimated parameter values is not positive definite.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/usr/local/lib/python3.13/site-packages/statsmodels/base/model.py:589: SingularMatrixWarning: Random effects covariance is singular
+  return -self.score(params, *args) / nobs
+/usr/local/lib/python3.13/site-packages/statsmodels/regression/mixed_linear_model.py:2429: SingularMatrixWarning: The random effects covariance matrix is singular.
+  scale = self.get_scale(fe_params, cov_re_unscaled, vcomp_unscaled)
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The MLE may be on the boundary of the parameter space.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: SingularMatrixWarning: The random effects covariance matrix is singular.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The Hessian matrix at the estimated parameter values is not positive definite.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/usr/local/lib/python3.13/site-packages/statsmodels/base/model.py:589: SingularMatrixWarning: Random effects covariance is singular
+  return -self.score(params, *args) / nobs
+/usr/local/lib/python3.13/site-packages/statsmodels/regression/mixed_linear_model.py:2429: SingularMatrixWarning: The random effects covariance matrix is singular.
+  scale = self.get_scale(fe_params, cov_re_unscaled, vcomp_unscaled)
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The MLE may be on the boundary of the parameter space.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: SingularMatrixWarning: The random effects covariance matrix is singular.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The Hessian matrix at the estimated parameter values is not positive definite.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/usr/local/lib/python3.13/site-packages/statsmodels/base/model.py:589: SingularMatrixWarning: Random effects covariance is singular
+  return -self.score(params, *args) / nobs
+/usr/local/lib/python3.13/site-packages/statsmodels/regression/mixed_linear_model.py:2429: SingularMatrixWarning: The random effects covariance matrix is singular.
+  scale = self.get_scale(fe_params, cov_re_unscaled, vcomp_unscaled)
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The MLE may be on the boundary of the parameter space.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: SingularMatrixWarning: The random effects covariance matrix is singular.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The Hessian matrix at the estimated parameter values is not positive definite.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+2026-11-11 03:28:57,546 e6_e7_e8 INFO sensitivity solid base done
+/usr/local/lib/python3.13/site-packages/statsmodels/base/model.py:589: SingularMatrixWarning: Random effects covariance is singular
+  return -self.score(params, *args) / nobs
+/usr/local/lib/python3.13/site-packages/statsmodels/regression/mixed_linear_model.py:2429: SingularMatrixWarning: The random effects covariance matrix is singular.
+  scale = self.get_scale(fe_params, cov_re_unscaled, vcomp_unscaled)
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The MLE may be on the boundary of the parameter space.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: SingularMatrixWarning: The random effects covariance matrix is singular.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The Hessian matrix at the estimated parameter values is not positive definite.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/usr/local/lib/python3.13/site-packages/statsmodels/base/model.py:589: SingularMatrixWarning: Random effects covariance is singular
+  return -self.score(params, *args) / nobs
+/usr/local/lib/python3.13/site-packages/statsmodels/regression/mixed_linear_model.py:2429: SingularMatrixWarning: The random effects covariance matrix is singular.
+  scale = self.get_scale(fe_params, cov_re_unscaled, vcomp_unscaled)
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The MLE may be on the boundary of the parameter space.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: SingularMatrixWarning: The random effects covariance matrix is singular.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The Hessian matrix at the estimated parameter values is not positive definite.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/usr/local/lib/python3.13/site-packages/statsmodels/base/model.py:589: SingularMatrixWarning: Random effects covariance is singular
+  return -self.score(params, *args) / nobs
+/usr/local/lib/python3.13/site-packages/statsmodels/regression/mixed_linear_model.py:2429: SingularMatrixWarning: The random effects covariance matrix is singular.
+  scale = self.get_scale(fe_params, cov_re_unscaled, vcomp_unscaled)
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The MLE may be on the boundary of the parameter space.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: SingularMatrixWarning: The random effects covariance matrix is singular.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The Hessian matrix at the estimated parameter values is not positive definite.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/usr/local/lib/python3.13/site-packages/statsmodels/base/model.py:589: SingularMatrixWarning: Random effects covariance is singular
+  return -self.score(params, *args) / nobs
+/usr/local/lib/python3.13/site-packages/statsmodels/regression/mixed_linear_model.py:2429: SingularMatrixWarning: The random effects covariance matrix is singular.
+  scale = self.get_scale(fe_params, cov_re_unscaled, vcomp_unscaled)
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The MLE may be on the boundary of the parameter space.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: SingularMatrixWarning: The random effects covariance matrix is singular.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+/home/user/rp_c_12/code/experiments/e6_e7_e8.py:67: ConvergenceWarning: The Hessian matrix at the estimated parameter values is not positive definite.
+  m = smf.mixedlm("r ~ 1", d, groups=d["g"]).fit(reml=True, method="lbfgs")
+2026-11-11 03:29:34,881 e6_e7_e8 INFO sensitivity solid base+P done
+2026-11-11 03:29:35,458 e6_e7_e8 INFO error analysis done
+2026-11-11 03:32:50,994 e6_e7_e8 INFO meta-regression biooil: LOSO R2=-0.031 perm p=0.7143
+2026-11-11 03:36:06,388 e6_e7_e8 INFO meta-regression solid: LOSO R2=-0.047 perm p=0.9101

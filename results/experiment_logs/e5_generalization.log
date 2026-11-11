@@ -1,0 +1,9 @@
+2026-11-11 03:22:50,235 e5_generalization INFO robustness biooil base done
+2026-11-11 03:23:46,549 e5_generalization INFO robustness biooil base+P done
+2026-11-11 03:24:20,065 e5_generalization INFO robustness solid base done
+2026-11-11 03:24:56,020 e5_generalization INFO robustness solid base+P done
+2026-11-11 03:25:07,231 e5_generalization INFO temporal/family biooil base done
+2026-11-11 03:25:32,810 e5_generalization INFO temporal/family biooil base+P done
+2026-11-11 03:25:48,733 e5_generalization INFO temporal/family solid base done
+2026-11-11 03:26:05,096 e5_generalization INFO temporal/family solid base+P done
+2026-11-11 03:26:07,378 e5_generalization INFO external done
