@@ -154,15 +154,28 @@ def meta_regression(cfg, D, log, n_perm=1000):
             pr = np.empty_like(yy)
             for i in range(len(yy)):
                 msk = np.arange(len(yy)) != i
-                m = RidgeCV(alphas=np.logspace(-2, 3, 20)).fit(Zs[msk], yy[msk]); pr[i] = m.predict(Zs[i:i + 1])[0]
+                m = RidgeCV(alphas=np.logspace(-2, 5, 29)).fit(Zs[msk], yy[msk]); pr[i] = m.predict(Zs[i:i + 1])[0]
             return 1 - np.sum((yy - pr) ** 2) / np.sum((yy - yy.mean()) ** 2), pr
 
         r2_obs, pr = loso_r2(yv)
         rng = np.random.default_rng(0)
         null = [loso_r2(rng.permutation(yv))[0] for _ in range(n_perm)]
         pval = (1 + np.sum(np.array(null) >= r2_obs)) / (1 + n_perm)
-        coef = RidgeCV(alphas=np.logspace(-2, 3, 20)).fit(Zs, yv)
-        res.append(dict(target=target, n_studies=len(yv), offset_sd=float(yv.std()), loso_r2=float(r2_obs), perm_p=float(pval),
+        coef = RidgeCV(alphas=np.logspace(-2, 5, 29)).fit(Zs, yv)
+        # univariate, interpretable tests across studies (added 2026-11-11; PROTOCOL §12)
+        from scipy.stats import kruskal, mannwhitneyu, spearmanr
+        ex_cols = [c for c in Z.columns if c.startswith("P_extract_")]
+        dom = Z[ex_cols].idxmax(axis=1).str.replace("P_extract_", "")
+        grp = {k: yv[(dom == k).to_numpy()] for k in dom.unique() if (dom == k).sum() >= 3}
+        kw = kruskal(*grp.values()) if len(grp) >= 2 else None
+        daf = Z["P_basis_daf"].to_numpy() >= 0.5
+        mw = mannwhitneyu(yv[daf], yv[~daf]) if daf.sum() >= 3 and (~daf).sum() >= 3 else None
+        rv = Z["P_log10_reactor_mL"].to_numpy(); ok = np.isfinite(rv)
+        sp = spearmanr(rv[ok], yv[ok])
+        uni = dict(kruskal_extraction_solvent=dict(H=float(kw.statistic), p=float(kw.pvalue), groups={k: dict(n=int(len(v)), median_offset=float(np.median(v))) for k, v in grp.items()}) if kw else None,
+                   mannwhitney_daf_vs_dry=dict(U=float(mw.statistic), p=float(mw.pvalue), n_daf=int(daf.sum()), median_daf=float(np.median(yv[daf])), median_dry=float(np.median(yv[~daf]))) if mw else None,
+                   spearman_reactor_volume=dict(rho=float(sp.statistic), p=float(sp.pvalue), n=int(ok.sum())))
+        res.append(dict(target=target, n_studies=len(yv), univariate=uni, offset_sd=float(yv.std()), loso_r2=float(r2_obs), perm_p=float(pval),
                         n_perm=n_perm, null_r2_q95=float(np.quantile(null, 0.95)), ridge_alpha=float(coef.alpha_),
                         coefficients={c: float(v) for c, v in zip(Z.columns, coef.coef_)}))
         log.info(f"meta-regression {target}: LOSO R2={r2_obs:.3f} perm p={pval:.4f}")

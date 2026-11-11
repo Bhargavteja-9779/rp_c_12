@@ -130,15 +130,16 @@ def fig_coverage(D, S, M, alpha=0.1):
             lab = label or {"temporal": "Temporal\n(≤2018→≥2019)", "family_out": "Feedstock\nfamily-out"}[r["tag"]]
             rows.append(dict(setting=lab, target=r["target"], cal=r["calibration"], cov=r["coverage_studies"]))
     df = pd.DataFrame(rows).groupby(["setting", "target", "cal"], as_index=False)["cov"].mean()
-    settings = list(dict.fromkeys(df["setting"]))
-    fig, axs = plt.subplots(1, 2, figsize=(7.2, 2.8), sharey=True)
+    order = ["Dev. CV\n(unseen studies)", "Locked test\n(38 studies)", "Temporal\n(≤2018→≥2019)", "Feedstock\nfamily-out", "External\n4TU HTC"]
+    fig, axs = plt.subplots(1, 2, figsize=(7.2, 2.9), sharey=True, gridspec_kw={"width_ratios": [4, 5]})
     for ax, t in zip(axs, ["biooil", "solid"]):
+        settings = [o for o in order if o in set(df[df.target == t]["setting"])]
         x = np.arange(len(settings))
         for off, cal, col, mk, lab in [(-0.12, "RC", ORANGE, "o", "Row-calibrated (RC)"), (0.12, "SC", BLUE, "s", "Study-calibrated (SC)")]:
             v = [df[(df.setting == s) & (df.target == t) & (df.cal == cal)]["cov"].mean() for s in settings]
             ax.plot(x + off, v, mk, color=col, ms=5, label=lab, ls="none")
         ax.axhline(1 - alpha, color=MUTED, lw=0.8, ls="--"); ax.text(len(settings) - 0.5, 1 - alpha + 0.005, "nominal 0.90", fontsize=6, ha="right", color=MUTED)
-        ax.set_xticks(x, settings, fontsize=6.3); ax.set_title(TARGET_LABEL[t], loc="left")
+        ax.set_xticks(x, settings, fontsize=6); ax.set_title(TARGET_LABEL[t], loc="left"); ax.set_xlim(-0.5, len(settings) - 0.5)
         ax.set_ylabel("Study-weighted coverage of 90% intervals")
     axs[0].legend(loc="lower left", fontsize=6.5)
     fig.tight_layout(); save(fig, D, "fig05_coverage")
@@ -161,25 +162,22 @@ def fig_kshot(D, S):
 
 
 # ------------------------------------------------------------------ Fig 7 robustness
-def fig_robustness(D):
+def fig_robustness(D, alpha=0.1):
     r = pd.read_csv(os.path.join(D["results"], "e4_robustness.csv")); r = r[r.features == "base+P"]
-    fig, axs = plt.subplots(2, 2, figsize=(7.2, 4.4))
-    for j, t in enumerate(["biooil", "solid"]):
-        for i, exp in enumerate(["feature_noise", "training_studies"]):
-            s = r[(r.target == t) & (r.experiment == exp)]
-            ax = axs[i, j]
-            g = s[s.calibration == "SC"].groupby("level")["rmse"].mean()
-            ax.plot(g.index, g.values, "-o", color=GREY, ms=3.5, label="RMSE")
-            ax.set_ylabel("RMSE (wt%)")
-            ax2 = ax.inset_axes([0.0, -0.0, 1, 1]); ax2.set_visible(False)
-            for cal, col, mk in [("RC", ORANGE, "o"), ("SC", BLUE, "s")]:
-                c = s[s.calibration == cal].groupby("level")["coverage_studies"].mean()
-                ax.annotate("", (0, 0))  # keep single axis; coverage reported in text panel below
-            cs = s.groupby(["level", "calibration"])["coverage_studies"].mean().unstack()
-            txt = "\n".join(f"{lv:g}: RC {cs.loc[lv, 'RC']:.2f} | SC {cs.loc[lv, 'SC']:.2f}" for lv in cs.index)
-            ax.text(1.02, 0.5, "coverage\n" + txt, transform=ax.transAxes, fontsize=5.5, va="center", color=INK)
-            ax.set_xlabel("Noise level (× feature SD)" if exp == "feature_noise" else "Fraction of training studies")
-            ax.set_title(f"{TARGET_LABEL[t]} — {'feature noise' if exp == 'feature_noise' else 'fewer training studies'}", loc="left", fontsize=7.5)
+    cols = [(t, e) for t in ["biooil", "solid"] for e in ["feature_noise", "training_studies"]]
+    fig, axs = plt.subplots(2, 4, figsize=(7.2, 3.8), sharex="col")
+    for j, (t, exp) in enumerate(cols):
+        s = r[(r.target == t) & (r.experiment == exp)]
+        g = s[s.calibration == "SC"].groupby("level")["rmse"].agg(["mean", "std"])
+        axs[0, j].errorbar(g.index, g["mean"], yerr=g["std"], fmt="-o", color=GREY, ms=3.5, capsize=2, lw=1.2)
+        for cal, col, mk, lab in [("RC", ORANGE, "o", "RC"), ("SC", BLUE, "s", "SC")]:
+            c = s[s.calibration == cal].groupby("level")["coverage_studies"].mean()
+            axs[1, j].plot(c.index, c.values, "-" + mk, color=col, ms=3.5, label=lab)
+        axs[1, j].axhline(1 - alpha, color=MUTED, ls="--", lw=0.7); axs[1, j].set_ylim(0.4, 1.0)
+        axs[0, j].set_title(f"{TARGET_LABEL[t]}\n{'feature noise' if exp == 'feature_noise' else 'training studies'}", loc="left", fontsize=7)
+        axs[1, j].set_xlabel("noise (× SD)" if exp == "feature_noise" else "fraction of studies", fontsize=7)
+    axs[0, 0].set_ylabel("RMSE (wt%)"); axs[1, 0].set_ylabel("Coverage (study-weighted)")
+    axs[1, 0].legend(fontsize=6.5, loc="lower left")
     fig.tight_layout(); save(fig, D, "fig07_robustness")
 
 

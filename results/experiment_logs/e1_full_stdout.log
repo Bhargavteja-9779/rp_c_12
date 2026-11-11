@@ -39,3 +39,10 @@
 2026-11-10 22:42:45,175 e1_benchmark INFO solid  base+P knn      random RMSE=9.95 grouped RMSE=16.74 tune 1s
 2026-11-10 22:42:56,688 e1_benchmark INFO solid  base+P svr      random RMSE=9.12 grouped RMSE=16.31 tune 8s
 2026-11-10 22:48:32,802 e1_benchmark INFO solid  base+P mlp      random RMSE=8.03 grouped RMSE=20.35 tune 262s
+2026-11-11 02:50:45,545 e1_benchmark INFO solid  base+P rf       random RMSE=8.60 grouped RMSE=14.22 tune 102s
+2026-11-11 02:52:12,734 e1_benchmark INFO solid  base+P et       random RMSE=8.18 grouped RMSE=15.30 tune 69s
+2026-11-11 02:53:33,861 e1_benchmark INFO solid  base+P hgb      random RMSE=7.07 grouped RMSE=14.17 tune 54s
+2026-11-11 02:53:59,622 e1_benchmark INFO solid  base+P lgbm     random RMSE=7.03 grouped RMSE=13.65 tune 18s
+2026-11-11 02:54:30,831 e1_benchmark INFO solid  base+P xgb      random RMSE=7.06 grouped RMSE=14.08 tune 26s
+2026-11-11 02:55:58,859 e1_benchmark INFO solid  base+P cat      random RMSE=7.66 grouped RMSE=14.64 tune 81s
+2026-11-11 02:56:26,315 e1_benchmark INFO solid  base+P gpboost  random RMSE=19.14 grouped RMSE=19.85 tune 20s

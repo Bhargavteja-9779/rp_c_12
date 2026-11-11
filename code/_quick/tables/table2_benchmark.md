@@ -1,0 +1,14 @@
+**Table 2. Random-row versus study-grouped cross-validation on development studies (base features; grouped CV averaged over 3 seeds).**
+
+| Target   | Learner       |   Random CV RMSE |   Random CV R² |   Grouped CV RMSE |   Grouped CV R² |   RMSE ratio (grouped/random) |
+|:---------|:--------------|-----------------:|---------------:|------------------:|----------------:|------------------------------:|
+| Bio-oil  | Random forest |             8.84 |          0.759 |             16.17 |           0.194 |                          1.83 |
+| Bio-oil  | LightGBM      |             8.05 |          0.8   |             16.5  |           0.161 |                          2.05 |
+| Bio-oil  | Ridge         |            14.84 |          0.321 |             17.88 |           0.014 |                          1.2  |
+| Bio-oil  | GPBoost       |            17.79 |          0.024 |             17.96 |           0.005 |                          1.01 |
+| Bio-oil  | Mean          |            18.02 |         -0.001 |             18.12 |          -0.012 |                          1.01 |
+| Solid    | LightGBM      |             7.27 |          0.871 |             13.95 |           0.525 |                          1.92 |
+| Solid    | Random forest |             8.31 |          0.831 |             14.41 |           0.493 |                          1.73 |
+| Solid    | Ridge         |            13.46 |          0.558 |             17.55 |           0.248 |                          1.3  |
+| Solid    | GPBoost       |            19.84 |          0.039 |             20.2  |           0.004 |                          1.02 |
+| Solid    | Mean          |            20.24 |         -0.001 |             20.52 |          -0.029 |                          1.01 |

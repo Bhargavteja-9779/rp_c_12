@@ -1,0 +1,136 @@
+[
+ {
+  "target": "biooil",
+  "n_studies": 122,
+  "univariate": {
+   "kruskal_extraction_solvent": {
+    "H": 5.012339561411181,
+    "p": 0.28603372097042457,
+    "groups": {
+     "dcm": {
+      "n": 26,
+      "median_offset": -2.9638024388148194
+     },
+     "thf": {
+      "n": 5,
+      "median_offset": 1.4437501487638684
+     },
+     "none_named": {
+      "n": 26,
+      "median_offset": 2.332265096906138
+     },
+     "acetone": {
+      "n": 52,
+      "median_offset": -0.5328912564568391
+     },
+     "ethyl_acetate": {
+      "n": 7,
+      "median_offset": -10.101825203448474
+     }
+    }
+   },
+   "mannwhitney_daf_vs_dry": {
+    "U": 850.0,
+    "p": 0.9909229005104605,
+    "n_daf": 16,
+    "median_daf": 1.6678280951569315,
+    "median_dry": -0.6675327216361044
+   },
+   "spearman_reactor_volume": {
+    "rho": -0.15270020487010197,
+    "p": 0.09312706173776336,
+    "n": 122
+   }
+  },
+  "offset_sd": 14.935505681457473,
+  "loso_r2": -0.022370971001172357,
+  "perm_p": 0.5882352941176471,
+  "n_perm": 50,
+  "null_r2_q95": -0.01660158482509817,
+  "ridge_alpha": 100000.0,
+  "coefficients": {
+   "P_basis_daf": -0.00020620583532434696,
+   "P_basis_incl_coreactant": 0.003147116727769944,
+   "P_multi_fraction_product": 0.0008629860176732072,
+   "P_by_difference": 0.0013447870946335977,
+   "P_extract_dcm": 0.0004770585281997865,
+   "P_extract_acetone": -0.0005129851774595608,
+   "P_extract_ethyl_acetate": -0.0030242935769656375,
+   "P_extract_diethyl_ether": -0.0008191912008633775,
+   "P_extract_thf": 0.0009449544942733548,
+   "P_extract_alcohol": 0.00042384661068477615,
+   "P_extract_hydrocarbon": -0.0005579544932266242,
+   "P_extract_chlorinated_other": 0.0001882995929851341,
+   "P_extract_none_named": 0.0017175664275231948,
+   "P_separation_not_stated": -0.0002897577652266229,
+   "P_log10_reactor_mL": -0.0013483231774382186
+  }
+ },
+ {
+  "target": "solid",
+  "n_studies": 120,
+  "univariate": {
+   "kruskal_extraction_solvent": {
+    "H": 0.17818926208752828,
+    "p": 0.996259120912709,
+    "groups": {
+     "none_named": {
+      "n": 36,
+      "median_offset": -1.0881928486876817
+     },
+     "dcm": {
+      "n": 24,
+      "median_offset": -0.6094629800170179
+     },
+     "thf": {
+      "n": 5,
+      "median_offset": -1.0580021864404154
+     },
+     "acetone": {
+      "n": 45,
+      "median_offset": -1.4332169243978492
+     },
+     "ethyl_acetate": {
+      "n": 7,
+      "median_offset": -1.1805899188676459
+     }
+    }
+   },
+   "mannwhitney_daf_vs_dry": {
+    "U": 706.0,
+    "p": 0.5203857626060422,
+    "n_daf": 15,
+    "median_daf": -1.1172932996459313,
+    "median_dry": -1.1805899188676459
+   },
+   "spearman_reactor_volume": {
+    "rho": 0.19989092603453645,
+    "p": 0.028602858710402294,
+    "n": 120
+   }
+  },
+  "offset_sd": 9.74974956827367,
+  "loso_r2": -0.01694008075861464,
+  "perm_p": 0.09803921568627451,
+  "n_perm": 50,
+  "null_r2_q95": -0.016925910394189024,
+  "ridge_alpha": 100000.0,
+  "coefficients": {
+   "P_basis_daf": -0.0005345357160592076,
+   "P_basis_incl_coreactant": -0.0018620799880390744,
+   "P_multi_fraction_product": 0.0007432886776865363,
+   "P_by_difference": 0.0007649004753723737,
+   "P_extract_dcm": -0.0001389520655182634,
+   "P_extract_acetone": 0.0006128025756454128,
+   "P_extract_ethyl_acetate": -0.0011449050565169139,
+   "P_extract_diethyl_ether": 0.0006426463217183005,
+   "P_extract_thf": 9.979781658000115e-05,
+   "P_extract_alcohol": 0.00022358066927930756,
+   "P_extract_hydrocarbon": 0.00018904658230404456,
+   "P_extract_chlorinated_other": -1.498322389742474e-19,
+   "P_extract_none_named": 2.9807609688879455e-05,
+   "P_separation_not_stated": 0.00016748275655158136,
+   "P_log10_reactor_mL": 0.001951315243165991
+  }
+ }
+]

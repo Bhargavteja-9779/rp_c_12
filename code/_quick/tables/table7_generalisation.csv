@@ -1,0 +1,11 @@
+Target,Features,Scheme,RMSE,R²,Median study RMSE
+Bio-oil,base,temporal,21.63,-0.737,15.19
+Bio-oil,base+P,temporal,21.32,-0.688,14.98
+Solid,base,temporal,17.32,0.199,10.73
+Solid,base+P,temporal,16.69,0.256,10.53
+Bio-oil,base,family_out (mean over families),18.22,-0.414,12.59
+Bio-oil,base+P,family_out (mean over families),18.1,-0.565,12.83
+Solid,base,family_out (mean over families),16.34,-0.166,10.43
+Solid,base+P,family_out (mean over families),16.63,-0.36,10.74
+Solid,base,external_4TU_all_dev_processes,13.78,0.259,9.92
+Solid,base,external_4TU_HTC_dev_only,20.39,-0.621,17.22
