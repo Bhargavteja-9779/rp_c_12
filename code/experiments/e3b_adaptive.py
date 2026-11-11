@@ -28,6 +28,7 @@ EPS = 0.5
 
 
 def difficulty_model(seed=0):
+    from threadpoolctl import threadpool_limits  # noqa: F401  (limits set in run())
     return HistGradientBoostingRegressor(max_depth=3, max_iter=200, learning_rate=0.05, min_samples_leaf=40, random_state=seed)
 
 
@@ -87,4 +88,6 @@ def run(mode="full"):
 
 
 if __name__ == "__main__":
-    run(sys.argv[1] if len(sys.argv) > 1 else "full")
+    from threadpoolctl import threadpool_limits
+    with threadpool_limits(limits=2):
+        run(sys.argv[1] if len(sys.argv) > 1 else "full")

@@ -19,6 +19,7 @@ Branch: claude/autonomous-research-discovery-1uqqmr. Resume by reading this file
 - [ ] Manuscript, reviews 1-10, DOCX, cover letter, risk report
 
 ## Running state (update as you go)
+* 2026-11-11 03:15 UTC: E1 full DONE (48 cells). STRATA learner = xgb. E3 full running. Then: E3b full (exploratory), E5 parts robustness,temporal_family,external, E6-8 full, THEN locked test once (`e5_generalization.py full locked`), analyze, tables, figures, build manuscript, reviews.
 * Full E1 launched 22:00 UTC 2026-11-10: `cd code && python3 experiments/e1_benchmark.py full` (cells cached in results/experiment_logs/e1_cells; rerun resumes).
 * Next full stages: e3_strata.py full -> e5_generalization.py full (locked test LAST, after all decisions) -> e6_e7_e8.py full -> analyze -> tables -> figures.
 * Manuscript sources: manuscript/src/*.md (tokens {{...}} filled by builder from results); references built by manuscript/src/build_refs.py ONLY from verified metadata.
