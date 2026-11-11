@@ -10,7 +10,7 @@ PubMed was queried on 2026-11-10 for machine-learning studies of hydrothermal li
 
 # S2. Pre-registered protocol and deviations
 
-The analysis protocol (`code/config/PROTOCOL.md`) was committed to version control before any model was fitted, together with the locked list of 38 test studies. Deviations, each logged with date and reason: (i) the tabular foundation model could not be run because its weights require a personal licence acceptance; (ii) clarification that every learner was tuned separately for each feature set; (iii) the ridge-penalty grid of the meta-regression was widened after its selected value hit the registered upper bound, and three univariate study-level tests were added as secondary analyses; (iv) an exploratory, post-hoc locally adaptive variant of the study-calibrated intervals (SC-N, Section S4) was added after pipeline verification showed that constant-width study-calibrated intervals are wide. GPBoost was run as registered; its study random intercept absorbed most of the variance because feedstock descriptors are nearly constant within a study, so its out-of-study predictions reverted towards a nearly flat fixed-effect function.
+The analysis protocol (`code/config/PROTOCOL.md`) was committed to version control before any model was fitted, together with the locked list of 38 test studies. Deviations, each logged with date and reason: (i) the tabular foundation model could not be run because its weights require a personal licence acceptance; (ii) clarification that every learner was tuned separately for each feature set; (iii) the ridge-penalty grid of the meta-regression was widened after its selected value hit the registered upper bound, and three univariate study-level tests were added as secondary analyses; (iv) post-hoc review analyses E9 (base learners), E10 (cross-study duplicate audit) and E11 (overhead), and a post-hoc sensitivity analysis of the locked test excluding the single study with the largest squared-error share; (v) an exploratory, post-hoc locally adaptive variant of the study-calibrated intervals (SC-N, Section S4) was added after pipeline verification showed that constant-width study-calibrated intervals are wide. GPBoost was run as registered; its study random intercept absorbed most of the variance because feedstock descriptors are nearly constant within a study, so its out-of-study predictions reverted towards a nearly flat fixed-effect function.
 
 # S3. Additional benchmark and sensitivity results
 
@@ -36,6 +36,10 @@ Motivation: constant-width study-calibrated intervals are wide. Hypothesis: out-
 
 {{TABLE:tableS6_error_analysis}}
 
-# S6. Reproducibility
+# S6. STRATA with different base learners (E9)
+
+{{TABLE:tableS10_base_learners}}
+
+# S7. Reproducibility
 
 `python run_all.py --mode full` regenerates every result file, table and figure; `python manuscript/src/build_manuscript.py` regenerates this document and the manuscript from those files. Environment details (library versions, CPU) are written to `results/experiment_logs/environment.json` at run time.

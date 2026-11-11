@@ -6,7 +6,7 @@ import json, os, re, urllib.request
 LIT = os.path.join(os.path.dirname(__file__), "..", "..", "supplementary", "literature")
 V = json.load(open(os.path.join(LIT, "references_verified.json")))
 N = json.load(open(os.path.join(LIT, "nondoi_verification.json")))
-JOURNAL_ABBR = {"Bioresource Technology": "Bioresour. Technol.", "Fuel": "Fuel", "Energy": "Energy", "BioEnergy Research": "BioEnergy Res.",
+JOURNAL_ABBR = {"Journal of Survey Statistics and Methodology": "J. Surv. Stat. Methodol.", "Bioresource Technology": "Bioresour. Technol.", "Fuel": "Fuel", "Energy": "Energy", "BioEnergy Research": "BioEnergy Res.",
     "GCB Bioenergy": "GCB Bioenergy", "Patterns": "Patterns", "Renewable and Sustainable Energy Reviews": "Renew. Sustain. Energy Rev.",
     "Biofuels, Bioproducts and Biorefining": "Biofuels Bioprod. Biorefin.", "Biofuels": "Biofuels", "Energy & Fuels": "Energy Fuels", "Energy &amp; Fuels": "Energy Fuels",
     "Journal of the American Statistical Association": "J. Am. Stat. Assoc.", "The Annals of Statistics": "Ann. Stat.", "Controlled Clinical Trials": "Control. Clin. Trials",
@@ -66,7 +66,8 @@ for k, v in V.items():
     refs[k] = dict(text=text, cite=cite_key(a, y), doi=v["doi"])
 # arXiv-verified NeurIPS papers
 for k, venue, y in [("Romano2019", "Adv. Neural Inf. Process. Syst. 32", 2019), ("Tibshirani2019", "Adv. Neural Inf. Process. Syst. 32", 2019),
-                    ("Lundberg2017", "Adv. Neural Inf. Process. Syst. 30", 2017), ("Prokhorenkova2018", "Adv. Neural Inf. Process. Syst. 31", 2018)]:
+                    ("Lundberg2017", "Adv. Neural Inf. Process. Syst. 30", 2017), ("Prokhorenkova2018", "Adv. Neural Inf. Process. Syst. 31", 2018),
+                    ("Fisch2021", "Proc. 38th Int. Conf. Mach. Learn., PMLR 139", 2021)]:
     n = N[k]; au = [f"{x.split()[-1]}, {' '.join(x.split()[:-1])}" for x in n["authors"]]
     refs[k] = dict(text=f"{name_list(au)}, {y}. {n['title']}, in: {venue}. arXiv:{n['arxiv']}", cite=cite_key(au, y), doi=None)
 for k in ["Pedregosa2011", "Demsar2006", "Sigrist2022", "Ke2017"]:

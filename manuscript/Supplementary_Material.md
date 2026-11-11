@@ -60,7 +60,7 @@ PubMed was queried on 2026-11-10 for machine-learning studies of hydrothermal li
 
 # S2. Pre-registered protocol and deviations
 
-The analysis protocol (`code/config/PROTOCOL.md`) was committed to version control before any model was fitted, together with the locked list of 38 test studies. Deviations, each logged with date and reason: (i) the tabular foundation model could not be run because its weights require a personal licence acceptance; (ii) clarification that every learner was tuned separately for each feature set; (iii) the ridge-penalty grid of the meta-regression was widened after its selected value hit the registered upper bound, and three univariate study-level tests were added as secondary analyses; (iv) an exploratory, post-hoc locally adaptive variant of the study-calibrated intervals (SC-N, Section S4) was added after pipeline verification showed that constant-width study-calibrated intervals are wide. GPBoost was run as registered; its study random intercept absorbed most of the variance because feedstock descriptors are nearly constant within a study, so its out-of-study predictions reverted towards a nearly flat fixed-effect function.
+The analysis protocol (`code/config/PROTOCOL.md`) was committed to version control before any model was fitted, together with the locked list of 38 test studies. Deviations, each logged with date and reason: (i) the tabular foundation model could not be run because its weights require a personal licence acceptance; (ii) clarification that every learner was tuned separately for each feature set; (iii) the ridge-penalty grid of the meta-regression was widened after its selected value hit the registered upper bound, and three univariate study-level tests were added as secondary analyses; (iv) post-hoc review analyses E9 (base learners), E10 (cross-study duplicate audit) and E11 (overhead), and a post-hoc sensitivity analysis of the locked test excluding the single study with the largest squared-error share; (v) an exploratory, post-hoc locally adaptive variant of the study-calibrated intervals (SC-N, Section S4) was added after pipeline verification showed that constant-width study-calibrated intervals are wide. GPBoost was run as registered; its study random intercept absorbed most of the variance because feedstock descriptors are nearly constant within a study, so its out-of-study predictions reverted towards a nearly flat fixed-effect function.
 
 # S3. Additional benchmark and sensitivity results
 
@@ -430,7 +430,31 @@ Motivation: constant-width study-calibrated intervals are wide. Hypothesis: out-
 
 
 
-# S6. Reproducibility
+# S6. STRATA with different base learners (E9)
+
+
+**Table S10.** STRATA with different base learners (development study-folds, seed 11, base + P features, α = 0.1). The mean predictor is the 'no-ML' reference.
+
+| Target | Base learner | Coverage RC | Coverage SC | Width RC (wt%) | Width SC (wt%) | Pooled RMSE | Median study RMSE k=0 | Median study RMSE k=3 (EB) |
+|---|---|---|---|---|---|---|---|---|
+| Bio-oil | Extra trees | 0.575 | 0.903 | 25.1 | 54.062 | 16.264 | 13.175 | 8.216 |
+| Bio-oil | k-NN | 0.647 | 0.91 | 30.43 | 58.999 | 16.935 | 13.392 | 8.831 |
+| Bio-oil | LightGBM | 0.553 | 0.904 | 22.542 | 53.69 | 15.869 | 12.512 | 8.415 |
+| Bio-oil | Mean | 0.86 | 0.901 | 54.59 | 63.046 | 18.078 | 13.355 | 9.15 |
+| Bio-oil | Random forest | 0.588 | 0.904 | 24.544 | 53.502 | 16.09 | 12.286 | 8.183 |
+| Bio-oil | Ridge | 0.8 | 0.899 | 43.064 | 58.986 | 17.523 | 14.159 | 8.727 |
+| Bio-oil | XGBoost | 0.559 | 0.904 | 22.495 | 58.394 | 16.181 | 12.244 | 8.4 |
+| Solid | Extra trees | 0.672 | 0.899 | 25.849 | 49.029 | 15.237 | 11.016 | 8.545 |
+| Solid | k-NN | 0.727 | 0.909 | 33.243 | 50.757 | 16.438 | 13.815 | 10.325 |
+| Solid | LightGBM | 0.605 | 0.913 | 20.15 | 45.962 | 13.837 | 10.548 | 7.849 |
+| Solid | Mean | 0.935 | 0.904 | 63.637 | 59.37 | 20.599 | 16.982 | 9.889 |
+| Solid | Random forest | 0.7 | 0.919 | 26.475 | 47.45 | 14.158 | 10.865 | 7.856 |
+| Solid | Ridge | 0.846 | 0.893 | 43.308 | 50.622 | 16.973 | 13.035 | 9.19 |
+| Solid | XGBoost | 0.602 | 0.913 | 20.768 | 46.847 | 13.818 | 10.913 | 7.876 |
+
+
+
+# S7. Reproducibility
 
 `python run_all.py --mode full` regenerates every result file, table and figure; `python manuscript/src/build_manuscript.py` regenerates this document and the manuscript from those files. Environment details (library versions, CPU) are written to `results/experiment_logs/environment.json` at run time.
 

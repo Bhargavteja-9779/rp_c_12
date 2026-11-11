@@ -1,0 +1,14 @@
+2026-11-11 07:45:08,055 e9_base_learners INFO biooil mean done
+2026-11-11 07:45:11,732 e9_base_learners INFO biooil ridge done
+2026-11-11 07:45:14,887 e9_base_learners INFO biooil knn done
+2026-11-11 07:46:15,491 e9_base_learners INFO biooil rf done
+2026-11-11 07:46:58,645 e9_base_learners INFO biooil et done
+2026-11-11 07:48:00,664 e9_base_learners INFO biooil lgbm done
+2026-11-11 07:48:26,963 e9_base_learners INFO biooil xgb done
+2026-11-11 07:48:29,707 e9_base_learners INFO solid mean done
+2026-11-11 07:48:32,758 e9_base_learners INFO solid ridge done
+2026-11-11 07:48:36,034 e9_base_learners INFO solid knn done
+2026-11-11 07:50:31,305 e9_base_learners INFO solid rf done
+2026-11-11 07:51:12,688 e9_base_learners INFO solid et done
+2026-11-11 07:51:38,502 e9_base_learners INFO solid lgbm done
+2026-11-11 07:51:54,453 e9_base_learners INFO solid xgb done

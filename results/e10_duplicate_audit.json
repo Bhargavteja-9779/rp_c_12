@@ -1,0 +1,177 @@
+{
+ "biooil": {
+  "n_rows": 2261,
+  "n_cross_study_duplicate_rows": 166,
+  "n_keys": 61,
+  "studies_involved": [
+   "10.1016/S0360-5442(02)00178-0",
+   "10.1016/j.biombioe.2022.106587",
+   "10.1016/j.biortech.2023.129532",
+   "10.1016/j.enconman.2024.118093",
+   "10.1016/j.fuel.2013.07.096",
+   "10.1016/j.rser.2016.09.120",
+   "https://doi.org/10.1007/s13399-019-00376-7",
+   "https://doi.org/10.1016/j.biombioe.2020.105485",
+   "https://doi.org/10.1016/j.energy.2004.03.096",
+   "https://doi.org/10.1016/j.fuel.2025.135062",
+   "https://doi.org/10.1016/j.scitotenv.2018.02.194",
+   "https://doi.org/10.1016/j.supflu.2012.08.016",
+   "https://doi.org/10.1021/acs.energyfuels.8b04381",
+   "https://doi.org/10.1627/jpi1958.28.239",
+   "https://doi.org/10.1627/jpi1958.29.262",
+   "https://doi.org/10.1627/jpi1958.36.73"
+  ],
+  "example_pairs": [
+   [
+    "10.1016/j.biortech.2023.129532",
+    "10.1016/j.enconman.2024.118093"
+   ],
+   [
+    "10.1016/j.biortech.2023.129532",
+    "10.1016/j.enconman.2024.118093"
+   ],
+   [
+    "10.1016/j.biortech.2023.129532",
+    "10.1016/j.enconman.2024.118093"
+   ],
+   [
+    "10.1016/j.biortech.2023.129532",
+    "10.1016/j.enconman.2024.118093"
+   ],
+   [
+    "10.1016/j.biombioe.2022.106587",
+    "https://doi.org/10.1016/j.scitotenv.2018.02.194"
+   ],
+   [
+    "10.1016/j.biombioe.2022.106587",
+    "https://doi.org/10.1016/j.scitotenv.2018.02.194"
+   ],
+   [
+    "10.1016/j.biombioe.2022.106587",
+    "https://doi.org/10.1016/j.scitotenv.2018.02.194"
+   ],
+   [
+    "https://doi.org/10.1016/j.fuel.2025.135062",
+    "https://doi.org/10.1016/j.supflu.2012.08.016"
+   ],
+   [
+    "https://doi.org/10.1627/jpi1958.28.239",
+    "https://doi.org/10.1627/jpi1958.29.262",
+    "https://doi.org/10.1627/jpi1958.36.73"
+   ],
+   [
+    "10.1016/j.fuel.2013.07.096",
+    "https://doi.org/10.1016/j.fuel.2025.135062"
+   ]
+  ],
+  "without_duplicates": {
+   "n": 2095,
+   "n_studies": 119,
+   "rmse": 16.599097265303985,
+   "mae": 12.256938973547786,
+   "r2": 0.17717842103502934,
+   "median_study_rmse": 14.025447682512022,
+   "mean_study_rmse": 14.916302569641354,
+   "share_between": 0.651541146789706
+  }
+ },
+ "solid": {
+  "n_rows": 2156,
+  "n_cross_study_duplicate_rows": 143,
+  "n_keys": 58,
+  "studies_involved": [
+   "10.1016/S0360-5442(02)00178-0",
+   "10.1016/j.biombioe.2022.106587",
+   "10.1016/j.biombioe.2025.108210",
+   "10.1016/j.biombioe.2025.108339",
+   "10.1016/j.enconman.2024.118093",
+   "10.1016/j.rser.2016.09.120",
+   "https://doi.org/10.1007/s13399-019-00376-7",
+   "https://doi.org/10.1016/j.biombioe.2020.105485",
+   "https://doi.org/10.1016/j.energy.2004.03.096",
+   "https://doi.org/10.1016/j.renene.2023.118956",
+   "https://doi.org/10.1016/j.scitotenv.2018.02.194",
+   "https://doi.org/10.1021/acs.energyfuels.8b04381",
+   "https://ir.lib.uwo.ca/etd/9333"
+  ],
+  "example_pairs": [
+   [
+    "10.1016/j.biombioe.2022.106587",
+    "https://doi.org/10.1016/j.scitotenv.2018.02.194"
+   ],
+   [
+    "https://doi.org/10.1007/s13399-019-00376-7",
+    "https://doi.org/10.1021/acs.energyfuels.8b04381"
+   ],
+   [
+    "https://doi.org/10.1007/s13399-019-00376-7",
+    "https://doi.org/10.1021/acs.energyfuels.8b04381"
+   ],
+   [
+    "https://doi.org/10.1007/s13399-019-00376-7",
+    "https://doi.org/10.1021/acs.energyfuels.8b04381"
+   ],
+   [
+    "https://doi.org/10.1007/s13399-019-00376-7",
+    "https://doi.org/10.1021/acs.energyfuels.8b04381"
+   ],
+   [
+    "https://doi.org/10.1007/s13399-019-00376-7",
+    "https://doi.org/10.1021/acs.energyfuels.8b04381"
+   ],
+   [
+    "https://doi.org/10.1007/s13399-019-00376-7",
+    "https://doi.org/10.1021/acs.energyfuels.8b04381"
+   ],
+   [
+    "https://doi.org/10.1007/s13399-019-00376-7",
+    "https://doi.org/10.1021/acs.energyfuels.8b04381"
+   ],
+   [
+    "https://doi.org/10.1007/s13399-019-00376-7",
+    "https://doi.org/10.1021/acs.energyfuels.8b04381"
+   ],
+   [
+    "https://doi.org/10.1007/s13399-019-00376-7",
+    "https://doi.org/10.1021/acs.energyfuels.8b04381"
+   ]
+  ],
+  "without_duplicates": {
+   "n": 2013,
+   "n_studies": 117,
+   "rmse": 14.592825450450432,
+   "mae": 10.851173655491603,
+   "r2": 0.4990834122755461,
+   "median_study_rmse": 10.098612301905387,
+   "mean_study_rmse": 11.95382599139099,
+   "share_between": 0.5221677111859083
+  }
+ },
+ "locked_vs_dev": {
+  "biooil": {
+   "locked_rows": 556,
+   "locked_rows_matching_dev": 10,
+   "locked_studies_involved": [
+    "10.1016/j.biombioe.2025.108151",
+    "https://doi.org/10.1016/0961-9534(94)00059-3"
+   ]
+  },
+  "solid": {
+   "locked_rows": 457,
+   "locked_rows_matching_dev": 18,
+   "locked_studies_involved": [
+    "https://doi.org/10.1016/j.enconman.2015.08.031"
+   ]
+  }
+ },
+ "reference_with_duplicates_seed11": {
+  "biooil": {
+   "rmse": 15.84764045157876,
+   "median_study_rmse": 12.72932857345856
+  },
+  "solid": {
+   "rmse": 14.076339833891987,
+   "median_study_rmse": 10.835319908676682
+  }
+ }
+}

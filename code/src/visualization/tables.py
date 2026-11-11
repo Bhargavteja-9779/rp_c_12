@@ -171,6 +171,19 @@ def run(mode="full"):
              "Grouped CV RMSE": round(r.rmse_grouped_study_cv, 2), "Grouped CV R²": round(r.r2_grouped_study_cv, 3)} for _, r in wP.iterrows()]
     write(pd.DataFrame(rows).sort_values(["Target", "Grouped CV RMSE"]), D, "tableS2_benchmark_baseP", "Table S2. Benchmark with base + protocol (P) features.")
 
+    e9p = os.path.join(D["results"], "e9_base_learners.csv")
+    if os.path.exists(e9p):
+        e9 = pd.read_csv(e9p); k9 = pd.read_csv(os.path.join(D["results"], "e9_base_learners_kshot.csv"))
+        piv = e9.pivot_table(index=["target", "learner"], columns="calibration", values=["coverage_studies", "width"]).reset_index()
+        piv.columns = ["Target", "Base learner", "Coverage RC", "Coverage SC", "Width RC (wt%)", "Width SC (wt%)"]
+        rm = e9[e9.calibration == "SC"].set_index(["target", "learner"])[["rmse", "median_study_rmse"]]
+        k3 = k9[k9.k == 3].set_index(["target", "learner"])["median_study_rmse"]
+        piv["Pooled RMSE"] = [rm.loc[(a, b), "rmse"] for a, b in zip(piv["Target"], piv["Base learner"])]
+        piv["Median study RMSE k=0"] = [rm.loc[(a, b), "median_study_rmse"] for a, b in zip(piv["Target"], piv["Base learner"])]
+        piv["Median study RMSE k=3 (EB)"] = [k3.loc[(a, b)] for a, b in zip(piv["Target"], piv["Base learner"])]
+        piv["Target"] = piv["Target"].map(TL); piv["Base learner"] = piv["Base learner"].map(LEARNER_LABEL)
+        write(piv.round(3), D, "tableS10_base_learners", "Table S10. STRATA with different base learners (development study-folds, seed 11, base + P features, α = 0.1). The mean predictor is the 'no-ML' reference.")
+
 
 if __name__ == "__main__":
     run(sys.argv[1] if len(sys.argv) > 1 else "full")

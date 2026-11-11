@@ -846,5 +846,22 @@
   "issue": "1",
   "pages": "1-26",
   "type": "journal-article"
+ },
+ "Bersson2024": {
+  "key": "Bersson2024",
+  "ok": true,
+  "score": 0.977,
+  "doi": "10.1093/jssam/smae010",
+  "title": "Optimal Conformal Prediction for\u00a0Small\u00a0Areas",
+  "authors": [
+   "Bersson, Elizabeth",
+   "Hoff, Peter D"
+  ],
+  "year": 2024,
+  "venue": "Journal of Survey Statistics and Methodology",
+  "volume": "12",
+  "issue": "5",
+  "pages": "1464-1488",
+  "type": "journal-article"
  }
 }

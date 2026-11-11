@@ -179,6 +179,11 @@
   "cite": "Efron, 1979",
   "doi": "10.1214/aos/1176344552"
  },
+ "Bersson2024": {
+  "text": "Bersson, E., Hoff, P.D., 2024. Optimal Conformal Prediction for Small Areas. J. Surv. Stat. Methodol. 12(5), 1464-1488. https://doi.org/10.1093/jssam/smae010",
+  "cite": "Bersson and Hoff, 2024",
+  "doi": "10.1093/jssam/smae010"
+ },
  "Romano2019": {
   "text": "Romano, Y., Patterson, E., Candès, E.J., 2019. Conformalized Quantile Regression, in: Adv. Neural Inf. Process. Syst. 32. arXiv:1905.03222",
   "cite": "Romano et al., 2019",
@@ -197,6 +202,11 @@
  "Prokhorenkova2018": {
   "text": "Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A.V., Gulin, A., 2018. CatBoost: unbiased boosting with categorical features, in: Adv. Neural Inf. Process. Syst. 31. arXiv:1706.09516",
   "cite": "Prokhorenkova et al., 2018",
+  "doi": null
+ },
+ "Fisch2021": {
+  "text": "Fisch, A., Schuster, T., Jaakkola, T., Barzilay, R., 2021. Few-shot Conformal Prediction with Auxiliary Tasks, in: Proc. 38th Int. Conf. Mach. Learn., PMLR 139. arXiv:2102.08898",
+  "cite": "Fisch et al., 2021",
   "doi": null
  },
  "Pedregosa2011": {

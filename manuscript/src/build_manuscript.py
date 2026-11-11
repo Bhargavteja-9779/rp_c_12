@@ -75,6 +75,15 @@ def render(values, parts=PARTS, table_prefix="Table ", fig_prefix="Fig. "):
         return str(values[k])
     text = re.sub(r"\{\{([\w\.\-]+)\}\}", tok, text)
     text = re.sub(r"\[(@[\w]+(?:\s*;\s*@[\w]+)*)\]", lambda m: cite(m, used), text)
+
+    def narrative(m):  # @Key outside brackets -> "Author et al. (2021)"
+        k = m.group(1)
+        if k not in REFS:
+            raise KeyError(f"unverified citation key: {k}")
+        used.append(k) if k not in used else None
+        a, _, y = REFS[k]["cite"].rpartition(", ")
+        return f"{a} ({y})"
+    text = re.sub(r"(?<![\w\[])@([A-Z][\w]+\d{4}\w*)", narrative, text)
     if "{{" in text or "[@" in text:
         raise ValueError("unresolved placeholders remain")
     refs = sorted(set(used), key=lambda k: REFS[k]["text"].lower())

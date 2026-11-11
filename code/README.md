@@ -39,7 +39,10 @@ python -m pytest -q tests          # unit tests (checksum, split disjointness, c
 ```
 Stages: `e1` benchmark (12 learners × 2 targets × 2 feature sets; random vs study-grouped CV) → `e3` STRATA nested
 evaluation (heterogeneity, protocol ablation, RC vs SC conformal, k-shot) → `e5` robustness, temporal, family-out,
-external, locked test → `e678` efficiency, sensitivity, error analysis, meta-regression → `analyze` → `tables` → `figures`.
+external, locked test → `e678` efficiency, sensitivity, error analysis, meta-regression → post-hoc/review analyses `e3b`
+(adaptive intervals), `e9` (base learners), `e10` (cross-study duplicate audit), `e11` (STRATA overhead) → `analyze` → `tables` → `figures`.
+The manuscript, supplementary material and cover letter are rebuilt from these files with
+`python ../manuscript/src/build_manuscript.py` (requires pandoc and LibreOffice incl. `libreoffice-math` for the PDF).
 
 ## 5. Where each manuscript number comes from
 | Manuscript item | File |
@@ -55,6 +58,10 @@ external, locked test → `e678` efficiency, sensitivity, error analysis, meta-r
 | Fig. 7 | `results/e4_robustness.csv` |
 | Fig. 9 | `results/e8_error_analysis.csv` |
 | Sensitivity (Supplementary) | `results/e7_sensitivity.csv` |
+| Table S10 (base learners) | `results/e9_base_learners*.csv` |
+| Duplicate audit (Sect. 3.6) | `results/e10_duplicate_audit.json` |
+| Overhead (Sect. 3.6) | `results/e11_overhead.csv` |
+| Adaptive intervals (Suppl. S4) | `results/e3b_adaptive_summary.csv` |
 
 ## 6. Configuration
 `config/default.yaml` (seeds, folds, budgets, α, k values) and `config/PROTOCOL.md` (pre-registered analysis plan with
