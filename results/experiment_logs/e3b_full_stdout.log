@@ -1,0 +1,13 @@
+2026-11-11 03:20:20,658 e3b_adaptive INFO biooil seed 11 done
+2026-11-11 03:20:50,489 e3b_adaptive INFO biooil seed 22 done
+2026-11-11 03:21:19,221 e3b_adaptive INFO biooil seed 33 done
+2026-11-11 03:21:39,859 e3b_adaptive INFO solid seed 11 done
+2026-11-11 03:22:00,598 e3b_adaptive INFO solid seed 22 done
+2026-11-11 03:22:21,724 e3b_adaptive INFO solid seed 33 done
+   target method  coverage_rows  coverage_studies  mean_width  median_width  winkler  max_abs_process_dev
+0  biooil     RC          0.612             0.570      22.832        22.756  107.655                0.380
+1  biooil     SC          0.930             0.909      59.079        59.499   77.294                0.032
+2  biooil   SC-N          0.915             0.914      63.008        55.638   84.231                0.029
+3   solid     RC          0.615             0.614      20.564        20.554   93.706                0.373
+4   solid     SC          0.901             0.908      46.672        45.651   65.196                0.073
+5   solid   SC-N          0.921             0.920      57.302        53.283   69.497                0.032

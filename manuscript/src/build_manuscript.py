@@ -33,9 +33,14 @@ def cite(m, used):
     return "(" + "; ".join(out) + ")"
 
 
+TAB = os.environ.get("STRATA_TABLES", os.path.join(REPO, "tables"))
+FIG = os.environ.get("STRATA_FIGURES", os.path.join(REPO, "figures"))
+OUT = os.environ.get("STRATA_OUT", OUT)
+
+
 def table_md(name, tlabel):
-    df = pd.read_csv(os.path.join(REPO, "tables", f"{name}.csv"))
-    cap = open(os.path.join(REPO, "tables", f"{name}.md")).read().splitlines()[0].strip("*")
+    df = pd.read_csv(os.path.join(TAB, f"{name}.csv"))
+    cap = open(os.path.join(TAB, f"{name}.md")).read().splitlines()[0].strip("*")
     cap = re.sub(r"^Table \w+\.\s*", "", cap)
     df = df.fillna("")
     head = "| " + " | ".join(str(c) for c in df.columns) + " |\n|" + "|".join(["---"] * len(df.columns)) + "|\n"
@@ -58,12 +63,14 @@ def render(values, parts=PARTS, table_prefix="Table ", fig_prefix="Fig. "):
     def fig(m):
         fcount[0] += 1
         name, cap = m.group(1), m.group(2)
-        return f"\n![**{fig_prefix}{fcount[0]}.** {cap}]({os.path.join(REPO, 'figures', name + '.png')}){{width=16cm}}\n"
+        return f"\n![**{fig_prefix}{fcount[0]}.** {cap}]({os.path.join(FIG, name + '.png')}){{width=16cm}}\n"
     text = re.sub(r"\{\{FIG:([\w\-]+)\|(.+?)\}\}", fig, text)
 
     def tok(m):
         k = m.group(1)
         if k not in values:
+            if os.environ.get("STRATA_ALLOW_MISSING") == "1":  # render-testing only; final build is strict
+                return f"[[MISSING:{k}]]"
             raise KeyError(f"unresolved token {{{{{k}}}}}")
         return str(values[k])
     text = re.sub(r"\{\{([\w\.\-]+)\}\}", tok, text)
@@ -121,6 +128,7 @@ def postprocess(path):
     from docx.shared import Pt, Cm
     d = Document(path)
     for s in d.sections:
+        s.page_width, s.page_height = Cm(21.0), Cm(29.7)  # A4
         s.left_margin = s.right_margin = Cm(2.5); s.top_margin = s.bottom_margin = Cm(2.5)
         ln = OxmlElement("w:lnNumType"); ln.set(qn("w:countBy"), "1"); ln.set(qn("w:restart"), "continuous"); ln.set(qn("w:distance"), "283")
         s._sectPr.append(ln)

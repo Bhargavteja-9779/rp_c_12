@@ -11,8 +11,8 @@ title: "Machine-learning models of hydrothermal biomass conversion trained on li
 
 # Highlights
 
-- Random splits overstate HTL/HTC yield-model accuracy for new studies about two-fold
-- Between-study offsets account for most out-of-study error of yield models
+- Random splits overstate HTL/HTC yield-model accuracy on new studies ~two-fold
+- Study-level offsets make up half to two-thirds of the error on unseen studies
 - Recorded work-up and yield-basis descriptors did not explain the study offsets
 - Row-calibrated conformal intervals under-cover runs from new studies
 - Study-level calibration and k-shot shrinkage restore near-nominal coverage

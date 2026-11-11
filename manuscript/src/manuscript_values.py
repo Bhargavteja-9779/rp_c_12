@@ -7,7 +7,7 @@ import pandas as pd
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
-R = os.path.join(REPO, "results")
+R = os.environ.get("STRATA_RESULTS", os.path.join(REPO, "results"))
 LBL = {"mean": "mean predictor", "ridge": "ridge regression", "knn": "k-nearest neighbours", "svr": "SVR", "mlp": "MLP",
        "rf": "random forest", "et": "extra trees", "hgb": "histogram gradient boosting", "lgbm": "LightGBM", "xgb": "XGBoost",
        "cat": "CatBoost", "gpboost": "GPBoost"}
@@ -255,7 +255,12 @@ def compute() -> dict:
             f"{b('biooil', 'SC-N', 'median_width'):.1f} vs {b('biooil', 'SC', 'median_width'):.1f} wt% and mean interval score {b('biooil', 'SC-N', 'winkler'):.1f} vs "
             f"{b('biooil', 'SC', 'winkler'):.1f}; for solids, coverage {b('solid', 'SC-N', 'coverage_studies'):.2f} vs {b('solid', 'SC', 'coverage_studies'):.2f}, median width "
             f"{b('solid', 'SC-N', 'median_width'):.1f} vs {b('solid', 'SC', 'median_width'):.1f} wt%, interval score {b('solid', 'SC-N', 'winkler'):.1f} vs {b('solid', 'SC', 'winkler'):.1f}. "
-            "Because this variant was added after inspecting pipeline-verification results, it is reported as exploratory and is not part of the main claims.")
+            + ("The adaptive variant therefore did not improve interval efficiency — both widths and interval scores were worse — although coverage across process "
+               f"subtypes became more uniform (largest deviation from 0.90: {b('solid', 'SC-N', 'max_abs_process_dev'):.2f} vs {b('solid', 'SC', 'max_abs_process_dev'):.2f} for solids). "
+               "This negative result is consistent with the main finding that the dominant error component is a study offset that input features cannot localise. "
+               if (b('biooil', 'SC-N', 'winkler') > b('biooil', 'SC', 'winkler') and b('solid', 'SC-N', 'winkler') > b('solid', 'SC', 'winkler')) else
+               "The adaptive variant improved interval scores for at least one target. ")
+            + "Because this variant was added after inspecting pipeline-verification results, it is reported as exploratory and is not part of the main claims.")
     return v
 
 
