@@ -24,7 +24,7 @@ The authors thank the curators of the hydrothermal treatment/liquefaction databa
 
 # Appendix A. Supplementary data
 
-Supplementary material (Sections S1–S9, Tables S1–S14, Figs. S1–S4: literature screening, protocol and addenda, additional benchmark and sensitivity results, exploratory adaptive intervals, error analysis by subgroup, STRATA with different base learners, trend and ranking analyses, reproducibility) accompanies this article.
+Supplementary material (Sections S1–S9, Tables S1–S17, Figs. S1–S4: literature screening, protocol and addenda, additional benchmark and sensitivity results, exploratory adaptive intervals, error analysis by subgroup, STRATA with different base learners, trend and ranking analyses, reproducibility) accompanies this article.
 
 # References
 

@@ -1,0 +1,25 @@
+Setting,Target,Model,Studies (≥ 5 runs),Median per-study contrast R²,Studies with R² > 0
+dev,Bio-oil yield,A,110,0.095,0.59
+dev,Bio-oil yield,PD,110,0.056,0.56
+dev,Bio-oil yield,W,110,0.082,0.61
+dev,Solid yield,A,109,0.236,0.67
+dev,Solid yield,PD,109,0.23,0.67
+dev,Solid yield,W,109,0.32,0.68
+locked,Bio-oil yield,A,25,-0.278,0.24
+locked,Bio-oil yield,PD,25,-0.183,0.4
+locked,Bio-oil yield,W,25,-0.039,0.44
+locked,Solid yield,A,27,0.16,0.74
+locked,Solid yield,PD,27,0.138,0.67
+locked,Solid yield,W,27,0.308,0.81
+dev_quality,Bio-oil carbon,A,81,-0.016,0.43
+dev_quality,Bio-oil carbon,PD,81,-0.0,0.44
+dev_quality,Bio-oil carbon,W,81,0.015,0.53
+dev_quality,Bio-oil HHV,A,80,0.0,0.5
+dev_quality,Bio-oil HHV,PD,80,0.142,0.56
+dev_quality,Bio-oil HHV,W,80,0.164,0.59
+locked_quality,Bio-oil carbon,A,19,0.003,0.53
+locked_quality,Bio-oil carbon,PD,19,0.219,0.79
+locked_quality,Bio-oil carbon,W,19,0.134,0.63
+locked_quality,Bio-oil HHV,A,21,-0.034,0.43
+locked_quality,Bio-oil HHV,PD,21,0.095,0.62
+locked_quality,Bio-oil HHV,W,21,0.089,0.62

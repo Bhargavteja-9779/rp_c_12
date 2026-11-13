@@ -55,6 +55,19 @@ def run(mode="full"):
         f = os.path.join(D["results"], f"e14a_contrast_types{sfx}.csv")
         if os.path.exists(f):
             S[f"e14a{sfx}"] = contrast_types(pd.read_csv(f)).to_dict("records")
+    # review round 13: study-weighted contrast R² (median over studies with >= 5 runs; XGBoost)
+    rows = []
+    for split in ["dev", "locked", "dev_quality", "locked_quality"]:
+        f = os.path.join(D["results"], f"e12_study_metrics_{split}.csv")
+        if not os.path.exists(f):
+            continue
+        m = pd.read_csv(f); m = m[(m.learner == m.learner.iloc[0] if "xgb" not in set(m.learner) else m.learner == "xgb") & (m.n_runs >= 5)]
+        s = m.groupby(["target", "model", "study"])[["sse_contrast", "ss_contrast"]].sum(); s["r2"] = 1 - s.sse_contrast / s.ss_contrast
+        for (t, mo), gg in s.groupby(level=[0, 1]):
+            rows.append(dict(split=split, target=t, model=mo, n_studies=len(gg), median_study_r2=round(float(gg.r2.median()), 3),
+                             frac_positive=round(float((gg.r2 > 0).mean()), 2)))
+    pd.DataFrame(rows).to_csv(os.path.join(D["results"], "e12_study_weighted_contrast_r2.csv"), index=False)
+    S["study_weighted_contrast_r2"] = rows
     dump(S, os.path.join(D["results"], "statistics_v2.json"))
     # ---------------- tables
     TL = {"biooil": "Bio-oil yield", "solid": "Solid yield", "hhv_biooil": "Bio-oil HHV", "c_biooil": "Bio-oil C"}

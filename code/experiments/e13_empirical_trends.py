@@ -69,6 +69,27 @@ def run(mode="full"):
                                  sd_step_effect_over_sd_level=sd_slope / sd_level if sd_level > 0 else float("nan")))
     df = pd.DataFrame(rows); df.to_csv(os.path.join(D["results"], "e13_empirical_trends.csv"), index=False)
     print(df.round(3).to_string())
+    by_process(cfg, D)
+
+
+def by_process(cfg, D):
+    """Review round 11: temperature slopes stratified by process subtype (HTL, solvothermal HTL, HTC)."""
+    out = []
+    for t in ["biooil", "solid"]:
+        ds = load_target(t, "dev"); X = ds.X[ds.base_features]; y = ds.y; g = ds.groups; proc = ds.meta["process"].to_numpy()
+        P = pd.DataFrame(pairs_differing_only_in(X, g, "T_C", [c for c in ds.base_features if c != "T_C"]), columns=["study", "i", "j"])
+        P["slope"] = (y[P.j] - y[P.i]) / ((X.T_C.values[P.j] - X.T_C.values[P.i]) / 10)
+        P["mid"] = (X.T_C.values[P.i] + X.T_C.values[P.j]) / 2; P["proc"] = proc[P.i]
+        for pr in sorted(P.proc.unique()):
+            for lo, hi in T_BANDS:
+                q = P[(P.proc == pr) & (P.mid >= lo) & (P.mid < hi)]; st = q.groupby("study").slope.median()
+                if len(st) < 5:
+                    continue
+                med = st.median()
+                ci = cluster_bootstrap_ci(q, lambda d: float(d.groupby("study").slope.median().median()), n_boot=cfg["bootstrap"], seed=0)
+                out.append(dict(target=t, process=pr, band=f"{lo}-{hi}", n_studies=len(st), median_slope=round(med, 2), ci_low=round(ci[0], 2),
+                                ci_high=round(ci[1], 2), frac_same_sign=round(float((np.sign(st) == np.sign(med)).mean()), 2)))
+    pd.DataFrame(out).to_csv(os.path.join(D["results"], "e13b_trends_by_process.csv"), index=False)
 
 
 if __name__ == "__main__":

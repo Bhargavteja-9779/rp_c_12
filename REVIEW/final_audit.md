@@ -56,3 +56,13 @@ followed by `python manuscript/src/build_manuscript.py` regenerated the manuscri
 
 ## E. Final self-decision (Phase 42)
 See `REVIEW/rejection_risk_report.md` §Decision.
+
+
+## v2 addendum (2026-11-13)
+* Claims added in v2 (trend atlas, contrast accuracy, ranking, quality targets, capability matrix) are generated from
+  `results/statistics_v2.json`, `results/e13*`, `results/e12_*`, `results/e14*` via `manuscript_values.py` (647 values).
+* Directional headings of §3.4/§3.5 were checked against the outcomes (T1–T3 not supported; C1 not confirmed).
+* Figure numbering is now symbolic (`{{FIGREF:…}}`) and resolved at build time; supplementary references were checked one by one.
+* Two review analyses first computed ad hoc were moved into scripts and verified byte-identical (review_12.md, 12.5).
+* Fresh-clone quick run of the v2 pipeline: all 20 stages exit 0 in 736 s (`results/experiment_logs/repro_quick.json`).
+* Pre-registration audit trail: Supplementary Table S16 (generated from `git log`).

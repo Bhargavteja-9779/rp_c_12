@@ -531,6 +531,82 @@ Protocol addenda were committed to version control before the corresponding anal
 
 
 
+
+**Table S14.** Model-free temperature slopes stratified by process subtype (development studies; 95% study-bootstrap CIs; strata with ≥ 5 studies).
+
+| Target | Process | Band (°C) | Studies | Median slope (wt% per +10 °C) | CI low | CI high | Studies with same sign |
+|---|---|---|---|---|---|---|---|
+| Bio-oil yield | HTL | 150-250 | 13 | 1.31 | 0.76 | 1.68 | 1.0 |
+| Bio-oil yield | HTL | 250-300 | 41 | 0.79 | 0.6 | 1.32 | 0.78 |
+| Bio-oil yield | HTL | 300-350 | 35 | -0.31 | -0.63 | 0.11 | 0.6 |
+| Bio-oil yield | HTL | 350-450 | 16 | -1.01 | -1.56 | 0.19 | 0.62 |
+| Bio-oil yield | HTL_solvothermal | 150-250 | 8 | 1.4 | 0.97 | 3.38 | 0.88 |
+| Bio-oil yield | HTL_solvothermal | 250-300 | 25 | 1.23 | 0.84 | 1.37 | 0.88 |
+| Bio-oil yield | HTL_solvothermal | 300-350 | 19 | 0.06 | -0.31 | 0.61 | 0.53 |
+| Bio-oil yield | HTL_solvothermal | 350-450 | 5 | -0.4 | -3.3 | 0.51 | 0.6 |
+| Solid yield | HTC | 150-250 | 9 | -2.09 | -3.28 | -1.43 | 0.89 |
+| Solid yield | HTC | 250-300 | 6 | -1.97 | -2.31 | -1.29 | 1.0 |
+| Solid yield | HTL | 150-250 | 12 | -3.04 | -5.24 | -2.44 | 0.83 |
+| Solid yield | HTL | 250-300 | 38 | -1.44 | -1.56 | -1.22 | 0.87 |
+| Solid yield | HTL | 300-350 | 31 | -0.49 | -0.69 | -0.24 | 0.68 |
+| Solid yield | HTL | 350-450 | 13 | -0.09 | -0.82 | 0.44 | 0.54 |
+| Solid yield | HTL_solvothermal | 150-250 | 7 | -2.52 | -3.64 | -1.86 | 0.86 |
+| Solid yield | HTL_solvothermal | 250-300 | 22 | -2.4 | -3.01 | -1.75 | 0.82 |
+| Solid yield | HTL_solvothermal | 300-350 | 18 | -0.93 | -1.41 | -0.7 | 0.83 |
+| Solid yield | HTL_solvothermal | 350-450 | 5 | -0.78 | -2.27 | -0.01 | 0.8 |
+
+
+
+
+**Table S15.** Study-weighted within-study contrast accuracy (median over studies of the per-study contrast R²; XGBoost). Pooled values in Table S12 weight large studies by their number of pairs.
+
+| Setting | Target | Model | Studies (≥ 5 runs) | Median per-study contrast R² | Studies with R² > 0 |
+|---|---|---|---|---|---|
+| dev | Bio-oil yield | A | 110 | 0.095 | 0.59 |
+| dev | Bio-oil yield | PD | 110 | 0.056 | 0.56 |
+| dev | Bio-oil yield | W | 110 | 0.082 | 0.61 |
+| dev | Solid yield | A | 109 | 0.236 | 0.67 |
+| dev | Solid yield | PD | 109 | 0.23 | 0.67 |
+| dev | Solid yield | W | 109 | 0.32 | 0.68 |
+| locked | Bio-oil yield | A | 25 | -0.278 | 0.24 |
+| locked | Bio-oil yield | PD | 25 | -0.183 | 0.4 |
+| locked | Bio-oil yield | W | 25 | -0.039 | 0.44 |
+| locked | Solid yield | A | 27 | 0.16 | 0.74 |
+| locked | Solid yield | PD | 27 | 0.138 | 0.67 |
+| locked | Solid yield | W | 27 | 0.308 | 0.81 |
+| dev_quality | Bio-oil carbon | A | 81 | -0.016 | 0.43 |
+| dev_quality | Bio-oil carbon | PD | 81 | -0.0 | 0.44 |
+| dev_quality | Bio-oil carbon | W | 81 | 0.015 | 0.53 |
+| dev_quality | Bio-oil HHV | A | 80 | 0.0 | 0.5 |
+| dev_quality | Bio-oil HHV | PD | 80 | 0.142 | 0.56 |
+| dev_quality | Bio-oil HHV | W | 80 | 0.164 | 0.59 |
+| locked_quality | Bio-oil carbon | A | 19 | 0.003 | 0.53 |
+| locked_quality | Bio-oil carbon | PD | 19 | 0.219 | 0.79 |
+| locked_quality | Bio-oil carbon | W | 19 | 0.134 | 0.63 |
+| locked_quality | Bio-oil HHV | A | 21 | -0.034 | 0.43 |
+| locked_quality | Bio-oil HHV | PD | 21 | 0.095 | 0.62 |
+| locked_quality | Bio-oil HHV | W | 21 | 0.089 | 0.62 |
+
+
+
+
+**Table S16.** Audit trail: version-control commits establishing that the protocol, the locked study list and each addendum preceded the analyses they govern.
+
+| Commit | Time (UTC) | Event |
+|---|---|---|
+| 04a5079 | 2026-11-10 21:44 | Initialize research repository: vendored CC-BY datasets, journal-screen scripts, locked study-level test split |
+| d40eac3 | 2026-11-10 21:52 | Pre-register analysis protocol (before any model fitting); literature corpus and matrix |
+| 69ccfd1 | 2026-11-11 03:36 | All development experiments complete (E1-E8, E3b); all modelling decisions frozen BEFORE the single locked-test evaluation |
+| 639845a | 2026-11-11 03:37 | Locked test evaluated once (38 studies) |
+| d24f01c | 2026-11-13 11:58 | Pre-register Addendum A (v2): trend-transfer / offset-invariant learning experiment E12, before running it |
+| b54cfa1 | 2026-11-13 12:02 | E12 implementation: offset-invariant contrast models (A/W/PD), trend metrics, anchoring, contrast conformal; unit tests |
+| 2f4af56 | 2026-11-13 12:05 | Addendum A2 (quality targets) registered; loader extended; E13 model-free within-study trend analysis |
+| 71a1d8f | 2026-11-13 12:37 | E12 development results (T1-T3 not supported); register exploratory Addendum B (E14) before running |
+| 9668526 | 2026-11-13 12:39 | Register Addendum C (confirmatory locked-study tests for ranking and E12) before any locked evaluation of E12/E14; E14 locked mode |
+| 19982f0 | 2026-11-13 12:56 | v2 experiments complete: E12 dev/locked (yields 3 learners; HHV/C), E13, E14 dev + locked confirmation; v2 analysis and figure code |
+
+
+
 # S8. Additional figures and cost
 
 
@@ -550,7 +626,7 @@ Protocol addenda were committed to version control before the corresponding anal
 
 
 
-**Table S14.** Computational cost (bio-oil, development set, single thread). Peak RSS increase is measured relative to the process peak after data loading.
+**Table S17.** Computational cost (bio-oil, development set, single thread). Peak RSS increase is measured relative to the process peak after data loading.
 
 | Learner | Fit time (s) | Predict (ms / 1000 rows) | Peak RSS increase (MB) | Serialized size (MB) |
 |---|---|---|---|---|

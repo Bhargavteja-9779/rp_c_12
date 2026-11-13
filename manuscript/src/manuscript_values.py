@@ -289,6 +289,16 @@ def compute() -> dict:
     sse = m.pivot_table(index="study", columns="model", values="sse_contrast", aggfunc="sum")
     sh = (sse["A"] / sse["A"].sum()).sort_values(ascending=False)
     v["lk_c_top2_share"] = f"{100 * sh.iloc[:2].sum():.0f}"
+    sw = pd.read_csv(os.path.join(R, "e12_study_weighted_contrast_r2.csv")).set_index(["split", "target", "model"])
+    for sp, tg in [("dev", "d"), ("locked", "l")]:
+        for t in ["biooil", "solid"]:
+            vals = [sw.loc[(sp, t, m_), "median_study_r2"] for m_ in ["A", "W", "PD"]]
+            v[f"{t}_{tg}_sw_min"] = f2(min(vals)); v[f"{t}_{tg}_sw_max"] = f2(max(vals))
+    bp = pd.read_csv(os.path.join(R, "e13b_trends_by_process.csv"))
+    lo = bp[bp.band.isin(["150-250", "250-300"])]
+    for t in ["biooil", "solid"]:
+        q = lo[lo.target == t]; v[f"{t}_proc_sign_min"] = f"{100 * q.frac_same_sign.min():.0f}"; v[f"{t}_proc_sign_max"] = f"{100 * q.frac_same_sign.max():.0f}"
+        v[f"{t}_proc_neg_or_pos"] = "positive" if (q.median_slope > 0).all() else ("negative" if (q.median_slope < 0).all() else "mixed")
     # quality-target tuning
     for t in ["hhv_biooil", "c_biooil"]:
         f = json.load(open(os.path.join(REPO, "results", "experiment_logs", "e1_cells", f"{t}__base__xgb.json")))
@@ -381,7 +391,7 @@ def compute() -> dict:
         e = EF.set_index("learner"); sl = e.loc[learner]
         v["efficiency_paragraph"] = (
             f"All learners trained in at most {e.fit_s.max():.0f} s on one CPU thread ({LBL[e.fit_s.idxmax()]}); the STRATA base learner took {sl.fit_s:.1f} s "
-            f"and predicted 1,000 runs in {sl.predict_ms_per_1000_rows:.0f} ms (Supplementary Table S14, Supplementary Fig. S2). The complete STRATA procedure — two inner five-fold cross-validations, "
+            f"and predicted 1,000 runs in {sl.predict_ms_per_1000_rows:.0f} ms (Supplementary Table S17, Supplementary Fig. S2). The complete STRATA procedure — two inner five-fold cross-validations, "
             f"quantiles, variance components and k-shot quantiles for all k — took {v['ovh_min']}–{v['ovh_max']} s on all development studies, against {v['ovh_base_min']}–{v['ovh_base_max']} s "
             "for fitting the base learner alone (measured, 1 and 4 threads); this overhead is negligible compared with the cost of a single hydrothermal experiment.")
     # ---------------- error analysis (E8)

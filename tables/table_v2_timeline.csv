@@ -1,0 +1,11 @@
+Commit,Time (UTC),Event
+04a5079,2026-11-10 21:44,"Initialize research repository: vendored CC-BY datasets, journal-screen scripts, locked study-level test split"
+d40eac3,2026-11-10 21:52,Pre-register analysis protocol (before any model fitting); literature corpus and matrix
+69ccfd1,2026-11-11 03:36,"All development experiments complete (E1-E8, E3b); all modelling decisions frozen BEFORE the single locked-test evaluation"
+639845a,2026-11-11 03:37,Locked test evaluated once (38 studies)
+d24f01c,2026-11-13 11:58,"Pre-register Addendum A (v2): trend-transfer / offset-invariant learning experiment E12, before running it"
+b54cfa1,2026-11-13 12:02,"E12 implementation: offset-invariant contrast models (A/W/PD), trend metrics, anchoring, contrast conformal; unit tests"
+2f4af56,2026-11-13 12:05,Addendum A2 (quality targets) registered; loader extended; E13 model-free within-study trend analysis
+71a1d8f,2026-11-13 12:37,E12 development results (T1-T3 not supported); register exploratory Addendum B (E14) before running
+9668526,2026-11-13 12:39,Register Addendum C (confirmatory locked-study tests for ranking and E12) before any locked evaluation of E12/E14; E14 locked mode
+19982f0,2026-11-13 12:56,"v2 experiments complete: E12 dev/locked (yields 3 learners; HHV/C), E13, E14 dev + locked confirmation; v2 analysis and figure code"

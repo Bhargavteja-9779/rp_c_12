@@ -4430,5 +4430,199 @@
    "r2": 0.004652458007571747,
    "n_pairs": 1114.0
   }
+ ],
+ "study_weighted_contrast_r2": [
+  {
+   "split": "dev",
+   "target": "biooil",
+   "model": "A",
+   "n_studies": 110,
+   "median_study_r2": 0.095,
+   "frac_positive": 0.59
+  },
+  {
+   "split": "dev",
+   "target": "biooil",
+   "model": "PD",
+   "n_studies": 110,
+   "median_study_r2": 0.056,
+   "frac_positive": 0.56
+  },
+  {
+   "split": "dev",
+   "target": "biooil",
+   "model": "W",
+   "n_studies": 110,
+   "median_study_r2": 0.082,
+   "frac_positive": 0.61
+  },
+  {
+   "split": "dev",
+   "target": "solid",
+   "model": "A",
+   "n_studies": 109,
+   "median_study_r2": 0.236,
+   "frac_positive": 0.67
+  },
+  {
+   "split": "dev",
+   "target": "solid",
+   "model": "PD",
+   "n_studies": 109,
+   "median_study_r2": 0.23,
+   "frac_positive": 0.67
+  },
+  {
+   "split": "dev",
+   "target": "solid",
+   "model": "W",
+   "n_studies": 109,
+   "median_study_r2": 0.32,
+   "frac_positive": 0.68
+  },
+  {
+   "split": "locked",
+   "target": "biooil",
+   "model": "A",
+   "n_studies": 25,
+   "median_study_r2": -0.278,
+   "frac_positive": 0.24
+  },
+  {
+   "split": "locked",
+   "target": "biooil",
+   "model": "PD",
+   "n_studies": 25,
+   "median_study_r2": -0.183,
+   "frac_positive": 0.4
+  },
+  {
+   "split": "locked",
+   "target": "biooil",
+   "model": "W",
+   "n_studies": 25,
+   "median_study_r2": -0.039,
+   "frac_positive": 0.44
+  },
+  {
+   "split": "locked",
+   "target": "solid",
+   "model": "A",
+   "n_studies": 27,
+   "median_study_r2": 0.16,
+   "frac_positive": 0.74
+  },
+  {
+   "split": "locked",
+   "target": "solid",
+   "model": "PD",
+   "n_studies": 27,
+   "median_study_r2": 0.138,
+   "frac_positive": 0.67
+  },
+  {
+   "split": "locked",
+   "target": "solid",
+   "model": "W",
+   "n_studies": 27,
+   "median_study_r2": 0.308,
+   "frac_positive": 0.81
+  },
+  {
+   "split": "dev_quality",
+   "target": "c_biooil",
+   "model": "A",
+   "n_studies": 81,
+   "median_study_r2": -0.016,
+   "frac_positive": 0.43
+  },
+  {
+   "split": "dev_quality",
+   "target": "c_biooil",
+   "model": "PD",
+   "n_studies": 81,
+   "median_study_r2": -0.0,
+   "frac_positive": 0.44
+  },
+  {
+   "split": "dev_quality",
+   "target": "c_biooil",
+   "model": "W",
+   "n_studies": 81,
+   "median_study_r2": 0.015,
+   "frac_positive": 0.53
+  },
+  {
+   "split": "dev_quality",
+   "target": "hhv_biooil",
+   "model": "A",
+   "n_studies": 80,
+   "median_study_r2": 0.0,
+   "frac_positive": 0.5
+  },
+  {
+   "split": "dev_quality",
+   "target": "hhv_biooil",
+   "model": "PD",
+   "n_studies": 80,
+   "median_study_r2": 0.142,
+   "frac_positive": 0.56
+  },
+  {
+   "split": "dev_quality",
+   "target": "hhv_biooil",
+   "model": "W",
+   "n_studies": 80,
+   "median_study_r2": 0.164,
+   "frac_positive": 0.59
+  },
+  {
+   "split": "locked_quality",
+   "target": "c_biooil",
+   "model": "A",
+   "n_studies": 19,
+   "median_study_r2": 0.003,
+   "frac_positive": 0.53
+  },
+  {
+   "split": "locked_quality",
+   "target": "c_biooil",
+   "model": "PD",
+   "n_studies": 19,
+   "median_study_r2": 0.219,
+   "frac_positive": 0.79
+  },
+  {
+   "split": "locked_quality",
+   "target": "c_biooil",
+   "model": "W",
+   "n_studies": 19,
+   "median_study_r2": 0.134,
+   "frac_positive": 0.63
+  },
+  {
+   "split": "locked_quality",
+   "target": "hhv_biooil",
+   "model": "A",
+   "n_studies": 21,
+   "median_study_r2": -0.034,
+   "frac_positive": 0.43
+  },
+  {
+   "split": "locked_quality",
+   "target": "hhv_biooil",
+   "model": "PD",
+   "n_studies": 21,
+   "median_study_r2": 0.095,
+   "frac_positive": 0.62
+  },
+  {
+   "split": "locked_quality",
+   "target": "hhv_biooil",
+   "model": "W",
+   "n_studies": 21,
+   "median_study_r2": 0.089,
+   "frac_positive": 0.62
+  }
  ]
 }

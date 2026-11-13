@@ -50,6 +50,12 @@ Protocol addenda were committed to version control before the corresponding anal
 
 {{TABLE:table_v2_ranking}}
 
+{{TABLE:table_v2_trends_by_process}}
+
+{{TABLE:table_v2_study_weighted_contrasts}}
+
+{{TABLE:table_v2_timeline}}
+
 # S8. Additional figures and cost
 
 {{FIG:fig07_robustness|Robustness of the STRATA base learner (base + P features). Top: RMSE (mean ± SD over outer folds) with Gaussian noise added to continuous test features or with fewer training studies. Bottom: study-weighted coverage of RC and SC 90% intervals.}}

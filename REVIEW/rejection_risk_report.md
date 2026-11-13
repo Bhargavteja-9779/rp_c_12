@@ -1,10 +1,20 @@
-# Final rejection-risk report (Phase 41)
+# Final rejection-risk report (Phase 41) — updated for v2 (2026-11-13)
+
+## What changed in v2 and why
+The user judged v1 likely to be rejected. Diagnosis: v1's message was largely negative and close to Elfetni et al. (2027).
+v2 tested, under pre-registered addenda, whether literature models can do more for a new laboratory (transfer within-study
+trends, rank planned runs) — the constructive question. The answer was mostly negative (T1–T3 not supported; an exploratory ranking
+advantage failed its pre-registered locked confirmation), but v2 adds a model-free, process-robust finding that laboratories agree on the
+direction of temperature effects, and turns the paper into a capability audit with a checklist for the journal's authors and reviewers.
+This raises novelty and practical value relative to v1 and to the prior art; it cannot remove the risk that editors dislike a
+predominantly negative study.
+
 
 No manuscript can be guaranteed acceptance; risks below are those that remain after ten review rounds.
 
 | # | Risk | Evidence | Severity | Mitigation | Fixed? |
 |---|---|---|---|---|---|
-| 1 | Novelty (incremental to Elfetni et al. 2027; STRATA assembled from known parts) | Same database; publication-aware validation and k-shot point calibration already published; Fisch 2021, Bersson & Hoff 2024, Dunn 2023 | **High** | Contribution re-framed as evaluation + validated workflow; six results not in prior work listed in review_08; prior art cited | Partly (inherent) |
+| 1 | Novelty (incremental to Elfetni et al. 2027; STRATA assembled from known parts) | Same database; publication-aware validation and k-shot point calibration already published; Fisch 2021, Bersson & Hoff 2024, Dunn 2023. v2 adds trend/ranking audit, trend atlas, checklist | **Moderate** (was High in v1) | Contribution re-framed as evaluation + validated workflow; six results not in prior work listed in review_08; prior art cited | Partly (inherent) |
 | 2 | Methodology | Nested study-level design, locked test, pre-registration | Low | — | Yes |
 | 3 | Dataset (single curated literature DB; ~7 % cross-study duplicates; imputed fractions) | E10 | Moderate | External DB, duplicate audit, limitations | Partly |
 | 4 | Statistical (approximate conformal validity; locked n = 28–30 studies; post-hoc analyses) | CIs; post-hoc labels | Moderate | Claims stated as approximate/marginal; CIs; post-hoc flagged | Yes (disclosed) |
@@ -16,6 +26,7 @@ No manuscript can be guaranteed acceptance; risks below are those that remain af
 | 10 | Citation | All verified; abstract-level support checks | Low | citation_audit.md | Yes |
 | 11 | Journal scope ("statistics paper", no experiments) | review_09 | **Moderate–high** | Domain discussion, practitioner/curator recommendations, cover letter | Partly |
 | 12 | Reviewer from the dataset-curating group | Most relevant expert group | Moderate | Respectful, explicit differentiation; their work acknowledged | Partly |
+| 14 | Predominantly negative findings | Most capability hypotheses failed on held-out studies | **Moderate–high** | Framed as audit with constructive outputs (capability matrix, trend atlas, checklist); all failures reported | Partly (inherent) |
 | 13 | Publication integrity / compliance (extensive AI assistance; authorship placeholders) | Elsevier AI policy requires disclosure and author responsibility | **High if undisclosed** | Declaration drafted; authors must verify every result, adapt the statement, complete CRediT/affiliations/funding, and confirm originality before submission | Requires author action |
 
 ## Target-journal facts relevant to the decision
@@ -23,7 +34,7 @@ No manuscript can be guaranteed acceptance; risks below are those that remain af
 * JIF 8.2 (2025; secondary sources, conflicting 9.0) and Q1 — **not verified in JCR directly**.
 
 ## Decision (Phase 42)
-**READY FOR SUBMISSION — conditional on author actions**, scientifically: all pre-registered experiments, the
+**READY FOR SUBMISSION (v2) — conditional on author actions**, scientifically: all pre-registered experiments, the
 locked evaluation, ten review rounds and the review-driven experiments (E9–E11) are complete; every claim is
 traceable to generated results; remaining weaknesses are inherent to a computational study on one curated
 database and are disclosed.

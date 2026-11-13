@@ -1,1 +1,1 @@
-{"quick_mode_wall_seconds": 344, "cpu_cores": 4, "source": "fresh clone of the pushed branch, python run_all.py --mode quick"}
+{"quick_mode_wall_seconds": 736, "cpu_cores": 4, "source": "fresh clone of the pushed branch (commit b32021f, v2 pipeline incl. E12-E14), python run_all.py --mode quick; all 20 stages exit 0"}
