@@ -113,16 +113,29 @@ def run_fold(target, learner, params, X, y, g, tr, te, seed, fold, calibrate):
                              n_pairs_PD=getattr(mods["PD"], "n_pairs_", None))
 
 
-def run(mode="full", split="dev"):
+def ensure_tuned(target, learner, cfg, D, log):
+    """Secondary targets (Addendum A2): tune with the E1 budget if no E1 cell exists yet."""
+    from src.evaluation.core import tune
+    f = os.path.join(D["logs"], "e1_cells", f"{target}__base__{learner}.json")
+    if os.path.exists(f):
+        return
+    ds = load_target(target, "dev"); tlog = []
+    params, sc = tune(learner, ds.X[ds.base_features], ds.y, ds.groups, n_iter=cfg["tune_iter"], k=cfg["tune_folds"], seed=0, n_jobs=cfg["n_jobs"], log=tlog)
+    dump(dict(rows=[], params=params, tune_rmse=sc, tune_log=tlog, note="Addendum A2 tuning"), f)
+    log.info(f"tuned {target} {learner}: grouped RMSE {sc:.3f}")
+
+
+def run(mode="full", split="dev", targets=("biooil", "solid"), learners=None):
     cfg, D = load_config(mode), out_dirs(mode); log = get_logger("e12_trends", D["logs"])
     primary, _ = choose_base_learner(D)
-    learners = LEARNERS if mode == "full" else [primary]
+    learners = learners or (LEARNERS if mode == "full" else [primary])
     seeds = cfg["outer_seeds"]
     R, A, F = [], [], []
-    for target in ["biooil", "solid"]:
+    for target in targets:
         dev = load_target(target, "dev")
         cols = dev.base_features
         for ln in learners:
+            ensure_tuned(target, ln, cfg, D, log)
             params = restore(load_cell(D, target, "base", ln)["params"])
             if split == "dev":
                 jobs = [(s, fi, tr, te) for s in seeds for fi, (tr, te) in enumerate(grouped_folds(dev.groups, k=cfg["outer_folds"], seed=s))]
@@ -136,11 +149,16 @@ def run(mode="full", split="dev"):
             for r, a, f in out:
                 R.extend(r); A.extend(a); F.append(f)
             log.info(f"{split} {target} {ln} done ({sum(f['seconds'] for _, _, f in out):.0f} s fold-time)")
-    pd.DataFrame(R).to_csv(os.path.join(D["results"], f"e12_study_metrics_{split}.csv"), index=False)
+    tag = split if tuple(targets) == ("biooil", "solid") else f"{split}_quality"
+    pd.DataFrame(R).to_csv(os.path.join(D["results"], f"e12_study_metrics_{tag}.csv"), index=False)
     A = pd.DataFrame(A).groupby(["target", "learner", "k", "method", "study", "seed"], as_index=False)["rmse"].mean()
-    A.to_csv(os.path.join(D["results"], f"e12_anchor_{split}.csv"), index=False)
-    pd.DataFrame(F).to_csv(os.path.join(D["results"], f"e12_folds_{split}.csv"), index=False)
+    A.to_csv(os.path.join(D["results"], f"e12_anchor_{tag}.csv"), index=False)
+    pd.DataFrame(F).to_csv(os.path.join(D["results"], f"e12_folds_{tag}.csv"), index=False)
 
 
 if __name__ == "__main__":
-    run(sys.argv[1] if len(sys.argv) > 1 else "full", sys.argv[2] if len(sys.argv) > 2 else "dev")
+    mode = sys.argv[1] if len(sys.argv) > 1 else "full"; split = sys.argv[2] if len(sys.argv) > 2 else "dev"
+    if len(sys.argv) > 3 and sys.argv[3] == "quality":
+        run(mode, split, targets=("hhv_biooil", "c_biooil"), learners=["xgb"] if mode == "full" else None)
+    else:
+        run(mode, split)

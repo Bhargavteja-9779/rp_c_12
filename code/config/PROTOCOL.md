@@ -103,3 +103,10 @@ intervals from inner study-grouped 5-fold on training studies. PD pair sampling:
 Evaluation pairs: all within-study pairs of test studies; per-study metrics; studies with ≥ 3 runs for contrasts, ≥ 5 runs for ranking/regret,
 ≥ 11 runs for anchoring (20 random anchor sets). Locked test: models trained on all development studies, evaluated once after the development
 analyses are complete and frozen (commit before locked evaluation).
+
+# Addendum A2 (registered 2026-11-13, before running): generality of trend transfer to product-quality targets
+Secondary targets (HTL + solvothermal HTL): bio-oil higher heating value (HHV, MJ/kg; runs whose HHV was *computed* by a correlation
+— `HHV_biooil_method` non-empty — are excluded; range 5–50 MJ/kg) and bio-oil carbon content (wt%; range 20–95).
+Same pipeline: XGBoost tuned with the E1 budget (20 configurations, grouped 5-fold) on base features, then E12 (A/W/PD, contrasts,
+ranking, anchoring, contrast intervals) on development folds and once on the locked studies. Hypotheses T1–T5 apply unchanged; these
+are reported as secondary analyses.

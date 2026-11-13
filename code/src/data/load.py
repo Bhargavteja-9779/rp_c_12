@@ -21,8 +21,11 @@ LOCK = os.path.join(ROOT, "config", "locked_test_studies.json")
 EXPECTED_SHA256 = "c8827a378879ce9d8d1ed7539e451b7b741eec30c5cc070487e3f467a4a42a6b"
 
 TARGETS = {
-    "biooil": dict(col="Yield_biooil_wt_pct", processes=("HTL", "HTL_solvothermal")),
-    "solid": dict(col="Yield_char_wt_pct", processes=("HTL", "HTL_solvothermal", "HTC")),
+    "biooil": dict(col="Yield_biooil_wt_pct", processes=("HTL", "HTL_solvothermal"), range=(0, 100)),
+    "solid": dict(col="Yield_char_wt_pct", processes=("HTL", "HTL_solvothermal", "HTC"), range=(0, 100)),
+    # secondary product-quality targets (PROTOCOL Addendum A2)
+    "hhv_biooil": dict(col="HHV_biooil_MJ_per_kg", processes=("HTL", "HTL_solvothermal"), range=(5, 50), exclude_computed="HHV_biooil_method"),
+    "c_biooil": dict(col="C_biooil_wt_pct", processes=("HTL", "HTL_solvothermal"), range=(20, 95)),
 }
 
 # ----------------------------------------------------------------------------------------------
@@ -177,8 +180,12 @@ def load_target(target: str, split: str = "dev", df: pd.DataFrame | None = None)
     y = pd.to_numeric(d[spec["col"]], errors="coerce")
     d = d[y.notna()]; y = y[y.notna()]
     ex["rows_with_target"] = int(len(d))
-    ok = (y >= 0) & (y <= 100)
+    lo, hi = spec.get("range", (0, 100))
+    ok = (y >= lo) & (y <= hi)
     ex["excluded_target_out_of_range"] = int((~ok).sum()); d, y = d[ok], y[ok]
+    if spec.get("exclude_computed"):
+        comp = d[spec["exclude_computed"]].notna().to_numpy()
+        ex["excluded_computed_target"] = int(comp.sum()); d, y = d[~comp], y[~comp]
     carbon_basis = d["yield_basis"].fillna("").str.lower().str.contains(r"feed carbon|carbon-basis|carbon basis|c-basis")
     ex["excluded_carbon_basis"] = int(carbon_basis.sum()); d, y = d[~carbon_basis], y[~carbon_basis]
     need = d["C_feed_wt_pct"].notna() & d["O_feed_wt_pct"].notna() & d["T_reaction_C"].notna() & d["t_residence_min"].notna()
