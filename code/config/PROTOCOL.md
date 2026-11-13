@@ -119,3 +119,12 @@ E12 (development) did not support T1–T3. Two follow-up analyses, chosen after 
 * E14b Ranking against domain heuristics instead of random choice: for each unseen study (≥ 5 runs) pick the run predicted best by A/W/PD,
   or by a rule of thumb — bio-oil: run with temperature closest to 300 °C (E13 optimum band 300–350 °C → 325 °C also reported); solid: lowest
   temperature run. Regret compared by Wilcoxon (two-sided, Holm).
+
+# Addendum C (2026-11-13, registered BEFORE any locked-study evaluation of E12/E14)
+Confirmatory test on the 38 locked studies (models trained on all development studies, XGBoost, base features):
+* C1 (confirms E14b): for bio-oil, regret of the run predicted best by A, W and PD is lower than for the rule of thumb (temperature closest
+  to 325 °C, the centre of the development optimum band) — one-sided Wilcoxon over locked studies with ≥ 5 runs, Holm over the 3 models.
+  For solids, the comparison with the lowest-temperature rule is two-sided.
+* C2: E12 metrics (T1–T5) on locked studies (all three learners for yields; XGBoost for HHV/C), reported descriptively with the
+  pre-registered tests.
+* E14a contrast types on locked studies, descriptive.

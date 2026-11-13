@@ -48,18 +48,25 @@ def fold(target, params, X, y, g, tr, te, seed, fi, Tvals):
     return rows, rk
 
 
-def run(mode="full"):
+def run(mode="full", split="dev"):
     cfg, D = load_config(mode), out_dirs(mode)
     R, K = [], []
     for target in ["biooil", "solid"]:
-        ds = load_target(target, "dev"); X = ds.X[ds.base_features]
-        params = restore(load_cell(D, target, "base", "xgb")["params"])
-        jobs = [(s, fi, tr, te) for s in cfg["outer_seeds"] for fi, (tr, te) in enumerate(grouped_folds(ds.groups, k=cfg["outer_folds"], seed=s))]
-        out = Parallel(n_jobs=cfg["n_jobs"])(delayed(fold)(target, params, X, ds.y, ds.groups, tr, te, s, fi, None) for s, fi, tr, te in jobs)
+        ds = load_target(target, "dev"); params = restore(load_cell(D, target, "base", "xgb")["params"])
+        if split == "dev":
+            X, y, g = ds.X[ds.base_features], ds.y, ds.groups
+            jobs = [(s, fi, tr, te) for s in cfg["outer_seeds"] for fi, (tr, te) in enumerate(grouped_folds(ds.groups, k=cfg["outer_folds"], seed=s))]
+        else:
+            te_ds = load_target(target, "test")
+            X = pd.concat([ds.X[ds.base_features], te_ds.X[ds.base_features]], ignore_index=True)
+            y = np.r_[ds.y, te_ds.y]; g = np.r_[ds.groups, te_ds.groups]
+            jobs = [(0, 0, np.arange(len(ds.y)), np.arange(len(ds.y), len(y)))]
+        out = Parallel(n_jobs=cfg["n_jobs"])(delayed(fold)(target, params, X, y, g, tr, te, s, fi, None) for s, fi, tr, te in jobs)
         for r, k in out:
             R.extend(r); K.extend(k)
     R = pd.DataFrame(R); K = pd.DataFrame(K)
-    R.to_csv(os.path.join(D["results"], "e14a_contrast_types.csv"), index=False); K.to_csv(os.path.join(D["results"], "e14b_ranking_heuristics.csv"), index=False)
+    sfx = "" if split == "dev" else "_locked"
+    R.to_csv(os.path.join(D["results"], f"e14a_contrast_types{sfx}.csv"), index=False); K.to_csv(os.path.join(D["results"], f"e14b_ranking_heuristics{sfx}.csv"), index=False)
     s = R.groupby(["target", "model", "type", "seed"]).agg(sse=("sse", "sum"), ss=("ss", "sum"), n=("n", "sum")).reset_index()
     s["r2"] = 1 - s.sse / s.ss
     print(s.groupby(["target", "type", "model"]).agg(r2=("r2", "mean"), n_pairs=("n", "mean")).round(3).to_string())
@@ -67,4 +74,4 @@ def run(mode="full"):
 
 
 if __name__ == "__main__":
-    run(sys.argv[1] if len(sys.argv) > 1 else "full")
+    run(sys.argv[1] if len(sys.argv) > 1 else "full", sys.argv[2] if len(sys.argv) > 2 else "dev")
