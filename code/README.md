@@ -1,8 +1,8 @@
 # STRATA — study-level transfer and calibrated uncertainty for literature-trained hydrothermal-conversion models
 
 Code and data to reproduce every number, table and figure of the manuscript
-*"Literature-trained machine-learning models for hydrothermal biomass conversion do not transfer to new studies as
-well as random splits suggest: decomposition, reporting descriptors and study-calibrated uncertainty"*
+*"What can machine-learning models trained on published hydrothermal-conversion data tell a new laboratory? A pre-registered
+audit with locked test studies"*
 (submitted to *Bioresource Technology*).
 
 ## 1. Install
@@ -32,7 +32,7 @@ was fitted** (see git history). `src/data/lock_split.py` refuses to regenerate i
 
 ## 4. Run
 ```bash
-python run_all.py --mode quick     # ~6 min on 4 cores (measured from a fresh clone): pipeline check; outputs in code/_quick/
+python run_all.py --mode quick     # ~12 min on 4 cores (measured from a fresh clone): pipeline check; outputs in code/_quick/
 python run_all.py --mode full      # full study (roughly 1.5–2 h of compute on 4 cores); outputs in ../results ../figures ../tables
 python run_all.py --mode full --only analyze tables figures   # regenerate statistics/tables/figures from saved results
 python -m pytest -q tests          # unit tests (checksum, split disjointness, conformal maths, k-shot masking, Holm)

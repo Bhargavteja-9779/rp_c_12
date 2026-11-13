@@ -1,6 +1,6 @@
 # Submission package — *Bioresource Technology*
 
-**Machine-learning models of hydrothermal biomass conversion trained on literature data: transfer to unseen studies and study-calibrated prediction intervals**
+**What can machine-learning models trained on published hydrothermal-conversion data tell a new laboratory? A pre-registered audit with locked test studies**
 
 * Manuscript: `manuscript/Final_Manuscript.docx` (+ `.pdf`), `manuscript/Supplementary_Material.docx`, `manuscript/Highlights.docx`, `manuscript/Graphical_Abstract.png`, `manuscript/cover_letter.docx`
 * Journal selection evidence: `journal_selection/`

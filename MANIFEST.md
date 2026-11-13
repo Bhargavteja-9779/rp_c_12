@@ -28,11 +28,11 @@ The repository root is the submission package for ***Bioresource Technology*** (
 │   ├── statistics/                  # meta-regression, paired tests, locked sensitivity
 │   ├── predictions/                 # out-of-fold and locked-test predictions
 │   └── experiment_logs/             # logs, E1 cell cache, environment
-├── figures/                         # fig01–fig10 + graphical abstract (PNG 300 dpi + PDF)
+├── figures/                         # fig01–fig13 + graphical abstracts (PNG 300 dpi + PDF); fig07–fig10 appear as Figs. S1–S4
 ├── tables/                          # all manuscript and supplementary tables (CSV + Markdown)
 ├── supplementary/literature/        # PubMed corpus, literature matrix, verified references, abstracts
 ├── REVIEW/
-│   ├── review_01.md … review_10.md
+│   ├── review_01.md … review_15.md  # 10 rounds (v1) + 5 rounds (v2)
 │   ├── citation_audit.md
 │   ├── final_audit.md
 │   └── rejection_risk_report.md

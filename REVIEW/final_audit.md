@@ -66,3 +66,5 @@ See `REVIEW/rejection_risk_report.md` §Decision.
 * Two review analyses first computed ad hoc were moved into scripts and verified byte-identical (review_12.md, 12.5).
 * Fresh-clone quick run of the v2 pipeline: all 20 stages exit 0 in 736 s (`results/experiment_logs/repro_quick.json`).
 * Pre-registration audit trail: Supplementary Table S16 (generated from `git log`).
+* Final exact-number check (2026-11-13): fresh clone of commit 97d0324 → `run_all.py --mode full --only e13 analyze tables figures analyze_v2
+  capability figures_v2` + `build_manuscript.py` from the committed raw results: **647 of 647 manuscript values identical**.

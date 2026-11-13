@@ -32,3 +32,5 @@ Branch: claude/autonomous-research-discovery-1uqqmr. Resume by reading this file
   locked contrast R² favours W/PD but driven by 2 studies (n.s. per study). E13 model-free: temperature-trend directions agree across labs.
 * v2 framing: pre-registered capability audit (levels, trends, ranking, uncertainty, anchoring) + trend atlas + reporting checklist.
 * Next: manuscript rewrite (v2 tokens/tables/figures), rebuild, re-review rounds 11-15, audits, push.
+
+* 2026-11-13: v2 COMPLETE — manuscript rewritten (audit framing), reviews 11–15, fresh-clone checks (quick 736 s all stages OK; 647/647 values identical). Decision: READY FOR SUBMISSION (v2), conditional on author actions.
