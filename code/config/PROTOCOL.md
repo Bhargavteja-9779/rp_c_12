@@ -75,3 +75,31 @@ Outer grouped-CV seeds {11, 22, 33}; learner seeds 0; bootstrap seed 0; k-shot s
 * 2026-11-11 — Meta-regression (RQ3b): the ridge penalty grid was widened (1e-2…1e5) because the selected penalty hit the upper bound of the registered grid (1e3) in pipeline verification; univariate study-level tests were added for interpretability (Kruskal–Wallis of study offsets across dominant extraction solvent, Mann–Whitney dry-ash-free vs other bases, Spearman with reactor volume). These are secondary analyses and are reported as such, without multiplicity claims beyond Holm within the three tests.
 * 2026-11-11 — Post-hoc improvement experiment E3b (Phase 19), added after observing in pipeline verification that study-calibrated intervals are wide: locally adaptive study-calibrated conformal (SC-N; difficulty model on log|out-of-study residual|, cross-fitted by study). Reported separately from the pre-registered analyses as exploratory, whatever its outcome.
 * 2026-11-11 — After the single locked-test evaluation (post hoc, reported as such): study-cluster bootstrap CIs for locked-test coverage, and a sensitivity analysis excluding, for each learner, the one locked study with the largest share of squared error (one solvothermal study with 90 runs carried 54 % of the XGBoost bio-oil squared error). No model, feature or hyper-parameter was changed after the locked evaluation.
+
+---
+# Addendum A (v2, registered 2026-11-13 BEFORE running E12): trend transfer / offset-invariant learning
+
+Motivation (from registered results E3): ≈50–65 % of out-of-study error is a study offset. If so, *within-study contrasts*
+(y_i − y_j, two runs of the same study) should transfer to unseen studies much better than absolute levels, because the offset
+cancels. This is what an experimenter planning runs needs ("how much does yield change if I change T, t, catalyst …?").
+
+Disclosure: the locked test studies were already evaluated once for absolute levels (Table 6). Their *contrast* performance has
+not been computed or inspected. E12 will be evaluated on them once, after development analyses, as below.
+
+## Hypotheses (directional, one-sided where stated)
+* T1  For unseen studies, contrast R² (vs. the 'no-change' predictor Δ̂ = 0) of the absolute model (A) exceeds its level R².
+* T2  Offset-invariant training predicts unseen-study contrasts better than differencing A (per-study contrast RMSE; one-sided Wilcoxon, Holm across learners × targets):
+      W  = within-study model: target y − ȳ_study, features x and x − x̄_study (x̄ from the study's *inputs* only);
+      PD = pairwise-difference model (PADRE-type): within-study pairs, input [x_i, x_j, x_i − x_j], target y_i − y_j, antisymmetrised.
+* T3  Anchored prediction with k ∈ {1,2,3} measured runs of the new study: W/PD anchoring (ŷ = mean over anchors a of y_a + Δ̂(x, x_a))
+      beats STRATA-EB (A + shrunk offset) in median per-study RMSE of the remaining runs (two-sided Wilcoxon, Holm).
+* T4  Study-calibrated conformal intervals for contrasts (weights 1/#pairs per study) attain ≈ nominal coverage and are narrower than level intervals.
+* T5  Practical ranking: median within-study Spearman ρ > 0.5 for the best model; regret of choosing the predicted-best run of a study < regret of a random choice (Wilcoxon).
+
+## Design
+Learners: XGBoost (STRATA base), extra trees, LightGBM; E1-tuned hyper-parameters (base features) reused for A; W and PD use the
+same hyper-parameters (no new tuning). Development: study-grouped 10-fold, seeds {11,22,33}; calibration residuals for contrast
+intervals from inner study-grouped 5-fold on training studies. PD pair sampling: ≤ 30 random partners per run (seed 0).
+Evaluation pairs: all within-study pairs of test studies; per-study metrics; studies with ≥ 3 runs for contrasts, ≥ 5 runs for ranking/regret,
+≥ 11 runs for anchoring (20 random anchor sets). Locked test: models trained on all development studies, evaluated once after the development
+analyses are complete and frozen (commit before locked evaluation).
