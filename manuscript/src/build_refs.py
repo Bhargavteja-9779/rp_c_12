@@ -6,7 +6,7 @@ import json, os, re, urllib.request
 LIT = os.path.join(os.path.dirname(__file__), "..", "..", "supplementary", "literature")
 V = json.load(open(os.path.join(LIT, "references_verified.json")))
 N = json.load(open(os.path.join(LIT, "nondoi_verification.json")))
-JOURNAL_ABBR = {"Journal of Survey Statistics and Methodology": "J. Surv. Stat. Methodol.", "Bioresource Technology": "Bioresour. Technol.", "Fuel": "Fuel", "Energy": "Energy", "BioEnergy Research": "BioEnergy Res.",
+JOURNAL_ABBR = {"Journal of Chemical Information and Modeling": "J. Chem. Inf. Model.", "The Journal of Physical Chemistry A": "J. Phys. Chem. A", "Proceedings of the National Academy of Sciences": "Proc. Natl. Acad. Sci. U.S.A.", "Journal of Survey Statistics and Methodology": "J. Surv. Stat. Methodol.", "Bioresource Technology": "Bioresour. Technol.", "Fuel": "Fuel", "Energy": "Energy", "BioEnergy Research": "BioEnergy Res.",
     "GCB Bioenergy": "GCB Bioenergy", "Patterns": "Patterns", "Renewable and Sustainable Energy Reviews": "Renew. Sustain. Energy Rev.",
     "Biofuels, Bioproducts and Biorefining": "Biofuels Bioprod. Biorefin.", "Biofuels": "Biofuels", "Energy & Fuels": "Energy Fuels", "Energy &amp; Fuels": "Energy Fuels",
     "Journal of the American Statistical Association": "J. Am. Stat. Assoc.", "The Annals of Statistics": "Ann. Stat.", "Controlled Clinical Trials": "Control. Clin. Trials",

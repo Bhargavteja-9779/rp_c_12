@@ -1,0 +1,10 @@
+Item,Minimum practice,Why (evidence in this study)
+1. Splitting unit,"Hold out whole source studies (or laboratories); report random-split metrics only as a reference","Random splits overstated accuracy about two-fold (Table 2)"
+2. Locked test,"Fix a list of held-out studies before modelling and evaluate it once","Locked results were worse than development CV (Table 6)"
+3. Duplicates,"Audit identical runs reported in several studies before splitting","~7 % of runs were cross-study duplicates (Section 3.8)"
+4. Accuracy metrics,"Report per-study errors and the mean-predictor baseline next to pooled R²","Pooled metrics were dominated by a few studies (Section 3.8)"
+5. Uncertainty,"Calibrate prediction intervals across studies, not across random runs","Row-calibrated 90 % intervals covered 0.46–0.61 (Table 4)"
+6. Trend / optimum claims,"Support claims about effects of conditions or optimal conditions with held-out-study contrasts or rankings","Within-study changes and rankings did not transfer (Sections 3.4–3.5)"
+7. Local anchoring,"Recommend 1–3 local runs and report the anchored error","Three runs reduced the median error by 3–4 wt% (Table 5)"
+8. Metadata,"Record product-recovery solvent, yield basis, fraction definitions, mass-balance closure and reactor details in curated databases","Coarse parsed descriptors did not explain offsets (Table 3)"
+9. Openness,"Release code, the held-out study list and per-run predictions","Enables re-analysis of the above"

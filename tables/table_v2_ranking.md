@@ -1,0 +1,1 @@
+**Table S13. Regret of choosing the run predicted best within a study vs rules of thumb (development: exploratory, two-sided; locked: pre-registered confirmatory, one-sided for bio-oil). Holm-corrected p.**

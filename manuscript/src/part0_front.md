@@ -1,5 +1,5 @@
 ---
-title: "Machine-learning models of hydrothermal biomass conversion trained on literature data: transfer to unseen studies and study-calibrated prediction intervals"
+title: "What can machine-learning models trained on published hydrothermal-conversion data tell a new laboratory? A pre-registered audit with locked test studies"
 ---
 
 **Authors:** [Author 1]^a,\*^, [Author 2]^b^, [Author 3]^a^
@@ -11,14 +11,14 @@ title: "Machine-learning models of hydrothermal biomass conversion trained on li
 
 # Highlights
 
-- Random splits overstate HTL/HTC yield-model accuracy on new studies ~two-fold
-- Study-level offsets make up half to two-thirds of the error on unseen studies
-- Recorded work-up and yield-basis descriptors did not explain the study offsets
-- Row-calibrated conformal intervals under-cover runs from new studies
-- {{hl_cov}}
+- Pre-registered audit of literature-trained HTL/HTC models; 38 studies held out
+- Yields of unseen studies were barely predictable; random splits hid this
+- Laboratories agree on the direction of temperature effects, not on yield levels
+- Trend-, ranking- and metadata-based shortcuts failed on held-out studies
+- Study-calibrated intervals and a few local runs gave honest predictions
 
 # Abstract
 
-Machine-learning models of hydrothermal liquefaction (HTL) and carbonization (HTC) are trained on runs compiled from published studies but are usually validated by splitting runs at random. Using a curated database of 3,693 runs from 188 studies, with 38 studies locked away before modelling, this work quantified how such models transfer to unseen studies. Across 12 learners, the RMSE of the best bio-oil yield models rose from {{biooil_best_random_rmse}} wt% under random splitting to {{biooil_best_grouped_rmse}} wt% for unseen studies (R² {{biooil_best_random_r2}} → {{biooil_best_grouped_r2}}); solid yields behaved similarly ({{solid_best_random_rmse}} → {{solid_best_grouped_rmse}} wt%). Between-study offsets accounted for {{biooil_share}} (95% CI {{biooil_share_lo}}–{{biooil_share_hi}}) of the out-of-study error variance for bio-oil and {{solid_share}} for solids. Descriptors of product work-up and yield basis did not reduce this error. Conformal intervals calibrated on randomly held-out runs covered {{biooil_cov_RC}} (bio-oil) and {{solid_cov_RC}} (solids) of runs from unseen studies instead of 0.90; calibrating at the study level raised coverage to {{biooil_cov_SC}} and {{solid_cov_SC}}, at the cost of {{biooil_width_SC}}- and {{solid_width_SC}}-wt%-wide intervals. With three runs from the new study, an empirical-Bayes offset reduced the median per-study RMSE for bio-oil from {{biooil_k0_none_rmse}} to {{biooil_k3_eb_rmse}} wt% while keeping coverage at {{biooil_k3_eb_cov}}. {{abstract_locked_sentence}} Literature-trained surrogates should therefore be validated by study, reported with study-calibrated intervals and anchored with a few local runs before use in new settings.
+Machine-learning surrogates of hydrothermal liquefaction (HTL) and carbonization (HTC) are trained on runs compiled from the literature and usually validated by random splits. This work audited what such models can deliver for a laboratory whose study they have not seen, using a curated database of 3,693 runs from 188 studies, a pre-registered protocol and 38 studies locked away before modelling. Across 12 learners, the best bio-oil-yield RMSE rose from {{biooil_best_random_rmse}} wt% under random splitting to {{biooil_best_grouped_rmse}} wt% for unseen studies (R² {{biooil_best_random_r2}} → {{biooil_best_grouped_r2}}), and on locked studies no learner predicted bio-oil yields substantially better than the training mean. Study-level offsets made up {{solid_share}}–{{biooil_share}} of out-of-study error variance and were not explained by recorded work-up or yield-basis descriptors. Model-free within-study comparisons showed that laboratories agree on the direction of the temperature response below 300 °C (bio-oil {{biooil_slope_250_300}} wt% per 10 °C at 250–300 °C, same sign in {{biooil_sign_250_300}}% of studies), yet models predicted within-study changes no better than absolute yields, and an exploratory advantage in choosing the best planned run {{c1_sentence}} on locked studies. What held was honest uncertainty and local anchoring: conformal intervals calibrated across studies covered {{cov_range_SC}} of new-study runs (row-calibrated: {{cov_range_RC}}), and three measured runs lowered the median per-study bio-oil error from {{biooil_k0_none_rmse}} to {{biooil_k3_eb_rmse}} wt%. Literature-trained hydrothermal models should be validated by study, reported with study-calibrated intervals and anchored with local runs.
 
-**Keywords:** hydrothermal liquefaction; hydrothermal carbonization; machine learning; conformal prediction; data leakage; transferability
+**Keywords:** hydrothermal liquefaction; hydrothermal carbonization; machine learning; conformal prediction; pre-registration; transferability

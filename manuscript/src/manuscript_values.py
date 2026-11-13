@@ -1,13 +1,14 @@
 """Every number that appears in the manuscript text is computed here from generated result files."""
 from __future__ import annotations
 
-import json, os, statistics
+import json, os, statistics, sys
 import numpy as np
 import pandas as pd
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 R = os.environ.get("STRATA_RESULTS", os.path.join(REPO, "results"))
+sys.path.insert(0, os.path.join(REPO, "code"))
 LBL = {"mean": "mean predictor", "ridge": "ridge regression", "knn": "k-nearest neighbours", "svr": "SVR", "mlp": "MLP",
        "rf": "random forest", "et": "extra trees", "hgb": "histogram gradient boosting", "lgbm": "LightGBM", "xgb": "XGBoost",
        "cat": "CatBoost", "gpboost": "GPBoost"}
@@ -221,6 +222,81 @@ def compute() -> dict:
     e11 = pd.read_csv(os.path.join(R, "e11_overhead.csv"))
     v["ovh_min"] = f1(e11.strata_total_s.min()); v["ovh_max"] = f1(e11.strata_total_s.max())
     v["ovh_base_min"] = f1(e11.base_fit_s.min()); v["ovh_base_max"] = f1(e11.base_fit_s.max())
+
+    # ================= v2: trends, ranking, quality targets (PROTOCOL Addenda A, A2, B, C)
+    V = json.load(open(os.path.join(R, "statistics_v2.json")))
+    e13 = pd.DataFrame(V["e13"]); eT = e13[e13.variable == "T_C"].set_index(["target", "band"])
+    for t in ["biooil", "solid"]:
+        for b in ["150-250", "250-300", "300-350", "350-450"]:
+            r = eT.loc[(t, b)]; k = b.replace("-", "_")
+            v[f"{t}_slope_{k}"] = f"{r.median_slope:+.2f}"; v[f"{t}_slope_{k}_lo"] = f"{r.slope_ci_low:+.2f}"; v[f"{t}_slope_{k}_hi"] = f"{r.slope_ci_high:+.2f}"
+            v[f"{t}_sign_{k}"] = f"{100 * r.frac_studies_same_sign:.0f}"; v[f"{t}_nst_{k}"] = int(r.n_studies)
+            v[f"{t}_sdslope_{k}"] = f"{r.sd_slope_between_studies:.1f}"
+        et = e13[(e13.variable == "log_t_min") & (e13.target == t)].iloc[0]
+        v[f"{t}_tslope"] = f"{et.median_slope:+.2f}"; v[f"{t}_tslope_lo"] = f"{et.slope_ci_low:+.2f}"; v[f"{t}_tslope_hi"] = f"{et.slope_ci_high:+.2f}"
+        v[f"{t}_tsign"] = f"{100 * et.frac_studies_same_sign:.0f}"
+    r_ = eT.loc[("biooil", "250-300")]; v["biooil_sd_over_slope_250_300"] = f"{r_.sd_slope_between_studies / abs(r_.median_slope):.1f}"
+    lo_ = eT.loc[[("solid", "150-250"), ("solid", "250-300")]].frac_studies_same_sign
+    v["solid_sign_lt300"] = f"{100 * lo_.min():.0f}" if round(100 * lo_.min()) == round(100 * lo_.max()) else f"{100 * lo_.min():.0f}–{100 * lo_.max():.0f}"
+    v["n_pairs_T_biooil"] = int(e13[(e13.variable == "T_C") & (e13.target == "biooil")].n_pairs.sum())
+    v["n_pairs_T_solid"] = int(e13[(e13.variable == "T_C") & (e13.target == "solid")].n_pairs.sum())
+    def summ(split):
+        return pd.DataFrame(V[f"e12_{split}"]["T1_T4_T5_summary"])
+    for split, tag in [("dev", "d"), ("locked", "l"), ("dev_quality", "d"), ("locked_quality", "l")]:
+        if f"e12_{split}" not in V:
+            continue
+        sm = summ(split); x = sm[sm.learner == "xgb"].set_index(["target", "model"])
+        for t in x.index.get_level_values(0).unique():
+            v[f"{t}_{tag}_lvl_r2"] = f2(x.loc[(t, "A"), "level_r2_same_studies"])
+            for mdl in ["A", "W", "PD"]:
+                v[f"{t}_{tag}_c_r2_{mdl}"] = f2(x.loc[(t, mdl), "contrast_r2"]); v[f"{t}_{tag}_rho_{mdl}"] = f2(x.loc[(t, mdl), "median_spearman"])
+            v[f"{t}_{tag}_ccov"] = f2(x.loc[(t, "A"), "contrast_coverage_studies"]); v[f"{t}_{tag}_cw"] = f1(x.loc[(t, "A"), "contrast_width"])
+            v[f"{t}_{tag}_lw"] = f1(x.loc[(t, "A"), "level_width"])
+            allc = sm[sm.target == t].contrast_r2
+            v[f"{t}_{tag}_c_r2_min"] = f2(allc.min()); v[f"{t}_{tag}_c_r2_max"] = f2(allc.max())
+            alll = sm[(sm.target == t) & (sm.model == "A")].level_r2_same_studies
+            v[f"{t}_{tag}_l_r2_min"] = f2(alll.min()); v[f"{t}_{tag}_l_r2_max"] = f2(alll.max())
+    t2 = pd.DataFrame(V["e12_dev"]["T2"]); v["t2_dev_sig"] = int((t2.p_holm < 0.05).sum()); v["t2_dev_n"] = len(t2)
+    t2l = pd.DataFrame(V["e12_locked"]["T2"]); v["t2_locked_sig"] = int((t2l.p_holm < 0.05).sum()); v["t2_locked_n"] = len(t2l)
+    v["t2_locked_minp"] = f"{t2l.p.min():.3f}"
+    t3 = pd.DataFrame(V["e12_dev"]["T3"]); v["t3_dev_sig_better"] = int(((t3.p_holm < 0.05) & (t3.median_diff < 0)).sum())
+    v["t3_dev_sig_worse"] = int(((t3.p_holm < 0.05) & (t3.median_diff > 0)).sum()); v["t3_dev_n"] = len(t3)
+    t3s = pd.DataFrame(V["e12_dev"]["T3_summary"]).query("learner == 'xgb' and k == 1").set_index("target")
+    for t in ["biooil", "solid"]:
+        v[f"{t}_k1_AEB"] = f2(t3s.loc[t, "median_A-EB"]); v[f"{t}_k1_W"] = f2(t3s.loc[t, "median_W-anchor"]); v[f"{t}_k1_PD"] = f2(t3s.loc[t, "median_PD-anchor"])
+    for sfx, tag in [("", "d"), ("_locked", "l")]:
+        ct = pd.DataFrame(V[f"e14a{sfx}"]).set_index(["target", "type", "model"])
+        for t in ["biooil", "solid"]:
+            for typ, ty in [("temperature_only", "T"), ("time_only", "t")]:
+                for mdl in ["A", "W", "PD"]:
+                    v[f"{t}_{tag}_{ty}only_{mdl}"] = f2(ct.loc[(t, typ, mdl), "r2"])
+            v[f"{t}_{tag}_Tpairs"] = int(ct.loc[(t, "temperature_only", "A"), "n_pairs"])
+    # ranking
+    rk = pd.DataFrame(V["e14b"]); rl = pd.DataFrame(V["e14b_locked"])
+    for t in ["biooil", "solid"]:
+        rule = "rule_T325" if t == "biooil" else "rule_lowest_T"
+        d = rk[(rk.target == t) & (rk.reference == rule)].set_index("method"); l = rl[(rl.target == t) & (rl.reference == rule)].set_index("method")
+        for mdl in ["A", "W", "PD"]:
+            v[f"{t}_rk_d_{mdl}"] = f1(d.loc[mdl, "median_method"]); v[f"{t}_rk_l_{mdl}"] = f1(l.loc[mdl, "median_method"])
+            v[f"{t}_rk_d_p_{mdl}"] = pfmt(d.loc[mdl, "p_holm"]); v[f"{t}_rk_l_p_{mdl}"] = pfmt(l.loc[mdl, "p_holm"])
+        v[f"{t}_rk_d_rule"] = f1(d.median_ref.iloc[0]); v[f"{t}_rk_l_rule"] = f1(l.median_ref.iloc[0])
+        v[f"{t}_rk_d_n"] = int(d.n.iloc[0]); v[f"{t}_rk_l_n"] = int(l.n.iloc[0])
+        v[f"{t}_rk_d_rand"] = f1(V["e14b_random_median"][t]); v[f"{t}_rk_l_rand"] = f1(V["e14b_locked_random_median"][t])
+    v["c1_confirmed"] = bool((rl[(rl.target == "biooil")].p_holm < 0.05).any())
+    v["c1_sentence"] = ("was confirmed" if v["c1_confirmed"] else "was not confirmed")
+    # locked: concentration of contrast error in two studies
+    m = pd.read_csv(os.path.join(R, "e12_study_metrics_locked.csv")); m = m[(m.learner == "xgb") & (m.target == "biooil")]
+    sse = m.pivot_table(index="study", columns="model", values="sse_contrast", aggfunc="sum")
+    sh = (sse["A"] / sse["A"].sum()).sort_values(ascending=False)
+    v["lk_c_top2_share"] = f"{100 * sh.iloc[:2].sum():.0f}"
+    # quality-target tuning
+    for t in ["hhv_biooil", "c_biooil"]:
+        f = json.load(open(os.path.join(REPO, "results", "experiment_logs", "e1_cells", f"{t}__base__xgb.json")))
+        v[f"{t}_tune_rmse"] = f2(f["tune_rmse"])
+    from src.data.load import load_target as _lt
+    for t in ["hhv_biooil", "c_biooil"]:
+        for sp in ["dev", "test"]:
+            ds_ = _lt(t, sp); v[f"n_{t}_{sp}"] = f"{len(ds_.y):,}"; v[f"s_{t}_{sp}"] = len(set(ds_.groups))
     # ---------------- locked test (E5a)
     LT = pd.DataFrame(M.get("e5a_locked_test_metrics", []))
     if len(LT):
@@ -253,7 +329,7 @@ def compute() -> dict:
             f"pooled errors were dominated by a few studies outside the bulk of the training distribution — for {LBL[learner]}, a single solvothermal series of {int(LT_top_n)} runs "
             f"contributed {xs.excluded_sse_share:.0%} of the squared error, and excluding it (post hoc) lowered the RMSE from {xs.rmse_all:.1f} to {xs.rmse_excl:.1f} wt% "
             f"(R² = {abs(xs.r2_excl) if abs(xs.r2_excl) < 0.005 else xs.r2_excl:.2f}). Study-weighted coverage of row-calibrated 90% intervals was {cc('biooil', 'RC')} for bio-oil and {cc('solid', 'RC')} for solids; "
-            f"study-calibrated intervals reached {cc('biooil', 'SC')} and {cc('solid', 'SC')} (Table 6, Fig. 5). Study calibration thus removed most, but for solids "
+            f"study-calibrated intervals reached {cc('biooil', 'SC')} and {cc('solid', 'SC')} (Table 6, Fig. {{FIGREF:fig05_coverage}}). Study calibration thus removed most, but for solids "
             "not all, of the under-coverage; with 28–30 locked studies the intervals are wide, and the solid-yield shortfall reflects a few studies with feedstocks "
             "(technical lignin, plastic–biomass blends) that are rare in the training data.")
         v["abstract_locked_sentence"] = (f"On 38 locked studies, study-calibrated intervals covered {ci[('biooil', 'SC')]['reported']:.2f} (bio-oil) and "
@@ -298,14 +374,14 @@ def compute() -> dict:
             f"{mrm('biooil', 'feature_noise', nl[-1], 'SC', 'coverage_studies'):.2f} with noise (bio-oil) — the error budget for unseen studies is dominated by the study offset, not by input noise. "
             f"Training on {fr[0]:.0%} instead of all training studies raised the bio-oil RMSE from {mrm('biooil', 'training_studies', 1.0):.1f} to "
             f"{mrm('biooil', 'training_studies', fr[0]):.1f} wt%, and SC coverage remained {mrm('biooil', 'training_studies', fr[0], 'SC', 'coverage_studies'):.2f}, "
-            f"whereas RC coverage stayed at {mrm('biooil', 'training_studies', fr[0], 'RC', 'coverage_studies'):.2f}–{mrm('biooil', 'training_studies', 1.0, 'RC', 'coverage_studies'):.2f} (Fig. 7).")
+            f"whereas RC coverage stayed at {mrm('biooil', 'training_studies', fr[0], 'RC', 'coverage_studies'):.2f}–{mrm('biooil', 'training_studies', 1.0, 'RC', 'coverage_studies'):.2f} (Supplementary Fig. S1).")
     # ---------------- efficiency (E6)
     EF = pd.DataFrame(M.get("e6_efficiency", []))
     if len(EF):
         e = EF.set_index("learner"); sl = e.loc[learner]
         v["efficiency_paragraph"] = (
             f"All learners trained in at most {e.fit_s.max():.0f} s on one CPU thread ({LBL[e.fit_s.idxmax()]}); the STRATA base learner took {sl.fit_s:.1f} s "
-            f"and predicted 1,000 runs in {sl.predict_ms_per_1000_rows:.0f} ms (Table 8, Fig. 8). The complete STRATA procedure — two inner five-fold cross-validations, "
+            f"and predicted 1,000 runs in {sl.predict_ms_per_1000_rows:.0f} ms (Supplementary Table S14, Supplementary Fig. S2). The complete STRATA procedure — two inner five-fold cross-validations, "
             f"quantiles, variance components and k-shot quantiles for all k — took {v['ovh_min']}–{v['ovh_max']} s on all development studies, against {v['ovh_base_min']}–{v['ovh_base_max']} s "
             "for fitting the base learner alone (measured, 1 and 4 threads); this overhead is negligible compared with the cost of a single hydrothermal experiment.")
     # ---------------- error analysis (E8)
@@ -324,7 +400,7 @@ def compute() -> dict:
             f"The five worst-predicted bio-oil studies had per-study RMSE between {sw.rmse.min():.1f} and {sw.rmse.max():.1f} wt% and absolute mean offsets of "
             f"{sw.bias.abs().min():.1f}–{sw.bias.abs().max():.1f} wt% (processes: {', '.join(f'{k.replace(chr(95), chr(32))} {n}' for k, n in sw.process.value_counts().items())}). "
             f"Across extraction-solvent groups with at least three studies, the bio-oil RMSE ranged from {sg.rmse.min():.1f} ({sg.sort_values('rmse').iloc[0].level.replace(chr(95), chr(32))}) "
-            f"to {sg.rmse.max():.1f} wt% ({sg.sort_values('rmse').iloc[-1].level.replace(chr(95), chr(32))}) and the mean residual from {sg.bias.min():+.1f} to {sg.bias.max():+.1f} wt% (Fig. 9).")
+            f"to {sg.rmse.max():.1f} wt% ({sg.sort_values('rmse').iloc[-1].level.replace(chr(95), chr(32))}) and the mean residual from {sg.bias.min():+.1f} to {sg.bias.max():+.1f} wt% (Supplementary Fig. S3).")
     ad_p = os.path.join(R, "e3b_adaptive_summary.csv")
     if os.path.exists(ad_p):
         ad = pd.read_csv(ad_p).set_index(["target", "method"])

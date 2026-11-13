@@ -1,0 +1,8 @@
+Capability,Development studies (unseen),38 locked studies,Verdict
+Predict the absolute yield of a run in a new study,"best R² 0.24 (bio-oil), 0.54 (solid)","best R² 0.03 (bio-oil), 0.57 (solid)",Poor (bio-oil); moderate (solid)
+Explain a study's offset from reported work-up / yield basis,"P ablation p = 0.80, 0.54; meta-regression R² -0.03, -0.05",0 of 24 learner–target tests significant,No
+Predict how yield changes between two runs of a new study (within-study contrast),"contrast R² 0.14–0.21 (bio-oil), 0.37–0.43 (solid); offset-invariant models better in 1/12 tests","contrast R² -0.30–0.30 (bio-oil), 0.43–0.56 (solid)",Weak; not better than levels (pre-registered T1–T3 not supported)
+"Direction of the temperature effect below 300 °C (model-free, within studies)","same sign in 81%–95% of studies (bio-oil ↑, solid ↓)",not applicable (descriptive),Consistent across laboratories
+Pick the best of a new study's planned runs (bio-oil),better than T≈325 °C rule (median regret 7.0–8.7 vs 12.8 wt%; exploratory),not confirmed (p_Holm ≥ 0.62; regret 11.9–12.5 vs 14.6 wt%),Not established
+Honest 90% prediction intervals for a new study,row-calibrated 0.57/0.61; study-calibrated 0.91/0.91,row-calibrated 0.60/0.46; study-calibrated 0.89/0.82,"Yes, if calibrated across studies (wide: ±23–30 wt%)"
+Use 1–3 measured runs of the new study to correct predictions,"median study RMSE 12.4→8.5 (bio-oil), 11.1→7.7 (solid) with 3 runs","median study RMSE 10.9→7.8 (bio-oil), 14.2→7.4 (solid)",Yes — the most effective use of literature models

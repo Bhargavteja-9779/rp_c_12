@@ -60,7 +60,7 @@ PubMed was queried on 2026-11-10 for machine-learning studies of hydrothermal li
 
 # S2. Pre-registered protocol and deviations
 
-The analysis protocol (`code/config/PROTOCOL.md`) was committed to version control before any model was fitted, together with the locked list of 38 test studies. Deviations, each logged with date and reason: (i) the tabular foundation model could not be run because its weights require a personal licence acceptance; (ii) clarification that every learner was tuned separately for each feature set; (iii) the ridge-penalty grid of the meta-regression was widened after its selected value hit the registered upper bound, and three univariate study-level tests were added as secondary analyses; (iv) post-hoc review analyses E9 (base learners), E10 (cross-study duplicate audit) and E11 (overhead), and a post-hoc sensitivity analysis of the locked test excluding the single study with the largest squared-error share; (v) an exploratory, post-hoc locally adaptive variant of the study-calibrated intervals (SC-N, Section S4) was added after pipeline verification showed that constant-width study-calibrated intervals are wide. GPBoost was run as registered; its study random intercept absorbed most of the variance because feedstock descriptors are nearly constant within a study, so its out-of-study predictions reverted towards a nearly flat fixed-effect function.
+The analysis protocol (`code/config/PROTOCOL.md`) was committed to version control before any model was fitted, together with the locked list of 38 test studies. Deviations, each logged with date and reason: (i) the tabular foundation model could not be run because its weights require a personal licence acceptance; (ii) clarification that every learner was tuned separately for each feature set; (iii) the ridge-penalty grid of the meta-regression was widened after its selected value hit the registered upper bound, and three univariate study-level tests were added as secondary analyses; (iv) protocol addenda A (within-study trends), A2 (product-quality targets) and C (locked confirmation), each registered before its analysis, and the exploratory addendum B registered after seeing the development results of A; (v) post-hoc review analyses E9 (base learners), E10 (cross-study duplicate audit) and E11 (overhead), and a post-hoc sensitivity analysis of the locked test excluding the single study with the largest squared-error share; (vi) an exploratory, post-hoc locally adaptive variant of the study-calibrated intervals (SC-N, Section S4) was added after pipeline verification showed that constant-width study-calibrated intervals are wide. GPBoost was run as registered; its study random intercept absorbed most of the variance because feedstock descriptors are nearly constant within a study, so its out-of-study predictions reverted towards a nearly flat fixed-effect function.
 
 # S3. Additional benchmark and sensitivity results
 
@@ -454,7 +454,122 @@ Motivation: constant-width study-calibrated intervals are wide. Hypothesis: out-
 
 
 
-# S7. Reproducibility
+# S7. Trend, ranking and anchoring analyses (Addenda A, A2, B, C)
+
+Protocol addenda were committed to version control before the corresponding analyses were run (git history of `code/config/PROTOCOL.md`). Addendum B (contrast types, rules of thumb) was registered after the development results of Addendum A had been seen and is exploratory; its ranking result was tested once on the locked studies under Addendum C and was not confirmed. Full per-study results: `results/e12_*`, `results/e14*`; tests: `results/statistics_v2.json`.
+
+
+**Table S11.** Model-free within-study trends: slopes from run pairs of the same study that differ only in temperature or only in residence time (development studies; 95% study-bootstrap CIs).
+
+| Target | Variable | Unit | Band (°C) | Studies | Pairs | Median slope [95% CI] | Studies with same sign | Between-study SD of slope |
+|---|---|---|---|---|---|---|---|---|
+| Bio-oil yield | Temperature | per +10 °C | 150-250 | 21 | 220 | +1.31 [+0.97, +1.64] | 0.95 | 2.75 |
+| Bio-oil yield | Temperature | per +10 °C | 250-300 | 63 | 1283 | +0.87 [+0.71, +1.27] | 0.81 | 2.28 |
+| Bio-oil yield | Temperature | per +10 °C | 300-350 | 53 | 1119 | -0.14 [-0.48, +0.12] | 0.55 | 2.22 |
+| Bio-oil yield | Temperature | per +10 °C | 350-450 | 21 | 172 | -0.79 [-1.56, +0.19] | 0.62 | 2.03 |
+| Bio-oil yield | Residence time | per doubling of residence time | all | 58 | 1138 | -0.06 [-0.66, +0.61] | 0.5 | 5.35 |
+| Solid yield | Temperature | per +10 °C | 150-250 | 28 | 600 | -2.66 [-3.34, -2.09] | 0.86 | 2.54 |
+| Solid yield | Temperature | per +10 °C | 250-300 | 65 | 1242 | -1.70 [-1.94, -1.49] | 0.86 | 2.05 |
+| Solid yield | Temperature | per +10 °C | 300-350 | 50 | 1094 | -0.62 [-0.86, -0.48] | 0.72 | 1.26 |
+| Solid yield | Temperature | per +10 °C | 350-450 | 18 | 140 | -0.35 [-0.91, +0.13] | 0.61 | 2.2 |
+| Solid yield | Residence time | per doubling of residence time | all | 52 | 1209 | -0.49 [-1.02, -0.13] | 0.62 | 6.9 |
+
+
+
+
+**Table S12.** Level vs within-study contrast accuracy for models A, W and PD (XGBoost), with study-calibrated contrast and level interval coverage/width (α = 0.1).
+
+| Target | Setting | Model | Level R² | Contrast R² | Median within-study Spearman | Contrast interval coverage | Contrast interval width | Level interval width |
+|---|---|---|---|---|---|---|---|---|
+| Bio-oil yield | Development (unseen studies) | A | 0.184 | 0.214 | 0.404 | 0.9 | 44.901 | 55.753 |
+| Bio-oil yield | Development (unseen studies) | PD |  | 0.165 | 0.407 | 0.898 | 44.795 | 55.753 |
+| Bio-oil yield | Development (unseen studies) | W |  | 0.14 | 0.389 | 0.897 | 45.152 | 55.753 |
+| Solid yield | Development (unseen studies) | A | 0.44 | 0.434 | 0.452 | 0.908 | 45.187 | 46.64 |
+| Solid yield | Development (unseen studies) | PD |  | 0.368 | 0.584 | 0.908 | 45.956 | 46.64 |
+| Solid yield | Development (unseen studies) | W |  | 0.367 | 0.603 | 0.91 | 44.354 | 46.64 |
+| Bio-oil yield | Locked test | A | -0.954 | -0.301 | 0.071 | 0.943 | 44.383 | 53.71 |
+| Bio-oil yield | Locked test | PD |  | 0.297 | 0.086 | 0.931 | 43.762 | 53.71 |
+| Bio-oil yield | Locked test | W |  | 0.205 | 0.271 | 0.947 | 45.676 | 53.71 |
+| Solid yield | Locked test | A | 0.295 | 0.434 | 0.541 | 0.891 | 44.716 | 46.536 |
+| Solid yield | Locked test | PD |  | 0.551 | 0.469 | 0.885 | 44.124 | 46.536 |
+| Solid yield | Locked test | W |  | 0.56 | 0.632 | 0.89 | 43.564 | 46.536 |
+| Bio-oil C | Development (unseen studies) | A | 0.091 | 0.107 | 0.367 | 0.898 | 20.838 | 26.619 |
+| Bio-oil C | Development (unseen studies) | PD |  | 0.172 | 0.435 | 0.899 | 20.245 | 26.619 |
+| Bio-oil C | Development (unseen studies) | W |  | 0.129 | 0.478 | 0.904 | 20.016 | 26.619 |
+| Bio-oil HHV | Development (unseen studies) | A | 0.206 | 0.388 | 0.389 | 0.902 | 12.316 | 16.917 |
+| Bio-oil HHV | Development (unseen studies) | PD |  | 0.38 | 0.561 | 0.902 | 12.306 | 16.917 |
+| Bio-oil HHV | Development (unseen studies) | W |  | 0.319 | 0.497 | 0.902 | 12.611 | 16.917 |
+| Bio-oil C | Locked test | A | 0.242 | -0.067 | 0.342 | 0.957 | 21.557 | 28.321 |
+| Bio-oil C | Locked test | PD |  | 0.221 | 0.681 | 0.966 | 20.877 | 28.321 |
+| Bio-oil C | Locked test | W |  | 0.189 | 0.436 | 0.962 | 20.808 | 28.321 |
+| Bio-oil HHV | Locked test | A | 0.249 | -0.099 | 0.42 | 0.922 | 12.573 | 16.711 |
+| Bio-oil HHV | Locked test | PD |  | -0.003 | 0.528 | 0.909 | 12.177 | 16.711 |
+| Bio-oil HHV | Locked test | W |  | -0.054 | 0.289 | 0.899 | 12.558 | 16.711 |
+
+
+
+
+**Table S13.** Regret of choosing the run predicted best within a study vs rules of thumb (development: exploratory, two-sided; locked: pre-registered confirmatory, one-sided for bio-oil). Holm-corrected p.
+
+| Setting | Target | Model | Rule of thumb | Studies | Median regret, model (wt%) | Median regret, rule (wt%) | Median paired difference [95% CI] | p (Holm) | Test |
+|---|---|---|---|---|---|---|---|---|---|
+| Development (exploratory) | Bio-oil yield | A | T300 | 110 | 8.74 | 13.55 | -3.95 [-6.48, -2.38] | 0.0 | two-sided |
+| Development (exploratory) | Bio-oil yield | A | T325 | 110 | 8.74 | 12.77 | -3.98 [-6.13, -2.12] | 0.0 | two-sided |
+| Development (exploratory) | Bio-oil yield | W | T300 | 110 | 7.2877 | 13.55 | -3.59 [-5.55, -2.04] | 0.0001 | two-sided |
+| Development (exploratory) | Bio-oil yield | W | T325 | 110 | 7.2877 | 12.77 | -3.61 [-5.39, -1.13] | 0.0001 | two-sided |
+| Development (exploratory) | Bio-oil yield | PD | T300 | 110 | 7.0 | 13.55 | -3.95 [-6.72, +0.00] | 0.0 | two-sided |
+| Development (exploratory) | Bio-oil yield | PD | T325 | 110 | 7.0 | 12.77 | -3.38 [-5.69, -0.13] | 0.0 | two-sided |
+| Development (exploratory) | Solid yield | A | lowest_T | 109 | 3.04 | 2.25 | +0.00 [+0.00, +0.00] | 0.6628 | two-sided |
+| Development (exploratory) | Solid yield | W | lowest_T | 109 | 1.6133 | 2.25 | +0.00 [+0.00, +0.00] | 0.3022 | two-sided |
+| Development (exploratory) | Solid yield | PD | lowest_T | 109 | 1.34 | 2.25 | +0.00 [+0.00, +0.00] | 0.1359 | two-sided |
+| Locked test (confirmatory) | Bio-oil yield | A | T325 | 25 | 11.93 | 14.6 | -0.86 [-7.55, +2.99] | 0.6173 | less |
+| Locked test (confirmatory) | Bio-oil yield | W | T325 | 25 | 12.5 | 14.6 | +0.00 [-3.55, +3.90] | 0.6612 | less |
+| Locked test (confirmatory) | Bio-oil yield | PD | T325 | 25 | 11.93 | 14.6 | +0.00 [-7.55, +3.90] | 0.6612 | less |
+| Locked test (confirmatory) | Solid yield | A | lowest_T | 27 | 1.85 | 5.5 | +0.00 [-0.40, +0.00] | 0.1401 | two-sided |
+| Locked test (confirmatory) | Solid yield | W | lowest_T | 27 | 0.449 | 5.5 | +0.00 [-0.40, +0.00] | 0.1005 | two-sided |
+| Locked test (confirmatory) | Solid yield | PD | lowest_T | 27 | 0.08 | 5.5 | +0.00 [+0.00, +0.00] | 0.3824 | two-sided |
+
+
+
+# S8. Additional figures and cost
+
+
+![**Fig. S1.** Robustness of the STRATA base learner (base + P features). Top: RMSE (mean ± SD over outer folds) with Gaussian noise added to continuous test features or with fewer training studies. Bottom: study-weighted coverage of RC and SC 90% intervals.](/home/user/rp_c_12/figures/fig07_robustness.png){width=16cm}
+
+
+
+![**Fig. S2.** Accuracy for unseen studies versus single-thread fit time on the development set (bio-oil, base features).](/home/user/rp_c_12/figures/fig08_efficiency.png){width=16cm}
+
+
+
+![**Fig. S3.** Mean out-of-study residual by extraction solvent named in the source study (groups with ≥ 3 studies; base features, seed-averaged outer-fold predictions).](/home/user/rp_c_12/figures/fig09_error_by_solvent.png){width=16cm}
+
+
+
+![**Fig. S4.** Observed versus predicted yields for the STRATA base learner under random-row CV and study-grouped CV (seed 11).](/home/user/rp_c_12/figures/fig10_parity.png){width=16cm}
+
+
+
+**Table S14.** Computational cost (bio-oil, development set, single thread). Peak RSS increase is measured relative to the process peak after data loading.
+
+| Learner | Fit time (s) | Predict (ms / 1000 rows) | Peak RSS increase (MB) | Serialized size (MB) |
+|---|---|---|---|---|
+| Mean | 0.006 | 0.024 | 0.0 | 0.0 |
+| Ridge | 0.013 | 0.525 | 0.0 | 0.003 |
+| k-NN | 0.013 | 16.627 | 0.0 | 0.624 |
+| SVR | 0.169 | 68.935 | 2.488 | 0.438 |
+| MLP | 9.265 | 1.186 | 0.0 | 0.146 |
+| Random forest | 1.54 | 35.689 | 14.715 | 25.699 |
+| Extra trees | 0.919 | 45.194 | 17.254 | 28.432 |
+| HistGB | 1.295 | 25.176 | 0.0 | 2.672 |
+| LightGBM | 0.577 | 81.663 | 9.906 | 3.214 |
+| XGBoost | 0.194 | 4.017 | 5.891 | 0.867 |
+| CatBoost | 3.445 | 1.236 | 39.953 | 3.705 |
+| GPBoost | 0.448 | 46.436 | 17.918 |  |
+
+
+
+# S9. Reproducibility
 
 `python run_all.py --mode full` regenerates every result file, table and figure; `python manuscript/src/build_manuscript.py` regenerates this document and the manuscript from those files. Environment details (library versions, CPU) are written to `results/experiment_logs/environment.json` at run time.
 

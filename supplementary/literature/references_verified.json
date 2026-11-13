@@ -863,5 +863,61 @@
   "issue": "5",
   "pages": "1464-1488",
   "type": "journal-article"
+ },
+ "Tynes2021": {
+  "key": "Tynes2021",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1021/acs.jcim.1c00670",
+  "title": "Pairwise Difference Regression: A Machine Learning Meta-algorithm for Improved Prediction and Uncertainty Quantification in Chemical Search",
+  "authors": [
+   "Tynes, Michael",
+   "Gao, Wenhao",
+   "Burrill, Daniel J.",
+   "Batista, Enrique R.",
+   "Perez, Danny",
+   "Yang, Ping",
+   "Lubbers, Nicholas"
+  ],
+  "year": 2021,
+  "venue": "Journal of Chemical Information and Modeling",
+  "volume": "61",
+  "issue": "8",
+  "pages": "3846-3857",
+  "type": "journal-article"
+ },
+ "LitYield2024": {
+  "key": "LitYield2024",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1021/acs.jpca.4c05489",
+  "title": "Challenges with Literature-Derived Data in Machine Learning for Yield Prediction: A Case Study on Pd-Catalyzed Carbonylation Reactions",
+  "authors": [
+   "Li, Dong-Zhi",
+   "Gong, Xue-Qing"
+  ],
+  "year": 2024,
+  "venue": "The Journal of Physical Chemistry A",
+  "volume": "128",
+  "issue": "48",
+  "pages": "10423-10430",
+  "type": "journal-article"
+ },
+ "Patil2018": {
+  "key": "Patil2018",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1073/pnas.1708283115",
+  "title": "Training replicable predictors in multiple studies",
+  "authors": [
+   "Patil, Prasad",
+   "Parmigiani, Giovanni"
+  ],
+  "year": 2018,
+  "venue": "Proceedings of the National Academy of Sciences",
+  "volume": "115",
+  "issue": "11",
+  "pages": "2578-2583",
+  "type": "journal-article"
  }
 }

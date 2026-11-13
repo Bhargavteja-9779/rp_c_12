@@ -64,7 +64,15 @@ def render(values, parts=PARTS, table_prefix="Table ", fig_prefix="Fig. "):
         fcount[0] += 1
         name, cap = m.group(1), m.group(2)
         return f"\n![**{fig_prefix}{fcount[0]}.** {cap}]({os.path.join(FIG, name + '.png')}){{width=16cm}}\n"
+    order = []
+    for m in re.finditer(r"\{\{FIG:([\w\-]+)\|", text):
+        order.append(m.group(1)) if m.group(1) not in order else None
     text = re.sub(r"\{\{FIG:([\w\-]+)\|(.+?)\}\}", fig, text)
+
+    def figref(m):
+        if m.group(1) not in order:
+            raise KeyError(f"reference to figure not in document: {m.group(1)}")
+        return str(order.index(m.group(1)) + 1)
 
     def tok(m):
         k = m.group(1)
@@ -74,6 +82,8 @@ def render(values, parts=PARTS, table_prefix="Table ", fig_prefix="Fig. "):
             raise KeyError(f"unresolved token {{{{{k}}}}}")
         return str(values[k])
     text = re.sub(r"\{\{([\w\.\-]+)\}\}", tok, text)
+    text = re.sub(r"\{\{FIGREF:([\w\-]+)\}\}", figref, text)
+    text = re.sub(r"\{FIGREF:([\w\-]+)\}", figref, text)  # single braces from f-strings in manuscript_values
     text = re.sub(r"\[(@[\w]+(?:\s*;\s*@[\w]+)*)\]", lambda m: cite(m, used), text)
 
     def narrative(m):  # @Key outside brackets -> "Author et al. (2021)"

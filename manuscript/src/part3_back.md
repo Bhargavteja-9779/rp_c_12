@@ -1,6 +1,6 @@
 # 4. Conclusions
 
-Literature-trained models of hydrothermal conversion predict runs from studies they have seen far better than runs from new studies, and on locked studies none predicted bio-oil yield substantially better than the training mean: random splitting overstated accuracy about two-fold across learner families, and half to two-thirds of the remaining error variance was a study-level offset that recorded work-up and yield-basis descriptors did not explain. Conformal intervals calibrated on random rows were over-confident for new studies, whereas calibrating at the level of studies raised coverage from {{cov_range_RC}} to {{cov_range_SC}} across development and locked test studies, and a few runs from the new study combined through empirical-Bayes shrinkage narrowed both errors and intervals. Study-grouped validation, study-calibrated intervals and local anchoring runs are recommended as minimum practice for literature-trained bioresource surrogates.
+Machine-learning models trained on published hydrothermal-conversion data predict runs of studies they have seen far better than runs of a new study: random splitting overstated accuracy about two-fold, and on locked studies no learner predicted bio-oil yields substantially better than the training mean. Half to two-thirds of the out-of-study error variance was a study-level offset that recorded work-up and yield-basis descriptors did not explain. Laboratories agree on the direction of the temperature response, but models did not predict within-study changes better than absolute yields, and an exploratory advantage in choosing conditions did not replicate on held-out studies. What did hold was honest uncertainty — conformal intervals calibrated across studies raised coverage from {{cov_range_RC}} to {{cov_range_SC}} — and the correction of predictions with a few local runs. Study-grouped validation with a locked test set, study-calibrated intervals and local anchoring runs are recommended as minimum practice (Table 9), and claims about trends or optimal conditions should be supported by held-out-study evidence.
 
 # CRediT authorship contribution statement
 
@@ -24,7 +24,7 @@ The authors thank the curators of the hydrothermal treatment/liquefaction databa
 
 # Appendix A. Supplementary data
 
-Supplementary material (Sections S1–S7, Tables S1–S10: literature screening, protocol deviations, additional benchmark and sensitivity results, exploratory adaptive intervals, error analysis by subgroup, STRATA with different base learners, reproducibility) accompanies this article.
+Supplementary material (Sections S1–S9, Tables S1–S14, Figs. S1–S4: literature screening, protocol and addenda, additional benchmark and sensitivity results, exploratory adaptive intervals, error analysis by subgroup, STRATA with different base learners, trend and ranking analyses, reproducibility) accompanies this article.
 
 # References
 

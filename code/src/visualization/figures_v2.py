@@ -26,7 +26,7 @@ def fig_trend_atlas(D):
         for xi, r in s.iterrows():
             ax.annotate(f"{r.frac_studies_same_sign:.0%} same sign\n{int(r.n_studies)} studies", (xi, r.slope_ci_high), xytext=(0, 4),
                         textcoords="offset points", ha="center", fontsize=5.8, color=INK)
-        ax.set_xticks(x, [f"{b} °C" for b in s.band], fontsize=6.5)
+        ax.set_xticks(x, [f"{b} °C".replace("-", "–") for b in s.band], fontsize=6.5); ax.set_xlim(-0.6, len(s) - 0.4)
         ax.set_ylabel("Within-study yield change per +10 °C (wt%)"); ax.set_title(TL[t], loc="left")
         lo, hi = ax.get_ylim(); ax.set_ylim(lo, hi + 0.25 * (hi - lo))
     fig.tight_layout(); save(fig, D, "fig11_trend_atlas")

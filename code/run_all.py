@@ -22,9 +22,20 @@ STAGES = [
     ("e9", [sys.executable, "experiments/e9_base_learners.py", "{mode}"]),
     ("e10", [sys.executable, "experiments/e10_duplicate_audit.py", "{mode}"]),
     ("e11", [sys.executable, "experiments/e11_overhead.py", "{mode}"]),
+    ("e12", [sys.executable, "-W", "ignore", "experiments/e12_trends.py", "{mode}", "dev"]),
+    ("e12q", [sys.executable, "-W", "ignore", "experiments/e12_trends.py", "{mode}", "dev", "quality"]),
+    ("e13", [sys.executable, "-W", "ignore", "experiments/e13_empirical_trends.py", "{mode}"]),
+    ("e14", [sys.executable, "-W", "ignore", "experiments/e14_contrast_types.py", "{mode}", "dev"]),
     ("analyze", [sys.executable, "-m", "src.statistics.analyze", "{mode}"]),
     ("tables", [sys.executable, "-m", "src.visualization.tables", "{mode}"]),
     ("figures", [sys.executable, "-m", "src.visualization.figures", "{mode}"]),
+    # locked-study evaluations of the v2 analyses (full mode only; run once, after development analyses — PROTOCOL Addendum C)
+    ("e12_locked", [sys.executable, "-W", "ignore", "experiments/e12_trends.py", "{mode}", "locked"]),
+    ("e12q_locked", [sys.executable, "-W", "ignore", "experiments/e12_trends.py", "{mode}", "locked", "quality"]),
+    ("e14_locked", [sys.executable, "-W", "ignore", "experiments/e14_contrast_types.py", "{mode}", "locked"]),
+    ("analyze_v2", [sys.executable, "-W", "ignore", "-m", "src.statistics.analyze_v2", "{mode}"]),
+    ("capability", [sys.executable, "-m", "src.statistics.capability", "{mode}"]),
+    ("figures_v2", [sys.executable, "-W", "ignore", "-m", "src.visualization.figures_v2", "{mode}"]),
 ]
 
 
@@ -40,6 +51,8 @@ def main():
     for name, cmd in STAGES:
         if a.only and name not in a.only:
             continue
+        if a.mode != "full" and name.endswith("_locked"):
+            continue  # quick mode never touches the locked studies
         t = time.time()
         print(f"=== stage {name} ===", flush=True)
         r = subprocess.run([c.format(mode=a.mode) for c in cmd], cwd=HERE)
