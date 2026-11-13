@@ -1,0 +1,16 @@
+Setting,Target,Model,Rule of thumb,Studies,"Median regret, model (wt%)","Median regret, rule (wt%)",Median paired difference [95% CI],p (Holm),Test
+Development (exploratory),Bio-oil yield,A,T300,110,8.74,13.55,"-3.95 [-6.48, -2.38]",0.0,two-sided
+Development (exploratory),Bio-oil yield,A,T325,110,8.74,12.77,"-3.98 [-6.13, -2.12]",0.0,two-sided
+Development (exploratory),Bio-oil yield,W,T300,110,7.2877,13.55,"-3.59 [-5.55, -2.04]",0.0001,two-sided
+Development (exploratory),Bio-oil yield,W,T325,110,7.2877,12.77,"-3.61 [-5.39, -1.13]",0.0001,two-sided
+Development (exploratory),Bio-oil yield,PD,T300,110,7.0,13.55,"-3.95 [-6.72, +0.00]",0.0,two-sided
+Development (exploratory),Bio-oil yield,PD,T325,110,7.0,12.77,"-3.38 [-5.69, -0.13]",0.0,two-sided
+Development (exploratory),Solid yield,A,lowest_T,109,3.04,2.25,"+0.00 [+0.00, +0.00]",0.6628,two-sided
+Development (exploratory),Solid yield,W,lowest_T,109,1.6133,2.25,"+0.00 [+0.00, +0.00]",0.3022,two-sided
+Development (exploratory),Solid yield,PD,lowest_T,109,1.34,2.25,"+0.00 [+0.00, +0.00]",0.1359,two-sided
+Locked test (confirmatory),Bio-oil yield,A,T325,25,11.93,14.6,"-0.86 [-7.55, +2.99]",0.6173,less
+Locked test (confirmatory),Bio-oil yield,W,T325,25,12.5,14.6,"+0.00 [-3.55, +3.90]",0.6612,less
+Locked test (confirmatory),Bio-oil yield,PD,T325,25,11.93,14.6,"+0.00 [-7.55, +3.90]",0.6612,less
+Locked test (confirmatory),Solid yield,A,lowest_T,27,1.85,5.5,"+0.00 [-0.40, +0.00]",0.1401,two-sided
+Locked test (confirmatory),Solid yield,W,lowest_T,27,0.449,5.5,"+0.00 [-0.40, +0.00]",0.1005,two-sided
+Locked test (confirmatory),Solid yield,PD,lowest_T,27,0.08,5.5,"+0.00 [+0.00, +0.00]",0.3824,two-sided

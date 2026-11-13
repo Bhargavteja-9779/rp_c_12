@@ -1,0 +1,4 @@
+2026-11-13 12:40:11,797 e12_trends INFO tuned hhv_biooil xgb: grouped RMSE 4.179
+2026-11-13 12:41:37,894 e12_trends INFO dev hhv_biooil xgb done (321 s fold-time)
+2026-11-13 12:41:50,658 e12_trends INFO tuned c_biooil xgb: grouped RMSE 7.844
+2026-11-13 12:45:53,411 e12_trends INFO dev c_biooil xgb done (909 s fold-time)

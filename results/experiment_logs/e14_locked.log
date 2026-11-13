@@ -1,0 +1,24 @@
+                                  r2  n_pairs
+target type             model                
+biooil other            A     -0.410   9121.0
+                        PD     0.240   9121.0
+                        W      0.182   9121.0
+       temperature_only A      0.145   1328.0
+                        PD     0.588   1328.0
+                        W      0.330   1328.0
+       time_only        A      0.109   1071.0
+                        PD     0.034   1071.0
+                        W      0.070   1071.0
+solid  other            A      0.417   4460.0
+                        PD     0.503   4460.0
+                        W      0.536   4460.0
+       temperature_only A      0.510   1204.0
+                        PD     0.721   1204.0
+                        W      0.665   1204.0
+       time_only        A      0.003   1114.0
+                        PD     0.110   1114.0
+                        W      0.005   1114.0
+method      A     PD      W  rule_T300  rule_T325  rule_lowest_T
+target                                                          
+biooil  11.93  11.93  12.50       10.5       14.6            NaN
+solid    1.85   0.08   0.45        NaN        NaN            5.5

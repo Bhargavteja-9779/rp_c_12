@@ -4,3 +4,15 @@
 2026-11-13 12:22:02,811 e12_trends INFO dev solid xgb done (684 s fold-time)
 2026-11-13 12:32:52,985 e12_trends INFO dev solid et done (2495 s fold-time)
 2026-11-13 12:36:53,105 e12_trends INFO dev solid lgbm done (917 s fold-time)
+2026-11-13 12:40:11,797 e12_trends INFO tuned hhv_biooil xgb: grouped RMSE 4.179
+2026-11-13 12:41:37,894 e12_trends INFO dev hhv_biooil xgb done (321 s fold-time)
+2026-11-13 12:41:50,658 e12_trends INFO tuned c_biooil xgb: grouped RMSE 7.844
+2026-11-13 12:45:53,411 e12_trends INFO dev c_biooil xgb done (909 s fold-time)
+2026-11-13 12:46:27,112 e12_trends INFO locked biooil xgb done (30 s fold-time)
+2026-11-13 12:49:08,829 e12_trends INFO locked biooil et done (160 s fold-time)
+2026-11-13 12:49:41,572 e12_trends INFO locked biooil lgbm done (31 s fold-time)
+2026-11-13 12:50:16,857 e12_trends INFO locked solid xgb done (34 s fold-time)
+2026-11-13 12:52:51,952 e12_trends INFO locked solid et done (155 s fold-time)
+2026-11-13 12:53:40,632 e12_trends INFO locked solid lgbm done (49 s fold-time)
+2026-11-13 12:53:58,378 e12_trends INFO locked hhv_biooil xgb done (14 s fold-time)
+2026-11-13 12:54:39,662 e12_trends INFO locked c_biooil xgb done (40 s fold-time)

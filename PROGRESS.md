@@ -25,3 +25,10 @@ Branch: claude/autonomous-research-discovery-1uqqmr. Resume by reading this file
 * Full E1 launched 22:00 UTC 2026-11-10: `cd code && python3 experiments/e1_benchmark.py full` (cells cached in results/experiment_logs/e1_cells; rerun resumes).
 * Next full stages: e3_strata.py full -> e5_generalization.py full (locked test LAST, after all decisions) -> e6_e7_e8.py full -> analyze -> tables -> figures.
 * Manuscript sources: manuscript/src/*.md (tokens {{...}} filled by builder from results); references built by manuscript/src/build_refs.py ONLY from verified metadata.
+
+## UPGRADE v2 (started 2026-11-13, user: "it will get rejected, improvise to max level")
+* Addendum A (E12 trend transfer, T1–T5), A2 (HHV, C targets), B (E14 exploratory), C (locked confirmation) registered in code/config/PROTOCOL.md before each run.
+* Results: T1–T3 NOT supported (dev); ranking beat rules of thumb in dev (exploratory) but NOT confirmed on locked (C1 p_Holm 0.62);
+  locked contrast R² favours W/PD but driven by 2 studies (n.s. per study). E13 model-free: temperature-trend directions agree across labs.
+* v2 framing: pre-registered capability audit (levels, trends, ranking, uncertainty, anchoring) + trend atlas + reporting checklist.
+* Next: manuscript rewrite (v2 tokens/tables/figures), rebuild, re-review rounds 11-15, audits, push.
