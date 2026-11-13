@@ -1,0 +1,6 @@
+2026-11-13 12:05:13,579 e12_trends INFO dev biooil xgb done (540 s fold-time)
+2026-11-13 12:16:43,957 e12_trends INFO dev biooil et done (2629 s fold-time)
+2026-11-13 12:19:01,456 e12_trends INFO dev biooil lgbm done (519 s fold-time)
+2026-11-13 12:22:02,811 e12_trends INFO dev solid xgb done (684 s fold-time)
+2026-11-13 12:32:52,985 e12_trends INFO dev solid et done (2495 s fold-time)
+2026-11-13 12:36:53,105 e12_trends INFO dev solid lgbm done (917 s fold-time)

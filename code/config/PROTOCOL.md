@@ -110,3 +110,12 @@ Secondary targets (HTL + solvothermal HTL): bio-oil higher heating value (HHV, M
 Same pipeline: XGBoost tuned with the E1 budget (20 configurations, grouped 5-fold) on base features, then E12 (A/W/PD, contrasts,
 ranking, anchoring, contrast intervals) on development folds and once on the locked studies. Hypotheses T1–T5 apply unchanged; these
 are reported as secondary analyses.
+
+# Addendum B (2026-11-13, registered AFTER seeing E12 development results — exploratory, reported as such)
+E12 (development) did not support T1–T3. Two follow-up analyses, chosen after seeing those results:
+* E14a Contrast accuracy by contrast type: within-study pairs of unseen studies are split into temperature-only pairs, residence-time-only
+  pairs (all other base features identical, as in E13) and all other pairs; contrast R² vs the no-change predictor for A, W, PD (XGBoost,
+  same outer folds/seeds as E12).
+* E14b Ranking against domain heuristics instead of random choice: for each unseen study (≥ 5 runs) pick the run predicted best by A/W/PD,
+  or by a rule of thumb — bio-oil: run with temperature closest to 300 °C (E13 optimum band 300–350 °C → 325 °C also reported); solid: lowest
+  temperature run. Regret compared by Wilcoxon (two-sided, Holm).
