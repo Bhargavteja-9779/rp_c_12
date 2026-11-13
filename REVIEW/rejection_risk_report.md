@@ -10,7 +10,7 @@ This raises novelty and practical value relative to v1 and to the prior art; it 
 predominantly negative study.
 
 
-No manuscript can be guaranteed acceptance; risks below are those that remain after ten review rounds.
+No manuscript can be guaranteed acceptance; risks below are those that remain after fifteen review rounds (10 for v1, 5 for v2).
 
 | # | Risk | Evidence | Severity | Mitigation | Fixed? |
 |---|---|---|---|---|---|
@@ -26,8 +26,8 @@ No manuscript can be guaranteed acceptance; risks below are those that remain af
 | 10 | Citation | All verified; abstract-level support checks | Low | citation_audit.md | Yes |
 | 11 | Journal scope ("statistics paper", no experiments) | review_09 | **Moderate–high** | Domain discussion, practitioner/curator recommendations, cover letter | Partly |
 | 12 | Reviewer from the dataset-curating group | Most relevant expert group | Moderate | Respectful, explicit differentiation; their work acknowledged | Partly |
-| 14 | Predominantly negative findings | Most capability hypotheses failed on held-out studies | **Moderate–high** | Framed as audit with constructive outputs (capability matrix, trend atlas, checklist); all failures reported | Partly (inherent) |
 | 13 | Publication integrity / compliance (extensive AI assistance; authorship placeholders) | Elsevier AI policy requires disclosure and author responsibility | **High if undisclosed** | Declaration drafted; authors must verify every result, adapt the statement, complete CRediT/affiliations/funding, and confirm originality before submission | Requires author action |
+| 14 | Predominantly negative findings | Most capability hypotheses failed on held-out studies | **Moderate–high** | Framed as audit with constructive outputs (capability matrix, trend atlas, checklist); all failures reported | Partly (inherent) |
 
 ## Target-journal facts relevant to the decision
 * Measured submission→acceptance for comparable papers (ML on hydrothermal conversion in *Bioresource Technology*, n = 20): median 53.5 d (IQR 38–70), 80 % ≤ 72 d. For all ML papers in the journal (Jul 2025–Oct 2026): median 70.5 d, 55 % ≤ 72 d. These are historical distributions, **not guarantees**; a major revision would very likely push acceptance beyond 72 days.
@@ -35,7 +35,7 @@ No manuscript can be guaranteed acceptance; risks below are those that remain af
 
 ## Decision (Phase 42)
 **READY FOR SUBMISSION (v2) — conditional on author actions**, scientifically: all pre-registered experiments, the
-locked evaluation, ten review rounds and the review-driven experiments (E9–E11) are complete; every claim is
+locked evaluation, fifteen review rounds, the review-driven experiments (E9–E11) and the pre-registered v2 analyses (E12–E14, with locked confirmation) are complete; every claim is
 traceable to generated results; remaining weaknesses are inherent to a computational study on one curated
 database and are disclosed.
 
