@@ -1,0 +1,27 @@
+/home/user/rp_c_12/supplementary/literature/systematic_search.py:129: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  inc[k] = t2.str.contains(p)
+{
+ "run_date": "2026-11-18",
+ "identified": {
+  "PubMed": 53,
+  "OpenAlex": 0,
+  "Crossref": 3200
+ },
+ "identified_total": 3253,
+ "after_deduplication": 1388,
+ "excluded_no_ml_or_no_hydrothermal_term": 1265,
+ "excluded_review_or_non_primary": 11,
+ "excluded_no_prediction_target": 19,
+ "excluded_outside_window": 1,
+ "included": 92,
+ "included_with_abstract": 50,
+ "included_in_bioresource_technology": 17,
+ "databases_unavailable": [
+  "OpenAlex"
+ ],
+ "included_mentioning_grouped_or_external": 1,
+ "included_mentioning_random_split": 3,
+ "included_mentioning_uncertainty": 3,
+ "included_mentioning_physics": 0,
+ "included_mentioning_literature_data": 11
+}

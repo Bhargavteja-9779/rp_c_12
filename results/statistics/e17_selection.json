@@ -1,0 +1,22 @@
+{
+ "biooil": {
+  "study": "10.1016/j.energy.2020.117550",
+  "n_runs": 68,
+  "n_temperatures": 14,
+  "family": "Other",
+  "process": "HTL",
+  "feedstock": "Spirulina platensis (powder)",
+  "medium": "Water",
+  "n_candidates": 19
+ },
+ "solid": {
+  "study": "https://doi.org/10.1016/j.biortech.2012.08.106",
+  "n_runs": 25,
+  "n_temperatures": 10,
+  "family": "Aquatic Biomass",
+  "process": "HTC",
+  "feedstock": "Duckweed (Lemna sp.)",
+  "medium": "Water",
+  "n_candidates": 18
+ }
+}

@@ -48,6 +48,35 @@ def table_md(name, tlabel):
     return f"\n**{tlabel}.** {cap}\n\n{head}{body}\n"
 
 
+def scan(parts):
+    txt = "".join(open(os.path.join(HERE, p)).read() for p in parts)
+    t = re.findall(r"\{\{TABLE:([\w\-]+)\}\}", txt)
+    f = []
+    for m in re.findall(r"\{\{FIG:([\w\-]+)\|", txt):
+        f.append(m) if m not in f else None
+    return t, f
+
+
+def xref(text, is_supp):
+    """{{TREF:name}} / {TREF:name} -> 'Table n' or 'Supplementary Table Sn'; {{FREF:name}} likewise for figures."""
+    (mt, mf), (st, sf) = scan(PARTS), scan(["supp.md"])
+
+    def res(name, own, other, own_pre, other_pre):
+        if name in own:
+            return f"{own_pre}{own.index(name) + 1}"
+        if name in other:
+            return f"{other_pre}{other.index(name) + 1}"
+        raise KeyError(f"cross-reference to item not in any document: {name}")
+    if is_supp:
+        tr = lambda m: res(m.group(1), st, mt, "Table S", "Table ")
+        fr = lambda m: res(m.group(1), sf, mf, "Fig. S", "Fig. ")
+    else:
+        tr = lambda m: res(m.group(1), mt, st, "Table ", "Supplementary Table S")
+        fr = lambda m: res(m.group(1), mf, sf, "Fig. ", "Supplementary Fig. S")
+    text = re.sub(r"\{\{?TREF:([\w\-]+)\}?\}", tr, text)
+    return re.sub(r"\{\{?FREF:([\w\-]+)\}?\}", fr, text)
+
+
 def render(values, parts=PARTS, table_prefix="Table ", fig_prefix="Fig. "):
     used, text = [], ""
     for p in parts:
@@ -82,6 +111,7 @@ def render(values, parts=PARTS, table_prefix="Table ", fig_prefix="Fig. "):
             raise KeyError(f"unresolved token {{{{{k}}}}}")
         return str(values[k])
     text = re.sub(r"\{\{([\w\.\-]+)\}\}", tok, text)
+    text = xref(text, parts == ["supp.md"])
     text = re.sub(r"\{\{FIGREF:([\w\-]+)\}\}", figref, text)
     text = re.sub(r"\{FIGREF:([\w\-]+)\}", figref, text)  # single braces from f-strings in manuscript_values
     text = re.sub(r"\[(@[\w]+(?:\s*;\s*@[\w]+)*)\]", lambda m: cite(m, used), text)

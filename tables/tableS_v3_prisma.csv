@@ -1,0 +1,14 @@
+Step,Value
+Run date,2026-11-18
+"PubMed query (title/abstract, publication date 2015-01-01 to run date)","(""machine learning""[tiab] OR ""deep learning""[tiab] OR ""neural network""[tiab] OR ""random forest""[tiab] OR ""gradient boosting""[tiab] OR xgboost[tiab] OR ""support vector""[tiab]) AND (""hydrothermal liquefaction""[tiab] OR ""hydrothermal carbonization""[tiab] OR ""hydrothermal carbonisation""[tiab] OR hydrochar[tiab] OR biocrude[tiab] OR ""bio-crude""[tiab])"
+OpenAlex query (title_and_abstract.search),"(""machine learning"" OR ""deep learning"" OR ""neural network"" OR ""random forest"" OR ""gradient boosting"" OR xgboost OR ""support vector"") AND (""hydrothermal liquefaction"" OR ""hydrothermal carbonization"" OR ""hydrothermal carbonisation"" OR hydrochar OR biocrude OR ""bio-crude"") — not retrievable on the run date (anonymous API requests refused, HTTP 429); 0 records"
+"Crossref queries (query.bibliographic, journal articles, 200 records each)",machine learning hydrothermal liquefaction; machine learning hydrothermal carbonization; machine learning hydrochar; machine learning biocrude; neural network hydrothermal liquefaction; neural network hydrothermal carbonization; neural network hydrochar; neural network biocrude; random forest hydrothermal liquefaction; random forest hydrothermal carbonization; random forest hydrochar; random forest biocrude; gradient boosting hydrothermal liquefaction; gradient boosting hydrothermal carbonization; gradient boosting hydrochar; gradient boosting biocrude
+Records identified,PubMed 53; OpenAlex 0; Crossref 3200 (total 3253)
+"After de-duplication (DOI, else normalised title)",1388
+Excluded: no machine-learning or no hydrothermal term in title/abstract (E1),1265
+Excluded: review or non-primary (E2),11
+Excluded: no predicted yield or property (E3),19
+Excluded: outside 2015–run date (E4),1
+Included primary studies,92 (50 with an abstract; 17 in Bioresource Technology)
+Included abstracts mentioning grouped / external validation,1
+Included abstracts mentioning uncertainty quantification,3

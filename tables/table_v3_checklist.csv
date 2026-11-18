@@ -1,0 +1,10 @@
+Item,Minimum practice,Why (evidence in this study)
+1. Splitting unit,Hold out whole source studies (or laboratories); report random-split metrics only as a reference,Random splits overstated accuracy about two-fold (Section 3.1)
+2. Locked test,Fix a list of held-out studies before modelling and evaluate it once,Locked results differed from development CV (Section 3.7)
+3. Duplicates,Audit identical runs reported in several studies before splitting,~7 % of runs were cross-study duplicates (Section 3.7)
+4. Accuracy metrics,Report per-study errors and the mean-predictor baseline next to pooled R²,Pooled metrics were dominated by a few studies (Section 3.7)
+5. Uncertainty,"Calibrate prediction intervals across studies, not across random runs",Row-calibrated 90 % intervals covered 0.46–0.61 (Section 3.3)
+6. Trend / optimum claims,Support claims about effects of conditions or optimal conditions with held-out-study contrasts or rankings,Within-study changes and rankings did not transfer (Section 3.8)
+7. Local anchoring,"Plan 1–3 local runs in a screening design; report literature-only, anchored and local-only predictions with re-calibrated intervals","Three screening-design runs reduced the median error by 1.6–6.4 wt%, but local-only data were better for locked bio-oil studies (Sections 3.4–3.6)"
+8. Metadata,"Record product-recovery solvent, yield basis, fraction definitions, mass-balance closure and reactor details in curated databases",Coarse parsed descriptors did not explain offsets (Section 3.2)
+9. Openness,"Make code, the held-out study list and per-run predictions available (openly or on request)",Enables re-analysis of the above

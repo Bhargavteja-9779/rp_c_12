@@ -1,0 +1,15 @@
+Target,Item,Result
+Bio-oil yield,Applicability-domain score vs out-of-study error (development; Spearman ρ),ρ = 0.46 (p = 1.8e-05; 80 studies)
+Bio-oil yield,Pre-registered threshold (95th percentile of development scores) on locked studies,0 of 28 locked studies flagged (max score 4.62 vs threshold 5.69); test D1 not possible
+Bio-oil yield,Exploratory: score vs error on locked studies (Spearman ρ),ρ = 0.55 (p = 0.02; 19 studies)
+Bio-oil yield,"STRATA 90% half-width after k local runs (development; k = 0, 1, 2, 3, 5)","±30.4, ±24.6, ±23.9, ±22.2, ±21.0 wt%"
+Bio-oil yield,Local runs needed for a 90% half-width ≤ ±10 wt%,not reached within 5 local runs
+Bio-oil yield,Local runs needed for a 90% half-width ≤ ±15 wt%,not reached within 5 local runs
+Bio-oil yield,Local runs needed for a 90% half-width ≤ ±20 wt%,not reached within 5 local runs
+Solid yield,Applicability-domain score vs out-of-study error (development; Spearman ρ),ρ = 0.49 (p = 1.2e-05; 72 studies)
+Solid yield,Pre-registered threshold (95th percentile of development scores) on locked studies,0 of 30 locked studies flagged (max score 5.09 vs threshold 5.93); test D1 not possible
+Solid yield,Exploratory: score vs error on locked studies (Spearman ρ),ρ = 0.25 (p = 0.32; 18 studies)
+Solid yield,"STRATA 90% half-width after k local runs (development; k = 0, 1, 2, 3, 5)","±22.8, ±19.8, ±19.5, ±19.1, ±17.0 wt%"
+Solid yield,Local runs needed for a 90% half-width ≤ ±10 wt%,not reached within 5 local runs
+Solid yield,Local runs needed for a 90% half-width ≤ ±15 wt%,not reached within 5 local runs
+Solid yield,Local runs needed for a 90% half-width ≤ ±20 wt%,"k = 1 (development median RMSE 8.8; locked coverage 0.80, median RMSE 7.7)"

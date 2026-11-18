@@ -181,11 +181,11 @@ def compute() -> dict:
     v["tuning_sentence"] = (f"Replacing the tuned hyper-parameters of the base learner by library defaults changed its study-grouped RMSE by "
                             f"{min(abs(tu.loc[(t, f, 'tuned'), 'rmse'] - tu.loc[(t, f, 'default'), 'rmse']) for t in ['biooil', 'solid'] for f in ['base', 'base+P']):.1f}–"
                             f"{max(abs(tu.loc[(t, f, 'tuned'), 'rmse'] - tu.loc[(t, f, 'default'), 'rmse']) for t in ['biooil', 'solid'] for f in ['base', 'base+P']):.1f} wt% "
-                            "(Supplementary Table S7), so the conclusions do not hinge on tuning.")
+                            "({TREF:tableS5_sensitivity_tuning}), so the conclusions do not hinge on tuning.")
     k = se[(se.analysis == "tau2_estimator") & (se.features == "base+P")].groupby(["target", "estimator", "k"])["rmse"].median()
     v["tau2_sentence"] = (f"Estimating $\\tau^2$ by restricted maximum likelihood instead of the method of moments gave median per-study RMSE at k = 1 of "
                           f"{k[('biooil', 'REML', 1)]:.2f} vs {k[('biooil', 'MoM', 1)]:.2f} wt% (bio-oil) and {k[('solid', 'REML', 1)]:.2f} vs {k[('solid', 'MoM', 1)]:.2f} wt% "
-                          "(solids; Supplementary Table S6).")
+                          "(solids; {TREF:tableS4_sensitivity_tau2}).")
     ad = pd.read_csv(os.path.join(R, "e3b_adaptive_summary.csv")).set_index(["target", "method"])
     v["adaptive_main_sentence"] = (f"An exploratory, post-hoc variant with locally adaptive widths (Supplementary Section S4) did not narrow the intervals "
                                    f"(mean width {ad.loc[('biooil', 'SC-N'), 'mean_width']:.1f} vs {ad.loc[('biooil', 'SC'), 'mean_width']:.1f} wt% for bio-oil) "
@@ -339,7 +339,7 @@ def compute() -> dict:
             f"pooled errors were dominated by a few studies outside the bulk of the training distribution — for {LBL[learner]}, a single solvothermal series of {int(LT_top_n)} runs "
             f"contributed {xs.excluded_sse_share:.0%} of the squared error, and excluding it (post hoc) lowered the RMSE from {xs.rmse_all:.1f} to {xs.rmse_excl:.1f} wt% "
             f"(R² = {abs(xs.r2_excl) if abs(xs.r2_excl) < 0.005 else xs.r2_excl:.2f}). Study-weighted coverage of row-calibrated 90% intervals was {cc('biooil', 'RC')} for bio-oil and {cc('solid', 'RC')} for solids; "
-            f"study-calibrated intervals reached {cc('biooil', 'SC')} and {cc('solid', 'SC')} (Table 6, Fig. {{FIGREF:fig05_coverage}}). Study calibration thus removed most, but for solids "
+            f"study-calibrated intervals reached {cc('biooil', 'SC')} and {cc('solid', 'SC')} ({{TREF:table6_locked_test}}, Fig. {{FIGREF:fig05_coverage}}). Study calibration thus removed most, but for solids "
             "not all, of the under-coverage; with 28–30 locked studies the intervals are wide, and the solid-yield shortfall reflects a few studies with feedstocks "
             "(technical lignin, plastic–biomass blends) that are rare in the training data.")
         v["abstract_locked_sentence"] = (f"On 38 locked studies, study-calibrated intervals covered {ci[('biooil', 'SC')]['reported']:.2f} (bio-oil) and "
@@ -368,7 +368,7 @@ def compute() -> dict:
             txt += (f" On the independent 4TU hydrochar database ({int(e1.n)} runs after removing {v['ext_dups']} potential duplicates; {int(e1.n_studies)} feedstock series), "
                     f"a solid-yield model trained on all development studies reached RMSE = {e1.rmse:.1f} wt% (R² = {e1.r2:.2f}), whereas training on the "
                     f"{int(e2.n_train_studies)} HTC development studies alone gave {e2.rmse:.1f} wt% (R² = {e2.r2:.2f}), showing that the small HTC subset of the "
-                    "primary database does not by itself support transfer to other HTC compilations (Table 7).")
+                    "primary database does not by itself support transfer to other HTC compilations ({TREF:table7_generalisation}).")
         v["generalisation_paragraph"] = txt
     # ---------------- robustness (E4)
     rb_p = os.path.join(R, "e4_robustness.csv")
@@ -384,14 +384,14 @@ def compute() -> dict:
             f"{mrm('biooil', 'feature_noise', nl[-1], 'SC', 'coverage_studies'):.2f} with noise (bio-oil) — the error budget for unseen studies is dominated by the study offset, not by input noise. "
             f"Training on {fr[0]:.0%} instead of all training studies raised the bio-oil RMSE from {mrm('biooil', 'training_studies', 1.0):.1f} to "
             f"{mrm('biooil', 'training_studies', fr[0]):.1f} wt%, and SC coverage remained {mrm('biooil', 'training_studies', fr[0], 'SC', 'coverage_studies'):.2f}, "
-            f"whereas RC coverage stayed at {mrm('biooil', 'training_studies', fr[0], 'RC', 'coverage_studies'):.2f}–{mrm('biooil', 'training_studies', 1.0, 'RC', 'coverage_studies'):.2f} (Supplementary Fig. S1).")
+            f"whereas RC coverage stayed at {mrm('biooil', 'training_studies', fr[0], 'RC', 'coverage_studies'):.2f}–{mrm('biooil', 'training_studies', 1.0, 'RC', 'coverage_studies'):.2f} ({{FREF:fig07_robustness}}).")
     # ---------------- efficiency (E6)
     EF = pd.DataFrame(M.get("e6_efficiency", []))
     if len(EF):
         e = EF.set_index("learner"); sl = e.loc[learner]
         v["efficiency_paragraph"] = (
             f"All learners trained in at most {e.fit_s.max():.0f} s on one CPU thread ({LBL[e.fit_s.idxmax()]}); the STRATA base learner took {sl.fit_s:.1f} s "
-            f"and predicted 1,000 runs in {sl.predict_ms_per_1000_rows:.0f} ms (Supplementary Table S17, Supplementary Fig. S2). The complete STRATA procedure — two inner five-fold cross-validations, "
+            f"and predicted 1,000 runs in {sl.predict_ms_per_1000_rows:.0f} ms ({{TREF:table8_efficiency}}, {{FREF:fig08_efficiency}}). The complete STRATA procedure — two inner five-fold cross-validations, "
             f"quantiles, variance components and k-shot quantiles for all k — took {v['ovh_min']}–{v['ovh_max']} s on all development studies, against {v['ovh_base_min']}–{v['ovh_base_max']} s "
             "for fitting the base learner alone (measured, 1 and 4 threads); this overhead is negligible compared with the cost of a single hydrothermal experiment.")
     # ---------------- error analysis (E8)
@@ -406,11 +406,11 @@ def compute() -> dict:
         sg = ea[(ea.target == "biooil") & (ea.dimension == "extraction_solvent") & (ea.n_studies >= 3)]
         v["error_paragraph"] = (
             f"Out-of-study errors were largest for {f_b.level} feedstocks among families (bio-oil RMSE {f_b.rmse:.1f} wt%, {int(f_b.n_studies)} studies), "
-            f"for the {t_b.level.replace('<=', '≤')} °C temperature band ({t_b.rmse:.1f} wt%) and for {p_b.level.replace('_', ' ')} runs ({p_b.rmse:.1f} wt%) (Supplementary Table S9). "
+            f"for the {t_b.level.replace('<=', '≤')} °C temperature band ({t_b.rmse:.1f} wt%) and for {p_b.level.replace('_', ' ')} runs ({p_b.rmse:.1f} wt%) ({{TREF:tableS6_error_analysis}}). "
             f"The five worst-predicted bio-oil studies had per-study RMSE between {sw.rmse.min():.1f} and {sw.rmse.max():.1f} wt% and absolute mean offsets of "
             f"{sw.bias.abs().min():.1f}–{sw.bias.abs().max():.1f} wt% (processes: {', '.join(f'{k.replace(chr(95), chr(32))} {n}' for k, n in sw.process.value_counts().items())}). "
             f"Across extraction-solvent groups with at least three studies, the bio-oil RMSE ranged from {sg.rmse.min():.1f} ({sg.sort_values('rmse').iloc[0].level.replace(chr(95), chr(32))}) "
-            f"to {sg.rmse.max():.1f} wt% ({sg.sort_values('rmse').iloc[-1].level.replace(chr(95), chr(32))}) and the mean residual from {sg.bias.min():+.1f} to {sg.bias.max():+.1f} wt% (Supplementary Fig. S3).")
+            f"to {sg.rmse.max():.1f} wt% ({sg.sort_values('rmse').iloc[-1].level.replace(chr(95), chr(32))}) and the mean residual from {sg.bias.min():+.1f} to {sg.bias.max():+.1f} wt% ({{FREF:fig09_error_by_solvent}}).")
     ad_p = os.path.join(R, "e3b_adaptive_summary.csv")
     if os.path.exists(ad_p):
         ad = pd.read_csv(ad_p).set_index(["target", "method"])
@@ -426,6 +426,69 @@ def compute() -> dict:
                if (b('biooil', 'SC-N', 'winkler') > b('biooil', 'SC', 'winkler') and b('solid', 'SC-N', 'winkler') > b('solid', 'SC', 'winkler')) else
                "The adaptive variant improved interval scores for at least one target. ")
             + "Because this variant was added after inspecting pipeline-verification results, it is reported as exploratory and is not part of the main claims.")
+    return compute_v3(v)
+
+
+def compute_v3(v):
+    """Tokens for the v3 analyses (PROTOCOL Addendum D) and the multi-database literature search."""
+    S3 = json.load(open(os.path.join(R, "statistics_v3.json")))
+    for st in ["dev", "locked", "external"]:
+        for r in S3[f"e15_{st}_summary"]:
+            b = f"dep_{st}_{r['target']}_{r['order']}_{int(r['k'])}_{r['strategy']}"
+            v[b + "_rmse"] = f1(r["median_rmse"]); v[b + "_mae"] = f1(r["median_mae"]); v[b + "_cov"] = f2(r["coverage"])
+            v[b + "_hw"] = f1(r["width"] / 2); v[b + "_n"] = int(r["n_studies"])
+        for r in S3[f"e15_{st}_tests"]:
+            b = f"dept_{st}_{r['target']}_{r['order']}_{int(r['k'])}_{r['comparison']}"
+            v[b + "_p"] = pfmt(r["p_holm"]); v[b + "_d"] = f"{r['median_diff']:+.1f}"
+    sm = lambda st, t, k, m, o="design": [x for x in S3[f"e15_{st}_summary"] if x["target"] == t and x["order"] == o and x["k"] == k and x["strategy"] == m][0]["median_rmse"]
+    for st, t in [("dev", "biooil"), ("dev", "solid"), ("locked", "biooil"), ("locked", "solid"), ("external", "solid")]:
+        a = sm(st, t, 0, "A")
+        for k in [1, 3]:
+            v[f"gain_{st}_{t}_{k}"] = f1(a - sm(st, t, k, "B")); v[f"gainper_{st}_{t}_{k}"] = f1((a - sm(st, t, k, "B")) / k)
+    gains = [a for a in [sm(st, t, 0, "A") - sm(st, t, 3, "B") for st, t in [("dev", "biooil"), ("dev", "solid"), ("locked", "biooil"), ("locked", "solid"), ("external", "solid")]]]
+    v["gain3_min"], v["gain3_max"] = f1(min(gains)), f1(max(gains))
+    # number of significant tests per setting (design order)
+    for st in ["dev", "locked", "external"]:
+        T = [x for x in S3[f"e15_{st}_tests"] if x["order"] == "screening design" or x["order"] == "design"]
+        for comp in ["B_vs_A", "B_vs_C"]:
+            q = [x for x in T if x["comparison"] == comp]
+            v[f"nsig_{st}_{comp}_Bbetter"] = sum(1 for x in q if x["p_holm"] < 0.05 and x["median_diff"] < 0)
+            v[f"nsig_{st}_{comp}_Bworse"] = sum(1 for x in q if x["p_holm"] < 0.05 and x["median_diff"] > 0)
+            v[f"ntest_{st}_{comp}"] = len(q)
+    E = S3["e16"]
+    for t in ["biooil", "solid"]:
+        d = E[t]
+        v[f"ad_{t}_rho"] = f2(d["dev_spearman_ad_vs_rmse"]); v[f"ad_{t}_p"] = f"{d['dev_spearman_p']:.1e}".replace("e-0", " × 10^−").replace("e-", " × 10^−") + "^"
+        v[f"ad_{t}_n"] = d["dev_n"]; v[f"ad_{t}_thr"] = f2(d["ad_threshold"]); v[f"ad_{t}_lmax"] = f2(d["locked_max_score"])
+        v[f"ad_{t}_lflag"] = d["locked_flagged"]; v[f"ad_{t}_lnst"] = d["locked_n_studies"]
+        v[f"ad_{t}_lrho"] = f2(d["locked_exploratory_spearman_ad_vs_rmse"]); v[f"ad_{t}_lp"] = f2(d["locked_exploratory_spearman_p"]); v[f"ad_{t}_leval"] = d["locked_eval_studies"]
+        hw = d["dev_halfwidth_by_k"]
+        for k in ["0", "1", "2", "3", "5"]:
+            v[f"hw_{t}_{k}"] = f1(hw[k])
+        for r in d["runs_needed"]:
+            h = r["tolerance_halfwidth"]
+            v[f"need_{t}_{h}"] = r["k_needed"] if r["k_needed"] is not None else "more than 5"
+            if r["k_needed"] is not None:
+                v[f"need_{t}_{h}_lcov"] = f2(r["locked_coverage"]); v[f"need_{t}_{h}_lrmse"] = f1(r["locked_median_rmse"])
+    sel = S3["e17_selection"]; c = pd.read_csv(os.path.join(R, "e17_case_study.csv"))
+    for t in ["biooil", "solid"]:
+        s_ = sel[t]; v[f"case_{t}_feed"] = s_["feedstock"].replace(" (powder)", ""); v[f"case_{t}_proc"] = s_["process"]; v[f"case_{t}_n"] = s_["n_runs"]
+        v[f"case_{t}_nT"] = s_["n_temperatures"]; v[f"case_{t}_ncand"] = s_["n_candidates"]; v[f"case_{t}_doi"] = s_["study"].replace("https://doi.org/", "")
+        q = c[c.target == t].set_index("k")
+        for k in [0, 1, 2, 3, 5, 10]:
+            for col in ["rmse_A", "rmse_B", "rmse_C", "halfwidth_B", "cov_B", "regret_A", "regret_random"]:
+                if col in q and pd.notna(q.loc[k, col]):
+                    v[f"case_{t}_{k}_{col}"] = f2(q.loc[k, col]) if col.startswith("cov") else f1(q.loc[k, col])
+        # first k from which B stays within 1 wt% of A or better, and first k where C beats A
+        cb = q[(q.index > 0) & (q.rmse_C < q.rmse_A)]
+        v[f"case_{t}_C_beats_A_from"] = int(cb.index.min()) if len(cb) else "never"
+        v[f"case_{t}_maxk"] = int(q.index.max())
+        v[f"case_{t}_meanB_cov"] = f2(q.loc[q.index > 0, "cov_B"].mean())
+    P = json.load(open(os.path.join(REPO, "supplementary", "literature", "prisma_counts.json")))
+    v["lit3_date"] = P["run_date"]; v["lit3_pubmed"] = P["identified"]["PubMed"]; v["lit3_crossref"] = P["identified"]["Crossref"]
+    v["lit3_total"] = P["identified_total"]; v["lit3_dedup"] = P["after_deduplication"]; v["lit3_included"] = P["included"]
+    v["lit3_with_abs"] = P["included_with_abstract"]; v["lit3_bt"] = P["included_in_bioresource_technology"]
+    v["lit3_grouped"] = P["included_mentioning_grouped_or_external"]; v["lit3_uq"] = P["included_mentioning_uncertainty"]
     return v
 
 

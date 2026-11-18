@@ -1,0 +1,1 @@
+**Table X. Relation of this work to the two studies that use the same database. Information on the two studies is taken from their abstracts (Bioresour. Technol. article online 17 August 2026; SSRN preprint 2026). None of the present authors is an author of either study; the overlap is the shared, openly licensed database.**

@@ -1,0 +1,1 @@
+**Table X. Decision support for a new laboratory (E16): applicability-domain (AD) score, pre-registered threshold and the number of local runs needed for a target 90% interval half-width. Exploratory items were added after the pre-registered threshold flagged no locked study.**
