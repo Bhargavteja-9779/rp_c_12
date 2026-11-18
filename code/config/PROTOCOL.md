@@ -128,3 +128,31 @@ Confirmatory test on the 38 locked studies (models trained on all development st
 * C2: E12 metrics (T1–T5) on locked studies (all three learners for yields; XGBoost for HHV/C), reported descriptively with the
   pre-registered tests.
 * E14a contrast types on locked studies, descriptive.
+
+# Addendum D (registered 2026-11-18, BEFORE running E15–E17): deployment in a new laboratory
+Requested by an external pre-submission review. All analyses are retrospective simulations on published data; no new experiments.
+Learner: XGBoost (STRATA base learner), base + P features (as in Table 5); α = 0.1.
+
+E15 Sequential local adaptation. Studies with ≥ 11 runs. Support runs are the first k ∈ {1,2,3,5} runs of a study under an ordering rule;
+the query set is fixed for all k as the runs after position 5 (support never in query). Ordering rules:
+ (o1) reported order — the order of the study's runs in the curated database (follows the source tables; NOT chronological, labelled as such);
+ (o2) screening design — run 1 at the temperature closest to the study's median temperature, run 2 at the lowest and run 3 at the highest
+      temperature, further runs by maximin distance in standardised (temperature, log residence time);
+ (o3) random — 20 random orders (seeds 0–19), as the earlier k-shot analysis.
+Strategies: A literature model without adaptation; B STRATA (literature model + empirical-Bayes offset from the k support runs);
+C local-only (mean of the k support runs). Intervals for A/B/C are conformal, calibrated by applying the identical procedure (same ordering
+rule, same k) to the calibration studies (inner study-grouped OOF predictions for A/B; observed yields for C), study-weighted.
+Metrics: per-study RMSE and MAE on query runs, study-weighted coverage, width. Tests (per study, Wilcoxon two-sided, Holm within target × order):
+B vs A and B vs C for each k. Settings: development (study-grouped 10-fold × 3 seeds), locked studies (once), external 4TU hydrochar database
+(solid yield; feedstock series as pseudo-studies; trained on all development studies).
+
+E16 Decision support. (a) Applicability domain: study score = median over its runs of the mean distance to the 5 nearest training runs
+(standardised base features, training-set medians/SDs); threshold = 95th percentile of development out-of-study study scores. Hypothesis
+D1: on locked studies, flagged studies have higher A error (median per-study RMSE; Mann–Whitney one-sided). (b) Runs needed: from development
+E15 (screening-design order), the smallest k whose B interval half-width ≤ tolerance h ∈ {10, 15, 20} wt%; validated by coverage on locked studies.
+(c) Rule: use C if a study is flagged (outside domain), otherwise B; D2: on locked studies at k = 3 the rule's median per-study RMSE is not
+worse than always-B (reported descriptively with a Wilcoxon test).
+
+E17 Laboratory case study. Pre-specified selection rule: the locked bio-oil study with ≥ 11 runs and the largest number of distinct
+temperatures (ties → most runs); likewise for solid yield. Shown: strategies A, B, C along the screening-design order, observed vs predicted
+with intervals, error per additional run, and the regret of choosing the predicted-best remaining run (descriptive).
