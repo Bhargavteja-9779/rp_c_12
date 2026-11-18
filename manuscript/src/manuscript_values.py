@@ -484,6 +484,8 @@ def compute_v3(v):
         v[f"case_{t}_C_beats_A_from"] = int(cb.index.min()) if len(cb) else "never"
         v[f"case_{t}_maxk"] = int(q.index.max())
         v[f"case_{t}_meanB_cov"] = f2(q.loc[q.index > 0, "cov_B"].mean())
+    for k_, x in S3["details"].items():
+        v[k_] = f2(x) if ("corr" in k_ or "cov" in k_) else (f"{x:.0f}" if k_.endswith("_T") else f1(x))
     P = json.load(open(os.path.join(REPO, "supplementary", "literature", "prisma_counts.json")))
     v["lit3_date"] = P["run_date"]; v["lit3_pubmed"] = P["identified"]["PubMed"]; v["lit3_crossref"] = P["identified"]["Crossref"]
     v["lit3_total"] = P["identified_total"]; v["lit3_dedup"] = P["after_deduplication"]; v["lit3_included"] = P["included"]

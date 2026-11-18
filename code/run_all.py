@@ -36,6 +36,13 @@ STAGES = [
     ("analyze_v2", [sys.executable, "-W", "ignore", "-m", "src.statistics.analyze_v2", "{mode}"]),
     ("capability", [sys.executable, "-m", "src.statistics.capability", "{mode}"]),
     ("figures_v2", [sys.executable, "-W", "ignore", "-m", "src.visualization.figures_v2", "{mode}"]),
+    # v3 deployment analyses (PROTOCOL Addendum D); locked/external parts and everything depending on them in full mode only
+    ("e15", [sys.executable, "-W", "ignore", "experiments/e15_deployment.py", "{mode}", "dev"]),
+    ("e15_locked", [sys.executable, "-W", "ignore", "experiments/e15_deployment.py", "{mode}", "locked,external"]),
+    ("e16_locked", [sys.executable, "-W", "ignore", "experiments/e16_decision.py", "{mode}"]),
+    ("e17_locked", [sys.executable, "-W", "ignore", "experiments/e17_case_study.py", "{mode}"]),
+    ("analyze_v3_locked", [sys.executable, "-W", "ignore", "-m", "src.statistics.analyze_v3", "{mode}"]),
+    ("figures_v3_locked", [sys.executable, "-W", "ignore", "-m", "src.visualization.figures_v3", "{mode}"]),
 ]
 
 

@@ -5,7 +5,7 @@ Eligibility (applied to title + abstract, rule-based and therefore reproducible)
   E1 contains a machine-learning term (ML_RE) and a hydrothermal-conversion term (HT_RE);
   E2 primary research (not a review/editorial/erratum: title/type);
   E3 predicts a product yield or product property (TARGET_RE);
-  E4 English title. Records lacking an abstract are screened on the title only (flagged).
+  E4 published 2015 to the run year + 1 (journal issue years can run one year ahead of online publication). Records lacking an abstract are screened on the title only (flagged).
 Extraction (abstract level): validation scheme, uncertainty quantification, physical constraints, external/locked test.
 Outputs: search_records_raw.json, prisma_counts.json, included_studies.csv
 """
@@ -22,7 +22,7 @@ HT_RE = r"hydrothermal liquefaction|hydrothermal carboni[sz]ation|hydrochar|bioc
 TARGET_RE = r"yield|hhv|heating value|content|propert|composition|carbon|nitrogen|energy recovery|predict"
 REVIEW_RE = r"\breview\b|perspective|editorial|erratum|corrigendum|retraction|state[- ]of[- ]the[- ]art"
 EXTRACT = {
-    "grouped_or_external": r"group(ed)?[- ]?(k[- ]?fold|cross|split|wise)|leave[- ]one[- ](study|paper|publication|source|feedstock|biomass|group)|study[- ]level|unseen (feedstock|biomass|stud)|external (validation|test|data)|independent (test|validation|data)",
+    "grouped_or_external": r"publication[- ](aware|level|wise|based|grouped)|group(ed)?[- ]?(k[- ]?fold|cross|split|wise)|leave[- ]one[- ](study|paper|publication|source|feedstock|biomass|group)|study[- ]level|unseen (feedstock|biomass|stud)|external (validation|test|data)|independent (test|validation|data)",
     "random_split": r"random(ly)? (split|divided|partition)|train(ing)?[- ]test split|\b[789]0\s?[:/]\s?[123]0\b|k[- ]?fold|cross[- ]validation",
     "uncertainty": r"conformal|prediction interval|uncertaint|bootstrap|monte carlo|bayesian",
     "physics": r"mass balance|conservation|physics[- ]informed|physic(s|ally)[- ](consistent|constrained|guided)|closure",
@@ -101,10 +101,14 @@ def crossref(today):
 
 
 def main():
-    today = dt.date.today().isoformat()
-    s_pm, r_pm = pubmed(today); s_oa, r_oa = openalex(today); s_cr, r_cr = crossref(today)
-    raw = r_pm + r_oa + r_cr
-    json.dump(dict(run_date=today, pubmed_query=s_pm, openalex_query=s_oa, crossref_queries=s_cr, records=raw), open("search_records_raw.json", "w"))
+    import sys
+    if "--from-raw" in sys.argv:  # re-apply the screening to the stored records of the last run (no new queries)
+        R = json.load(open("search_records_raw.json")); today, raw = R["run_date"], R["records"]
+    else:
+        today = dt.date.today().isoformat()
+        s_pm, r_pm = pubmed(today); s_oa, r_oa = openalex(today); s_cr, r_cr = crossref(today)
+        raw = r_pm + r_oa + r_cr
+        json.dump(dict(run_date=today, pubmed_query=s_pm, openalex_query=s_oa, crossref_queries=s_cr, records=raw), open("search_records_raw.json", "w"))
     df = pd.DataFrame(raw)
     df["title"] = df["title"].fillna("").str.replace(r"<[^>]+>", " ", regex=True)
     df["key"] = df["doi"].fillna(df["title"].str.lower().str.replace(r"[^a-z0-9]", "", regex=True).str[:80])
@@ -119,7 +123,7 @@ def main():
     e2 = ~(dd.title.str.lower().str.contains(REVIEW_RE) | dd.type.fillna("").str.contains("review"))
     e3 = text.str.contains(TARGET_RE)
     try:
-        yrs = pd.to_numeric(dd.year, errors="coerce"); e4 = yrs.between(2015, int(today[:4]))
+        yrs = pd.to_numeric(dd.year, errors="coerce"); e4 = yrs.between(2015, int(today[:4]) + 1)  # issue year can precede online year by one
     except Exception:
         e4 = True
     inc = dd[e1 & e2 & e3 & e4].copy()

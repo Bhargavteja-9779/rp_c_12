@@ -8,7 +8,7 @@ Records identified,PubMed 53; OpenAlex 0; Crossref 3200 (total 3253)
 Excluded: no machine-learning or no hydrothermal term in title/abstract (E1),1265
 Excluded: review or non-primary (E2),11
 Excluded: no predicted yield or property (E3),19
-Excluded: outside 2015–run date (E4),1
-Included primary studies,92 (50 with an abstract; 17 in Bioresource Technology)
-Included abstracts mentioning grouped / external validation,1
-Included abstracts mentioning uncertainty quantification,3
+Excluded: outside 2015 to run year + 1 (E4),0
+Included primary studies,93 (51 with an abstract; 18 in Bioresource Technology)
+Included abstracts mentioning grouped / external validation,2
+Included abstracts mentioning uncertainty quantification,4

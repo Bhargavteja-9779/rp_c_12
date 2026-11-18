@@ -1,13 +1,13 @@
-Case (locked study),Runs measured k,Runs predicted,RMSE A (wt%),RMSE B (wt%),RMSE C (wt%),Coverage B,Half-width B (wt%),Regret A/B (wt%),Regret random (wt%)
-"Bio-oil yield: Spirulina platensis (powder), HTL (68 runs)",0,68,10.19,10.19,,1.0,27.39,10.4,16.16
-"Bio-oil yield: Spirulina platensis (powder), HTL (68 runs)",1,67,10.03,17.32,16.31,0.78,21.74,10.4,16.37
-"Bio-oil yield: Spirulina platensis (powder), HTL (68 runs)",2,66,10.1,12.77,8.01,0.92,22.09,10.4,16.23
-"Bio-oil yield: Spirulina platensis (powder), HTL (68 runs)",3,65,10.08,13.96,8.44,0.8,19.1,10.4,16.31
-"Bio-oil yield: Spirulina platensis (powder), HTL (68 runs)",5,63,9.74,12.24,7.56,0.89,19.5,10.4,16.29
-"Bio-oil yield: Spirulina platensis (powder), HTL (68 runs)",10,58,9.7,9.52,8.02,0.91,17.54,10.4,15.62
-"Solid yield: Duckweed (Lemna sp.), HTC (25 runs)",0,25,5.68,5.68,,1.0,23.36,0.0,41.84
-"Solid yield: Duckweed (Lemna sp.), HTC (25 runs)",1,24,5.72,5.16,10.3,1.0,20.57,0.0,41.68
-"Solid yield: Duckweed (Lemna sp.), HTC (25 runs)",2,23,5.71,5.97,21.0,1.0,19.65,11.0,12.89
-"Solid yield: Duckweed (Lemna sp.), HTC (25 runs)",3,22,5.82,5.71,13.87,1.0,18.83,11.0,12.83
-"Solid yield: Duckweed (Lemna sp.), HTC (25 runs)",5,20,5.78,5.21,9.33,1.0,17.28,10.8,12.91
-"Solid yield: Duckweed (Lemna sp.), HTC (25 runs)",10,15,6.01,5.65,6.6,1.0,17.26,7.1,13.27
+Case,k,Runs predicted,RMSE A,RMSE B,RMSE C,Cov. B,±HW B,Regret A/B,Regret random
+"Bio-oil, Spirulina HTL",0,68,10.19,10.19,,1.0,27.39,10.4,16.16
+"Bio-oil, Spirulina HTL",1,67,10.03,17.32,16.31,0.78,21.74,10.4,16.37
+"Bio-oil, Spirulina HTL",2,66,10.1,12.77,8.01,0.92,22.09,10.4,16.23
+"Bio-oil, Spirulina HTL",3,65,10.08,13.96,8.44,0.8,19.1,10.4,16.31
+"Bio-oil, Spirulina HTL",5,63,9.74,12.24,7.56,0.89,19.5,10.4,16.29
+"Bio-oil, Spirulina HTL",10,58,9.7,9.52,8.02,0.91,17.54,10.4,15.62
+"Solid, duckweed HTC",0,25,5.68,5.68,,1.0,23.36,0.0,41.84
+"Solid, duckweed HTC",1,24,5.72,5.16,10.3,1.0,20.57,0.0,41.68
+"Solid, duckweed HTC",2,23,5.71,5.97,21.0,1.0,19.65,11.0,12.89
+"Solid, duckweed HTC",3,22,5.82,5.71,13.87,1.0,18.83,11.0,12.83
+"Solid, duckweed HTC",5,20,5.78,5.21,9.33,1.0,17.28,10.8,12.91
+"Solid, duckweed HTC",10,15,6.01,5.65,6.6,1.0,17.26,7.1,13.27

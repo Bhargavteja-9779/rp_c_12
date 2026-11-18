@@ -48,10 +48,10 @@ def case_table(D):
     for t in ["biooil", "solid"]:
         q = c[(c.target == t) & (c.k.isin([0, 1, 2, 3, 5, 10]))]
         for r in q.itertuples():
-            rows.append({"Case (locked study)": f"{TL[t]}: {sel[t]['feedstock']}, {sel[t]['process']} ({sel[t]['n_runs']} runs)", "Runs measured k": int(r.k),
-                         "Runs predicted": int(r.n_remaining), "RMSE A (wt%)": r.rmse_A, "RMSE B (wt%)": r.rmse_B,
-                         "RMSE C (wt%)": (r.rmse_C if r.k > 0 else np.nan), "Coverage B": r.cov_B, "Half-width B (wt%)": r.halfwidth_B,
-                         "Regret A/B (wt%)": r.regret_A, "Regret random (wt%)": r.regret_random})
+            rows.append({"Case": {"biooil": "Bio-oil, Spirulina HTL", "solid": "Solid, duckweed HTC"}[t], "k": int(r.k),
+                         "Runs predicted": int(r.n_remaining), "RMSE A": r.rmse_A, "RMSE B": r.rmse_B,
+                         "RMSE C": (r.rmse_C if r.k > 0 else np.nan), "Cov. B": r.cov_B, "±HW B": r.halfwidth_B,
+                         "Regret A/B": r.regret_A, "Regret random": r.regret_random})
     pd.DataFrame(rows).round(2).to_csv(os.path.join(D["tables"], "table_v3_case_study.csv"), index=False)
 
 
@@ -93,11 +93,35 @@ def prisma_table(D):
             ("After de-duplication (DOI, else normalised title)", p["after_deduplication"]),
             ("Excluded: no machine-learning or no hydrothermal term in title/abstract (E1)", p["excluded_no_ml_or_no_hydrothermal_term"]),
             ("Excluded: review or non-primary (E2)", p["excluded_review_or_non_primary"]), ("Excluded: no predicted yield or property (E3)", p["excluded_no_prediction_target"]),
-            ("Excluded: outside 2015–run date (E4)", p["excluded_outside_window"]),
+            ("Excluded: outside 2015 to run year + 1 (E4)", p["excluded_outside_window"]),
             ("Included primary studies", f"{p['included']} ({p['included_with_abstract']} with an abstract; {p['included_in_bioresource_technology']} in Bioresource Technology)"),
             ("Included abstracts mentioning grouped / external validation", p["included_mentioning_grouped_or_external"]),
             ("Included abstracts mentioning uncertainty quantification", p["included_mentioning_uncertainty"])]
     pd.DataFrame(rows, columns=["Step", "Value"]).to_csv(os.path.join(D["tables"], "tableS_v3_prisma.csv"), index=False)
+
+
+def details(D, S):
+    """Descriptive quantities quoted in the text (within-study spread, run-level errors, case-study first run)."""
+    from src.data.load import load_target
+    out = {}
+    for t in ["biooil", "solid"]:
+        for split, name in [("dev", "dev"), ("test", "locked")]:
+            ds = load_target(t, split); df = pd.DataFrame({"g": ds.groups, "y": ds.y})
+            df = df[df.groupby("g").y.transform("size") >= 11]
+            out[f"withinsd_{name}_{t}"] = float(df.groupby("g").y.std().median())
+    r = pd.read_csv(os.path.join(D["pred"], "e15_locked_design_runs.csv.gz"))
+    for t in ["biooil", "solid"]:
+        q0 = r[(r.target == t) & (r.k == 0)]; q3 = r[(r.target == t) & (r.k == 3)]
+        out[f"run_rmse_locked_{t}_A0"] = float(np.sqrt(np.mean((q0.y - q0.A) ** 2)))
+        out[f"run_rmse_locked_{t}_B3"] = float(np.sqrt(np.mean((q3.y - q3.B) ** 2)))
+        out[f"run_rmse_locked_{t}_C3"] = float(np.sqrt(np.mean((q3.y - q3.C) ** 2)))
+        out[f"run_cov_locked_{t}_A0"] = float(np.mean(np.abs(q0.y - q0.A) <= q0.q_A)); out[f"run_cov_locked_{t}_B3"] = float(np.mean(np.abs(q3.y - q3.B) <= q3.q_B))
+    c = pd.read_csv(os.path.join(D["pred"], "e17_case_runs.csv.gz"))
+    for t in ["biooil", "solid"]:
+        q = c[(c.target == t) & (c.k == 1)]; f = q[q.measured].iloc[0]
+        out[f"case_{t}_first_T"] = float(f["T"]); out[f"case_{t}_first_y"] = float(f.y); out[f"case_{t}_first_A"] = float(f.A)
+        out[f"case_{t}_median_y"] = float(q.y.median()); out[f"case_{t}_corr_A_y"] = float(np.corrcoef(q.A, q.y)[0, 1])
+    S["details"] = out
 
 
 def run(mode="full"):
@@ -120,7 +144,25 @@ def run(mode="full"):
                  "coverage": "Coverage of 90% PI", "width": "PI width (wt%)"}).round(2)
     order_s = {SL["dev"]: 0, SL["locked"]: 1, SL["external"]: 2}
     t = t.sort_values(["Setting", "Target", "Local runs k", "Strategy"], key=lambda c: c.map(order_s) if c.name == "Setting" else c)
-    t.to_csv(os.path.join(D["tables"], "table_v3_deployment.csv"), index=False)
+    t.to_csv(os.path.join(D["tables"], "table_v3_deployment_long.csv"), index=False)
+    # compact wide table for the manuscript
+    SS = {"dev": "Dev.", "locked": "Locked", "external": "4TU"}
+    W = []
+    for (st, tg), q in m.groupby(["setting", "target"], sort=False):
+        for k in [0, 1, 3, 5]:
+            r = {"Setting": SS[st], "Target": TL[tg].replace(" yield", ""), "k": k, "Studies": int(q.n_studies.iloc[0])}
+            for g in "ABC":
+                x = q[(q.k == k) & (q.strategy == g)]
+                r[f"RMSE {g}"] = round(float(x.median_rmse.iloc[0]), 1) if len(x) else "—"
+            for g in "ABC":
+                x = q[(q.k == k) & (q.strategy == g)]
+                r[f"Cov. {g}"] = round(float(x.coverage.iloc[0]), 2) if len(x) else "—"
+            for g in "ABC":
+                x = q[(q.k == k) & (q.strategy == g)]
+                r[f"±HW {g}"] = round(float(x.width.iloc[0]) / 2, 1) if len(x) else "—"
+            W.append(r)
+    W = pd.DataFrame(W); W["_o"] = W.Setting.map({"Dev.": 0, "Locked": 1, "4TU": 2})
+    W.sort_values(["_o", "Target", "k"], kind="stable").drop(columns="_o").to_csv(os.path.join(D["tables"], "table_v3_deployment.csv"), index=False)
     s2 = A[A.order != "design"].copy(); s2["setting"] = s2.setting.map(SL); s2["target"] = s2.target.map(TL); s2["order"] = s2.order.map(ORD)
     s2.round(2).to_csv(os.path.join(D["tables"], "table_v3_deployment_other_orders.csv"), index=False)
     T = pd.DataFrame([dict(setting=SL[k.split("_")[1]], **r) for k in S if k.endswith("_tests") for r in S[k]])
@@ -147,7 +189,7 @@ def run(mode="full"):
     pd.DataFrame(rows).to_csv(os.path.join(D["tables"], "table_v3_decision.csv"), index=False)
     S["e16"] = dec
     S["e17_selection"] = json.load(open(os.path.join(D["stats"], "e17_selection.json")))
-    case_table(D); capability_v3(D, S); prisma_table(D)
+    case_table(D); capability_v3(D, S); prisma_table(D); details(D, S)
     dump(S, os.path.join(R, "statistics_v3.json"))
     print(t.to_string())
 

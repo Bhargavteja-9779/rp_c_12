@@ -1,13 +1,35 @@
 ---
-title: "Supplementary Material — Machine-learning models of hydrothermal biomass conversion trained on literature data: transfer to unseen studies and study-calibrated prediction intervals"
+title: "Supplementary Material — From literature to laboratory: an uncertainty-aware framework for transferring machine-learning models of hydrothermal biomass conversion and planning first experiments"
 ---
 
-# S1. Literature screening
 
-PubMed was queried on 2026-11-10 for machine-learning studies of hydrothermal liquefaction or carbonization published 2015–2026 (query string in `supplementary/literature/pubmed_corpus.py`). Titles and abstracts of the 44 primary studies were screened with pre-defined regular expressions for the validation design, uncertainty quantification and physical constraints. Only 2 abstracts mentioned grouped, study-level or external validation and 4 mentioned any form of uncertainty quantification. Abstract-level screening under-counts practices that appear only in the full text; the counts are therefore lower bounds.
+# S1. Literature search
+
+A reproducible multi-database search was run on 2026-11-18 with a script that stores the raw records, the search strings and the run date. PubMed was queried with a Boolean title/abstract query, Crossref with 16 bibliographic queries (four machine-learning terms × four hydrothermal terms, 200 journal-article records each) and OpenAlex with a title-and-abstract search; OpenAlex refused anonymous requests on the run date (HTTP 429) and contributed no records. Records were de-duplicated by DOI, else by normalised title. Eligibility was applied by rule to titles and abstracts, so that the selection is reproducible: E1, the record contains a machine-learning and a hydrothermal-conversion term; E2, primary research (not a review, editorial, erratum or retraction); E3, a product yield or property is predicted; E4, published from 2015 to the year after the run date (journal issue years can run one year ahead of online publication). Records without an abstract were screened on the title. Search strings and record flow are given in Table S1. Abstract-level extraction under-counts practices that appear only in the full text; the counts of validation and uncertainty practices are therefore lower bounds. Table S2 lists the earlier PubMed-only corpus from which the median reported R² quoted in the Introduction was extracted.
 
 
-**Table S1.** PubMed-indexed ML studies of hydrothermal conversion (abstract-level screening; n.s. = not stated in abstract).
+**Table S1.** Reproducible multi-database literature search: search strings, dates, eligibility criteria (E1–E4, applied by rule to titles and abstracts) and record flow.
+
+| Step | Value |
+|---|---|
+| Run date | 2026-11-18 |
+| PubMed query (title/abstract, publication date 2015-01-01 to run date) | ("machine learning"[tiab] OR "deep learning"[tiab] OR "neural network"[tiab] OR "random forest"[tiab] OR "gradient boosting"[tiab] OR xgboost[tiab] OR "support vector"[tiab]) AND ("hydrothermal liquefaction"[tiab] OR "hydrothermal carbonization"[tiab] OR "hydrothermal carbonisation"[tiab] OR hydrochar[tiab] OR biocrude[tiab] OR "bio-crude"[tiab]) |
+| OpenAlex query (title_and_abstract.search) | ("machine learning" OR "deep learning" OR "neural network" OR "random forest" OR "gradient boosting" OR xgboost OR "support vector") AND ("hydrothermal liquefaction" OR "hydrothermal carbonization" OR "hydrothermal carbonisation" OR hydrochar OR biocrude OR "bio-crude") — not retrievable on the run date (anonymous API requests refused, HTTP 429); 0 records |
+| Crossref queries (query.bibliographic, journal articles, 200 records each) | machine learning hydrothermal liquefaction; machine learning hydrothermal carbonization; machine learning hydrochar; machine learning biocrude; neural network hydrothermal liquefaction; neural network hydrothermal carbonization; neural network hydrochar; neural network biocrude; random forest hydrothermal liquefaction; random forest hydrothermal carbonization; random forest hydrochar; random forest biocrude; gradient boosting hydrothermal liquefaction; gradient boosting hydrothermal carbonization; gradient boosting hydrochar; gradient boosting biocrude |
+| Records identified | PubMed 53; OpenAlex 0; Crossref 3200 (total 3253) |
+| After de-duplication (DOI, else normalised title) | 1388 |
+| Excluded: no machine-learning or no hydrothermal term in title/abstract (E1) | 1265 |
+| Excluded: review or non-primary (E2) | 11 |
+| Excluded: no predicted yield or property (E3) | 19 |
+| Excluded: outside 2015 to run year + 1 (E4) | 0 |
+| Included primary studies | 93 (51 with an abstract; 18 in Bioresource Technology) |
+| Included abstracts mentioning grouped / external validation | 2 |
+| Included abstracts mentioning uncertainty quantification | 4 |
+
+
+
+
+**Table S2.** PubMed-indexed ML studies of hydrothermal conversion (abstract-level screening; n.s. = not stated in abstract).
 
 | Year | Journal | First author | DOI | Target(s) | Methods | Validation (abstract) | R² in abstract | UQ | Physics |
 |---|---|---|---|---|---|---|---|---|---|
@@ -58,14 +80,32 @@ PubMed was queried on 2026-11-10 for machine-learning studies of hydrothermal li
 
 
 
-# S2. Pre-registered protocol and deviations
+# S2. Protocol, addenda and deviations
 
-The analysis protocol (`code/config/PROTOCOL.md`) was committed to version control before any model was fitted, together with the locked list of 38 test studies. Deviations, each logged with date and reason: (i) the tabular foundation model could not be run because its weights require a personal licence acceptance; (ii) clarification that every learner was tuned separately for each feature set; (iii) the ridge-penalty grid of the meta-regression was widened after its selected value hit the registered upper bound, and three univariate study-level tests were added as secondary analyses; (iv) protocol addenda A (within-study trends), A2 (product-quality targets) and C (locked confirmation), each registered before its analysis, and the exploratory addendum B registered after seeing the development results of A; (v) post-hoc review analyses E9 (base learners), E10 (cross-study duplicate audit) and E11 (overhead), and a post-hoc sensitivity analysis of the locked test excluding the single study with the largest squared-error share; (vi) an exploratory, post-hoc locally adaptive variant of the study-calibrated intervals (SC-N, Section S4) was added after pipeline verification showed that constant-width study-calibrated intervals are wide. GPBoost was run as registered; its study random intercept absorbed most of the variance because feedstock descriptors are nearly constant within a study, so its out-of-study predictions reverted towards a nearly flat fixed-effect function.
+The analysis protocol (research questions, metrics, statistical tests, seeds) and the locked list of 38 test studies were committed to a version-controlled repository hosted on GitHub before any model was fitted. The protocol was not deposited in a public registry; the order of registration and analysis is documented by the commit history (Table S3), and the repository is available from the corresponding author on request. Addenda: A (within-study trends) and A2 (product-quality targets), each registered before its analysis; B (contrast types and rules of thumb), registered after the development results of A had been seen and therefore exploratory; C (one-time locked confirmation of A and B); and D (sequential deployment E15, decision support E16 and laboratory case studies E17), registered after an external pre-submission review and before any of these analyses was run. Deviations, each logged with date and reason: (i) the tabular foundation model could not be run because its weights require a personal licence acceptance; (ii) every learner was tuned separately for each feature set; (iii) the ridge-penalty grid of the meta-regression was widened after its selected value hit the registered upper bound, and three univariate study-level tests were added as secondary analyses; (iv) post-hoc review analyses E9 (base learners), E10 (cross-study duplicate audit) and E11 (overhead), and a post-hoc sensitivity analysis of the locked test excluding the study with the largest squared-error share; (v) an exploratory locally adaptive interval variant (Section S4); (vi) the model-free trend analysis E13 was not registered and is descriptive; (vii) because the pre-registered applicability-domain threshold flagged no locked study, an exploratory rank correlation between the score and the error on locked studies was added after this result was known (main-text Table 7); (viii) the literature search was extended from PubMed to a multi-database search after the external review; when the screening was checked, two rules were corrected and re-applied to the stored records without new queries — the publication window was widened to the year after the run date because an included 2026 article carries a 2027 issue year, and 'publication-aware/-level' was added to the pattern for grouped validation. GPBoost was run as registered; its study random intercept absorbed most of the variance because feedstock descriptors are nearly constant within a study, so its out-of-study predictions reverted towards a nearly flat fixed-effect function.
+
+
+**Table S3.** Audit trail: version-control commits establishing that the protocol, the locked study list and each addendum preceded the analyses they govern.
+
+| Commit | Time (UTC) | Event |
+|---|---|---|
+| 04a5079 | 2026-11-10 21:44 | Initialize research repository: vendored CC-BY datasets, journal-screen scripts, locked study-level test split |
+| d40eac3 | 2026-11-10 21:52 | Pre-register analysis protocol (before any model fitting); literature corpus and matrix |
+| 69ccfd1 | 2026-11-11 03:36 | All development experiments complete (E1-E8, E3b); all modelling decisions frozen BEFORE the single locked-test evaluation |
+| 639845a | 2026-11-11 03:37 | Locked test evaluated once (38 studies) |
+| d24f01c | 2026-11-13 11:58 | Pre-register Addendum A (v2): trend-transfer / offset-invariant learning experiment E12, before running it |
+| b54cfa1 | 2026-11-13 12:02 | E12 implementation: offset-invariant contrast models (A/W/PD), trend metrics, anchoring, contrast conformal; unit tests |
+| 2f4af56 | 2026-11-13 12:05 | Addendum A2 (quality targets) registered; loader extended; E13 model-free within-study trend analysis |
+| 71a1d8f | 2026-11-13 12:37 | E12 development results (T1-T3 not supported); register exploratory Addendum B (E14) before running |
+| 9668526 | 2026-11-13 12:39 | Register Addendum C (confirmatory locked-study tests for ranking and E12) before any locked evaluation of E12/E14; E14 locked mode |
+| 19982f0 | 2026-11-13 12:56 | v2 experiments complete: E12 dev/locked (yields 3 learners; HHV/C), E13, E14 dev + locked confirmation; v2 analysis and figure code |
+
+
 
 # S3. Additional benchmark and sensitivity results
 
 
-**Table S2.** Benchmark with base + protocol (P) features.
+**Table S4.** Benchmark with base + protocol (P) features.
 
 | Target | Learner | Random CV RMSE | Grouped CV RMSE | Grouped CV R² |
 |---|---|---|---|---|
@@ -97,7 +137,7 @@ The analysis protocol (`code/config/PROTOCOL.md`) was committed to version contr
 
 
 
-**Table S3.** Per-study RMSE of each learner vs the best learner under grouped CV (Wilcoxon, Holm).
+**Table S5.** Per-study RMSE of each learner vs the best learner under grouped CV (Wilcoxon, Holm).
 
 | target | features | learner | reference | n | median_diff | ci_low | ci_high | rank_biserial | p | p_holm |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -149,7 +189,7 @@ The analysis protocol (`code/config/PROTOCOL.md`) was committed to version contr
 
 
 
-**Table S4.** Coverage for all α levels and settings.
+**Table S6.** Coverage for all α levels and settings.
 
 | Target | Setting | α | Calibration | Coverage (rows) | Coverage (studies) | Width (wt%) | Studies <0.8 coverage |
 |---|---|---|---|---|---|---|---|
@@ -211,7 +251,7 @@ The analysis protocol (`code/config/PROTOCOL.md`) was committed to version contr
 
 
 
-**Table S5.** Sensitivity of coverage and accuracy to α and to the number of outer folds (seed 11).
+**Table S7.** Sensitivity of coverage and accuracy to α and to the number of outer folds (seed 11).
 
 | target | features | outer_folds | alpha | calibration | Coverage (studies) | Width (wt%) | RMSE |
 |---|---|---|---|---|---|---|---|
@@ -267,7 +307,7 @@ The analysis protocol (`code/config/PROTOCOL.md`) was committed to version contr
 
 
 
-**Table S6.** k-shot results with method-of-moments vs REML estimates of the between-study variance.
+**Table S8.** k-shot results with method-of-moments vs REML estimates of the between-study variance.
 
 | target | features | estimator | k | Median study RMSE | Median study coverage | Width (wt%) |
 |---|---|---|---|---|---|---|
@@ -323,7 +363,7 @@ The analysis protocol (`code/config/PROTOCOL.md`) was committed to version contr
 
 
 
-**Table S7.** Study-grouped CV of the STRATA base learner with tuned vs library-default hyper-parameters.
+**Table S9.** Study-grouped CV of the STRATA base learner with tuned vs library-default hyper-parameters.
 
 | target | features | config | rmse | r2 | median_study_rmse |
 |---|---|---|---|---|---|
@@ -338,12 +378,60 @@ The analysis protocol (`code/config/PROTOCOL.md`) was committed to version contr
 
 
 
+
+**Table S10.** k-shot adaptation to a new study (studies with ≥ 11 runs; 20 random support sets per study).
+
+| Target | k | Offset | Median study RMSE | Coverage (studies) | Width (wt%) | Studies | EB vs raw: Δ median; p_Holm |
+|---|---|---|---|---|---|---|---|
+| Bio-oil | 0 | — | 12.37 | 0.926 | 59.3 | 80 |  |
+| Bio-oil | 1 | EB shrinkage | 9.22 | 0.908 | 42.6 | 80 | -0.75; <0.001 |
+| Bio-oil | 1 | raw mean | 10.23 | 0.907 | 45.9 | 80 |  |
+| Bio-oil | 2 | EB shrinkage | 8.78 | 0.914 | 39.0 | 80 | -0.29; <0.001 |
+| Bio-oil | 2 | raw mean | 9.17 | 0.911 | 39.9 | 80 |  |
+| Bio-oil | 3 | EB shrinkage | 8.47 | 0.913 | 37.2 | 80 | -0.14; <0.001 |
+| Bio-oil | 3 | raw mean | 8.7 | 0.91 | 37.7 | 80 |  |
+| Bio-oil | 5 | EB shrinkage | 8.19 | 0.918 | 36.3 | 80 | -0.07; <0.001 |
+| Bio-oil | 5 | raw mean | 8.29 | 0.915 | 36.5 | 80 |  |
+| Bio-oil | 10 | EB shrinkage | 7.63 | 0.902 | 33.4 | 80 | -0.02; 0.004 |
+| Bio-oil | 10 | raw mean | 7.63 | 0.903 | 33.9 | 80 |  |
+| Solid | 0 | — | 11.05 | 0.898 | 46.6 | 72 |  |
+| Solid | 1 | EB shrinkage | 8.84 | 0.908 | 39.3 | 72 | -0.92; <0.001 |
+| Solid | 1 | raw mean | 9.18 | 0.911 | 45.7 | 72 |  |
+| Solid | 2 | EB shrinkage | 8.18 | 0.899 | 35.8 | 72 | -0.34; 0.002 |
+| Solid | 2 | raw mean | 8.31 | 0.901 | 38.2 | 72 |  |
+| Solid | 3 | EB shrinkage | 7.66 | 0.899 | 34.6 | 72 | -0.19; 0.003 |
+| Solid | 3 | raw mean | 7.87 | 0.9 | 35.9 | 72 |  |
+| Solid | 5 | EB shrinkage | 7.48 | 0.898 | 33.0 | 72 | -0.09; 0.007 |
+| Solid | 5 | raw mean | 7.38 | 0.899 | 33.6 | 72 |  |
+| Solid | 10 | EB shrinkage | 7.02 | 0.904 | 33.6 | 72 | -0.03; 0.006 |
+| Solid | 10 | raw mean | 6.99 | 0.903 | 33.7 | 72 |  |
+
+
+
+
+**Table S11.** Temporal, feedstock-family and external generalisation of the STRATA base learner.
+
+| Target | Features | Scheme | RMSE | R² | Median study RMSE |
+|---|---|---|---|---|---|
+| Bio-oil | base | temporal | 19.41 | -0.399 | 14.81 |
+| Bio-oil | base+P | temporal | 22.66 | -0.907 | 16.96 |
+| Solid | base | temporal | 16.54 | 0.269 | 10.58 |
+| Solid | base+P | temporal | 16.56 | 0.268 | 10.83 |
+| Bio-oil | base | family_out (mean over families) | 17.17 | -0.419 | 12.93 |
+| Bio-oil | base+P | family_out (mean over families) | 17.48 | -0.237 | 12.05 |
+| Solid | base | family_out (mean over families) | 16.35 | -0.221 | 10.79 |
+| Solid | base+P | family_out (mean over families) | 15.5 | -0.03 | 10.28 |
+| Solid | base | external_4TU_all_dev_processes | 13.3 | 0.31 | 10.93 |
+| Solid | base | external_4TU_HTC_dev_only | 16.66 | -0.082 | 11.59 |
+
+
+
 # S4. Exploratory: locally adaptive study-calibrated intervals (post hoc)
 
 Motivation: constant-width study-calibrated intervals are wide. Hypothesis: out-of-study errors are heteroscedastic, so dividing conformity scores by a learned difficulty $\hat\sigma(\mathbf{x})$ narrows intervals for easy regimes without losing study-level coverage. A shallow gradient-boosting model of $\log(|r| + 0.5)$ was cross-fitted by study on the out-of-study residuals of the training studies; scores $|r|/\hat\sigma$ were calibrated with the same study-weighted quantile, and intervals were $f(\mathbf{x}) \pm \hat q\,\hat\sigma(\mathbf{x})$. For bio-oil, SC-N gave study-weighted coverage 0.91 (SC 0.91) with median width 55.6 vs 59.5 wt% and mean interval score 84.2 vs 77.3; for solids, coverage 0.92 vs 0.91, median width 53.3 vs 45.7 wt%, interval score 69.5 vs 65.2. The adaptive variant therefore did not improve interval efficiency — both widths and interval scores were worse — although coverage across process subtypes became more uniform (largest deviation from 0.90: 0.03 vs 0.07 for solids). This negative result is consistent with the main finding that the dominant error component is a study offset that input features cannot localise. Because this variant was added after inspecting pipeline-verification results, it is reported as exploratory and is not part of the main claims.
 
 
-**Table S8.** Exploratory (post hoc): constant-width vs locally adaptive study-calibrated intervals (α = 0.1, base+P).
+**Table S12.** Exploratory (post hoc): constant-width vs locally adaptive study-calibrated intervals (α = 0.1, base+P).
 
 | target | method | coverage_rows | coverage_studies | mean_width | median_width | winkler | coverage_by_process | max_abs_process_dev |
 |---|---|---|---|---|---|---|---|---|
@@ -359,7 +447,7 @@ Motivation: constant-width study-calibrated intervals are wide. Hypothesis: out-
 # S5. Error analysis by subgroup
 
 
-**Table S9.** Out-of-study errors by subgroup (seed-averaged outer-fold predictions, base features).
+**Table S13.** Out-of-study errors by subgroup (seed-averaged outer-fold predictions, base features).
 
 | target | dimension | level | n | n_studies | rmse | bias | mae |
 |---|---|---|---|---|---|---|---|
@@ -433,7 +521,7 @@ Motivation: constant-width study-calibrated intervals are wide. Hypothesis: out-
 # S6. STRATA with different base learners (E9)
 
 
-**Table S10.** STRATA with different base learners (development study-folds, seed 11, base + P features, α = 0.1). The mean predictor is the 'no-ML' reference.
+**Table S14.** STRATA with different base learners (development study-folds, seed 11, base + P features, α = 0.1). The mean predictor is the 'no-ML' reference.
 
 | Target | Base learner | Coverage RC | Coverage SC | Width RC (wt%) | Width SC (wt%) | Pooled RMSE | Median study RMSE k=0 | Median study RMSE k=3 (EB) |
 |---|---|---|---|---|---|---|---|---|
@@ -456,10 +544,28 @@ Motivation: constant-width study-calibrated intervals are wide. Hypothesis: out-
 
 # S7. Trend, ranking and anchoring analyses (Addenda A, A2, B, C)
 
-Protocol addenda were committed to version control before the corresponding analyses were run (git history of `code/config/PROTOCOL.md`). Addendum B (contrast types, rules of thumb) was registered after the development results of Addendum A had been seen and is exploratory; its ranking result was tested once on the locked studies under Addendum C and was not confirmed. Full per-study results: `results/e12_*`, `results/e14*`; tests: `results/statistics_v2.json`.
+*Within-study contrasts (E12).* For two runs *a* and *b* of the same study, the contrast is $\Delta_{ab} = y_a - y_b$; a study offset cancels in $\Delta_{ab}$. Three learners predicted contrasts for every pair of runs within each unseen study: the absolute model A by differencing, $\hat\Delta_{ab} = f(\mathbf{x}_a) - f(\mathbf{x}_b)$; a within-study model W, trained on study-centred targets $y - \bar y_{\text{study}}$ with features $[\mathbf{x}, \mathbf{x} - \bar{\mathbf{x}}_{\text{study}}]$; and a pairwise-difference model PD, trained on pairs of runs of the same training study with inputs $[\mathbf{x}_a, \mathbf{x}_b, \mathbf{x}_a - \mathbf{x}_b]$ and target $\Delta_{ab}$ (at most 30 random partners per run), antisymmetrised as $\hat\Delta_{ab} = \tfrac{1}{2}[h(a,b) - h(b,a)]$. All three used the E1 hyper-parameters of XGBoost, extra trees and LightGBM. Contrast accuracy was summarised by $R^2_\Delta = 1 - \sum(\hat\Delta - \Delta)^2 / \sum \Delta^2$, relative to the 'no-change' predictor. Hypotheses: contrasts are predicted better than levels (T1); W and PD predict contrasts better than A (T2, one-sided Wilcoxon on per-study contrast RMSE, Holm); anchoring on *k* = 1–3 measured runs, $\hat y_i = \tfrac{1}{k}\sum_a (y_a + \hat\Delta_{ia})$, beats STRATA's shrunk offset (T3); study-calibrated intervals for contrasts are valid and narrower than for levels (T4); and models rank the runs of a study usefully (T5). The same analysis was repeated for bio-oil higher heating value (1,019 development runs from 106 studies, 245 locked runs) and bio-oil carbon content (1,036 runs, 110 studies; 227 locked runs) (Addendum A2).
+
+*Model-free trends (E13; descriptive).* Within each development study, pairs of runs that differ only in temperature (all other base features and the feedstock identical) or only in residence time were identified, and their slopes summarised per study and temperature band; medians across studies were bootstrapped over studies. Below 250 °C bio-oil yield changed by +1.31 wt% per 10 °C (95% same sign), at 250–300 °C by +0.87 wt%, at 300–350 °C by -0.14 wt% and above 350 °C by -0.79 wt%; solid yield changed by -2.66, -1.70, -0.62 and -0.35 wt% per 10 °C. Doubling the residence time had no consistent effect on bio-oil yield (-0.06 wt%; 50% same sign) and a small negative effect on solid yield (-0.49 wt%).
+
+*Contrast results.* For unseen development studies, contrast $R^2_\Delta$ was 0.14–0.22 for bio-oil (level R² 0.15–0.19) and 0.25–0.43 for solids (levels 0.36–0.47); weighting studies equally, the median per-study $R^2_\Delta$ was 0.06–0.10 for bio-oil and 0.23–0.32 for solids. On locked studies offset-invariant models retained contrast skill where the absolute model failed (bio-oil $R^2_\Delta$ -0.30 for A vs 0.21 for W and 0.30 for PD), but two studies accounted for 65% of the squared contrast error of A, and per-study comparisons were not significant (0 of 12 after Holm). With one measured run, the median per-study RMSE was 9.60 wt% for STRATA, 10.20 for W and 9.41 for PD (bio-oil, XGBoost; T3 not supported). Intervals for contrasts covered 0.90 (bio-oil) and 0.91 (solids) of unseen-study pairs (T4).
+
+*Ranking (E14).* For unseen development studies, all three model types picked bio-oil conditions with lower regret than the 325 °C rule of thumb (median regret 7.0–8.7 vs 12.8 wt%; random choice 12.7 wt%); for solids none beat the lowest-temperature rule. On 25 locked bio-oil studies the advantage was not confirmed (median regret 11.9–12.5 wt% for the models, 14.6 wt% for the rule and 12.5 wt% for random choice).
 
 
-**Table S11.** Model-free within-study trends: slopes from run pairs of the same study that differ only in temperature or only in residence time (development studies; 95% study-bootstrap CIs).
+![**Fig. S1.** Model-free trend atlas. Median change in yield per +10 °C across development studies, computed from pairs of runs of the same study that differ only in temperature; error bars are 95% study-bootstrap CIs, annotations give the share of studies whose slope has the same sign as the median.](/home/user/rp_c_12/figures/fig11_trend_atlas.png){width=16cm}
+
+
+
+![**Fig. S2.** Accuracy of absolute-yield predictions (levels, model A) and of within-study contrasts (models A, W and PD; XGBoost) for unseen development studies and for the locked test studies, for four targets. R² of contrasts is relative to the no-change predictor.](/home/user/rp_c_12/figures/fig12_levels_vs_contrasts.png){width=16cm}
+
+
+
+![**Fig. S3.** Regret of choosing the run predicted to give the highest yield within a study for models A, W and PD, a rule of thumb and random choice. Left: development studies (exploratory); right: locked studies (pre-registered confirmatory test).](/home/user/rp_c_12/figures/fig13_ranking_regret.png){width=16cm}
+
+
+
+**Table S15.** Model-free within-study trends: slopes from run pairs of the same study that differ only in temperature or only in residence time (development studies; 95% study-bootstrap CIs).
 
 | Target | Variable | Unit | Band (°C) | Studies | Pairs | Median slope [95% CI] | Studies with same sign | Between-study SD of slope |
 |---|---|---|---|---|---|---|---|---|
@@ -477,7 +583,7 @@ Protocol addenda were committed to version control before the corresponding anal
 
 
 
-**Table S12.** Level vs within-study contrast accuracy for models A, W and PD (XGBoost), with study-calibrated contrast and level interval coverage/width (α = 0.1).
+**Table S16.** Level vs within-study contrast accuracy for models A, W and PD (XGBoost), with study-calibrated contrast and level interval coverage/width (α = 0.1).
 
 | Target | Setting | Model | Level R² | Contrast R² | Median within-study Spearman | Contrast interval coverage | Contrast interval width | Level interval width |
 |---|---|---|---|---|---|---|---|---|
@@ -509,7 +615,7 @@ Protocol addenda were committed to version control before the corresponding anal
 
 
 
-**Table S13.** Regret of choosing the run predicted best within a study vs rules of thumb (development: exploratory, two-sided; locked: pre-registered confirmatory, one-sided for bio-oil). Holm-corrected p.
+**Table S17.** Regret of choosing the run predicted best within a study vs rules of thumb (development: exploratory, two-sided; locked: pre-registered confirmatory, one-sided for bio-oil). Holm-corrected p.
 
 | Setting | Target | Model | Rule of thumb | Studies | Median regret, model (wt%) | Median regret, rule (wt%) | Median paired difference [95% CI] | p (Holm) | Test |
 |---|---|---|---|---|---|---|---|---|---|
@@ -532,7 +638,7 @@ Protocol addenda were committed to version control before the corresponding anal
 
 
 
-**Table S14.** Model-free temperature slopes stratified by process subtype (development studies; 95% study-bootstrap CIs; strata with ≥ 5 studies).
+**Table S18.** Model-free temperature slopes stratified by process subtype (development studies; 95% study-bootstrap CIs; strata with ≥ 5 studies).
 
 | Target | Process | Band (°C) | Studies | Median slope (wt% per +10 °C) | CI low | CI high | Studies with same sign |
 |---|---|---|---|---|---|---|---|
@@ -558,7 +664,7 @@ Protocol addenda were committed to version control before the corresponding anal
 
 
 
-**Table S15.** Study-weighted within-study contrast accuracy (median over studies of the per-study contrast R²; XGBoost). Pooled values in Table S12 weight large studies by their number of pairs.
+**Table S19.** Study-weighted within-study contrast accuracy (median over studies of the per-study contrast R²; XGBoost). Pooled values in Table S12 weight large studies by their number of pairs.
 
 | Setting | Target | Model | Studies (≥ 5 runs) | Median per-study contrast R² | Studies with R² > 0 |
 |---|---|---|---|---|---|
@@ -589,44 +695,34 @@ Protocol addenda were committed to version control before the corresponding anal
 
 
 
-
-**Table S16.** Audit trail: version-control commits establishing that the protocol, the locked study list and each addendum preceded the analyses they govern.
-
-| Commit | Time (UTC) | Event |
-|---|---|---|
-| 04a5079 | 2026-11-10 21:44 | Initialize research repository: vendored CC-BY datasets, journal-screen scripts, locked study-level test split |
-| d40eac3 | 2026-11-10 21:52 | Pre-register analysis protocol (before any model fitting); literature corpus and matrix |
-| 69ccfd1 | 2026-11-11 03:36 | All development experiments complete (E1-E8, E3b); all modelling decisions frozen BEFORE the single locked-test evaluation |
-| 639845a | 2026-11-11 03:37 | Locked test evaluated once (38 studies) |
-| d24f01c | 2026-11-13 11:58 | Pre-register Addendum A (v2): trend-transfer / offset-invariant learning experiment E12, before running it |
-| b54cfa1 | 2026-11-13 12:02 | E12 implementation: offset-invariant contrast models (A/W/PD), trend metrics, anchoring, contrast conformal; unit tests |
-| 2f4af56 | 2026-11-13 12:05 | Addendum A2 (quality targets) registered; loader extended; E13 model-free within-study trend analysis |
-| 71a1d8f | 2026-11-13 12:37 | E12 development results (T1-T3 not supported); register exploratory Addendum B (E14) before running |
-| 9668526 | 2026-11-13 12:39 | Register Addendum C (confirmatory locked-study tests for ranking and E12) before any locked evaluation of E12/E14; E14 locked mode |
-| 19982f0 | 2026-11-13 12:56 | v2 experiments complete: E12 dev/locked (yields 3 learners; HHV/C), E13, E14 dev + locked confirmation; v2 analysis and figure code |
-
-
-
 # S8. Additional figures and cost
 
 
-![**Fig. S1.** Robustness of the STRATA base learner (base + P features). Top: RMSE (mean ± SD over outer folds) with Gaussian noise added to continuous test features or with fewer training studies. Bottom: study-weighted coverage of RC and SC 90% intervals.](/home/user/rp_c_12/figures/fig07_robustness.png){width=16cm}
+![**Fig. S4.** Development data. (a) Number of runs contributed per source study; (b) yield distributions; (c) publication years of all 188 source studies (dashed line: temporal split).](/home/user/rp_c_12/figures/fig02_dataset.png){width=16cm}
 
 
 
-![**Fig. S2.** Accuracy for unseen studies versus single-thread fit time on the development set (bio-oil, base features).](/home/user/rp_c_12/figures/fig08_efficiency.png){width=16cm}
+![**Fig. S5.** *k*-shot adaptation to a new study with random support sets (development studies with ≥ 11 runs, base + P features, 20 random support sets per study and *k*). Top: median per-study RMSE of the remaining runs; bottom: width of the re-calibrated 90% interval.](/home/user/rp_c_12/figures/fig06_kshot.png){width=16cm}
 
 
 
-![**Fig. S3.** Mean out-of-study residual by extraction solvent named in the source study (groups with ≥ 3 studies; base features, seed-averaged outer-fold predictions).](/home/user/rp_c_12/figures/fig09_error_by_solvent.png){width=16cm}
+![**Fig. S6.** Robustness of the STRATA base learner (base + P features). Top: RMSE (mean ± SD over outer folds) with Gaussian noise added to continuous test features or with fewer training studies. Bottom: study-weighted coverage of RC and SC 90% intervals.](/home/user/rp_c_12/figures/fig07_robustness.png){width=16cm}
 
 
 
-![**Fig. S4.** Observed versus predicted yields for the STRATA base learner under random-row CV and study-grouped CV (seed 11).](/home/user/rp_c_12/figures/fig10_parity.png){width=16cm}
+![**Fig. S7.** Accuracy for unseen studies versus single-thread fit time on the development set (bio-oil, base features).](/home/user/rp_c_12/figures/fig08_efficiency.png){width=16cm}
 
 
 
-**Table S17.** Computational cost (bio-oil, development set, single thread). Peak RSS increase is measured relative to the process peak after data loading.
+![**Fig. S8.** Mean out-of-study residual by extraction solvent named in the source study (groups with ≥ 3 studies; base features, seed-averaged outer-fold predictions).](/home/user/rp_c_12/figures/fig09_error_by_solvent.png){width=16cm}
+
+
+
+![**Fig. S9.** Observed versus predicted yields for the STRATA base learner under random-row CV and study-grouped CV (seed 11).](/home/user/rp_c_12/figures/fig10_parity.png){width=16cm}
+
+
+
+**Table S20.** Computational cost (bio-oil, development set, single thread). Peak RSS increase is measured relative to the process peak after data loading.
 
 | Learner | Fit time (s) | Predict (ms / 1000 rows) | Peak RSS increase (MB) | Serialized size (MB) |
 |---|---|---|---|---|
@@ -645,8 +741,344 @@ Protocol addenda were committed to version control before the corresponding anal
 
 
 
-# S9. Reproducibility
+# S9. Additional deployment results (Addendum D)
 
-`python run_all.py --mode full` regenerates every result file, table and figure; `python manuscript/src/build_manuscript.py` regenerates this document and the manuscript from those files. Environment details (library versions, CPU) are written to `results/experiment_logs/environment.json` at run time.
+
+**Table S21.** Retrospective simulated deployment in screening-design order, long format with median per-study MAE (otherwise as in the main deployment table).
+
+| Setting | Target | Local runs k | Strategy | Studies | Median RMSE (wt%) | Median MAE (wt%) | Coverage of 90% PI | PI width (wt%) |
+|---|---|---|---|---|---|---|---|---|
+| Development (unseen studies) | Bio-oil yield | 0 | A · literature only | 80 | 12.39 | 10.15 | 0.94 | 60.9 |
+| Development (unseen studies) | Bio-oil yield | 1 | A · literature only | 80 | 12.39 | 10.15 | 0.94 | 60.9 |
+| Development (unseen studies) | Bio-oil yield | 1 | B · STRATA (literature + local runs) | 80 | 8.84 | 7.64 | 0.94 | 49.24 |
+| Development (unseen studies) | Bio-oil yield | 1 | C · local runs only | 80 | 10.44 | 8.46 | 0.93 | 61.92 |
+| Development (unseen studies) | Bio-oil yield | 3 | A · literature only | 80 | 12.39 | 10.15 | 0.94 | 60.9 |
+| Development (unseen studies) | Bio-oil yield | 3 | B · STRATA (literature + local runs) | 80 | 8.77 | 6.87 | 0.94 | 44.3 |
+| Development (unseen studies) | Bio-oil yield | 3 | C · local runs only | 80 | 9.91 | 8.41 | 0.92 | 49.51 |
+| Development (unseen studies) | Bio-oil yield | 5 | A · literature only | 80 | 12.39 | 10.15 | 0.94 | 60.9 |
+| Development (unseen studies) | Bio-oil yield | 5 | B · STRATA (literature + local runs) | 80 | 8.41 | 6.43 | 0.92 | 42.02 |
+| Development (unseen studies) | Bio-oil yield | 5 | C · local runs only | 80 | 9.5 | 7.99 | 0.92 | 46.57 |
+| Development (unseen studies) | Solid yield | 0 | A · literature only | 72 | 9.38 | 8.6 | 0.89 | 45.61 |
+| Development (unseen studies) | Solid yield | 1 | A · literature only | 72 | 9.38 | 8.6 | 0.89 | 45.61 |
+| Development (unseen studies) | Solid yield | 1 | B · STRATA (literature + local runs) | 72 | 8.8 | 7.05 | 0.9 | 39.54 |
+| Development (unseen studies) | Solid yield | 1 | C · local runs only | 72 | 11.2 | 8.76 | 0.9 | 55.76 |
+| Development (unseen studies) | Solid yield | 3 | A · literature only | 72 | 9.38 | 8.6 | 0.89 | 45.61 |
+| Development (unseen studies) | Solid yield | 3 | B · STRATA (literature + local runs) | 72 | 7.76 | 6.37 | 0.89 | 38.19 |
+| Development (unseen studies) | Solid yield | 3 | C · local runs only | 72 | 10.46 | 9.18 | 0.89 | 48.96 |
+| Development (unseen studies) | Solid yield | 5 | A · literature only | 72 | 9.38 | 8.6 | 0.89 | 45.61 |
+| Development (unseen studies) | Solid yield | 5 | B · STRATA (literature + local runs) | 72 | 7.71 | 6.33 | 0.89 | 34.02 |
+| Development (unseen studies) | Solid yield | 5 | C · local runs only | 72 | 9.99 | 8.51 | 0.88 | 42.83 |
+| Locked studies | Bio-oil yield | 0 | A · literature only | 19 | 10.3 | 8.02 | 0.9 | 58.02 |
+| Locked studies | Bio-oil yield | 1 | A · literature only | 19 | 10.3 | 8.02 | 0.9 | 58.02 |
+| Locked studies | Bio-oil yield | 1 | B · STRATA (literature + local runs) | 19 | 8.15 | 6.74 | 0.97 | 48.75 |
+| Locked studies | Bio-oil yield | 1 | C · local runs only | 19 | 6.43 | 5.15 | 1.0 | 62.28 |
+| Locked studies | Bio-oil yield | 3 | A · literature only | 19 | 10.3 | 8.02 | 0.9 | 58.02 |
+| Locked studies | Bio-oil yield | 3 | B · STRATA (literature + local runs) | 19 | 7.96 | 6.72 | 0.92 | 43.49 |
+| Locked studies | Bio-oil yield | 3 | C · local runs only | 19 | 5.97 | 4.68 | 1.0 | 48.87 |
+| Locked studies | Bio-oil yield | 5 | A · literature only | 19 | 10.3 | 8.02 | 0.9 | 58.02 |
+| Locked studies | Bio-oil yield | 5 | B · STRATA (literature + local runs) | 19 | 7.34 | 6.22 | 0.94 | 41.09 |
+| Locked studies | Bio-oil yield | 5 | C · local runs only | 19 | 6.35 | 4.8 | 0.99 | 45.88 |
+| Locked studies | Solid yield | 0 | A · literature only | 18 | 13.44 | 11.96 | 0.85 | 45.2 |
+| Locked studies | Solid yield | 1 | A · literature only | 18 | 13.44 | 11.96 | 0.85 | 45.2 |
+| Locked studies | Solid yield | 1 | B · STRATA (literature + local runs) | 18 | 7.66 | 6.84 | 0.8 | 37.43 |
+| Locked studies | Solid yield | 1 | C · local runs only | 18 | 9.85 | 8.24 | 0.9 | 55.4 |
+| Locked studies | Solid yield | 3 | A · literature only | 18 | 13.44 | 11.96 | 0.85 | 45.2 |
+| Locked studies | Solid yield | 3 | B · STRATA (literature + local runs) | 18 | 7.08 | 6.1 | 0.84 | 38.64 |
+| Locked studies | Solid yield | 3 | C · local runs only | 18 | 8.49 | 7.04 | 0.89 | 49.36 |
+| Locked studies | Solid yield | 5 | A · literature only | 18 | 13.44 | 11.96 | 0.85 | 45.2 |
+| Locked studies | Solid yield | 5 | B · STRATA (literature + local runs) | 18 | 6.94 | 6.31 | 0.86 | 34.24 |
+| Locked studies | Solid yield | 5 | C · local runs only | 18 | 8.08 | 6.96 | 0.9 | 42.84 |
+| External 4TU (independent) | Solid yield | 0 | A · literature only | 14 | 11.58 | 10.1 | 0.96 | 45.13 |
+| External 4TU (independent) | Solid yield | 1 | A · literature only | 14 | 11.58 | 10.1 | 0.96 | 45.13 |
+| External 4TU (independent) | Solid yield | 1 | B · STRATA (literature + local runs) | 14 | 9.44 | 7.94 | 0.95 | 37.42 |
+| External 4TU (independent) | Solid yield | 1 | C · local runs only | 14 | 8.68 | 7.3 | 0.97 | 55.4 |
+| External 4TU (independent) | Solid yield | 3 | A · literature only | 14 | 11.58 | 10.1 | 0.96 | 45.13 |
+| External 4TU (independent) | Solid yield | 3 | B · STRATA (literature + local runs) | 14 | 6.26 | 5.4 | 0.94 | 36.47 |
+| External 4TU (independent) | Solid yield | 3 | C · local runs only | 14 | 7.98 | 6.88 | 0.94 | 49.36 |
+| External 4TU (independent) | Solid yield | 5 | A · literature only | 14 | 11.58 | 10.1 | 0.96 | 45.13 |
+| External 4TU (independent) | Solid yield | 5 | B · STRATA (literature + local runs) | 14 | 6.3 | 4.66 | 0.92 | 33.16 |
+| External 4TU (independent) | Solid yield | 5 | C · local runs only | 14 | 7.86 | 6.34 | 0.93 | 42.84 |
+
+
+
+
+**Table S22.** Retrospective simulated deployment in the reported run order and in 20 random run orders (otherwise as in the main deployment table).
+
+| target | order | k | strategy | median_rmse | median_mae | coverage | width | n_studies | setting |
+|---|---|---|---|---|---|---|---|---|---|
+| Bio-oil yield | random | 0 | A | 12.31 | 10.15 | 0.93 | 59.8 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 0 | B | 12.31 | 10.15 | 0.93 | 59.8 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 1 | A | 12.31 | 10.15 | 0.93 | 59.8 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 1 | B | 9.63 | 8.08 | 0.92 | 44.09 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 1 | C | 10.57 | 8.71 | 0.9 | 49.91 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 2 | A | 12.31 | 10.15 | 0.93 | 59.8 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 2 | B | 8.68 | 7.19 | 0.92 | 40.02 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 2 | C | 9.34 | 7.53 | 0.9 | 42.59 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 3 | A | 12.31 | 10.15 | 0.93 | 59.8 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 3 | B | 8.4 | 6.89 | 0.92 | 38.3 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 3 | C | 8.84 | 7.36 | 0.9 | 39.95 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 5 | A | 12.31 | 10.15 | 0.93 | 59.8 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 5 | B | 8.07 | 6.5 | 0.92 | 36.68 | 80 | Development (unseen studies) |
+| Bio-oil yield | random | 5 | C | 8.63 | 7.23 | 0.9 | 38.1 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 0 | A | 12.02 | 10.21 | 0.93 | 59.02 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 0 | B | 12.02 | 10.21 | 0.93 | 59.02 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 1 | A | 12.02 | 10.21 | 0.93 | 59.02 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 1 | B | 9.48 | 7.73 | 0.93 | 47.05 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 1 | C | 11.84 | 10.18 | 0.91 | 51.02 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 2 | A | 12.02 | 10.21 | 0.93 | 59.02 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 2 | B | 8.98 | 7.28 | 0.92 | 44.7 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 2 | C | 11.4 | 9.68 | 0.91 | 50.34 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 3 | A | 12.02 | 10.21 | 0.93 | 59.02 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 3 | B | 9.21 | 7.7 | 0.92 | 44.54 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 3 | C | 10.99 | 9.51 | 0.9 | 49.64 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 5 | A | 12.02 | 10.21 | 0.93 | 59.02 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 5 | B | 8.29 | 6.83 | 0.92 | 40.78 | 80 | Development (unseen studies) |
+| Bio-oil yield | reported order | 5 | C | 10.27 | 8.69 | 0.9 | 44.55 | 80 | Development (unseen studies) |
+| Solid yield | random | 0 | A | 10.94 | 8.85 | 0.91 | 48.07 | 72 | Development (unseen studies) |
+| Solid yield | random | 0 | B | 10.94 | 8.85 | 0.91 | 48.07 | 72 | Development (unseen studies) |
+| Solid yield | random | 1 | A | 10.94 | 8.85 | 0.91 | 48.07 | 72 | Development (unseen studies) |
+| Solid yield | random | 1 | B | 8.93 | 7.32 | 0.9 | 38.79 | 72 | Development (unseen studies) |
+| Solid yield | random | 1 | C | 12.02 | 9.84 | 0.89 | 52.46 | 72 | Development (unseen studies) |
+| Solid yield | random | 2 | A | 10.94 | 8.85 | 0.91 | 48.07 | 72 | Development (unseen studies) |
+| Solid yield | random | 2 | B | 8.18 | 6.63 | 0.9 | 35.81 | 72 | Development (unseen studies) |
+| Solid yield | random | 2 | C | 10.54 | 8.46 | 0.89 | 45.02 | 72 | Development (unseen studies) |
+| Solid yield | random | 3 | A | 10.94 | 8.85 | 0.91 | 48.07 | 72 | Development (unseen studies) |
+| Solid yield | random | 3 | B | 8.08 | 6.43 | 0.9 | 34.35 | 72 | Development (unseen studies) |
+| Solid yield | random | 3 | C | 10.21 | 7.95 | 0.89 | 42.18 | 72 | Development (unseen studies) |
+| Solid yield | random | 5 | A | 10.94 | 8.85 | 0.91 | 48.07 | 72 | Development (unseen studies) |
+| Solid yield | random | 5 | B | 7.53 | 6.14 | 0.89 | 33.18 | 72 | Development (unseen studies) |
+| Solid yield | random | 5 | C | 9.49 | 7.42 | 0.89 | 39.55 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 0 | A | 10.98 | 8.89 | 0.89 | 46.54 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 0 | B | 10.98 | 8.89 | 0.89 | 46.54 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 1 | A | 10.98 | 8.89 | 0.89 | 46.54 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 1 | B | 10.06 | 8.76 | 0.89 | 40.81 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 1 | C | 16.4 | 14.49 | 0.89 | 71.4 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 2 | A | 10.98 | 8.89 | 0.89 | 46.54 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 2 | B | 9.29 | 8.12 | 0.9 | 41.57 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 2 | C | 15.0 | 13.32 | 0.89 | 64.64 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 3 | A | 10.98 | 8.89 | 0.89 | 46.54 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 3 | B | 9.17 | 7.92 | 0.89 | 40.89 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 3 | C | 14.53 | 12.22 | 0.89 | 61.23 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 5 | A | 10.98 | 8.89 | 0.89 | 46.54 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 5 | B | 8.45 | 7.54 | 0.88 | 39.06 | 72 | Development (unseen studies) |
+| Solid yield | reported order | 5 | C | 11.07 | 9.61 | 0.87 | 55.08 | 72 | Development (unseen studies) |
+| Bio-oil yield | random | 0 | A | 10.83 | 9.12 | 0.88 | 58.34 | 19 | Locked studies |
+| Bio-oil yield | random | 0 | B | 10.83 | 9.12 | 0.88 | 58.34 | 19 | Locked studies |
+| Bio-oil yield | random | 1 | A | 10.83 | 9.12 | 0.88 | 58.34 | 19 | Locked studies |
+| Bio-oil yield | random | 1 | B | 9.07 | 7.6 | 0.91 | 41.48 | 19 | Locked studies |
+| Bio-oil yield | random | 1 | C | 8.94 | 7.38 | 0.97 | 49.61 | 19 | Locked studies |
+| Bio-oil yield | random | 2 | A | 10.83 | 9.12 | 0.88 | 58.34 | 19 | Locked studies |
+| Bio-oil yield | random | 2 | B | 8.53 | 7.1 | 0.93 | 38.1 | 19 | Locked studies |
+| Bio-oil yield | random | 2 | C | 7.39 | 6.15 | 0.97 | 43.0 | 19 | Locked studies |
+| Bio-oil yield | random | 3 | A | 10.83 | 9.12 | 0.88 | 58.34 | 19 | Locked studies |
+| Bio-oil yield | random | 3 | B | 7.76 | 6.58 | 0.93 | 36.74 | 19 | Locked studies |
+| Bio-oil yield | random | 3 | C | 7.16 | 5.96 | 0.98 | 40.43 | 19 | Locked studies |
+| Bio-oil yield | random | 5 | A | 10.83 | 9.12 | 0.88 | 58.34 | 19 | Locked studies |
+| Bio-oil yield | random | 5 | B | 7.61 | 6.25 | 0.94 | 35.37 | 19 | Locked studies |
+| Bio-oil yield | random | 5 | C | 6.84 | 5.51 | 0.97 | 38.2 | 19 | Locked studies |
+| Bio-oil yield | reported order | 0 | A | 10.3 | 8.44 | 0.91 | 58.02 | 19 | Locked studies |
+| Bio-oil yield | reported order | 0 | B | 10.3 | 8.44 | 0.91 | 58.02 | 19 | Locked studies |
+| Bio-oil yield | reported order | 1 | A | 10.3 | 8.44 | 0.91 | 58.02 | 19 | Locked studies |
+| Bio-oil yield | reported order | 1 | B | 11.21 | 10.06 | 0.89 | 45.62 | 19 | Locked studies |
+| Bio-oil yield | reported order | 1 | C | 10.78 | 9.22 | 0.94 | 51.0 | 19 | Locked studies |
+| Bio-oil yield | reported order | 2 | A | 10.3 | 8.44 | 0.91 | 58.02 | 19 | Locked studies |
+| Bio-oil yield | reported order | 2 | B | 10.09 | 7.8 | 0.88 | 42.32 | 19 | Locked studies |
+| Bio-oil yield | reported order | 2 | C | 11.05 | 8.78 | 0.94 | 50.61 | 19 | Locked studies |
+| Bio-oil yield | reported order | 3 | A | 10.3 | 8.44 | 0.91 | 58.02 | 19 | Locked studies |
+| Bio-oil yield | reported order | 3 | B | 10.08 | 7.82 | 0.94 | 42.79 | 19 | Locked studies |
+| Bio-oil yield | reported order | 3 | C | 9.63 | 8.39 | 0.99 | 49.33 | 19 | Locked studies |
+| Bio-oil yield | reported order | 5 | A | 10.3 | 8.44 | 0.91 | 58.02 | 19 | Locked studies |
+| Bio-oil yield | reported order | 5 | B | 10.33 | 8.83 | 0.91 | 40.0 | 19 | Locked studies |
+| Bio-oil yield | reported order | 5 | C | 8.75 | 7.57 | 0.98 | 44.36 | 19 | Locked studies |
+| Solid yield | random | 0 | A | 14.03 | 12.68 | 0.85 | 47.52 | 18 | Locked studies |
+| Solid yield | random | 0 | B | 14.03 | 12.68 | 0.85 | 47.52 | 18 | Locked studies |
+| Solid yield | random | 1 | A | 14.03 | 12.68 | 0.85 | 47.52 | 18 | Locked studies |
+| Solid yield | random | 1 | B | 8.76 | 8.16 | 0.87 | 38.38 | 18 | Locked studies |
+| Solid yield | random | 1 | C | 9.68 | 7.7 | 0.9 | 52.6 | 18 | Locked studies |
+| Solid yield | random | 2 | A | 14.03 | 12.68 | 0.85 | 47.52 | 18 | Locked studies |
+| Solid yield | random | 2 | B | 7.28 | 6.18 | 0.88 | 35.68 | 18 | Locked studies |
+| Solid yield | random | 2 | C | 8.61 | 6.58 | 0.9 | 44.95 | 18 | Locked studies |
+| Solid yield | random | 3 | A | 14.03 | 12.68 | 0.85 | 47.52 | 18 | Locked studies |
+| Solid yield | random | 3 | B | 7.16 | 5.83 | 0.89 | 34.25 | 18 | Locked studies |
+| Solid yield | random | 3 | C | 8.08 | 6.39 | 0.91 | 41.66 | 18 | Locked studies |
+| Solid yield | random | 5 | A | 14.03 | 12.68 | 0.85 | 47.52 | 18 | Locked studies |
+| Solid yield | random | 5 | B | 7.0 | 5.68 | 0.89 | 32.86 | 18 | Locked studies |
+| Solid yield | random | 5 | C | 7.66 | 6.08 | 0.91 | 39.23 | 18 | Locked studies |
+| Solid yield | reported order | 0 | A | 14.97 | 13.34 | 0.85 | 46.0 | 18 | Locked studies |
+| Solid yield | reported order | 0 | B | 14.97 | 13.34 | 0.85 | 46.0 | 18 | Locked studies |
+| Solid yield | reported order | 1 | A | 14.97 | 13.34 | 0.85 | 46.0 | 18 | Locked studies |
+| Solid yield | reported order | 1 | B | 8.72 | 7.83 | 0.84 | 39.43 | 18 | Locked studies |
+| Solid yield | reported order | 1 | C | 11.32 | 9.79 | 0.88 | 70.94 | 18 | Locked studies |
+| Solid yield | reported order | 2 | A | 14.97 | 13.34 | 0.85 | 46.0 | 18 | Locked studies |
+| Solid yield | reported order | 2 | B | 7.96 | 7.24 | 0.87 | 41.7 | 18 | Locked studies |
+| Solid yield | reported order | 2 | C | 10.97 | 9.75 | 0.92 | 64.6 | 18 | Locked studies |
+| Solid yield | reported order | 3 | A | 14.97 | 13.34 | 0.85 | 46.0 | 18 | Locked studies |
+| Solid yield | reported order | 3 | B | 7.66 | 7.03 | 0.88 | 39.39 | 18 | Locked studies |
+| Solid yield | reported order | 3 | C | 11.5 | 9.44 | 0.92 | 61.2 | 18 | Locked studies |
+| Solid yield | reported order | 5 | A | 14.97 | 13.34 | 0.85 | 46.0 | 18 | Locked studies |
+| Solid yield | reported order | 5 | B | 6.98 | 6.13 | 0.91 | 40.82 | 18 | Locked studies |
+| Solid yield | reported order | 5 | C | 9.14 | 7.99 | 0.93 | 55.2 | 18 | Locked studies |
+| Solid yield | random | 0 | A | 12.46 | 10.62 | 0.96 | 48.58 | 14 | External 4TU (independent) |
+| Solid yield | random | 0 | B | 12.46 | 10.62 | 0.96 | 48.58 | 14 | External 4TU (independent) |
+| Solid yield | random | 1 | A | 12.46 | 10.62 | 0.96 | 48.58 | 14 | External 4TU (independent) |
+| Solid yield | random | 1 | B | 9.06 | 7.98 | 0.95 | 39.17 | 14 | External 4TU (independent) |
+| Solid yield | random | 1 | C | 11.78 | 10.02 | 0.92 | 52.6 | 14 | External 4TU (independent) |
+| Solid yield | random | 2 | A | 12.46 | 10.62 | 0.96 | 48.58 | 14 | External 4TU (independent) |
+| Solid yield | random | 2 | B | 7.97 | 7.0 | 0.94 | 35.88 | 14 | External 4TU (independent) |
+| Solid yield | random | 2 | C | 10.65 | 9.03 | 0.91 | 44.95 | 14 | External 4TU (independent) |
+| Solid yield | random | 3 | A | 12.46 | 10.62 | 0.96 | 48.58 | 14 | External 4TU (independent) |
+| Solid yield | random | 3 | B | 6.91 | 6.18 | 0.94 | 34.8 | 14 | External 4TU (independent) |
+| Solid yield | random | 3 | C | 9.74 | 8.21 | 0.9 | 41.66 | 14 | External 4TU (independent) |
+| Solid yield | random | 5 | A | 12.46 | 10.62 | 0.96 | 48.58 | 14 | External 4TU (independent) |
+| Solid yield | random | 5 | B | 5.79 | 4.79 | 0.94 | 33.12 | 14 | External 4TU (independent) |
+| Solid yield | random | 5 | C | 8.88 | 7.54 | 0.9 | 39.23 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 0 | A | 10.27 | 9.19 | 0.97 | 45.24 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 0 | B | 10.27 | 9.19 | 0.97 | 45.24 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 1 | A | 10.27 | 9.19 | 0.97 | 45.24 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 1 | B | 8.68 | 7.26 | 0.87 | 37.54 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 1 | C | 13.19 | 12.11 | 0.82 | 70.94 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 2 | A | 10.27 | 9.19 | 0.97 | 45.24 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 2 | B | 7.08 | 6.45 | 0.89 | 39.88 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 2 | C | 14.29 | 13.33 | 0.85 | 64.6 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 3 | A | 10.27 | 9.19 | 0.97 | 45.24 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 3 | B | 7.2 | 6.25 | 0.95 | 41.38 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 3 | C | 12.97 | 11.94 | 0.88 | 61.2 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 5 | A | 10.27 | 9.19 | 0.97 | 45.24 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 5 | B | 5.6 | 4.34 | 0.96 | 39.77 | 14 | External 4TU (independent) |
+| Solid yield | reported order | 5 | C | 10.9 | 9.71 | 0.94 | 55.2 | 14 | External 4TU (independent) |
+
+
+
+
+**Table S23.** Paired comparisons of per-study RMSE (Wilcoxon signed-rank, two-sided; Holm correction within each setting × target × run order). Negative median differences favour B (STRATA).
+
+| setting | target | order | k | comparison | n | p | median_diff | ci_low | ci_high | rank_biserial | p_holm |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Development (unseen studies) | Bio-oil yield | screening design | 1 | B_vs_A | 80 | 0.0 | -1.7537 | -2.7973 | -0.5346 | -0.5407 | 0.0001 |
+| Development (unseen studies) | Bio-oil yield | screening design | 1 | B_vs_C | 80 | 0.0037 | -1.1983 | -2.0097 | -0.5559 | -0.3741 | 0.011 |
+| Development (unseen studies) | Bio-oil yield | screening design | 2 | B_vs_A | 80 | 0.0 | -1.2347 | -3.099 | -0.6298 | -0.5907 | 0.0 |
+| Development (unseen studies) | Bio-oil yield | screening design | 2 | B_vs_C | 80 | 0.0024 | -1.1204 | -1.9668 | -0.0271 | -0.3914 | 0.0094 |
+| Development (unseen studies) | Bio-oil yield | screening design | 3 | B_vs_A | 80 | 0.0 | -2.2296 | -3.474 | -1.0023 | -0.6895 | 0.0 |
+| Development (unseen studies) | Bio-oil yield | screening design | 3 | B_vs_C | 80 | 0.0163 | -0.7459 | -1.5018 | 0.3199 | -0.3093 | 0.0325 |
+| Development (unseen studies) | Bio-oil yield | screening design | 5 | B_vs_A | 80 | 0.0 | -2.4939 | -4.1855 | -1.2134 | -0.721 | 0.0 |
+| Development (unseen studies) | Bio-oil yield | screening design | 5 | B_vs_C | 80 | 0.0178 | -0.4903 | -1.1358 | 0.2276 | -0.3049 | 0.0325 |
+| Development (unseen studies) | Bio-oil yield | random | 1 | B_vs_A | 80 | 0.0 | -1.4737 | -2.345 | -0.4793 | -0.6167 | 0.0 |
+| Development (unseen studies) | Bio-oil yield | random | 1 | B_vs_C | 80 | 0.0019 | -1.6687 | -2.4004 | -0.8429 | -0.3994 | 0.0077 |
+| Development (unseen studies) | Bio-oil yield | random | 2 | B_vs_A | 80 | 0.0 | -2.077 | -3.0585 | -1.0268 | -0.7599 | 0.0 |
+| Development (unseen studies) | Bio-oil yield | random | 2 | B_vs_C | 80 | 0.0144 | -0.6288 | -1.3816 | -0.15 | -0.3148 | 0.0433 |
+| Development (unseen studies) | Bio-oil yield | random | 3 | B_vs_A | 80 | 0.0 | -2.3005 | -3.3358 | -1.237 | -0.8136 | 0.0 |
+| Development (unseen studies) | Bio-oil yield | random | 3 | B_vs_C | 80 | 0.0328 | -0.3625 | -1.0622 | -0.016 | -0.2747 | 0.0656 |
+| Development (unseen studies) | Bio-oil yield | random | 5 | B_vs_A | 80 | 0.0 | -2.6855 | -3.7481 | -1.328 | -0.887 | 0.0 |
+| Development (unseen studies) | Bio-oil yield | random | 5 | B_vs_C | 80 | 0.042 | -0.3643 | -1.0833 | 0.0878 | -0.2617 | 0.0656 |
+| Development (unseen studies) | Bio-oil yield | reported order | 1 | B_vs_A | 80 | 0.0007 | -0.8877 | -2.441 | -0.3686 | -0.4358 | 0.0014 |
+| Development (unseen studies) | Bio-oil yield | reported order | 1 | B_vs_C | 80 | 0.0004 | -1.8851 | -2.9702 | -0.7041 | -0.4525 | 0.0013 |
+| Development (unseen studies) | Bio-oil yield | reported order | 2 | B_vs_A | 80 | 0.0 | -1.2632 | -3.1476 | -0.5414 | -0.5667 | 0.0001 |
+| Development (unseen studies) | Bio-oil yield | reported order | 2 | B_vs_C | 80 | 0.0001 | -1.3868 | -2.3921 | -0.5498 | -0.5086 | 0.0004 |
+| Development (unseen studies) | Bio-oil yield | reported order | 3 | B_vs_A | 80 | 0.0 | -1.7816 | -3.1425 | -0.6105 | -0.5531 | 0.0001 |
+| Development (unseen studies) | Bio-oil yield | reported order | 3 | B_vs_C | 80 | 0.0002 | -0.7402 | -1.5425 | -0.5262 | -0.4728 | 0.001 |
+| Development (unseen studies) | Bio-oil yield | reported order | 5 | B_vs_A | 80 | 0.0 | -1.6848 | -3.4663 | -0.5333 | -0.6062 | 0.0 |
+| Development (unseen studies) | Bio-oil yield | reported order | 5 | B_vs_C | 80 | 0.0132 | -0.4775 | -1.6951 | 0.2051 | -0.3191 | 0.0132 |
+| Development (unseen studies) | Solid yield | screening design | 1 | B_vs_A | 72 | 0.0018 | -0.7931 | -1.8498 | -0.0692 | -0.4224 | 0.0018 |
+| Development (unseen studies) | Solid yield | screening design | 1 | B_vs_C | 72 | 0.0 | -2.4791 | -4.027 | -1.3612 | -0.6263 | 0.0 |
+| Development (unseen studies) | Solid yield | screening design | 2 | B_vs_A | 72 | 0.0008 | -0.9305 | -2.0498 | -0.2 | -0.4559 | 0.0016 |
+| Development (unseen studies) | Solid yield | screening design | 2 | B_vs_C | 72 | 0.0 | -4.4331 | -6.0009 | -2.8436 | -0.691 | 0.0 |
+| Development (unseen studies) | Solid yield | screening design | 3 | B_vs_A | 72 | 0.0 | -1.1155 | -2.2542 | -0.4118 | -0.5548 | 0.0001 |
+| Development (unseen studies) | Solid yield | screening design | 3 | B_vs_C | 72 | 0.0 | -2.2904 | -3.5826 | -1.3049 | -0.586 | 0.0001 |
+| Development (unseen studies) | Solid yield | screening design | 5 | B_vs_A | 72 | 0.0 | -1.1111 | -2.4022 | -0.3086 | -0.5807 | 0.0001 |
+| Development (unseen studies) | Solid yield | screening design | 5 | B_vs_C | 72 | 0.0 | -1.5768 | -2.7437 | -1.0505 | -0.5594 | 0.0001 |
+| Development (unseen studies) | Solid yield | random | 1 | B_vs_A | 72 | 0.0005 | -0.6454 | -1.3289 | 0.0667 | -0.4718 | 0.0005 |
+| Development (unseen studies) | Solid yield | random | 1 | B_vs_C | 72 | 0.0 | -3.4982 | -4.4601 | -1.9805 | -0.6674 | 0.0 |
+| Development (unseen studies) | Solid yield | random | 2 | B_vs_A | 72 | 0.0 | -1.0589 | -2.0119 | -0.2671 | -0.6035 | 0.0 |
+| Development (unseen studies) | Solid yield | random | 2 | B_vs_C | 72 | 0.0 | -2.1596 | -3.4745 | -1.273 | -0.6043 | 0.0 |
+| Development (unseen studies) | Solid yield | random | 3 | B_vs_A | 72 | 0.0 | -1.1953 | -2.2789 | -0.3875 | -0.6644 | 0.0 |
+| Development (unseen studies) | Solid yield | random | 3 | B_vs_C | 72 | 0.0 | -1.8475 | -2.8898 | -1.0671 | -0.5936 | 0.0 |
+| Development (unseen studies) | Solid yield | random | 5 | B_vs_A | 72 | 0.0 | -1.4042 | -2.4733 | -0.4773 | -0.7344 | 0.0 |
+| Development (unseen studies) | Solid yield | random | 5 | B_vs_C | 72 | 0.0 | -1.6904 | -2.6584 | -0.8001 | -0.5921 | 0.0 |
+| Development (unseen studies) | Solid yield | reported order | 1 | B_vs_A | 72 | 0.0184 | -0.5926 | -1.2449 | 0.0266 | -0.3196 | 0.0553 |
+| Development (unseen studies) | Solid yield | reported order | 1 | B_vs_C | 72 | 0.0 | -5.9579 | -10.7026 | -3.4262 | -0.7184 | 0.0 |
+| Development (unseen studies) | Solid yield | reported order | 2 | B_vs_A | 72 | 0.0368 | -0.5227 | -1.1874 | -0.0464 | -0.2831 | 0.0717 |
+| Development (unseen studies) | Solid yield | reported order | 2 | B_vs_C | 72 | 0.0 | -5.7945 | -8.6135 | -3.2974 | -0.7511 | 0.0 |
+| Development (unseen studies) | Solid yield | reported order | 3 | B_vs_A | 72 | 0.0133 | -0.5928 | -1.285 | -0.0784 | -0.3356 | 0.0533 |
+| Development (unseen studies) | Solid yield | reported order | 3 | B_vs_C | 72 | 0.0 | -5.6958 | -6.9833 | -3.0411 | -0.71 | 0.0 |
+| Development (unseen studies) | Solid yield | reported order | 5 | B_vs_A | 72 | 0.0358 | -0.5335 | -1.4133 | 0.2545 | -0.2846 | 0.0717 |
+| Development (unseen studies) | Solid yield | reported order | 5 | B_vs_C | 72 | 0.0 | -3.861 | -4.8125 | -2.8741 | -0.6104 | 0.0 |
+| Locked studies | Bio-oil yield | screening design | 1 | B_vs_A | 19 | 0.023 | -1.453 | -9.6862 | 0.3541 | -0.5895 | 0.1225 |
+| Locked studies | Bio-oil yield | screening design | 1 | B_vs_C | 19 | 0.0204 | 1.3765 | 0.6951 | 2.9864 | 0.6 | 0.1225 |
+| Locked studies | Bio-oil yield | screening design | 2 | B_vs_A | 19 | 0.2253 | -0.5157 | -9.8405 | 1.0498 | -0.3263 | 0.2253 |
+| Locked studies | Bio-oil yield | screening design | 2 | B_vs_C | 19 | 0.0014 | 2.0474 | 0.7026 | 3.6133 | 0.7895 | 0.0099 |
+| Locked studies | Bio-oil yield | screening design | 3 | B_vs_A | 19 | 0.0663 | -0.7218 | -11.6598 | -0.0175 | -0.4842 | 0.1326 |
+| Locked studies | Bio-oil yield | screening design | 3 | B_vs_C | 19 | 0.0012 | 1.3522 | 0.3647 | 2.9325 | 0.8 | 0.0094 |
+| Locked studies | Bio-oil yield | screening design | 5 | B_vs_A | 19 | 0.0204 | -2.8788 | -11.5308 | -0.4145 | -0.6 | 0.1225 |
+| Locked studies | Bio-oil yield | screening design | 5 | B_vs_C | 19 | 0.0401 | 1.205 | -0.1727 | 1.6249 | 0.5368 | 0.1225 |
+| Locked studies | Bio-oil yield | random | 1 | B_vs_A | 19 | 0.0204 | -1.2253 | -8.9501 | 0.0516 | -0.6 | 0.0371 |
+| Locked studies | Bio-oil yield | random | 1 | B_vs_C | 19 | 0.0124 | 1.2297 | 0.0406 | 3.4174 | 0.6421 | 0.0371 |
+| Locked studies | Bio-oil yield | random | 2 | B_vs_A | 19 | 0.016 | -1.7421 | -9.9864 | 0.0425 | -0.6211 | 0.0371 |
+| Locked studies | Bio-oil yield | random | 2 | B_vs_C | 19 | 0.001 | 1.7794 | 0.3594 | 2.4118 | 0.8105 | 0.0058 |
+| Locked studies | Bio-oil yield | random | 3 | B_vs_A | 19 | 0.0014 | -1.8233 | -10.4929 | -0.2019 | -0.7895 | 0.0059 |
+| Locked studies | Bio-oil yield | random | 3 | B_vs_C | 19 | 0.0012 | 1.7095 | 0.7078 | 2.3705 | 0.8 | 0.0059 |
+| Locked studies | Bio-oil yield | random | 5 | B_vs_A | 19 | 0.0003 | -1.8585 | -10.2223 | -0.2432 | -0.8632 | 0.0027 |
+| Locked studies | Bio-oil yield | random | 5 | B_vs_C | 19 | 0.0008 | 1.6583 | 0.72 | 2.3728 | 0.8211 | 0.0055 |
+| Locked studies | Bio-oil yield | reported order | 1 | B_vs_A | 19 | 0.7381 | -0.2749 | -4.4124 | 2.1957 | -0.0947 | 1.0 |
+| Locked studies | Bio-oil yield | reported order | 1 | B_vs_C | 19 | 0.1232 | 0.8463 | -0.0833 | 2.6489 | 0.4105 | 0.7391 |
+| Locked studies | Bio-oil yield | reported order | 2 | B_vs_A | 19 | 0.6507 | -0.2139 | -5.6521 | 2.2831 | -0.1263 | 1.0 |
+| Locked studies | Bio-oil yield | reported order | 2 | B_vs_C | 19 | 0.1336 | 1.8555 | -1.1573 | 3.8671 | 0.4 | 0.7391 |
+| Locked studies | Bio-oil yield | reported order | 3 | B_vs_A | 19 | 0.418 | -0.1559 | -5.7468 | 1.274 | -0.2211 | 1.0 |
+| Locked studies | Bio-oil yield | reported order | 3 | B_vs_C | 19 | 0.0799 | 1.5181 | -0.7328 | 3.7338 | 0.4632 | 0.5591 |
+| Locked studies | Bio-oil yield | reported order | 5 | B_vs_A | 19 | 0.1956 | -1.3454 | -4.3909 | 0.6734 | -0.3474 | 0.7825 |
+| Locked studies | Bio-oil yield | reported order | 5 | B_vs_C | 19 | 0.0108 | 1.3841 | 0.272 | 3.1549 | 0.6526 | 0.0866 |
+| Locked studies | Solid yield | screening design | 1 | B_vs_A | 18 | 0.0077 | -3.7481 | -6.5514 | -1.2681 | -0.6959 | 0.0461 |
+| Locked studies | Solid yield | screening design | 1 | B_vs_C | 18 | 0.3927 | -2.2467 | -3.2046 | 2.4203 | -0.2398 | 1.0 |
+| Locked studies | Solid yield | screening design | 2 | B_vs_A | 18 | 0.0104 | -3.7798 | -7.9843 | -1.8638 | -0.6725 | 0.052 |
+| Locked studies | Solid yield | screening design | 2 | B_vs_C | 18 | 0.2645 | -1.084 | -2.8238 | 1.4844 | -0.3099 | 1.0 |
+| Locked studies | Solid yield | screening design | 3 | B_vs_A | 18 | 0.0019 | -3.752 | -8.9156 | -1.8115 | -0.7895 | 0.0135 |
+| Locked studies | Solid yield | screening design | 3 | B_vs_C | 18 | 0.2645 | -1.0555 | -3.7799 | 0.5884 | -0.3099 | 1.0 |
+| Locked studies | Solid yield | screening design | 5 | B_vs_A | 18 | 0.001 | -4.7536 | -11.1988 | -1.9408 | -0.8246 | 0.0084 |
+| Locked studies | Solid yield | screening design | 5 | B_vs_C | 18 | 0.4423 | -0.9177 | -2.4325 | 0.4376 | -0.2164 | 1.0 |
+| Locked studies | Solid yield | random | 1 | B_vs_A | 18 | 0.0004 | -2.9916 | -6.4203 | -1.7241 | -0.8713 | 0.0021 |
+| Locked studies | Solid yield | random | 1 | B_vs_C | 18 | 0.5226 | -0.6738 | -2.6428 | 2.3672 | -0.1813 | 0.6694 |
+| Locked studies | Solid yield | random | 2 | B_vs_A | 18 | 0.0003 | -3.8037 | -8.8725 | -1.8582 | -0.883 | 0.002 |
+| Locked studies | Solid yield | random | 2 | B_vs_C | 18 | 0.2837 | -1.0956 | -2.1766 | 0.9466 | -0.2982 | 0.6694 |
+| Locked studies | Solid yield | random | 3 | B_vs_A | 18 | 0.0002 | -4.1617 | -9.6501 | -2.2382 | -0.9064 | 0.0015 |
+| Locked studies | Solid yield | random | 3 | B_vs_C | 18 | 0.2121 | -1.2138 | -2.3993 | 0.4573 | -0.345 | 0.6694 |
+| Locked studies | Solid yield | random | 5 | B_vs_A | 18 | 0.0002 | -4.5257 | -10.5102 | -2.5421 | -0.9064 | 0.0015 |
+| Locked studies | Solid yield | random | 5 | B_vs_C | 18 | 0.1674 | -0.8927 | -2.3336 | 0.2437 | -0.3801 | 0.6694 |
+| Locked studies | Solid yield | reported order | 1 | B_vs_A | 18 | 0.0056 | -3.824 | -6.3238 | -0.9158 | -0.7193 | 0.028 |
+| Locked studies | Solid yield | reported order | 1 | B_vs_C | 18 | 0.3692 | -0.603 | -3.2847 | 1.209 | -0.2515 | 0.3692 |
+| Locked studies | Solid yield | reported order | 2 | B_vs_A | 18 | 0.0028 | -4.3943 | -8.5184 | -0.7254 | -0.7661 | 0.0197 |
+| Locked studies | Solid yield | reported order | 2 | B_vs_C | 18 | 0.0898 | -1.1476 | -4.6714 | 0.2293 | -0.462 | 0.2443 |
+| Locked studies | Solid yield | reported order | 3 | B_vs_A | 18 | 0.0028 | -4.1302 | -9.5881 | -0.6894 | -0.7661 | 0.0197 |
+| Locked studies | Solid yield | reported order | 3 | B_vs_C | 18 | 0.0304 | -1.852 | -4.3708 | 0.1141 | -0.5789 | 0.1215 |
+| Locked studies | Solid yield | reported order | 5 | B_vs_A | 18 | 0.0008 | -4.4194 | -10.2657 | -0.6968 | -0.8363 | 0.0067 |
+| Locked studies | Solid yield | reported order | 5 | B_vs_C | 18 | 0.0814 | -1.33 | -4.274 | 0.3964 | -0.4737 | 0.2443 |
+| External 4TU (independent) | Solid yield | screening design | 1 | B_vs_A | 14 | 0.0166 | -1.4207 | -6.2424 | 0.1284 | -0.7143 | 0.0996 |
+| External 4TU (independent) | Solid yield | screening design | 1 | B_vs_C | 14 | 0.1937 | -1.691 | -4.6713 | 1.865 | -0.4095 | 0.2378 |
+| External 4TU (independent) | Solid yield | screening design | 2 | B_vs_A | 14 | 0.1189 | -1.2038 | -7.0176 | 0.4719 | -0.4857 | 0.2378 |
+| External 4TU (independent) | Solid yield | screening design | 2 | B_vs_C | 14 | 0.0052 | -3.1002 | -8.3318 | -1.4652 | -0.8095 | 0.042 |
+| External 4TU (independent) | Solid yield | screening design | 3 | B_vs_A | 14 | 0.0166 | -1.1113 | -7.1545 | -0.1437 | -0.7143 | 0.0996 |
+| External 4TU (independent) | Solid yield | screening design | 3 | B_vs_C | 14 | 0.0166 | -1.5956 | -4.6917 | -0.0777 | -0.7143 | 0.0996 |
+| External 4TU (independent) | Solid yield | screening design | 5 | B_vs_A | 14 | 0.0134 | -2.2392 | -8.2892 | -0.2303 | -0.7333 | 0.094 |
+| External 4TU (independent) | Solid yield | screening design | 5 | B_vs_C | 14 | 0.0245 | -3.0996 | -4.7732 | -0.4558 | -0.6762 | 0.0996 |
+| External 4TU (independent) | Solid yield | random | 1 | B_vs_A | 14 | 0.0295 | -0.8112 | -5.8425 | -0.054 | -0.6571 | 0.0811 |
+| External 4TU (independent) | Solid yield | random | 1 | B_vs_C | 14 | 0.0203 | -4.2605 | -5.7819 | -1.1339 | -0.6952 | 0.0811 |
+| External 4TU (independent) | Solid yield | random | 2 | B_vs_A | 14 | 0.0419 | -1.316 | -7.0115 | -0.1869 | -0.619 | 0.0811 |
+| External 4TU (independent) | Solid yield | random | 2 | B_vs_C | 14 | 0.0067 | -3.9735 | -4.9112 | -1.6592 | -0.7905 | 0.0403 |
+| External 4TU (independent) | Solid yield | random | 3 | B_vs_A | 14 | 0.0245 | -1.4023 | -7.2402 | -0.487 | -0.6762 | 0.0811 |
+| External 4TU (independent) | Solid yield | random | 3 | B_vs_C | 14 | 0.0067 | -3.6731 | -4.9889 | -1.8633 | -0.7905 | 0.0403 |
+| External 4TU (independent) | Solid yield | random | 5 | B_vs_A | 14 | 0.004 | -1.6917 | -7.5662 | -0.6378 | -0.8286 | 0.0322 |
+| External 4TU (independent) | Solid yield | random | 5 | B_vs_C | 14 | 0.004 | -3.3641 | -4.6508 | -1.741 | -0.8286 | 0.0322 |
+| External 4TU (independent) | Solid yield | reported order | 1 | B_vs_A | 14 | 0.6698 | -0.2191 | -6.1087 | 2.3428 | -0.1429 | 1.0 |
+| External 4TU (independent) | Solid yield | reported order | 1 | B_vs_C | 14 | 0.0023 | -6.735 | -18.4154 | -4.2656 | -0.8667 | 0.0116 |
+| External 4TU (independent) | Solid yield | reported order | 2 | B_vs_A | 14 | 0.6257 | -0.7033 | -7.6435 | 4.2375 | -0.1619 | 1.0 |
+| External 4TU (independent) | Solid yield | reported order | 2 | B_vs_C | 14 | 0.0009 | -7.9694 | -13.4816 | -3.9517 | -0.9238 | 0.006 |
+| External 4TU (independent) | Solid yield | reported order | 3 | B_vs_A | 14 | 0.4263 | -1.0018 | -6.8558 | 2.0862 | -0.2571 | 1.0 |
+| External 4TU (independent) | Solid yield | reported order | 3 | B_vs_C | 14 | 0.0017 | -7.9721 | -13.0393 | -3.6414 | -0.8857 | 0.0103 |
+| External 4TU (independent) | Solid yield | reported order | 5 | B_vs_A | 14 | 0.1353 | -2.4399 | -8.3181 | 1.3212 | -0.4667 | 0.541 |
+| External 4TU (independent) | Solid yield | reported order | 5 | B_vs_C | 14 | 0.0002 | -6.5848 | -7.7752 | -2.8107 | -0.981 | 0.002 |
+
+
+
+# S10. Reproducibility and availability
+
+A single command regenerates every result file, table and figure from the public data, and a second command regenerates the manuscript and this document from those files; library versions and CPU details are written to a log at run time. The code, the locked test-study list, configuration files, result files and per-run predictions are available from the corresponding author on reasonable request.
 
 

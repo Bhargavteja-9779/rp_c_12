@@ -4225,5 +4225,31 @@
    "medium": "Water",
    "n_candidates": 18
   }
+ },
+ "details": {
+  "withinsd_dev_biooil": 8.003493317371648,
+  "withinsd_locked_biooil": 6.36555987810761,
+  "withinsd_dev_solid": 8.70963939201594,
+  "withinsd_locked_solid": 6.979360523690843,
+  "run_rmse_locked_biooil_A0": 21.708334534091033,
+  "run_rmse_locked_biooil_B3": 10.354630718291306,
+  "run_rmse_locked_biooil_C3": 7.662801214578506,
+  "run_cov_locked_biooil_A0": 0.8103448275862069,
+  "run_cov_locked_biooil_B3": 0.9532019704433498,
+  "run_rmse_locked_solid_A0": 16.394973828075027,
+  "run_rmse_locked_solid_B3": 10.903456818781853,
+  "run_rmse_locked_solid_C3": 13.192421729555111,
+  "run_cov_locked_solid_A0": 0.9128919860627178,
+  "run_cov_locked_solid_B3": 0.9128919860627178,
+  "case_biooil_first_T": 340.0,
+  "case_biooil_first_y": 36.7,
+  "case_biooil_first_A": 18.944499969482425,
+  "case_biooil_median_y": 22.6,
+  "case_biooil_corr_A_y": -0.2654845994363988,
+  "case_solid_first_T": 350.0,
+  "case_solid_first_y": 32.6,
+  "case_solid_first_A": 37.1131706237793,
+  "case_solid_median_y": 33.5,
+  "case_solid_corr_A_y": 0.8396329175118183
  }
 }

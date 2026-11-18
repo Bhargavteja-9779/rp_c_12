@@ -34,3 +34,12 @@ Branch: claude/autonomous-research-discovery-1uqqmr. Resume by reading this file
 * Next: manuscript rewrite (v2 tokens/tables/figures), rebuild, re-review rounds 11-15, audits, push.
 
 * 2026-11-13: v2 COMPLETE — manuscript rewritten (audit framing), reviews 11–15, fresh-clone checks (quick 736 s all stages OK; 647/647 values identical). Decision: READY FOR SUBMISSION (v2), conditional on author actions.
+
+
+## REVISION v3 (2026-11-18) — external pre-submission review
+- Addendum D registered (commit f61d02a) before E15–E17; E15 sequential deployment (3 orders, A/B/C, k = 0–5; dev, locked, external),
+  E16 decision support, E17 case studies; analyze_v3, figures_v3, graphical abstract v3; run_all stages added; 21 unit tests pass.
+- Multi-database literature search (PubMed + Crossref; OpenAlex unavailable, HTTP 429), rule-based eligibility, stored raw records.
+- Manuscript rewritten (new title, STRATA-Lab framing, novelty table, scope Option A, new Sections 3.4–3.6 and 3.9, condensed 3.8),
+  authors P N Bhargav Teja + second (corresponding) author placeholder, CRediT, no funding, no competing interests, data DOIs, code on request.
+- New files: Title_Page, Manuscript_anonymised, Response_to_Review; submission ZIP in submission/.

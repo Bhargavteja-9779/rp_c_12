@@ -10,16 +10,16 @@
  "excluded_no_ml_or_no_hydrothermal_term": 1265,
  "excluded_review_or_non_primary": 11,
  "excluded_no_prediction_target": 19,
- "excluded_outside_window": 1,
- "included": 92,
- "included_with_abstract": 50,
- "included_in_bioresource_technology": 17,
+ "excluded_outside_window": 0,
+ "included": 93,
+ "included_with_abstract": 51,
+ "included_in_bioresource_technology": 18,
  "databases_unavailable": [
   "OpenAlex"
  ],
- "included_mentioning_grouped_or_external": 1,
- "included_mentioning_random_split": 3,
- "included_mentioning_uncertainty": 3,
- "included_mentioning_physics": 0,
- "included_mentioning_literature_data": 11
+ "included_mentioning_grouped_or_external": 2,
+ "included_mentioning_random_split": 4,
+ "included_mentioning_uncertainty": 4,
+ "included_mentioning_physics": 1,
+ "included_mentioning_literature_data": 12
 }

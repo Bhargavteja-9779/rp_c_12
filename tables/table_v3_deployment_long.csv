@@ -1,0 +1,51 @@
+Setting,Target,Local runs k,Strategy,Studies,Median RMSE (wt%),Median MAE (wt%),Coverage of 90% PI,PI width (wt%)
+Development (unseen studies),Bio-oil yield,0,A · literature only,80,12.39,10.15,0.94,60.9
+Development (unseen studies),Bio-oil yield,1,A · literature only,80,12.39,10.15,0.94,60.9
+Development (unseen studies),Bio-oil yield,1,B · STRATA (literature + local runs),80,8.84,7.64,0.94,49.24
+Development (unseen studies),Bio-oil yield,1,C · local runs only,80,10.44,8.46,0.93,61.92
+Development (unseen studies),Bio-oil yield,3,A · literature only,80,12.39,10.15,0.94,60.9
+Development (unseen studies),Bio-oil yield,3,B · STRATA (literature + local runs),80,8.77,6.87,0.94,44.3
+Development (unseen studies),Bio-oil yield,3,C · local runs only,80,9.91,8.41,0.92,49.51
+Development (unseen studies),Bio-oil yield,5,A · literature only,80,12.39,10.15,0.94,60.9
+Development (unseen studies),Bio-oil yield,5,B · STRATA (literature + local runs),80,8.41,6.43,0.92,42.02
+Development (unseen studies),Bio-oil yield,5,C · local runs only,80,9.5,7.99,0.92,46.57
+Development (unseen studies),Solid yield,0,A · literature only,72,9.38,8.6,0.89,45.61
+Development (unseen studies),Solid yield,1,A · literature only,72,9.38,8.6,0.89,45.61
+Development (unseen studies),Solid yield,1,B · STRATA (literature + local runs),72,8.8,7.05,0.9,39.54
+Development (unseen studies),Solid yield,1,C · local runs only,72,11.2,8.76,0.9,55.76
+Development (unseen studies),Solid yield,3,A · literature only,72,9.38,8.6,0.89,45.61
+Development (unseen studies),Solid yield,3,B · STRATA (literature + local runs),72,7.76,6.37,0.89,38.19
+Development (unseen studies),Solid yield,3,C · local runs only,72,10.46,9.18,0.89,48.96
+Development (unseen studies),Solid yield,5,A · literature only,72,9.38,8.6,0.89,45.61
+Development (unseen studies),Solid yield,5,B · STRATA (literature + local runs),72,7.71,6.33,0.89,34.02
+Development (unseen studies),Solid yield,5,C · local runs only,72,9.99,8.51,0.88,42.83
+Locked studies,Bio-oil yield,0,A · literature only,19,10.3,8.02,0.9,58.02
+Locked studies,Bio-oil yield,1,A · literature only,19,10.3,8.02,0.9,58.02
+Locked studies,Bio-oil yield,1,B · STRATA (literature + local runs),19,8.15,6.74,0.97,48.75
+Locked studies,Bio-oil yield,1,C · local runs only,19,6.43,5.15,1.0,62.28
+Locked studies,Bio-oil yield,3,A · literature only,19,10.3,8.02,0.9,58.02
+Locked studies,Bio-oil yield,3,B · STRATA (literature + local runs),19,7.96,6.72,0.92,43.49
+Locked studies,Bio-oil yield,3,C · local runs only,19,5.97,4.68,1.0,48.87
+Locked studies,Bio-oil yield,5,A · literature only,19,10.3,8.02,0.9,58.02
+Locked studies,Bio-oil yield,5,B · STRATA (literature + local runs),19,7.34,6.22,0.94,41.09
+Locked studies,Bio-oil yield,5,C · local runs only,19,6.35,4.8,0.99,45.88
+Locked studies,Solid yield,0,A · literature only,18,13.44,11.96,0.85,45.2
+Locked studies,Solid yield,1,A · literature only,18,13.44,11.96,0.85,45.2
+Locked studies,Solid yield,1,B · STRATA (literature + local runs),18,7.66,6.84,0.8,37.43
+Locked studies,Solid yield,1,C · local runs only,18,9.85,8.24,0.9,55.4
+Locked studies,Solid yield,3,A · literature only,18,13.44,11.96,0.85,45.2
+Locked studies,Solid yield,3,B · STRATA (literature + local runs),18,7.08,6.1,0.84,38.64
+Locked studies,Solid yield,3,C · local runs only,18,8.49,7.04,0.89,49.36
+Locked studies,Solid yield,5,A · literature only,18,13.44,11.96,0.85,45.2
+Locked studies,Solid yield,5,B · STRATA (literature + local runs),18,6.94,6.31,0.86,34.24
+Locked studies,Solid yield,5,C · local runs only,18,8.08,6.96,0.9,42.84
+External 4TU (independent),Solid yield,0,A · literature only,14,11.58,10.1,0.96,45.13
+External 4TU (independent),Solid yield,1,A · literature only,14,11.58,10.1,0.96,45.13
+External 4TU (independent),Solid yield,1,B · STRATA (literature + local runs),14,9.44,7.94,0.95,37.42
+External 4TU (independent),Solid yield,1,C · local runs only,14,8.68,7.3,0.97,55.4
+External 4TU (independent),Solid yield,3,A · literature only,14,11.58,10.1,0.96,45.13
+External 4TU (independent),Solid yield,3,B · STRATA (literature + local runs),14,6.26,5.4,0.94,36.47
+External 4TU (independent),Solid yield,3,C · local runs only,14,7.98,6.88,0.94,49.36
+External 4TU (independent),Solid yield,5,A · literature only,14,11.58,10.1,0.96,45.13
+External 4TU (independent),Solid yield,5,B · STRATA (literature + local runs),14,6.3,4.66,0.92,33.16
+External 4TU (independent),Solid yield,5,C · local runs only,14,7.86,6.34,0.93,42.84

@@ -1,3 +1,27 @@
+# Rejection-risk report — updated for v3 (2026-11-18), after an external pre-submission review
+
+## What changed in v3
+A professor's pre-submission review asked for a deployment framing, sequential local adaptation, a decision system, a laboratory case
+study, explicit scope (bio-oil and solid only), a novelty table versus Elfetni et al., an accurate availability statement, a multi-database
+literature search and transparent pre-registration. All were implemented (Addendum D committed before E15–E17 ran; see
+manuscript/Response_to_Review). Key new results: STRATA beat literature-only and local-only for unseen development studies at every k;
+on locked solid studies it beat literature-only (Holm p = 0.014 at k = 3); on locked bio-oil studies local-only beat STRATA (p = 0.009);
+the pre-registered applicability-domain threshold flagged no locked study (decision rule untestable).
+
+| # | Risk (v3) | Severity | Mitigation | Status |
+|---|---|---|---|---|
+| A | Novelty vs Elfetni et al. 2027 (local calibration already shown there) | Moderate | Table 1 comparison; claims limited to coverage on unseen studies, literature-vs-local comparison with re-calibrated intervals, decision analyses, locked/external tests | Partly (inherent) |
+| B | No new experiments; retrospective simulation only | Moderate–high for an experimental journal | Stated in abstract, methods, limitations, cover letter; case studies on locked studies | Disclosed |
+| C | Decision system largely negative (AD threshold flagged none) | Moderate | Reported as such; workflow changed to compare B vs C | Disclosed |
+| D | Mixed held-out results (locked bio-oil favours local-only) | Moderate | Presented as a finding with practical consequence | Disclosed |
+| E | Pre-registration only via repository commits | Low–moderate | Stated explicitly; commit table in supplement | Disclosed |
+| F | Code only on request (user's choice) | Low–moderate (some reviewers prefer open code) | Data DOIs given; code offered on request | Author choice |
+| G | Placeholders: second author's name/affiliation/e-mail and first author's affiliation | **Blocking until filled** | Fill before submission | Requires author action |
+| H | AI-assistance declaration | High if undisclosed | Section included; authors must verify and adapt | Requires author action |
+| I | Peer-review type of the journal not verified (official guide blocked) | Low | Both a manuscript with author details and an anonymised manuscript plus a separate title page are supplied | Mitigated |
+
+---
+
 # Final rejection-risk report (Phase 41) — updated for v2 (2026-11-13)
 
 ## What changed in v2 and why

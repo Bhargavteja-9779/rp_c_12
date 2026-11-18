@@ -1,49 +1,68 @@
 ---
-title: "What can machine-learning models trained on published hydrothermal-conversion data tell a new laboratory? A pre-registered audit with locked test studies"
+title: "From literature to laboratory: an uncertainty-aware framework for transferring machine-learning models of hydrothermal biomass conversion and planning first experiments"
 ---
 
-**Authors:** [Author 1]^a,\*^, [Author 2]^b^, [Author 3]^a^
+**Authors:** P N Bhargav Teja^a^, [Second author name]^b,\*^
 
-^a^ [Affiliation 1, full postal address, country]
-^b^ [Affiliation 2, full postal address, country]
+^a^ [Affiliation of P N Bhargav Teja: department, institution, city, postal code, country]
 
-\* Corresponding author. E-mail address: [corresponding author e-mail]
+^b^ [Affiliation of the second author: department, institution, city, postal code, country]
+
+\* Corresponding author: [Second author name], [postal address]. E-mail address: [corresponding author e-mail]
 
 # Highlights
 
-- Pre-registered audit of literature-trained HTL/HTC models; 38 studies held out
-- Yields of unseen studies were barely predictable; random splits hid this
-- Laboratories agree on the direction of temperature effects, not on yield levels
-- Trend-, ranking- and metadata-based shortcuts failed on held-out studies
-- Study-calibrated intervals and a few local runs gave honest predictions
+- Literature-trained HTL/HTC models were tested as a new laboratory would use them
+- Random data splits overstated accuracy about two-fold for unseen studies
+- Study-calibrated 90% intervals covered 0.82–0.91; row-calibrated 0.46–0.61
+- Three designed local runs cut the median yield error by 1.6–6.4 wt%
+- For locked bio-oil studies, local runs alone beat literature-anchored models
 
 # Abstract
 
-Machine-learning surrogates of hydrothermal liquefaction (HTL) and carbonization (HTC) are trained on runs compiled from the literature and usually validated by random splits. This work audited what such models can deliver for a laboratory whose study they have not seen, using a curated database of 3,693 runs from 188 studies, a pre-registered protocol and 38 studies locked away before modelling. Across 12 learners, the best bio-oil-yield RMSE rose from 7.6 wt% under random splitting to 15.7 wt% for unseen studies (R² 0.82 → 0.24), and on locked studies no learner predicted bio-oil yields substantially better than the training mean. Study-level offsets made up 0.49–0.65 of out-of-study error variance and were not explained by recorded work-up or yield-basis descriptors. Model-free within-study comparisons showed that laboratories agree on the direction of the temperature response below 300 °C (bio-oil +0.87 wt% per 10 °C at 250–300 °C, same sign in 81% of studies), yet models predicted within-study changes no better than absolute yields, and an exploratory advantage in choosing the best planned run was not confirmed on locked studies. What held was honest uncertainty and local anchoring: conformal intervals calibrated across studies covered 0.82–0.91 of new-study runs (row-calibrated: 0.46–0.61), and three measured runs lowered the median per-study bio-oil error from 12.37 to 8.47 wt%. Literature-trained hydrothermal models should be validated by study, reported with study-calibrated intervals and anchored with local runs.
+Machine-learning models of hydrothermal liquefaction (HTL) and carbonization (HTC) are trained on literature data and validated by random splits, yet are meant to help laboratories whose studies they have never seen. This deployment problem was evaluated for bio-oil and solid yields using a curated database of 3,693 runs from 188 studies, 38 studies locked before modelling, an external hydrochar database and a protocol fixed in advance. Random splitting overstated accuracy about two-fold, and study-level offsets, which reported work-up descriptors did not explain, made up 0.49–0.65 of out-of-study error variance. Conformal intervals calibrated across studies covered 0.82–0.91 of new-study runs (row-calibrated: 0.46–0.61). In a retrospective simulated deployment, a laboratory measured up to five runs in a screening design. Combining three runs with the literature model (STRATA) lowered the median per-study error from 12.4 to 8.8 wt% (bio-oil) and from 9.4 to 7.8 wt% (solid) for unseen development studies, outperforming the local runs alone, and from 13.4 to 7.1 wt% for locked solid studies. For locked bio-oil studies, however, the local runs alone were more accurate, and an applicability-domain score did not anticipate this. With one to five local runs, 90% interval half-widths remained ±17.0–24.6 wt%, so these models support screening, not optimisation. The resulting STRATA-Lab workflow — study-calibrated intervals, a few designed local runs and an explicit comparison with local-only estimates — is proposed as minimum practice for transferring literature-trained bioresource models.
 
-**Keywords:** hydrothermal liquefaction; hydrothermal carbonization; machine learning; conformal prediction; pre-registration; transferability
+**Keywords:** hydrothermal liquefaction; hydrothermal carbonization; machine learning; conformal prediction; model transferability; experimental planning
 
 
 # 1. Introduction
 
-Hydrothermal liquefaction (HTL) and hydrothermal carbonization (HTC) convert wet lignocellulosic and residual biomass into bio-oil (biocrude), a carbon-rich solid (hydrochar or char), an aqueous phase and gas, without prior drying (Toor et al., 2011; Elliott et al., 2015; Funke and Ziegler, 2010; Libra et al., 2011). Product yields depend non-linearly on feedstock composition, temperature, residence time, solid loading, catalysts and co-solvents (Gollakota et al., 2018), and experiments are costly. Machine-learning (ML) surrogates trained on data compiled from the literature have therefore become a common tool for predicting yields and product properties and for screening operating windows (Zhang et al., 2021; Leng et al., 2022; Katongtung et al., 2024; Gungor et al., 2025; Tian et al., 2025; Djandja et al., 2027). In a systematic PubMed search of ML studies on hydrothermal conversion (2015–2026; 44 primary studies, 20 of them in *Bioresource Technology*), the median of the best coefficient of determination reported in the abstracts was 0.93 (Supplementary Table S1).
+Hydrothermal liquefaction (HTL) and hydrothermal carbonization (HTC) convert wet lignocellulosic and residual biomass into bio-oil (biocrude), a carbon-rich solid (hydrochar or char), an aqueous phase and gas, without prior drying (Toor et al., 2011; Elliott et al., 2015; Funke and Ziegler, 2010; Libra et al., 2011). Product yields depend non-linearly on feedstock composition, temperature, residence time, solid loading, catalysts and co-solvents (Gollakota et al., 2018), and each experiment is costly. Machine-learning (ML) models trained on runs compiled from the literature have therefore become a common tool for predicting yields and for screening operating windows (Zhang et al., 2021; Leng et al., 2022; Katongtung et al., 2024; Gungor et al., 2025; Tian et al., 2025; Djandja et al., 2027). A reproducible search of PubMed and Crossref (run 2026-11-18; full strings, eligibility rules and record flow in Supplementary Table S1) identified 93 primary ML studies of hydrothermal conversion published since 2015, 18 of them in *Bioresource Technology*. Of the 51 with an abstract, 2 mentioned grouped or external validation and 4 any form of uncertainty quantification; in a PubMed subset reporting R², the median best R² was 0.93 (15 studies; Supplementary Table S2).
 
-Most of these surrogates are evaluated by randomly partitioning experimental runs into training and test sets. Literature-compiled data, however, are clustered: each source publication contributes a series of runs that share the feedstock batch, reactor, analytical work-up and the authors' definition of a "yield". When runs from the same study fall on both sides of a random split, the test set no longer represents a new study, and accuracy is overstated — a form of group leakage that has been documented across ML-based science (Kapoor and Narayanan, 2023) and, recently, for biochar studies (Jang et al., 2026). For HTL specifically, Elfetni et al. (2027) curated a database of 3,693 hydrothermal experiments (Elfetni, 2026), built physically admissible four-phase surrogates, and showed that publication-aware validation exposes large inter-study heterogeneity that a few local calibration runs can partly remove. Prediction intervals have also been added to HTL surrogates (Elfetni et al., 2026; Djandja et al., 2027), but their coverage has been assessed on randomly held-out runs.
+Such models are built to be used by a laboratory that was not part of the training data — a group that has a new feedstock and reactor and must decide which conditions to run first. For this *new-laboratory deployment problem* four things matter: a prediction of the yields before any experiment, an honest statement of its uncertainty, guidance on how many and which first runs to perform, and a way to tell whether the literature model or the laboratory's own first runs should be trusted. Random splits of literature data answer none of these questions. Literature-compiled data are clustered: each source publication contributes a series of runs that share the feedstock batch, reactor, analytical work-up and the authors' definition of a "yield". When runs of the same study fall on both sides of a random split, the test set no longer represents a new laboratory, and accuracy is overstated — a form of group leakage documented across ML-based science (Kapoor and Narayanan, 2023) and for biochar studies (Jang et al., 2026). Bio-oil yield is, moreover, operationally defined by the recovery solvent and the reporting basis (Valdez et al., 2011; Watson et al., 2019), so study-specific offsets are expected.
 
-Three questions that matter for anyone applying a published surrogate to a new laboratory, feedstock or plant remain open. First, how much of the error on an unseen study is a study-level offset rather than run-to-run scatter, and can it be traced to recorded differences in how studies work up and report their products (extraction solvent, yield basis, fraction definitions, reactor scale)? Bio-oil yield is an operationally defined quantity: it depends on the solvent used to recover the oil and on the basis of the reported mass fraction (Valdez et al., 2011; Watson et al., 2019). Second, do conformal prediction intervals (Vovk et al., 2022; Lei et al., 2018; Angelopoulos and Bates, 2023), whose validity rests on exchangeability between calibration and test points, keep their nominal coverage when the test point comes from a new study? Exchangeability holds across studies, not across runs of a clustered data set (Dunn et al., 2022; Barber et al., 2023). Third, when a laboratory has measured only a handful of runs, how should these runs be combined with a literature-trained model so that both the prediction and its interval remain trustworthy?
+Two recent studies used the same public database (Elfetni, 2026) and partly address these issues. Elfetni et al. (2027) built physically admissible four-phase HTL surrogates on a closure-valid subset of 680 experiments, reported that publication-aware validation exposes inter-study heterogeneity, showed that five local records reduced the median error of the publications eligible for local calibration, and reported split-conformal coverage on a random test partition. A preprint by the same group (Elfetni et al., 2026) modelled energy and carbon routing with ensemble and conformal uncertainty for screening and experimental prioritisation. Bootstrap and Monte Carlo uncertainty has also been propagated through HTL yield models (Djandja et al., 2027). What these studies leave open, and what a new laboratory needs to know, is (i) whether prediction intervals keep their nominal coverage for studies that were never seen, and how wide honest intervals are; (ii) whether combining a few local runs with the literature model is better than simply using the local runs, at each number of runs, when the runs are chosen as a laboratory would choose them and intervals are re-calibrated accordingly; (iii) whether a laboratory can tell in advance that the literature model will mislead it; and (iv) whether anything beyond a level shift — effects of conditions, or the ranking of candidate runs — transfers between laboratories. Table 1 sets out how the present work relates to the two studies; none of the present authors is an author of either study, and the overlap is the openly licensed database.
 
-A fourth question follows from the structure of the problem. If most of the error for a new study is a study-wide offset, *differences* between runs of the same study — how much the yield changes when temperature or residence time is changed — might transfer even when absolute yields do not. Learners that are invariant to study offsets, such as models trained on within-study deviations or pairwise-difference regression (Tynes et al., 2021), could then be useful for planning experiments, and multi-study learning has been proposed for exactly such replicability problems (Patil and Parmigiani, 2018). Comparable limitations of literature-derived data have been reported for reaction-yield prediction in chemistry (Li and Gong, 2024), but whether literature-trained models carry *trends* to new studies has, to our knowledge, not been tested for bioresource conversion.
 
-This work audits what literature-trained models can deliver for a new laboratory, using the largest public curated hydrothermal database (Elfetni, 2026), a pre-registered analysis plan and 38 source studies locked away before any model was fitted. Five capabilities were tested, each against held-out studies: (i) predicting absolute yields; (ii) explaining study offsets from reported work-up and yield-basis metadata; (iii) predicting within-study trends, with absolute, within-study and pairwise-difference learners and with a model-free analysis of runs that differ only in temperature or residence time; (iv) choosing the best of a study's planned runs, compared with rules of thumb; and (v) providing honest uncertainty and exploiting a few local runs. For (v) the study assembles established statistical constructions — study-weighted conformal calibration for hierarchical data (Dunn et al., 2022), empirical-Bayes shrinkage of a study offset (Efron and Morris, 1975) and re-calibration over exchangeable calibration groups as in meta-learned and small-area conformal prediction (Fisch et al., 2021; Bersson and Hoff, 2024) — into a workflow (STRATA). All pre-registered hypotheses are reported, including those that failed. The evidence is condensed into a capability matrix, a model-free trend atlas and a minimum validation checklist for literature-trained bioresource surrogates. Physical admissibility of multi-phase predictions, already addressed by Elfetni et al. (2027), is not a contribution of this study.
+**Table 1.** Relation of this work to the two studies that use the same database. Information on the two studies is taken from their abstracts (Bioresour. Technol. article online 17 August 2026; SSRN preprint 2026). None of the present authors is an author of either study; the overlap is the shared, openly licensed database.
+
+| Aspect | Elfetni et al. (2027), Bioresour. Technol. | Elfetni et al. (2026), SSRN preprint | This work |
+|---|---|---|---|
+| Data | Curated corpus of 3,693 records; 680 closure-valid HTL and solvothermal experiments from 60 publications used for modelling | 3,693 HTL/HTC experiments from 187 papers | Same public database (v1.0.0; 3,693 runs, 188 studies) for bio-oil and solid yields; independent 4TU hydrochar database for external validation |
+| Targets | Four phase yields as one composition vector; carbon and HHV residuals | Mass, energy and carbon partitioning; HHV of condensed phases | Bio-oil and solid yields only; aqueous and gas phases and mass closure not modelled |
+| Main validation | Common 408/136/136 training/calibration/test partition; publication-aware validation reported in addition | Test R² ≈ 0.8 for yields (partition not stated in the abstract) | Study-grouped CV; 38 studies locked before modelling and evaluated once; temporal, feedstock-family and external tests |
+| Pre-specified protocol | Not stated in the abstract | Not stated in the abstract | Protocol, locked list and five addenda committed to a version-controlled repository before the analyses they govern |
+| Uncertainty | Phase-wise 90% split-conformal intervals (coverage 0.875–0.956 on the test set) | Ensemble and conformal uncertainty | Row- vs study-calibrated conformal intervals compared on unseen, locked and external studies; interval width treated as a primary outcome |
+| Local adaptation | k = 5 local records for 38 publications: median vector RMSE 13.91 → 7.10 wt% | Not stated in the abstract | k = 0–5 runs in three run orders; literature only (A) vs literature + local runs (B, STRATA) vs local runs only (C); intervals re-calibrated for every k; Holm-corrected tests |
+| Decision support | Screening within represented data support | Uncertainty-aware screening and experimental prioritisation | Applicability-domain score with a pre-registered threshold; runs needed for a target interval width; case studies selected by a pre-specified rule |
+| Physical admissibility | Core contribution (non-negativity, exact closure) | Not stated | Not addressed |
+
+
+
+This work addresses (i)–(iv) with a framework called STRATA-Lab (Fig. 1). Its statistical core, STRATA, assembles established constructions — study-weighted conformal calibration for hierarchical data (Dunn et al., 2022), empirical-Bayes shrinkage of a study offset (Efron and Morris, 1975) and re-calibration over exchangeable calibration groups as in meta-learned and small-area conformal prediction (Fisch et al., 2021; Bersson and Hoff, 2024) — around any point predictor. STRATA-Lab adds the deployment steps: a literature prediction with a study-calibrated interval, an applicability-domain score, first runs placed by a simple screening design, a comparison of literature-anchored and local-only estimates, and the number of runs needed for a target interval width. The framework was evaluated by retrospective simulated deployment on published data — on unseen development studies, on 38 studies locked away before any model was fitted, and on an independent hydrochar database — and illustrated with two laboratory case studies selected by a pre-specified rule. The scope is limited to bio-oil and solid yields; aqueous and gas phases and mass closure, addressed by Elfetni et al. (2027), are not modelled, and no new experiments were performed. All analyses specified in advance are reported, including those whose hypotheses failed.
+
+
+![**Fig. 1.** STRATA-Lab workflow for a new laboratory. Steps 3–4 were validated retrospectively on development, locked and external studies; step 5 is limited to screening because development interval half-widths remained ±17.0–24.6 wt% after one to five local runs.](/home/user/rp_c_12/figures/fig16_strata_lab_workflow.png){width=16cm}
+
 
 # 2. Materials and methods
 
 ## 2.1. Data
 
-The primary data were the Version 1.0.0 release of the curated hydrothermal treatment/liquefaction database (Elfetni, 2026) (CC BY 4.0; 3,693 runs from 188 source publications, 1982–2026; SHA-256 of the file verified at every load). Each run records the source DOI, feedstock ultimate, proximate and lignocellulosic composition, operating conditions, catalyst, reaction medium, the reported yield basis and separation procedure, and product yields. Two targets were modelled: bio-oil yield (HTL and solvothermal HTL runs) and solid-product yield (HTL, solvothermal HTL and HTC runs), both in wt%. Pre-specified exclusions were: aqueous-phase reforming runs; yields outside 0–100 wt%; yields reported on a carbon basis; missing feedstock C or O, temperature or residence time; and studies contributing a single run to a target (Table 1). An independent external data set — a 4TU.ResearchData hydrochar database (Abdeldayem et al., 2025) (CC BY 4.0) without study identifiers — was used only for external validation of solid yield (Section 2.6).
+The primary data were the Version 1.0.0 release of the curated hydrothermal treatment/liquefaction database (Elfetni, 2026) (CC BY 4.0; 3,693 runs from 188 source publications, 1982–2026; SHA-256 of the file verified at every load). Each run records the source DOI, feedstock ultimate, proximate and lignocellulosic composition, operating conditions, catalyst, reaction medium, the reported yield basis and separation procedure, and product yields. Two targets were modelled: bio-oil yield (HTL and solvothermal HTL runs) and solid-product yield (HTL, solvothermal HTL and HTC runs), both in wt%. Pre-specified exclusions were: aqueous-phase reforming runs; yields outside 0–100 wt%; yields reported on a carbon basis; missing feedstock C or O, temperature or residence time; and studies contributing a single run to a target (Table 2). An independent external data set — a 4TU.ResearchData hydrochar database (Abdeldayem et al., 2025) (CC BY 4.0) without study identifiers — was used only for external validation of solid yield (Sections 2.6–2.7).
 
 
-**Table 1.** Data used for each target after pre-specified exclusions.
+**Table 2.** Data used for each target after pre-specified exclusions.
 
 | Target | Split | Runs | Studies | Median runs/study | Yield mean ± SD (wt%) | Excluded (carbon basis / missing inputs / single-run study) |
 |---|---|---|---|---|---|---|
@@ -54,9 +73,9 @@ The primary data were the Version 1.0.0 release of the curated hydrothermal trea
 
 
 
-## 2.2. Locked study-level test set and leakage controls
+## 2.2. Locked study-level test set, pre-specification and leakage controls
 
-Before any model was fitted, 20% of the source publications (38 studies, seed 20261110) were drawn at random and locked (`locked_test_studies.json`, committed to version control before the first model fit). They were evaluated once, after all modelling decisions had been frozen, with models trained on all development studies. The analysis protocol, research questions, metrics, statistical tests and seeds were registered in the repository before experiments were run; three deviations are documented in Supplementary Section S2. Leakage controls were: the unit of splitting is the source publication; DOI, title and publication year are never model inputs (year is used only to define the temporal split); all statistics-estimating preprocessing (median imputation with missing-value indicators, standardisation) is refitted inside each training fold; the external database was screened for runs that duplicate runs of the primary database (36 potential duplicates removed); and the primary database was audited for identical runs reported in more than one source study (Section 2.6, E10).
+Before any model was fitted, 20% of the source publications (38 studies, seed 20261110) were drawn at random and locked. They were evaluated once per registered analysis, after all modelling decisions for that analysis had been frozen, with models trained on all development studies. The analysis protocol (research questions, metrics, statistical tests, seeds and the locked list) and five later addenda were registered as timestamped commits in a version-controlled repository hosted on GitHub before the analyses they govern were run; the protocol was not deposited in a public registry, so this is weaker than formal pre-registration, and the commit history is reported for verification (Supplementary Table S3). Addendum D, which specifies the deployment analyses of Section 2.6, was registered after an external pre-submission review and before any of those analyses was run. Deviations are listed in Supplementary Section S2. Leakage controls were: the unit of splitting is the source publication; DOI, title and publication year are never model inputs; all statistics-estimating preprocessing (median imputation with missing-value indicators, standardisation) is refitted inside each training fold; the external database was screened for runs that duplicate runs of the primary database (36 potential duplicates removed); and cross-study duplicate runs in the primary database were audited (Section 3.7).
 
 ## 2.3. Features
 
@@ -80,37 +99,37 @@ and the between-study share is $\hat\tau^2/(\hat\tau^2+\hat\sigma_w^2)$, analogo
 $$\hat\delta_k = \frac{k}{k + \hat\lambda}\,\bar r_{S}, \qquad \hat\lambda = \hat\sigma_w^2 / \hat\tau^2,$$
 where $\bar r_S$ is the mean residual of the $k$ support runs. This is the posterior mean of $u_j$ under a normal random-intercept model, a James–Stein-type shrinkage (Efron and Morris, 1975) that tends to the raw mean offset as $k$ grows and to zero when studies are homogeneous. The interval half-width $\hat q_k$ is re-calibrated by applying exactly this procedure to the calibration studies (20 random support sets per study) and taking the study-weighted quantile of the adjusted residuals of their query runs. The ablation compares no offset ($k=0$), the raw mean offset and the shrunk offset.
 
-## 2.6. Experiments
+## 2.6. STRATA-Lab: retrospective simulated deployment (Addendum D)
 
-E1/E2 (accuracy and baselines) applied the two evaluation schemes to all learners and both feature sets. E3 (STRATA) used the study-grouped outer folds: for each fold, inner random-row and inner study-grouped CV on the training studies produced RC and SC calibration residuals and $\hat\lambda$; the outer test studies were then predicted, and for studies with at least 11 runs the *k*-shot procedure was evaluated for $k \in \{1,2,3,5,10\}$ with 20 random support sets per study (identical studies for all $k$). The base learner for STRATA was fixed by a pre-specified rule as the native-missing-value learner with the lowest study-grouped CV RMSE on bio-oil yield (XGBoost). Robustness (E4) was assessed by adding Gaussian noise (5–20% of the training standard deviation) to continuous test features and by training on 25–100% of the training studies. Generalisation (E5) was assessed on the locked test studies, temporally (studies published up to 2018 → studies published after 2018), by leaving out one feedstock family at a time (families with ≥ 3 studies), and externally on the 4TU hydrochar database (solid yield; runs sharing an identical feedstock composition treated as one pseudo-study). E6 measured single-thread fit and prediction time, peak resident memory and serialized model size. E7 varied α (0.05, 0.10, 0.20), the $\tau^2$ estimator (method of moments vs. restricted maximum likelihood), the number of outer folds (5 vs. 10) and tuning (tuned vs. library defaults). E8 analysed out-of-study errors by feedstock family, process, extraction solvent, temperature, catalyst use and yield basis. Three further analyses were added during internal review, after the main results were known, and are reported as such: E9 repeated the STRATA evaluation with six other base learners, including the training mean as a 'no-ML' reference (development folds only); E10 audited runs that occur with identical feedstock composition, conditions and yield in more than one source study, and repeated the study-grouped evaluation without them; E11 measured the wall-clock overhead of STRATA.
+All deployment analyses are retrospective simulations on published runs: a study that was not used for training plays the role of a new laboratory, and its reported runs play the role of the experiments it would perform. The learner was the STRATA base learner with base and protocol features, and the nominal miscoverage was α = 0.10.
 
-## 2.7. Trend, ranking and anchoring analyses (pre-registered addenda)
+*Sequential local adaptation (E15).* For every unseen study with at least 11 runs, the runs were put in an order and the first *k* ∈ {0, 1, 2, 3, 5} were treated as measured (support runs). The runs from position 6 onward formed a fixed query set, identical for all *k*, so that support and query runs never overlap. Three orders were used: a *screening design* (main analysis) — first the run whose temperature is closest to the study's median temperature, then the lowest- and the highest-temperature runs, and further runs by maximin distance in standardised temperature and log residence time; the *reported order* of the runs in the database, which follows the source tables and is not chronological; and 20 *random* orders. Three strategies predicted the query runs: A, the literature model without adaptation; B, STRATA, the literature model shifted by the shrunk mean residual of the *k* support runs (Section 2.5); and C, local only, the mean of the *k* support runs. For each strategy, order and *k*, the 90% interval was calibrated by applying exactly the same procedure — same order rule, same *k*, same query definition — to the calibration studies (out-of-study predictions for A and B, observed yields for C) and taking the study-weighted quantile of the absolute query residuals. Metrics were per-study RMSE and MAE on the query runs, study-weighted coverage and mean interval width. The evaluation was run on unseen development studies (study-grouped ten-fold CV, three seeds), once on the locked studies, and on the external hydrochar database (solid yield; feedstock series as pseudo-studies; base features; model trained on all development studies). B was compared with A and with C at each *k* by two-sided Wilcoxon signed-rank tests on per-study RMSE, with Holm correction within each setting × target × order.
 
-These analyses were registered as protocol addenda after the main analyses had been completed and before they were run (Supplementary Section S2): Addendum A (E12) before any trend analysis, Addendum A2 before analysing two product-quality targets, and Addendum C before any locked-study evaluation of E12 or E14. Addendum B (E14) was registered after the development results of E12 had been seen and is exploratory; its main finding was then tested on the locked studies under Addendum C. The model-free analysis E13 was not registered and is descriptive. The commit history establishing this order is given in Supplementary Table S16.
+*Decision support (E16).* (a) An applicability-domain (AD) score was computed for each study as the median, over its runs, of the mean Euclidean distance to the five nearest training runs in standardised base features. The threshold was fixed in advance as the 95th percentile of the scores of development studies in out-of-study folds; hypothesis D1 was that locked studies above the threshold have a larger error of strategy A (one-sided Mann–Whitney test). (b) The number of local runs needed for a target 90% half-width *h* ∈ {10, 15, 20} wt% was read from the development results of strategy B (screening-design order) and checked for coverage on the locked studies. (c) The rule "use C if a study is flagged, otherwise B" was compared with always using B on the locked studies at *k* = 3 (D2).
 
-*Within-study contrasts (E12).* For two runs *a* and *b* of the same study, the contrast is $\Delta_{ab} = y_a - y_b$; a study offset cancels in $\Delta_{ab}$. Three learners predicted contrasts for every pair of runs within each unseen study: the absolute model A, by differencing, $\hat\Delta_{ab} = f(\mathbf{x}_a) - f(\mathbf{x}_b)$; a within-study model W, trained on study-centred targets $y - \bar y_{\text{study}}$ with features $[\mathbf{x}, \mathbf{x} - \bar{\mathbf{x}}_{\text{study}}]$ (the study means of the inputs are known for a new study before any run is measured); and a pairwise-difference model PD (Tynes et al., 2021), trained on pairs of runs of the same training study with inputs $[\mathbf{x}_a, \mathbf{x}_b, \mathbf{x}_a - \mathbf{x}_b]$ and target $\Delta_{ab}$ (at most 30 random partners per run), antisymmetrised as $\hat\Delta_{ab} = \tfrac{1}{2}[h(a,b) - h(b,a)]$. All three used the E1 hyper-parameters of XGBoost, extra trees and LightGBM. Contrast accuracy was summarised by $R^2_\Delta = 1 - \sum(\hat\Delta - \Delta)^2 / \sum \Delta^2$, i.e. relative to the 'no-change' predictor. Hypotheses: contrasts are predicted better than levels (T1); W and PD predict contrasts better than A (T2, one-sided Wilcoxon on per-study contrast RMSE, Holm); anchoring on *k* = 1–3 measured runs, $\hat y_i = \tfrac{1}{k}\sum_a (y_a + \hat\Delta_{ia})$, beats STRATA's shrunk offset (T3); study-calibrated conformal intervals for contrasts are valid and narrower than for levels (T4); and models rank the runs of a study usefully (T5). The same analysis was repeated for bio-oil higher heating value (HHV; values computed by correlation excluded; 1,019 development runs from 106 studies, 245 locked runs) and bio-oil carbon content (1,036 runs, 110 studies; 227 locked runs) (Addendum A2; XGBoost tuned with the E1 budget).
+*Laboratory case studies (E17).* For each target, the locked study with at least 11 runs and the largest number of distinct temperatures (ties broken by the number of runs) was selected by rule before results were inspected. Its runs were measured one at a time in screening-design order, and after each run all remaining runs were predicted by A, B and C with intervals calibrated as in E15 (remaining-runs query definition). Reported are the error after each run, interval width and coverage, and the regret of choosing the remaining run with the highest predicted yield (best observed yield minus observed yield of the chosen run). Because B adds a constant offset, it ranks runs exactly as A does.
 
-*Model-free trends (E13; descriptive, not pre-registered).* Within each development study, pairs of runs that differ only in temperature (all other base features and the feedstock identical) or only in residence time were identified. Their observed slopes (change in yield per +10 °C, or per doubling of residence time) were summarised per study and temperature band; medians across studies were bootstrapped over studies, and the fraction of studies whose slope has the same sign as the median was recorded.
+## 2.7. Further analyses
 
-*Contrast types and choosing conditions (E14, exploratory; confirmed under Addendum C).* Contrast accuracy was split into temperature-only, residence-time-only and other pairs. For each unseen study with ≥ 5 runs, the run with the highest predicted yield (A: highest $f$; W: highest $g$; PD: highest mean predicted contrast against the other runs) was compared with a rule of thumb — for bio-oil, the run with temperature closest to 325 °C, the centre of the optimum band in E13; for solids, the lowest-temperature run — and with random choice, using the regret $\max_i y_i - y_{\text{chosen}}$. The bio-oil comparison was then tested once, one-sided, on the locked studies (Holm over the three learners).
+E1/E2 (accuracy and baselines) compared twelve learners under random-row and study-grouped CV with both feature sets. E3 (STRATA) produced the heterogeneity decomposition, the row- versus study-calibrated interval comparison and the earlier *k*-shot evaluation with random support sets (Supplementary Table S10). Robustness (E4: input noise, fewer training studies), generalisation (E5: locked studies, studies published after 2018 predicted from earlier ones, leave-one-feedstock-family-out, external database), cost (E6, E11), sensitivity (E7: α, $\tau^2$ estimator, number of folds, tuning) and error analysis by subgroup (E8) followed the registered protocol. E9 (STRATA with six other base learners), E10 (cross-study duplicate audit) and E11 were added during internal review after the main results were known and are reported as such. Addenda A, A2, B and C tested whether within-study *changes* transfer better than absolute yields: within-study contrasts $\Delta_{ab} = y_a - y_b$, in which a study offset cancels, were predicted by the absolute model, a within-study-centred model and a pairwise-difference model (Tynes et al., 2021); model-free temperature slopes were computed from pairs of runs of the same study that differ only in temperature (E13, descriptive, not pre-registered); and the run predicted to give the highest yield was compared with rules of thumb (E14, exploratory, then tested once on locked studies). Details are given in Supplementary Section S7.
 
 ## 2.8. Statistical analysis
 
 The unit of analysis for all inference was the source study. Learners and STRATA variants were compared through per-study RMSE (averaged over seeds) with the Wilcoxon signed-rank test (Wilcoxon, 1945); families of comparisons were corrected with Holm's step-down procedure as described by Demšar (2006). Effect sizes are the median paired difference with a 95% bootstrap CI over studies and the matched-pairs rank-biserial correlation. One-sided tests were used only for directional hypotheses registered in advance (P reduces error; SC coverage exceeds RC coverage). Coverage was summarised both over runs and with equal study weights, with 95% cluster-bootstrap CIs; on development folds, point estimates average the three outer seeds and CIs were computed for the first seed. Statistical significance is claimed only for Holm-adjusted *p* < 0.05.
 
-## 2.9. Software and reproducibility
+## 2.9. Software and availability of code
 
-All analyses ran on a 4-core CPU without GPU using Python 3.13, scikit-learn, LightGBM, XGBoost, CatBoost, GPBoost, statsmodels and SciPy (exact versions in `requirements.txt`). A single command (`python run_all.py --mode full`) regenerates every number, table and figure from the vendored data; a quick mode, run from a fresh clone of the repository, verified the whole pipeline in 12 minutes on the same machine, and the full analysis stages reproduced every value in this article exactly. All values reported in this article are inserted programmatically from the generated result files.
+All analyses ran on a 4-core CPU without GPU using Python 3.13, scikit-learn, LightGBM, XGBoost, CatBoost, GPBoost, statsmodels and SciPy (exact versions recorded with the code). A single command regenerates every number, table and figure from the public data; a quick mode verified the whole pipeline in 12 minutes, and the full analysis reproduced every value in this article. All values reported in this article are inserted programmatically from the generated result files. The code, the locked study list, the configuration files and the result files are available from the corresponding author on reasonable request.
 
 
 # 3. Results and discussion
 
 ## 3.1. Random splits overstate accuracy for new studies
 
-Fig. 1 summarises the study design and Fig. 2 the data: most studies contributed between a few and a few dozen runs, a few contributed more than 100, and the source studies span four decades. Under random-row CV the gradient-boosting learners reproduced the accuracy typically reported in the literature (best bio-oil R² = 0.82, RMSE = 7.6 wt%, LightGBM; best solid-yield RMSE = 7.0 wt%) (Table 2, Fig. 3). When every study was predicted by a model that had not seen it, RMSE roughly doubled for the flexible learners (tree ensembles, boosting, k-NN, SVR, MLP): the ratio of study-grouped to random-row RMSE ranged from 1.52 to 2.61 for bio-oil (median 2.02) and from 1.50 to 2.28 for solid yield (median 1.97). The best study-grouped RMSE was 15.7 wt% for bio-oil (extra trees, R² = 0.24) and 13.7 wt% for solid yield (LightGBM, R² = 0.54), compared with 18.1 and 20.6 wt% for a model that always predicts the training mean. Ratios close to one were obtained only by learners that fit the data poorly in both schemes (mean predictor, ridge regression, GPBoost), i.e. the optimism of random splitting grows with the capacity of a learner to memorise study-specific patterns. Parity plots show that the near-diagonal agreement under random splitting is replaced by wide, partly systematic scatter for unseen studies (Supplementary Fig. S4).
+Fig. 2 summarises the study design. Under random-row CV the gradient-boosting learners reproduced the accuracy typically reported in the literature (best bio-oil R² = 0.82, RMSE = 7.6 wt%, LightGBM; best solid-yield RMSE = 7.0 wt%) (Table 3, Fig. 3). When every study was predicted by a model that had not seen it, RMSE roughly doubled for the flexible learners: the ratio of study-grouped to random-row RMSE ranged from 1.52 to 2.61 for bio-oil (median 2.02) and from 1.50 to 2.28 for solid yield (median 1.97). The best study-grouped RMSE was 15.7 wt% for bio-oil (extra trees, R² = 0.24) and 13.7 wt% for solid yield (LightGBM, R² = 0.54), compared with 18.1 and 20.6 wt% for a model that always predicts the training mean. Ratios close to one were obtained only by learners that fit the data poorly in both schemes (mean predictor, ridge regression, GPBoost); the optimism of random splitting grows with the capacity of a learner to memorise study-specific patterns. Differences between learners under study-grouped CV were small relative to the gap between schemes (9 learners not significantly worse than the best for bio-oil; Supplementary Table S5).
 
 
-**Table 2.** Random-row versus study-grouped cross-validation on development studies (base features; grouped CV averaged over 3 seeds).
+**Table 3.** Random-row versus study-grouped cross-validation on development studies (base features; grouped CV averaged over 3 seeds).
 
 | Target | Learner | Random CV RMSE | Random CV R² | Grouped CV RMSE | Grouped CV R² | RMSE ratio (grouped/random) |
 |---|---|---|---|---|---|---|
@@ -142,33 +161,21 @@ Fig. 1 summarises the study design and Fig. 2 the data: most studies contributed
 
 
 
-![**Fig. 1.** Study design. A locked set of 38 source studies is held out before modelling; all development analyses use study-grouped folds; STRATA adds study-calibrated conformal intervals and *k*-shot empirical-Bayes adaptation to any point predictor.](/home/user/rp_c_12/figures/fig01_workflow.png){width=16cm}
-
-
-
-![**Fig. 2.** Development data. (a) Number of runs contributed per source study; (b) yield distributions; (c) publication years of all 188 source studies (dashed line: temporal split).](/home/user/rp_c_12/figures/fig02_dataset.png){width=16cm}
+![**Fig. 2.** Study design. A locked set of 38 source studies is held out before modelling; all development analyses use study-grouped folds; STRATA adds study-calibrated conformal intervals and *k*-shot empirical-Bayes adaptation to any point predictor.](/home/user/rp_c_12/figures/fig01_workflow.png){width=16cm}
 
 
 
 ![**Fig. 3.** Root-mean-square error of 12 learners under random-row five-fold CV (circles) and study-grouped ten-fold CV (squares; mean of three seeds), base features.](/home/user/rp_c_12/figures/fig03_random_vs_grouped.png){width=16cm}
 
 
-Among learners, differences under study-grouped CV were small relative to the gap between schemes: for bio-oil, 9 learners were not significantly worse than the best one (extra trees) after Holm correction on per-study RMSE (Supplementary Table S3), and the multilayer perceptron extrapolated poorly to unseen studies (RMSE 24.0 wt%) despite competitive random-split accuracy (9.2 wt%). GPBoost, which models a study random intercept, gained nothing for unseen studies: because feedstock descriptors are nearly constant within a study, the random intercept absorbed most of the variance and its fixed-effect component — the only part available for a new study — was nearly flat (Supplementary Section S2). This illustrates that, in literature-compiled data, study identity and feedstock chemistry are strongly confounded, which limits how much of the between-study variation any model can attribute to chemistry.
+## 3.2. Most out-of-study error is a study offset that reported metadata do not explain
 
-## 3.2. Most out-of-study error is a study-level offset
+For the STRATA base learner (XGBoost), study offsets were large and spread on both sides of zero (Fig. 4). The between-study share of out-of-study residual variance was 0.65 (95% CI 0.53–0.76) for bio-oil and 0.49 (0.40–0.61) for solid yield; the standard deviation of study offsets ($\hat\tau$) was 12.5 and 9.7 wt%, against within-study residual standard deviations ($\hat\sigma_w$) of 9.3 and 9.9 wt% (Table 4). A model that is well calibrated on average can therefore be biased by more than 10 wt% for an individual laboratory, and errors for runs of the same study are strongly correlated.
 
-For the STRATA base learner (XGBoost), study offsets were large and spread on both sides of zero (Fig. 4). The between-study share of out-of-study residual variance was 0.65 (95% CI 0.53–0.76) for bio-oil and 0.49 (0.40–0.61) for solid yield; the standard deviation of study offsets ($\hat\tau$) was 12.5 and 9.7 wt%, against within-study residual standard deviations ($\hat\sigma_w$) of 9.3 and 9.9 wt% (Table 3). A model that is well calibrated on average can therefore be biased by more than 10 wt% for an individual study, and errors for runs of the same study are strongly correlated — which is why randomly held-out runs, whose study offsets were already learnt, give an optimistic picture.
-
-
-![**Fig. 4.** Mean out-of-study residual (observed − predicted) of each development study with 95% intervals of the mean, STRATA base learner with base features. The annotated share is the between-study fraction of residual variance with its study-cluster bootstrap CI.](/home/user/rp_c_12/figures/fig04_study_offsets.png){width=16cm}
+However, adding the parsed work-up and reporting descriptors (P) did not significantly reduce the error for unseen studies for either target after Holm correction. Adding the protocol descriptors changed the median per-study RMSE from 12.45 to 12.84 wt% for bio-oil (one-sided Wilcoxon *p* = 0.804; *n* = 122 studies) and from 10.86 to 11.05 wt% for solid yield (*p* = 0.545). A ridge meta-regression of the study offsets on study-level descriptors had no out-of-study predictive value (leave-one-study-out R² = -0.031 and -0.047), and offsets did not differ significantly between the dominant extraction solvents (Kruskal–Wallis *p* = 0.104 for bio-oil; Kruskal–Wallis *p* = 0.951 for solids). Either work-up conventions matter less than unrecorded details (feedstock batch, particle size, heat-up, quenching, product handling), or the coarse descriptors that can be parsed from publications — 23% of development bio-oil runs named no extraction solvent — are too noisy to reveal their effect. In both cases the offset of a new laboratory is not predictable from what studies currently report: it must be represented in the uncertainty (Section 3.3) or measured (Section 3.4).
 
 
-## 3.3. Work-up and reporting descriptors do not explain the offsets
-
-Because bio-oil yield is operationally defined by the recovery solvent and the reporting basis (Valdez et al., 2011; Watson et al., 2019), study offsets were expected to depend on the recorded work-up. However, adding the parsed work-up and reporting descriptors (P) did not significantly reduce the error for unseen studies for either target after Holm correction. Adding the protocol descriptors changed the median per-study RMSE from 12.45 to 12.84 wt% for bio-oil (median paired difference 0.04 wt%, 95% CI -0.38 to 0.60; one-sided Wilcoxon *p* = 0.804; *n* = 122 studies) and from 10.86 to 11.05 wt% for solid yield (*p* = 0.545) (Table 3; all learners with P features in Supplementary Table S2). On the locked test studies, P significantly reduced per-study RMSE for 0 and significantly increased it for 0 of the 24 learner–target combinations (Holm-corrected Wilcoxon tests). Consistently, a ridge meta-regression of the study offsets on the study-level descriptors had no out-of-study predictive value (leave-one-study-out R² = -0.031, permutation *p* = 0.714 for bio-oil; R² = -0.047, *p* = 0.910 for solids), and offsets did not differ significantly between the dominant extraction solvents (Kruskal–Wallis *p* = 0.104 for bio-oil; Kruskal–Wallis *p* = 0.951 for solids). The most negative median offset for bio-oil occurred for studies using ethyl acetate (median offset -12.7 wt%, 7 studies), but such groups are small and the differences were not significant.
-
-
-**Table 3.** Decomposition of out-of-study error and contribution of work-up/reporting descriptors (P).
+**Table 4.** Decomposition of out-of-study error and contribution of work-up/reporting descriptors (P).
 
 | Target | τ² (between) | σ²w (within) | Between-study share [95% CI] | Median study RMSE base → base+P | Δ median [95% CI]; p (one-sided) | Rank-biserial | Meta-regression LOSO R² (perm. p) |
 |---|---|---|---|---|---|---|---|
@@ -177,40 +184,18 @@ Because bio-oil yield is operationally defined by the recovery solvent and the r
 
 
 
-This negative result has two readings, which the data cannot separate. Either work-up conventions matter less than chemistry and conditions that the curated fields do not capture (feedstock batch, particle size, reactor heat-up, quenching and product-handling details), or the coarse, partly missing descriptors that can be parsed from publications are too noisy to reveal their effect — 23% of development bio-oil runs named no extraction solvent. In both cases the practical conclusion is the same: the offset of a new study is not predictable from what studies currently report, so it has to be either measured (Section 3.7) or represented in the uncertainty (Section 3.6).
 
-## 3.4. Laboratories agree on the direction of temperature effects, but models do not predict within-study changes better than levels
-
-Runs that differed *only* in temperature occurred in 63 development studies for bio-oil and 65 for solids in the 250–300 °C band alone (2794 and 3076 pairs over all bands). Their observed slopes trace the familiar behaviour of hydrothermal conversion (Gollakota et al., 2018; Funke and Ziegler, 2010) remarkably consistently across laboratories (Fig. 5, Supplementary Table S11): bio-oil yield changed by +1.31 wt% per 10 °C below 250 °C (95% CI +0.97 to +1.64; same sign in 95% of studies) and by +0.87 wt% at 250–300 °C (81% same sign), levelled off at 300–350 °C (-0.14 wt%, -0.48 to +0.12) and tended to decrease above 350 °C (-0.79 wt%); solid yield changed by -2.66, -1.70, -0.62 and -0.35 wt% per 10 °C in the four bands (86% same sign below 300 °C). Doubling the residence time had no consistent effect on bio-oil yield (-0.06 wt%, -0.66 to +0.61; 50% same sign) and a small negative effect on solid yield (-0.49 wt%, -1.02 to -0.13). The same directions held within each process type — below 300 °C every process-specific median slope was positive for bio-oil (78–100% of studies with the same sign) and negative for solids (82–100%) (Supplementary Table S14). The direction of the temperature response is therefore shared by laboratories whose absolute yields differ by tens of wt%; its magnitude is not — the between-study standard deviation of the bio-oil slope at 250–300 °C (2.3 wt% per 10 °C) is 2.6 times the median slope.
+![**Fig. 4.** Mean out-of-study residual (observed − predicted) of each development study with 95% intervals of the mean, STRATA base learner with base features. The annotated share is the between-study fraction of residual variance with its study-cluster bootstrap CI.](/home/user/rp_c_12/figures/fig04_study_offsets.png){width=16cm}
 
 
-![**Fig. 5.** Model-free trend atlas. Median change in yield per +10 °C across development studies, computed from pairs of runs of the same study that differ only in temperature (all other inputs and the feedstock identical); error bars are 95% study-bootstrap CIs, annotations give the share of studies whose slope has the same sign as the median.](/home/user/rp_c_12/figures/fig11_trend_atlas.png){width=16cm}
+## 3.3. Study-calibrated intervals keep their coverage for new studies, at the price of width
+
+Intervals calibrated on randomly held-out runs are narrow because the residuals of seen studies omit the study offset. For unseen development studies, nominal 90% row-calibrated intervals covered 0.57 (bio-oil; 95% CI 0.52–0.64) and 0.61 (solids) of runs with equal study weights, and 66% and 66% of studies had coverage below 0.80 (Table 5, Fig. 5). Calibrating on out-of-study residuals with equal study weights gave 0.91 (0.87–0.94) and 0.91 (one-sided Wilcoxon on per-study coverage, *p* < 0.001 and < 0.001). The same pattern held for α = 0.05 and 0.20, with 5 instead of 10 outer folds (Supplementary Table S6), and on the locked test studies (bio-oil RC 0.60 vs SC 0.89; solids RC 0.46 vs SC 0.82), for left-out feedstock families (mean) (bio-oil RC 0.55 vs SC 0.89; solids RC 0.60 vs SC 0.90), for temporally later studies (bio-oil RC 0.42 vs SC 0.85; solids RC 0.56 vs SC 0.90), on the external hydrochar database (solids RC 0.55 vs SC 0.92).
+
+Interval width is the central quantity for a laboratory, because it states how much the prediction can be trusted before any experiment. Study-calibrated intervals were 59.1 wt% wide for bio-oil and 46.7 wt% for solids, against 22.8 and 20.6 wt% for row-calibrated ones — an honest half-width of roughly ±30 wt% for the bio-oil yield of a new study, which rules out fine-grained optimisation from literature data alone. With seven base learners (E9; Supplementary Table S14), study-calibrated coverage was 0.90–0.91 for bio-oil with every learner, including the training mean, whereas row-calibrated coverage fell with learner capacity from 0.86 (mean predictor) to 0.55–0.59 (tree ensembles): flexible learners absorb the offsets of studies they have seen. Relative to the 'no-ML' reference, the best learner narrowed valid intervals by 15% for bio-oil and 23% for solids — a real but modest gain. An exploratory, post-hoc variant with locally adaptive widths (Supplementary Section S4) did not narrow the intervals (mean width 63.0 vs 59.1 wt% for bio-oil) and worsened the interval score, consistent with an error dominated by an unpredictable study offset.
 
 
-Contrary to the pre-registered hypotheses, the learners did not exploit this regularity better than they predicted absolute yields (Fig. 6, Supplementary Table S12). For unseen development studies, contrast $R^2_\Delta$ was 0.14–0.22 for bio-oil (level R² of the same studies 0.15–0.19) and 0.25–0.43 for solids (levels 0.36–0.47) across the three learners and three model types (T1 not supported). Pooled contrast R² weights large studies by their number of pairs; weighting studies equally, the median per-study $R^2_\Delta$ was only 0.06–0.10 for bio-oil and 0.23–0.32 for solids, and -0.28 to -0.04 for bio-oil on the locked studies (Supplementary Table S15). Offset-invariant learners were better than differencing the absolute model in 1 of 12 Holm-corrected comparisons (T2 not supported). Even for temperature-only pairs, $R^2_\Delta$ was 0.14–0.18 for bio-oil and 0.48–0.52 for solids (XGBoost, models A and PD), and residence-time-only contrasts were not predicted at all ($R^2_\Delta$ = 0.01 for bio-oil, model A). On the locked studies the pattern was mixed: offset-invariant models retained contrast skill where the absolute model failed (bio-oil $R^2_\Delta$ -0.30 for A vs 0.21 for W and 0.30 for PD; temperature-only pairs 0.15 vs 0.59), but two studies accounted for 65% of the squared contrast error of A, and per-study comparisons were not significant (0 of 12 after Holm; smallest unadjusted *p* = 0.025). For the two product-quality targets the results were equally mixed: bio-oil HHV contrasts were predicted better than levels in development ($R^2_\Delta$ 0.39 vs level R² 0.21) but not on locked studies (-0.10 vs 0.25); for bio-oil carbon content, $R^2_\Delta$ was 0.11–0.17 (development) and -0.07–0.22 (locked).
-
-The two analyses are reconciled by the size of the within-study variation: because laboratories agree on direction but not on magnitude, and most within-study pairs also differ in catalyst, medium or feedstock rather than temperature alone, the within-study residual variance ($\hat\sigma_w$ = 9.3 wt% for bio-oil) is large compared with the systematic within-study differences that the inputs explain. Directional knowledge of the kind shown in Fig. 5 is therefore a robust prior for experimental design, but literature-trained models should not be trusted to quantify the effect of a planned change in a new laboratory.
-
-
-![**Fig. 6.** Accuracy of absolute-yield predictions (levels, model A) and of within-study contrasts (models A, W and PD; XGBoost) for unseen development studies and for the locked test studies, for four targets. R² of contrasts is relative to the no-change predictor.](/home/user/rp_c_12/figures/fig12_levels_vs_contrasts.png){width=16cm}
-
-
-## 3.5. Choosing the best planned run: an exploratory advantage that did not replicate
-
-Ranking the runs of a study is a weaker requirement than predicting them. For unseen development studies, all three model types picked bio-oil conditions with lower regret than the 325 °C rule of thumb (median regret 7.0–8.7 vs 12.8 wt%; random choice 12.7 wt%; 110 studies; Holm-corrected *p* < 0.001 for model A), whereas for solids none beat the lowest-temperature rule (median regret 1.3–3.0 vs 2.2 wt%) (Fig. 7, Supplementary Table S13). Because this comparison was chosen after the E12 results had been seen, it was registered as a confirmatory test on the locked studies before they were analysed. The advantage was not confirmed: on 25 locked bio-oil studies the median regret was 11.9–12.5 wt% for the models, 14.6 wt% for the rule and 12.5 wt% for random choice (one-sided Holm-corrected *p* = 0.661 for PD). Literature-trained models should therefore not be relied on to select the best conditions of a new HTL campaign without local confirmation.
-
-
-![**Fig. 7.** Regret of choosing the run predicted to give the highest yield within a study (observed best minus observed yield of the chosen run; median and interquartile range over studies) for models A, W and PD, a rule of thumb and random choice. Left: development studies (exploratory); right: locked studies (pre-registered confirmatory test).](/home/user/rp_c_12/figures/fig13_ranking_regret.png){width=16cm}
-
-
-## 3.6. Row-calibrated intervals under-cover new studies; study calibration largely restores coverage
-
-Intervals calibrated on randomly held-out runs are narrow because the residuals of seen studies omit the study offset. For unseen development studies, nominal 90% row-calibrated intervals covered 0.57 (bio-oil; 95% CI 0.52–0.64) and 0.61 (solids) of runs with equal study weights, and 66% and 66% of studies had coverage below 0.80 (Table 4, Fig. 8). Calibrating on out-of-study residuals with equal study weights gave 0.91 (0.87–0.94) and 0.91; the improvement was significant across studies (one-sided Wilcoxon on per-study coverage, *p* < 0.001 for bio-oil and < 0.001 for solids). The price is width: 59.1 vs 22.8 wt% for bio-oil and 46.7 vs 20.6 wt% for solids. These widths are not a defect of the method but an honest statement of how little a literature-trained model knows about a study it has not seen. The same pattern held for α = 0.05 and 0.20, with 5 instead of 10 outer folds (Supplementary Tables S4–S5), and on the locked test studies (bio-oil RC 0.60 vs SC 0.89; solids RC 0.46 vs SC 0.82), for left-out feedstock families (mean) (bio-oil RC 0.55 vs SC 0.89; solids RC 0.60 vs SC 0.90), for temporally later studies (bio-oil RC 0.42 vs SC 0.85; solids RC 0.56 vs SC 0.90), on the external hydrochar database (solids RC 0.55 vs SC 0.92). An exploratory, post-hoc variant with locally adaptive widths (Supplementary Section S4) did not narrow the intervals (mean width 63.0 vs 59.1 wt% for bio-oil) and worsened the interval score, consistent with an error dominated by an unpredictable study offset.
-
-Whether this holds for other base learners, and what the machine-learning model adds, was tested by repeating the evaluation with seven base learners (E9; Supplementary Table S10). Study-calibrated coverage was 0.90–0.91 for bio-oil and 0.89–0.92 for solids with every base learner, including the training mean. Row-calibrated coverage, by contrast, deteriorated with the capacity of the learner: 0.86 for the mean predictor, 0.80 for ridge regression, 0.65 for *k*-NN and 0.55–0.59 for the tree ensembles (bio-oil). This is the mechanism behind the failure of row calibration: flexible learners absorb the offsets of studies they have seen, so residuals of randomly held-out runs no longer contain the offset that a new study will carry. Relative to the 'no-ML' reference, the best learner narrowed valid intervals by 15% for bio-oil (53.5 vs 63.0 wt%, random forest) and 23% for solids (46.0 vs 59.4 wt%) — a real but modest gain — and after three local runs the median per-study RMSE was 8.18 vs 9.15 wt% (bio-oil) and 7.85 vs 9.89 wt% (solids).
-
-
-**Table 4.** Empirical coverage of 90% prediction intervals: row-calibrated (RC) vs study-calibrated (SC).
+**Table 5.** Empirical coverage of 90% prediction intervals: row-calibrated (RC) vs study-calibrated (SC).
 
 | Target | Setting | α | Calibration | Coverage (rows) | Coverage (studies) | Width (wt%) | Studies <0.8 coverage |
 |---|---|---|---|---|---|---|---|
@@ -235,56 +220,118 @@ Whether this holds for other base learners, and what the machine-learning model 
 
 
 
-Study calibration works for contrasts too: intervals for within-study contrasts covered 0.90 (bio-oil) and 0.91 (solids) of unseen-study pairs and were 44.9 and 45.2 wt% wide, against 55.8 and 46.6 wt% for levels — narrower for bio-oil, hardly for solids (T4).
+
+![**Fig. 5.** Study-weighted empirical coverage of nominal 90% prediction intervals calibrated on random rows (RC) or on studies (SC) across validation settings, including left-out feedstock families, later studies, locked studies and the external database (base + P features). Dashed line: nominal level.](/home/user/rp_c_12/figures/fig05_coverage.png){width=16cm}
 
 
-![**Fig. 8.** Study-weighted empirical coverage of nominal 90% prediction intervals calibrated on random rows (RC) or on studies (SC) across validation settings (base + P features). Dashed line: nominal level.](/home/user/rp_c_12/figures/fig05_coverage.png){width=16cm}
+## 3.4. Sequential local adaptation: literature, literature plus local runs, or local runs only
+
+Table 6 and Fig. 6 show what a new laboratory would have obtained after measuring *k* runs in the screening-design order. For unseen development studies, STRATA (B) was more accurate than the literature model alone (A) and than the local runs alone (C) at every *k* and for both targets (8 of 8 and 8 of 8 Holm-corrected comparisons significant; Supplementary Table S23). For bio-oil, the median per-study RMSE fell from 12.4 wt% (A) to 8.8, 8.8 and 8.4 wt% with one, three and five runs, against 10.4, 9.9 and 9.5 wt% for C; for solids, from 9.4 to 8.8, 7.8 and 7.7 wt% (C: 11.2, 10.5, 10.0 wt%). The first run carried most of the gain for bio-oil (3.5 wt%), whereas for solids the error fell more gradually (0.6 wt% after one run, 1.6 wt% after three). Study-weighted coverage of the re-calibrated intervals stayed at 0.94 (bio-oil) and 0.89 (solids) at *k* = 3, and the half-width shrank from ±30.4 to ±22.2 wt% (bio-oil) and from ±22.8 to ±19.1 wt% (solids). Local-only intervals were wider than those of B at every *k*, because a mean of one to five runs says nothing about how yields vary with conditions.
 
 
-## 3.7. A few local runs reduce error and interval width
+**Table 6.** Retrospective simulated deployment (E15): a new laboratory measures k runs in screening-design order, and the runs from position 6 onward are predicted by A (literature model only), B (STRATA: literature model shifted by the shrunk mean residual of the k runs) or C (mean of the k local runs). RMSE: median per-study RMSE (wt%); Cov.: study-weighted coverage of 90% intervals re-calibrated for each k and strategy; ±HW: mean interval half-width (wt%). Dev.: unseen development studies in study-grouped CV (3 seeds); Locked: studies held out before modelling (≥ 11 runs); 4TU: external hydrochar database (feedstock series as pseudo-studies). MAE is given in the supplementary deployment table.
 
-When *k* runs of the new study are available, its offset can be estimated. For the 80 development studies with at least 11 bio-oil runs, the median per-study RMSE fell from 12.37 wt% (*k* = 0) to 9.22, 8.47 and 7.63 wt% with *k* = 1, 3 and 10 shrunk offsets, and the study-calibrated interval width fell from 59.3 to 37.2 wt% at *k* = 3 while study-weighted coverage stayed at 0.91 (Table 5, Fig. 9). For solids the corresponding RMSE values were 11.05, 8.84, 7.66 and 7.02 wt%. Shrinkage lowered the per-study RMSE relative to the raw mean offset at k = 1, 2, 3, 5, 10 (Holm-corrected Wilcoxon, bio-oil) and was never significantly worse. The estimated shrinkage constant ($\hat\lambda = \hat\sigma_w^2/\hat\tau^2$, median over folds 0.48 for bio-oil) is small, so the shrunk and raw offsets converge after a few runs; shrinkage matters mainly for *k* = 1–2, which is exactly the regime of a laboratory screening a new feedstock. Estimating $\tau^2$ by restricted maximum likelihood instead of the method of moments gave median per-study RMSE at k = 1 of 9.37 vs 10.06 wt% (bio-oil) and 9.33 vs 8.89 wt% (solids; Supplementary Table S6). Replacing the tuned hyper-parameters of the base learner by library defaults changed its study-grouped RMSE by 0.0–1.0 wt% (Supplementary Table S7), so the conclusions do not hinge on tuning. These results quantify, with valid intervals, the observation of Elfetni et al. (2027) that local calibration runs reduce the error of literature-trained HTL surrogates. Anchoring with offset-invariant models (pre-registered T3) did not improve on the shrunk offset of the absolute model: with one measured run, the median per-study RMSE was 9.60 wt% for STRATA, 10.20 for W and 9.41 for PD (bio-oil, XGBoost; 0 significantly better and 0 significantly worse of 36 Holm-corrected comparisons across learners, targets and *k*).
-
-
-**Table 5.** k-shot adaptation to a new study (studies with ≥ 11 runs; 20 random support sets per study).
-
-| Target | k | Offset | Median study RMSE | Coverage (studies) | Width (wt%) | Studies | EB vs raw: Δ median; p_Holm |
-|---|---|---|---|---|---|---|---|
-| Bio-oil | 0 | — | 12.37 | 0.926 | 59.3 | 80 |  |
-| Bio-oil | 1 | EB shrinkage | 9.22 | 0.908 | 42.6 | 80 | -0.75; <0.001 |
-| Bio-oil | 1 | raw mean | 10.23 | 0.907 | 45.9 | 80 |  |
-| Bio-oil | 2 | EB shrinkage | 8.78 | 0.914 | 39.0 | 80 | -0.29; <0.001 |
-| Bio-oil | 2 | raw mean | 9.17 | 0.911 | 39.9 | 80 |  |
-| Bio-oil | 3 | EB shrinkage | 8.47 | 0.913 | 37.2 | 80 | -0.14; <0.001 |
-| Bio-oil | 3 | raw mean | 8.7 | 0.91 | 37.7 | 80 |  |
-| Bio-oil | 5 | EB shrinkage | 8.19 | 0.918 | 36.3 | 80 | -0.07; <0.001 |
-| Bio-oil | 5 | raw mean | 8.29 | 0.915 | 36.5 | 80 |  |
-| Bio-oil | 10 | EB shrinkage | 7.63 | 0.902 | 33.4 | 80 | -0.02; 0.004 |
-| Bio-oil | 10 | raw mean | 7.63 | 0.903 | 33.9 | 80 |  |
-| Solid | 0 | — | 11.05 | 0.898 | 46.6 | 72 |  |
-| Solid | 1 | EB shrinkage | 8.84 | 0.908 | 39.3 | 72 | -0.92; <0.001 |
-| Solid | 1 | raw mean | 9.18 | 0.911 | 45.7 | 72 |  |
-| Solid | 2 | EB shrinkage | 8.18 | 0.899 | 35.8 | 72 | -0.34; 0.002 |
-| Solid | 2 | raw mean | 8.31 | 0.901 | 38.2 | 72 |  |
-| Solid | 3 | EB shrinkage | 7.66 | 0.899 | 34.6 | 72 | -0.19; 0.003 |
-| Solid | 3 | raw mean | 7.87 | 0.9 | 35.9 | 72 |  |
-| Solid | 5 | EB shrinkage | 7.48 | 0.898 | 33.0 | 72 | -0.09; 0.007 |
-| Solid | 5 | raw mean | 7.38 | 0.899 | 33.6 | 72 |  |
-| Solid | 10 | EB shrinkage | 7.02 | 0.904 | 33.6 | 72 | -0.03; 0.006 |
-| Solid | 10 | raw mean | 6.99 | 0.903 | 33.7 | 72 |  |
+| Setting | Target | k | Studies | RMSE A | RMSE B | RMSE C | Cov. A | Cov. B | Cov. C | ±HW A | ±HW B | ±HW C |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Dev. | Bio-oil | 0 | 80 | 12.4 | — | — | 0.94 | — | — | 30.4 | — | — |
+| Dev. | Bio-oil | 1 | 80 | 12.4 | 8.8 | 10.4 | 0.94 | 0.94 | 0.93 | 30.4 | 24.6 | 31.0 |
+| Dev. | Bio-oil | 3 | 80 | 12.4 | 8.8 | 9.9 | 0.94 | 0.94 | 0.92 | 30.4 | 22.2 | 24.8 |
+| Dev. | Bio-oil | 5 | 80 | 12.4 | 8.4 | 9.5 | 0.94 | 0.92 | 0.92 | 30.4 | 21.0 | 23.3 |
+| Dev. | Solid | 0 | 72 | 9.4 | — | — | 0.89 | — | — | 22.8 | — | — |
+| Dev. | Solid | 1 | 72 | 9.4 | 8.8 | 11.2 | 0.89 | 0.9 | 0.9 | 22.8 | 19.8 | 27.9 |
+| Dev. | Solid | 3 | 72 | 9.4 | 7.8 | 10.5 | 0.89 | 0.89 | 0.89 | 22.8 | 19.1 | 24.5 |
+| Dev. | Solid | 5 | 72 | 9.4 | 7.7 | 10.0 | 0.89 | 0.89 | 0.88 | 22.8 | 17.0 | 21.4 |
+| Locked | Bio-oil | 0 | 19 | 10.3 | — | — | 0.9 | — | — | 29.0 | — | — |
+| Locked | Bio-oil | 1 | 19 | 10.3 | 8.2 | 6.4 | 0.9 | 0.97 | 1.0 | 29.0 | 24.4 | 31.1 |
+| Locked | Bio-oil | 3 | 19 | 10.3 | 8.0 | 6.0 | 0.9 | 0.92 | 1.0 | 29.0 | 21.7 | 24.4 |
+| Locked | Bio-oil | 5 | 19 | 10.3 | 7.3 | 6.3 | 0.9 | 0.94 | 0.99 | 29.0 | 20.5 | 22.9 |
+| Locked | Solid | 0 | 18 | 13.4 | — | — | 0.85 | — | — | 22.6 | — | — |
+| Locked | Solid | 1 | 18 | 13.4 | 7.7 | 9.9 | 0.85 | 0.8 | 0.9 | 22.6 | 18.7 | 27.7 |
+| Locked | Solid | 3 | 18 | 13.4 | 7.1 | 8.5 | 0.85 | 0.84 | 0.89 | 22.6 | 19.3 | 24.7 |
+| Locked | Solid | 5 | 18 | 13.4 | 6.9 | 8.1 | 0.85 | 0.86 | 0.9 | 22.6 | 17.1 | 21.4 |
+| 4TU | Solid | 0 | 14 | 11.6 | — | — | 0.96 | — | — | 22.6 | — | — |
+| 4TU | Solid | 1 | 14 | 11.6 | 9.4 | 8.7 | 0.96 | 0.95 | 0.97 | 22.6 | 18.7 | 27.7 |
+| 4TU | Solid | 3 | 14 | 11.6 | 6.3 | 8.0 | 0.96 | 0.94 | 0.94 | 22.6 | 18.2 | 24.7 |
+| 4TU | Solid | 5 | 14 | 11.6 | 6.3 | 7.9 | 0.96 | 0.92 | 0.93 | 22.6 | 16.6 | 21.4 |
 
 
 
+On held-out data the picture was more differentiated. For the locked solid studies, B reduced the median error from 13.4 to 7.7 wt% with one run and 7.1 wt% with three (B vs A, Holm *p* = 0.014 at *k* = 3), and on the external hydrochar database from 11.6 to 6.3 wt% (Holm *p* = 0.100, not significant; 14 pseudo-studies); B was not significantly different from C in either setting after correction except for the external database at *k* = 2 (*p* = 0.042). For the locked bio-oil studies, however, the local runs alone were more accurate than STRATA: median RMSE 6.0 (C) vs 8.0 wt% (B) at *k* = 3 (Holm *p* = 0.009; also at *k* = 2, *p* = 0.010), and B was not significantly better than A (10.3 wt%). Why literature anchoring did not help for these 19 studies could not be established. Their yields varied somewhat less within a study (median within-study SD 6.4 vs 8.0 wt% for the development studies), which favours a local mean, but the locked solid studies showed a similar difference (7.0 vs 8.7 wt%) without the same effect. Coverage of B on locked studies was 0.92 (bio-oil) and 0.84 (solids) at *k* = 3 — below nominal for solids, as for the unadapted intervals (Section 3.7). The same conclusions held for random run orders and, with smaller differences, for the reported order (Supplementary Table S22).
 
-![**Fig. 9.** *k*-shot adaptation to a new study (development studies with ≥ 11 runs, base + P features, 20 random support sets per study and *k*). Top: median per-study RMSE of the remaining runs; bottom: width of the re-calibrated 90% interval. *k* = 0 is the unadapted model.](/home/user/rp_c_12/figures/fig06_kshot.png){width=16cm}
-
-
-## 3.8. Generalisation, robustness and cost
-
-The locked test studies, evaluated once after all modelling decisions had been frozen, gave a more pessimistic picture than development CV. For bio-oil yield (556 runs, 28 studies) the STRATA base learner reached RMSE = 18.3 wt% (R² = -0.95; best learner k-nearest neighbours, 12.9 wt%; mean predictor 13.6 wt%); for solid yield (457 runs, 30 studies) the STRATA base learner reached RMSE = 18.5 wt% (R² = 0.30; best learner MLP, 14.4 wt%; mean predictor 23.0 wt%). For bio-oil, only 4 of the 11 non-trivial learners had a lower pooled RMSE than the mean predictor, although 6 had a lower median per-study RMSE: pooled errors were dominated by a few studies outside the bulk of the training distribution — for XGBoost, a single solvothermal series of 90 runs contributed 54% of the squared error, and excluding it (post hoc) lowered the RMSE from 18.3 to 13.6 wt% (R² = 0.00). Study-weighted coverage of row-calibrated 90% intervals was 0.60 (95% CI 0.47–0.73) for bio-oil and 0.46 (95% CI 0.34–0.58) for solids; study-calibrated intervals reached 0.89 (95% CI 0.81–0.97) and 0.82 (95% CI 0.70–0.92) (Table 6, Fig. 8). Study calibration thus removed most, but for solids not all, of the under-coverage; with 28–30 locked studies the intervals are wide, and the solid-yield shortfall reflects a few studies with feedstocks (technical lignin, plastic–biomass blends) that are rare in the training data.
+Fig. 7 shows the effect at run level for the locked studies. Pooled over all query runs, the RMSE was 21.7 wt% for A, 10.4 wt% for B and 7.7 wt% for C with three runs (bio-oil), and 16.4, 10.9 and 13.2 wt% (solids); run-level coverage was 0.81 (A) and 0.95 (B) for bio-oil and 0.91 and 0.91 for solids. The large pooled error of A comes from a few studies whose yields lie far from the bulk of the training data; anchoring removes most of their offset, but a constant shift cannot correct a within-study pattern that the model gets wrong. The practical reading is that a few local runs are worth more than further model refinement, but whether to combine them with the literature model is an empirical question for each laboratory: across the five target × setting combinations, B had a lower median error than C at every *k* ≥ 2 in four, and C had the lower median error in one (locked bio-oil studies).
 
 
-**Table 6.** Single evaluation on the 38 locked test studies (models trained on all development studies, base features).
+![**Fig. 6.** Retrospective simulated deployment (screening-design run order). Top: median per-study RMSE of the query runs (runs 6 onward) for the literature model alone (A), STRATA (B: literature model plus the shrunk offset of *k* local runs) and the local runs alone (C). Bottom: half-width of the 90% interval re-calibrated for each strategy and *k*. Development: unseen studies in study-grouped CV; locked: 38 studies held out before modelling; external: 4TU hydrochar database.](/home/user/rp_c_12/figures/fig14_deployment.png){width=16cm}
+
+
+
+![**Fig. 7.** Observed versus predicted yields of the query runs of the locked studies with 90% intervals: literature model without local runs (A, *k* = 0) and STRATA after three screening-design runs (B, *k* = 3). Titles give run-level coverage.](/home/user/rp_c_12/figures/fig17_pred_obs_intervals.png){width=16cm}
+
+
+## 3.5. Decision support: can a laboratory tell in advance, and how many runs does it need?
+
+The applicability-domain score ranked the risk of a large error: for development studies its Spearman correlation with the error of the unadapted model was 0.46 for bio-oil (*p* = 1.8 × 10^−5^; 80 studies) and 0.49 for solids (*p* = 1.2 × 10^−5^) (Table 7). The pre-registered threshold, however, flagged 0 of 28 locked bio-oil studies and 0 of 30 locked solid studies (largest scores 4.62 and 5.09 against thresholds 5.69 and 5.93), so hypothesis D1 could not be tested and the rule "use local runs if flagged" reduced to always using STRATA. In an exploratory analysis added after this result, the score still correlated with the error on locked bio-oil studies (ρ = 0.55, *p* = 0.02; 19 studies) but not on locked solid studies (ρ = 0.25, *p* = 0.32). The score did not identify the locked bio-oil studies for which local runs alone were better (Section 3.4): being close to the training data in feedstock and conditions does not guarantee that a laboratory's yields behave like the literature average. A laboratory should therefore not rely on a distance-based flag alone but compare literature-anchored and local-only predictions once its first runs are available, as STRATA-Lab prescribes (Fig. 1).
+
+How many runs are needed depends on the precision required. With STRATA, the development half-width of the 90% interval was ±30.4, ±24.6, ±23.9, ±22.2 and ±21.0 wt% for bio-oil after 0, 1, 2, 3 and 5 runs, and ±22.8, ±19.8, ±19.5, ±19.1 and ±17.0 wt% for solids. A half-width of ±20 wt% was reached for solids after 1 run (locked coverage 0.80, median RMSE 7.7 wt%) but for bio-oil not within five runs, and ±10 or ±15 wt% was not reached for either target. Literature-trained models anchored by a few runs therefore support screening — deciding whether a feedstock is promising and which temperature region to explore — but not the optimisation of conditions to within a few wt%, which requires a local experimental design.
+
+
+**Table 7.** Decision support for a new laboratory (E16): applicability-domain (AD) score, pre-registered threshold and the number of local runs needed for a target 90% interval half-width. Exploratory items were added after the pre-registered threshold flagged no locked study.
+
+| Target | Item | Result |
+|---|---|---|
+| Bio-oil yield | Applicability-domain score vs out-of-study error (development; Spearman ρ) | ρ = 0.46 (p = 1.8e-05; 80 studies) |
+| Bio-oil yield | Pre-registered threshold (95th percentile of development scores) on locked studies | 0 of 28 locked studies flagged (max score 4.62 vs threshold 5.69); test D1 not possible |
+| Bio-oil yield | Exploratory: score vs error on locked studies (Spearman ρ) | ρ = 0.55 (p = 0.02; 19 studies) |
+| Bio-oil yield | STRATA 90% half-width after k local runs (development; k = 0, 1, 2, 3, 5) | ±30.4, ±24.6, ±23.9, ±22.2, ±21.0 wt% |
+| Bio-oil yield | Local runs needed for a 90% half-width ≤ ±10 wt% | not reached within 5 local runs |
+| Bio-oil yield | Local runs needed for a 90% half-width ≤ ±15 wt% | not reached within 5 local runs |
+| Bio-oil yield | Local runs needed for a 90% half-width ≤ ±20 wt% | not reached within 5 local runs |
+| Solid yield | Applicability-domain score vs out-of-study error (development; Spearman ρ) | ρ = 0.49 (p = 1.2e-05; 72 studies) |
+| Solid yield | Pre-registered threshold (95th percentile of development scores) on locked studies | 0 of 30 locked studies flagged (max score 5.09 vs threshold 5.93); test D1 not possible |
+| Solid yield | Exploratory: score vs error on locked studies (Spearman ρ) | ρ = 0.25 (p = 0.32; 18 studies) |
+| Solid yield | STRATA 90% half-width after k local runs (development; k = 0, 1, 2, 3, 5) | ±22.8, ±19.8, ±19.5, ±19.1, ±17.0 wt% |
+| Solid yield | Local runs needed for a 90% half-width ≤ ±10 wt% | not reached within 5 local runs |
+| Solid yield | Local runs needed for a 90% half-width ≤ ±15 wt% | not reached within 5 local runs |
+| Solid yield | Local runs needed for a 90% half-width ≤ ±20 wt% | k = 1 (development median RMSE 8.8; locked coverage 0.80, median RMSE 7.7) |
+
+
+
+## 3.6. Laboratory case studies
+
+The pre-specified rule selected, among 19 eligible locked bio-oil studies, the HTL of *Spirulina platensis* (68 runs at 14 temperatures; doi:10.1016/j.energy.2020.117550) and, among 18 eligible locked solid studies, the HTC of duckweed (*Lemna* sp.; 25 runs at 10 temperatures; doi:10.1016/j.biortech.2012.08.106) (Table 8, Fig. 8). The two cases illustrate the two regimes found in Section 3.4.
+
+For the microalga, the literature model without local runs had an RMSE of 10.2 wt% with intervals of ±27.4 wt% that covered all runs. The first screening run (340 °C) gave 36.7 wt%, well above both the model's 18.9 wt% and the study's median of 22.6 wt%; shifting the model by this offset made STRATA worse (17.3 wt%, coverage 0.78), and it remained worse than the literature model up to five runs (12.2 wt%) before converging at about ten (9.5 wt%). The local mean of the first runs was more accurate than both from the second run onward (8.0 wt% at *k* = 2, 7.6 wt% at *k* = 5), because the literature model's run-to-run pattern did not match this study (correlation between predicted and observed yields across its runs -0.27), so that a study mean was the better predictor. For duckweed HTC, the literature model was already accurate (5.7 wt%); STRATA kept the error at 5.2–5.7 wt% with full coverage while its half-width narrowed from ±23.4 to ±17.3 wt% after five runs, whereas the local mean was poor (10.3–21.0 wt%; predicted and observed yields correlated at 0.84 across the runs of this study, so the model's temperature pattern carried real information). The database records one run of this study at 20 °C (78.3 wt% solid), which the screening design selected as the lowest-temperature run; it is retained as recorded, it inflates the local mean at *k* = 2–3, and it makes the regret of the model-chosen run trivially zero at *k* = 0–1. Choosing the run with the highest predicted yield gave a regret of 10.4 wt% for bio-oil (random choice 16.2 wt%) and, once the 20 °C entry had been measured, 11.0 wt% for solids (random 12.8 wt%) — at best modestly better than chance, consistent with Section 3.8.
+
+
+**Table 8.** Laboratory case studies (E17): one locked study per target selected by a pre-specified rule (≥ 11 runs, most distinct temperatures). Runs are measured one at a time in screening-design order; all remaining runs are predicted. Regret: best observed yield among the remaining runs minus the observed yield of the run predicted to be best (A and B rank runs identically because B adds a constant offset); random: expected regret of a random choice. RMSE, ±HW (90% half-width of B) and regret in wt%; Cov. B: coverage of the remaining runs by the interval of B.
+
+| Case | k | Runs predicted | RMSE A | RMSE B | RMSE C | Cov. B | ±HW B | Regret A/B | Regret random |
+|---|---|---|---|---|---|---|---|---|---|
+| Bio-oil, Spirulina HTL | 0 | 68 | 10.19 | 10.19 |  | 1.0 | 27.39 | 10.4 | 16.16 |
+| Bio-oil, Spirulina HTL | 1 | 67 | 10.03 | 17.32 | 16.31 | 0.78 | 21.74 | 10.4 | 16.37 |
+| Bio-oil, Spirulina HTL | 2 | 66 | 10.1 | 12.77 | 8.01 | 0.92 | 22.09 | 10.4 | 16.23 |
+| Bio-oil, Spirulina HTL | 3 | 65 | 10.08 | 13.96 | 8.44 | 0.8 | 19.1 | 10.4 | 16.31 |
+| Bio-oil, Spirulina HTL | 5 | 63 | 9.74 | 12.24 | 7.56 | 0.89 | 19.5 | 10.4 | 16.29 |
+| Bio-oil, Spirulina HTL | 10 | 58 | 9.7 | 9.52 | 8.02 | 0.91 | 17.54 | 10.4 | 15.62 |
+| Solid, duckweed HTC | 0 | 25 | 5.68 | 5.68 |  | 1.0 | 23.36 | 0.0 | 41.84 |
+| Solid, duckweed HTC | 1 | 24 | 5.72 | 5.16 | 10.3 | 1.0 | 20.57 | 0.0 | 41.68 |
+| Solid, duckweed HTC | 2 | 23 | 5.71 | 5.97 | 21.0 | 1.0 | 19.65 | 11.0 | 12.89 |
+| Solid, duckweed HTC | 3 | 22 | 5.82 | 5.71 | 13.87 | 1.0 | 18.83 | 11.0 | 12.83 |
+| Solid, duckweed HTC | 5 | 20 | 5.78 | 5.21 | 9.33 | 1.0 | 17.28 | 10.8 | 12.91 |
+| Solid, duckweed HTC | 10 | 15 | 6.01 | 5.65 | 6.6 | 1.0 | 17.26 | 7.1 | 13.27 |
+
+
+
+
+![**Fig. 8.** Laboratory case studies (locked studies selected by a pre-specified rule). Observed yields (black), literature model without local runs (A, grey, with 90% intervals), STRATA after the three circled screening-design runs (B, blue) and the local mean of those runs (C, dashed line with its 90% band).](/home/user/rp_c_12/figures/fig15_case_study.png){width=16cm}
+
+
+## 3.7. Generalisation across studies, time, feedstock families and databases
+
+The locked test studies, evaluated once after all modelling decisions had been frozen, gave a more pessimistic picture than development CV. For bio-oil yield (556 runs, 28 studies) the STRATA base learner reached RMSE = 18.3 wt% (R² = -0.95; best learner k-nearest neighbours, 12.9 wt%; mean predictor 13.6 wt%); for solid yield (457 runs, 30 studies) the STRATA base learner reached RMSE = 18.5 wt% (R² = 0.30; best learner MLP, 14.4 wt%; mean predictor 23.0 wt%). For bio-oil, only 4 of the 11 non-trivial learners had a lower pooled RMSE than the mean predictor, although 6 had a lower median per-study RMSE: pooled errors were dominated by a few studies outside the bulk of the training distribution — for XGBoost, a single solvothermal series of 90 runs contributed 54% of the squared error, and excluding it (post hoc) lowered the RMSE from 18.3 to 13.6 wt% (R² = 0.00). Study-weighted coverage of row-calibrated 90% intervals was 0.60 (95% CI 0.47–0.73) for bio-oil and 0.46 (95% CI 0.34–0.58) for solids; study-calibrated intervals reached 0.89 (95% CI 0.81–0.97) and 0.82 (95% CI 0.70–0.92) (Table 9, Fig. 5). Study calibration thus removed most, but for solids not all, of the under-coverage; with 28–30 locked studies the intervals are wide, and the solid-yield shortfall reflects a few studies with feedstocks (technical lignin, plastic–biomass blends) that are rare in the training data.
+
+
+**Table 9.** Single evaluation on the 38 locked test studies (models trained on all development studies, base features).
 
 | Target | Learner | Runs | Studies | RMSE | R² | Median study RMSE |
 |---|---|---|---|---|---|---|
@@ -315,48 +362,20 @@ The locked test studies, evaluated once after all modelling decisions had been f
 
 
 
-Predicting studies published after 2018 from earlier studies gave RMSE = 19.4 (bio-oil; higher than the study-grouped CV value of 15.8 wt%) and 16.5 wt% (solids; higher than 14.1 wt%), i.e. models trained on older literature transfer no better to newer studies than to randomly chosen unseen studies. Leaving out one feedstock family at a time gave mean RMSE of 17.2 and 16.3 wt%, with the largest errors for the 'Other' category (bio-oil, 32.6 wt%) and 'Other' (solids, 29.8 wt%). On the independent 4TU hydrochar database (502 runs after removing 36 potential duplicates; 69 feedstock series), a solid-yield model trained on all development studies reached RMSE = 13.3 wt% (R² = 0.31), whereas training on the 16 HTC development studies alone gave 16.7 wt% (R² = -0.08), showing that the small HTC subset of the primary database does not by itself support transfer to other HTC compilations (Table 7).
+Predicting studies published after 2018 from earlier studies gave RMSE = 19.4 (bio-oil; higher than the study-grouped CV value of 15.8 wt%) and 16.5 wt% (solids; higher than 14.1 wt%), i.e. models trained on older literature transfer no better to newer studies than to randomly chosen unseen studies. Leaving out one feedstock family at a time gave mean RMSE of 17.2 and 16.3 wt%, with the largest errors for the 'Other' category (bio-oil, 32.6 wt%) and 'Other' (solids, 29.8 wt%). On the independent 4TU hydrochar database (502 runs after removing 36 potential duplicates; 69 feedstock series), a solid-yield model trained on all development studies reached RMSE = 13.3 wt% (R² = 0.31), whereas training on the 16 HTC development studies alone gave 16.7 wt% (R² = -0.08), showing that the small HTC subset of the primary database does not by itself support transfer to other HTC compilations (Supplementary Table S11). Coverage of study-calibrated intervals across these settings is shown in Fig. 5. Adding Gaussian noise of 20% of the training standard deviation to continuous test features increased the bio-oil RMSE from 15.7 to 16.6 wt% and the solid RMSE from 13.9 to 15.4 wt%, while SC coverage was 0.90 without and 0.90 with noise (bio-oil) — the error budget for unseen studies is dominated by the study offset, not by input noise. Training on 25% instead of all training studies raised the bio-oil RMSE from 15.7 to 20.3 wt%, and SC coverage remained 0.89, whereas RC coverage stayed at 0.45–0.56 (Supplementary Fig. S6). All learners trained in at most 9 s on one CPU thread (MLP); the STRATA base learner took 0.2 s and predicted 1,000 runs in 4 ms (Supplementary Table S20, Supplementary Fig. S7). The complete STRATA procedure — two inner five-fold cross-validations, quantiles, variance components and k-shot quantiles for all k — took 2.3–7.0 s on all development studies, against 0.3–0.5 s for fitting the base learner alone (measured, 1 and 4 threads); this overhead is negligible compared with the cost of a single hydrothermal experiment.
+
+Because literature compilations can contain the same experiment reported in several papers, the development data were audited (E10): 166 bio-oil runs (7.3%, 16 studies) and 143 solid-yield runs (6.6%) had an identical counterpart in another study. Removing them increased the study-grouped RMSE of the STRATA base learner from 15.8 to 16.6 wt% (bio-oil) and from 14.1 to 14.6 wt% (solids); cross-study duplicates therefore make study-grouped estimates slightly optimistic and do not affect the conclusions. Out-of-study errors were largest for Other feedstocks among families (bio-oil RMSE 33.9 wt%, 6 studies), for the ≤250 °C temperature band (21.1 wt%) and for HTL solvothermal runs (18.5 wt%) (Supplementary Table S13). The five worst-predicted bio-oil studies had per-study RMSE between 35.1 and 61.4 wt% and absolute mean offsets of 26.7–60.9 wt% (processes: HTL 3, HTC 1, HTL solvothermal 1). Across extraction-solvent groups with at least three studies, the bio-oil RMSE ranged from 10.8 (hydrocarbon) to 19.8 wt% (none named) and the mean residual from -9.5 to +9.7 wt% (Supplementary Fig. S8).
+
+## 3.8. What did not transfer: within-study trends and the choice of conditions
+
+If most of the error for a new laboratory is an offset, *changes* between runs of the same study might transfer even when absolute yields do not. Model-free, laboratories agreed on the direction of the temperature response below 300 °C: bio-oil yield rose by +0.87 wt% per 10 °C at 250–300 °C (same sign in 81% of studies) and solid yield fell (86% same sign) (Supplementary Fig. S1, Supplementary Table S15), but the between-study standard deviation of the bio-oil slope was 2.6 times its median. Contrary to the pre-registered hypotheses, learners did not predict within-study changes better than absolute yields: contrast $R^2_\Delta$ for unseen development studies was 0.14–0.22 for bio-oil and 0.25–0.43 for solids, offset-invariant learners were better than the absolute model in 1 of 12 Holm-corrected comparisons, and anchoring with offset-invariant models did not improve on the STRATA offset (Supplementary Fig. S2, Supplementary Table S16). An exploratory advantage of the models over a 325 °C rule of thumb in choosing the best of a study's planned bio-oil runs was not confirmed on the locked studies (median regret 11.9–12.5 wt% vs 14.6 wt% for the rule; one-sided Holm-corrected *p* = 0.661; Supplementary Fig. S3). Directional knowledge is thus a robust prior for planning, but literature-trained models should not be trusted to quantify the effect of a planned change or to select optimal conditions in a new laboratory.
+
+## 3.9. STRATA-Lab in practice
+
+Table 10 condenses the evidence. Of the capabilities a new laboratory might expect from a literature-trained hydrothermal model, three were supported on held-out studies: honest uncertainty, provided intervals are calibrated across studies; the correction of predictions with a few local runs; and, as a model-free observation, the direction of the temperature effect. Absolute bio-oil yields of a new study were barely predictable, offsets were not explained by reported metadata, within-study changes and rankings did not transfer, the applicability-domain threshold flagged no failing study, and for one held-out set the local runs alone outperformed literature anchoring.
 
 
-**Table 7.** Temporal, feedstock-family and external generalisation of the STRATA base learner.
-
-| Target | Features | Scheme | RMSE | R² | Median study RMSE |
-|---|---|---|---|---|---|
-| Bio-oil | base | temporal | 19.41 | -0.399 | 14.81 |
-| Bio-oil | base+P | temporal | 22.66 | -0.907 | 16.96 |
-| Solid | base | temporal | 16.54 | 0.269 | 10.58 |
-| Solid | base+P | temporal | 16.56 | 0.268 | 10.83 |
-| Bio-oil | base | family_out (mean over families) | 17.17 | -0.419 | 12.93 |
-| Bio-oil | base+P | family_out (mean over families) | 17.48 | -0.237 | 12.05 |
-| Solid | base | family_out (mean over families) | 16.35 | -0.221 | 10.79 |
-| Solid | base+P | family_out (mean over families) | 15.5 | -0.03 | 10.28 |
-| Solid | base | external_4TU_all_dev_processes | 13.3 | 0.31 | 10.93 |
-| Solid | base | external_4TU_HTC_dev_only | 16.66 | -0.082 | 11.59 |
-
-
-
-Adding Gaussian noise of 20% of the training standard deviation to continuous test features increased the bio-oil RMSE from 15.7 to 16.6 wt% and the solid RMSE from 13.9 to 15.4 wt%, while SC coverage was 0.90 without and 0.90 with noise (bio-oil) — the error budget for unseen studies is dominated by the study offset, not by input noise. Training on 25% instead of all training studies raised the bio-oil RMSE from 15.7 to 20.3 wt%, and SC coverage remained 0.89, whereas RC coverage stayed at 0.45–0.56 (Supplementary Fig. S1).
-
-
-All learners trained in at most 9 s on one CPU thread (MLP); the STRATA base learner took 0.2 s and predicted 1,000 runs in 4 ms (Supplementary Table S17, Supplementary Fig. S2). The complete STRATA procedure — two inner five-fold cross-validations, quantiles, variance components and k-shot quantiles for all k — took 2.3–7.0 s on all development studies, against 0.3–0.5 s for fitting the base learner alone (measured, 1 and 4 threads); this overhead is negligible compared with the cost of a single hydrothermal experiment.
-
-
-
-
-Because literature compilations can contain the same experiment reported in several papers, which would leak information across study-grouped folds, the development data were audited (E10): 166 bio-oil runs (7.3%, 16 studies) and 143 solid-yield runs (6.6%) had an identical counterpart in another study. Removing them increased the study-grouped RMSE of the STRATA base learner from 15.8 to 16.6 wt% (bio-oil) and from 14.1 to 14.6 wt% (solids), with between-study shares of 0.65 and 0.52; 10 bio-oil and 18 solid locked-test runs matched development runs. Cross-study duplicates therefore make study-grouped estimates slightly optimistic and do not affect the conclusions.
-
-## 3.9. Error analysis
-
-Out-of-study errors were largest for Other feedstocks among families (bio-oil RMSE 33.9 wt%, 6 studies), for the ≤250 °C temperature band (21.1 wt%) and for HTL solvothermal runs (18.5 wt%) (Supplementary Table S9). The five worst-predicted bio-oil studies had per-study RMSE between 35.1 and 61.4 wt% and absolute mean offsets of 26.7–60.9 wt% (processes: HTL 3, HTC 1, HTL solvothermal 1). Across extraction-solvent groups with at least three studies, the bio-oil RMSE ranged from 10.8 (hydrocarbon) to 19.8 wt% (none named) and the mean residual from -9.5 to +9.7 wt% (Supplementary Fig. S3).
-
-
-
-## 3.10. What literature-trained models can and cannot do for a new laboratory
-
-Table 8 condenses the evidence. Of the six model capabilities a new laboratory might expect, only two were supported on held-out studies: honest uncertainty, provided intervals are calibrated across studies, and the correction of predictions with a few local runs; the seventh entry, agreement of laboratories on the direction of temperature effects, is a model-free observation. Absolute bio-oil yields of a new study were barely predictable, study offsets were not explained by reported metadata, within-study changes were predicted no better than levels, and the exploratory advantage in choosing conditions did not replicate. The only robust *trend* knowledge was model-free and directional (Fig. 5). Table 9 translates these findings into a minimum validation and reporting checklist for literature-trained bioresource surrogates.
-
-
-**Table 8.** What literature-trained hydrothermal models can and cannot do for a new study (development: unseen studies in study-grouped CV; locked: 38 studies held out before modelling).
+**Table 10.** What literature-trained hydrothermal models can and cannot do for a new study (development: unseen studies in study-grouped CV; locked: 38 studies held out before modelling).
 
 | Capability | Development studies (unseen) | 38 locked studies | Verdict |
 |---|---|---|---|
@@ -366,75 +385,72 @@ Table 8 condenses the evidence. Of the six model capabilities a new laboratory m
 | Direction of the temperature effect below 300 °C (model-free, within studies) | same sign in 81%–95% of studies (bio-oil ↑, solid ↓) | not applicable (descriptive) | Consistent across laboratories |
 | Pick the best of a new study's planned runs (bio-oil) | better than T≈325 °C rule (median regret 7.0–8.7 vs 12.8 wt%; exploratory) | not confirmed (p_Holm ≥ 0.62; regret 11.9–12.5 vs 14.6 wt%) | Not established |
 | Honest 90% prediction intervals for a new study | row-calibrated 0.57/0.61; study-calibrated 0.91/0.91 | row-calibrated 0.60/0.46; study-calibrated 0.89/0.82 | Yes, if calibrated across studies (wide: ±23–30 wt%) |
-| Use 1–3 measured runs of the new study to correct predictions | median study RMSE 12.4→8.5 (bio-oil), 11.1→7.7 (solid) with 3 runs | median study RMSE 10.9→7.8 (bio-oil), 14.2→7.4 (solid) | Yes — the most effective use of literature models |
+| Use 1–3 measured runs of the new study to correct predictions | median study RMSE 12.4→8.5 (bio-oil), 11.1→7.7 (solid) with 3 runs | median study RMSE 10.9→7.8 (bio-oil), 14.2→7.4 (solid) | Yes — error and interval width fall with each run |
+| Combine 1–3 screening-design runs with the literature model (STRATA, B) instead of using them alone (C) | k = 3: B 8.8 vs C 9.9 (bio-oil), 7.8 vs C 10.5 wt% (solid); B better at every k | k = 3: B 8.0 vs C 6.0 (bio-oil, C better), B 7.1 vs C 8.5 wt% (solid, n.s.) | Usually yes; not for locked bio-oil studies, where local runs alone were better |
+| Flag in advance a study for which the literature model will mislead (applicability-domain score) | Spearman ρ with error 0.46 (bio-oil), 0.49 (solid) | pre-registered threshold flagged 0 and 0 studies | Ranks risk, but the pre-registered threshold detected no failing study |
 
 
 
+A laboratory starting with a new feedstock can therefore proceed as follows (Fig. 1). (1) Obtain the literature prediction with a study-calibrated interval (about ±30.4 wt% for bio-oil and ±22.8 wt% for solid yield) and read it as a screening statement, not as an optimum. (2) Compute the applicability-domain score; a high score is a warning, but a low score is no guarantee. (3) Measure one to three runs in a screening design — centre, lowest and highest temperature of the intended window. (4) Compare the STRATA prediction with the local mean of these runs; where they diverge, as for the locked bio-oil studies and the microalga case, weight the local evidence and extend the local design rather than the model. (5) Report predictions with the re-calibrated intervals and the number of runs on which they rest. Table 11 lists the corresponding minimum validation and reporting practice for authors and reviewers of literature-trained bioresource models. Monetary savings were not estimated, because experimental costs vary too widely between laboratories for a general figure to be meaningful.
 
-**Table 9.** Minimum validation and reporting checklist for machine-learning models trained on literature-compiled bioresource data.
+
+**Table 11.** Minimum validation and reporting checklist for literature-trained bioresource surrogates intended for use by a new laboratory.
 
 | Item | Minimum practice | Why (evidence in this study) |
 |---|---|---|
-| 1. Splitting unit | Hold out whole source studies (or laboratories); report random-split metrics only as a reference | Random splits overstated accuracy about two-fold (Table 2) |
-| 2. Locked test | Fix a list of held-out studies before modelling and evaluate it once | Locked results were worse than development CV (Table 6) |
-| 3. Duplicates | Audit identical runs reported in several studies before splitting | ~7 % of runs were cross-study duplicates (Section 3.8) |
-| 4. Accuracy metrics | Report per-study errors and the mean-predictor baseline next to pooled R² | Pooled metrics were dominated by a few studies (Section 3.8) |
-| 5. Uncertainty | Calibrate prediction intervals across studies, not across random runs | Row-calibrated 90 % intervals covered 0.46–0.61 (Table 4) |
-| 6. Trend / optimum claims | Support claims about effects of conditions or optimal conditions with held-out-study contrasts or rankings | Within-study changes and rankings did not transfer (Sections 3.4–3.5) |
-| 7. Local anchoring | Recommend 1–3 local runs and report the anchored error | Three runs reduced the median error by 3–4 wt% (Table 5) |
-| 8. Metadata | Record product-recovery solvent, yield basis, fraction definitions, mass-balance closure and reactor details in curated databases | Coarse parsed descriptors did not explain offsets (Table 3) |
-| 9. Openness | Release code, the held-out study list and per-run predictions | Enables re-analysis of the above |
+| 1. Splitting unit | Hold out whole source studies (or laboratories); report random-split metrics only as a reference | Random splits overstated accuracy about two-fold (Section 3.1) |
+| 2. Locked test | Fix a list of held-out studies before modelling and evaluate it once | Locked results differed from development CV (Section 3.7) |
+| 3. Duplicates | Audit identical runs reported in several studies before splitting | ~7 % of runs were cross-study duplicates (Section 3.7) |
+| 4. Accuracy metrics | Report per-study errors and the mean-predictor baseline next to pooled R² | Pooled metrics were dominated by a few studies (Section 3.7) |
+| 5. Uncertainty | Calibrate prediction intervals across studies, not across random runs | Row-calibrated 90 % intervals covered 0.46–0.61 (Section 3.3) |
+| 6. Trend / optimum claims | Support claims about effects of conditions or optimal conditions with held-out-study contrasts or rankings | Within-study changes and rankings did not transfer (Section 3.8) |
+| 7. Local anchoring | Plan 1–3 local runs in a screening design; report literature-only, anchored and local-only predictions with re-calibrated intervals | Three screening-design runs reduced the median error by 1.6–6.4 wt%, but local-only data were better for locked bio-oil studies (Sections 3.4–3.6) |
+| 8. Metadata | Record product-recovery solvent, yield basis, fraction definitions, mass-balance closure and reactor details in curated databases | Coarse parsed descriptors did not explain offsets (Section 3.2) |
+| 9. Openness | Make code, the held-out study list and per-run predictions available (openly or on request) | Enables re-analysis of the above |
 
 
 
-For practitioners, three recommendations follow. First, literature-trained hydrothermal surrogates should be validated with folds defined by source study (or by laboratory), and random-split metrics should not be used to claim predictive ability for new feedstocks or plants. Second, reported prediction intervals should be calibrated across studies; for the present database this means honest intervals of roughly ±30 wt% for bio-oil yield of a new study, which is wide enough to rule out fine-grained optimisation from literature data alone. Third, a handful of runs on the target feedstock and reactor are worth more than additional model complexity: three local runs reduced the median per-study error by 3.9 wt% (bio-oil) and 3.4 wt% (solids), whereas the median per-study errors of the competitive learners differed by at most 0.6 and 1.6 wt% (Sections 3.1 and 3.7). For data curators, the null result for work-up descriptors suggests recording richer, standardised metadata (product-recovery procedure, quench, mass-balance closure, uncertainty of the yield measurement) so that the sources of between-study variation can eventually be modelled rather than absorbed.
+## 3.10. Limitations
 
-## 3.11. Limitations
-
-The study relies on one curated literature database; its extraction and harmonisation choices, imputed feedstock fractions and residual transcription errors propagate into all results, although they affect random and study-grouped evaluation alike. The protocol descriptors were parsed from free-text fields and are coarse. Study-level conformal validity assumes that a new study is exchangeable with the calibration studies; a study that differs systematically (a new reactor concept, unusual feedstock or catalyst) may be under-covered, as the locked solid-yield studies (coverage 0.82) and the HTC subset of the development studies (coverage 0.83 for solids) show. The external database lacks study identifiers, so feedstock series were used as pseudo-studies. The *k*-shot analysis assumes that the first *k* runs of a study are exchangeable with its remaining runs; in practice laboratories choose runs deliberately. Physical admissibility across phases was not enforced here; because STRATA only requires out-of-study residuals of a point predictor (Supplementary Table S10), it could be applied to physically admissible surrogates, but this was not tested. Cross-study duplicate runs (Section 3.8) were retained in the main analyses, which makes the reported study-grouped accuracy slightly optimistic. Three analyses (E9–E11), the adaptive-interval variant and the locked-test sensitivity analysis were added after the main results were known. Finally, no new experiments were performed: the conclusions concern the transferability of literature-trained models, not the chemistry of hydrothermal conversion itself.
-
+All validation is retrospective: published runs of held-out studies played the role of a new laboratory's experiments, and no new experiments were performed. The reported order of runs in the database follows the source tables and is not the chronological order of the experiments; the screening-design order is an idealisation of how a laboratory would choose its first runs, and a laboratory that chooses runs differently may see different gains. The study relies on one curated literature database, whose extraction and harmonisation choices, imputed feedstock fractions and residual transcription errors (for example, the 20 °C entry of the solid-yield case study) propagate into all results. Only bio-oil and solid yields were modelled; aqueous and gas phases, product quality and mass closure were not. Study-level conformal validity assumes that a new study is exchangeable with the calibration studies; studies that differ systematically were under-covered, as the locked solid-yield studies show. The external database lacks study identifiers, so feedstock series were used as pseudo-studies. The applicability-domain threshold flagged no locked study, so its value as a decision rule could not be tested. With 18–19 eligible locked studies per target, the held-out deployment comparisons have limited power. The protocol was registered by timestamped repository commits rather than in a public registry, and several analyses (E9–E11, the adaptive-interval variant and the exploratory locked correlation of the applicability-domain score) were added after results were known.
 
 
 # 4. Conclusions
 
-Machine-learning models trained on published hydrothermal-conversion data predict runs of studies they have seen far better than runs of a new study: random splitting overstated accuracy about two-fold, and on locked studies no learner predicted bio-oil yields substantially better than the training mean. Half to two-thirds of the out-of-study error variance was a study-level offset that recorded work-up and yield-basis descriptors did not explain. Laboratories agree on the direction of the temperature response, but models did not predict within-study changes better than absolute yields, and an exploratory advantage in choosing conditions did not replicate on held-out studies. What did hold was honest uncertainty — conformal intervals calibrated across studies raised coverage from 0.46–0.61 to 0.82–0.91 — and the correction of predictions with a few local runs. Study-grouped validation with a locked test set, study-calibrated intervals and local anchoring runs are recommended as minimum practice (Table 9), and claims about trends or optimal conditions should be supported by held-out-study evidence.
+Machine-learning models trained on published hydrothermal-conversion data were evaluated as a new laboratory would use them. Random splitting overstated accuracy about two-fold, and most out-of-study error was a study offset that reported work-up descriptors did not explain. Conformal intervals calibrated across studies largely restored coverage for new studies (0.82–0.91, against 0.46–0.61 for row-calibrated intervals) but were ±22.8–30.4 wt% wide. In a retrospective simulated deployment, three runs placed by a screening design and combined with the literature model reduced the median per-study error by 1.6–6.4 wt% and narrowed the intervals; this combination outperformed the local runs alone for unseen development studies, but not for the locked bio-oil studies, and an applicability-domain threshold did not anticipate that case. Within-study trends and the choice of optimal conditions did not transfer. Literature-trained hydrothermal models are therefore screening tools: they should be validated by study, reported with study-calibrated intervals, anchored with a few designed local runs and checked against local-only estimates before they guide experiments in a new laboratory.
 
 # CRediT authorship contribution statement
 
-[Author 1]: Conceptualization, Methodology, Software, Formal analysis, Writing – original draft. [Author 2]: Validation, Writing – review & editing. [Author 3]: Supervision, Writing – review & editing. *(To be completed by the authors.)*
+**P N Bhargav Teja:** Conceptualization, Methodology, Software, Validation, Formal analysis, Investigation, Data curation, Visualization, Writing – original draft, Writing – review & editing. **[Second author name]:** Supervision, Writing – review & editing.
 
 # Declaration of competing interest
 
-The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper. *(To be confirmed by the authors.)*
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+# Funding
+
+This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
 
 # Declaration of generative AI and AI-assisted technologies in the manuscript preparation process
 
-During the preparation of this work the authors used an AI assistant (Claude, Anthropic) to search and verify literature metadata, write analysis code, run the computational experiments and draft the manuscript text. After using this tool, the authors reviewed and edited the content as needed and take full responsibility for the content of the published article. *(The authors must verify, adapt and confirm this statement before submission.)*
+During the preparation of this work the authors used an AI assistant (Claude, Anthropic) to search and verify literature metadata, write analysis code, run the computational experiments and draft the manuscript text. After using this tool, the authors reviewed and edited the content as needed and take full responsibility for the content of the published article.
 
 # Data availability
 
-All data analysed are publicly available under CC BY 4.0 (Elfetni, 2026; Abdeldayem et al., 2025). The complete code, the locked test-study list, configuration files, raw result files and the scripts that generate every table and figure are available at [repository URL to be inserted; archived DOI to be minted at acceptance].
+All data analysed in this study are publicly available under the CC BY 4.0 licence: the curated hydrothermal treatment/liquefaction database, Version 1.0.0 (RADAR4Chem; https://doi.org/10.22000/8bnbhqccf4aq7kea) (Elfetni, 2026), and the hydrochar database used for external validation (4TU.ResearchData; https://doi.org/10.4121/834c3f22-f46a-4808-a0fe-46298be6a133.v1) (Abdeldayem et al., 2025). The analysis code, the list of locked test studies, configuration files, processed result files and per-run predictions will be made available by the corresponding author on reasonable request.
 
 # Acknowledgements
 
-The authors thank the curators of the hydrothermal treatment/liquefaction database and of the 4TU hydrochar database for releasing their data openly. *(Funding: to be completed by the authors.)*
+The authors thank the curators of the hydrothermal treatment/liquefaction database and of the 4TU hydrochar database for releasing their data openly.
 
 # Appendix A. Supplementary data
 
-Supplementary material (Sections S1–S9, Tables S1–S17, Figs. S1–S4: literature screening, protocol and addenda, additional benchmark and sensitivity results, exploratory adaptive intervals, error analysis by subgroup, STRATA with different base learners, trend and ranking analyses, reproducibility) accompanies this article.
+Supplementary material (Sections S1–S10: literature search, protocol and deviations, additional benchmark and sensitivity results, exploratory adaptive intervals, error analysis by subgroup, STRATA with different base learners, trend and ranking analyses, additional figures, additional deployment results, reproducibility) accompanies this article.
 
 # References
 
 ::: {custom-style="Bibliography"}
 Abdeldayem, O., Al-Sakkari, E., Ortiz, D., Dupont, C., Ferras, D., Ouali, M.-S., Ragab, A., Kennedy, M., 2025. Database underlying the research for the development of machine learning models for predicting the physicochemical properties of hydrochar [dataset]. 4TU.ResearchData. https://doi.org/10.4121/834c3f22-f46a-4808-a0fe-46298be6a133.v1
-:::
-
-::: {custom-style="Bibliography"}
-Angelopoulos, A.N., Bates, S., 2023. Conformal Prediction: A Gentle Introduction. Now Publishers. https://doi.org/10.1561/9781638281597
-:::
-
-::: {custom-style="Bibliography"}
-Barber, R.F., Candès, E.J., Ramdas, A., Tibshirani, R.J., 2023. Conformal prediction beyond exchangeability. Ann. Stat. 51(2), 816-845. https://doi.org/10.1214/23-aos2276
 :::
 
 ::: {custom-style="Bibliography"}
@@ -534,23 +550,11 @@ Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., Liu, T.-Y., 20
 :::
 
 ::: {custom-style="Bibliography"}
-Lei, J., G’Sell, M., Rinaldo, A., Tibshirani, R.J., Wasserman, L., 2018. Distribution-Free Predictive Inference for Regression. J. Am. Stat. Assoc. 113(523), 1094-1111. https://doi.org/10.1080/01621459.2017.1307116
-:::
-
-::: {custom-style="Bibliography"}
 Leng, L., Zhang, W., Chen, Q., Zhou, J., Peng, H., Zhan, H., Li, H., 2022. Machine learning prediction of nitrogen heterocycles in bio-oil produced from hydrothermal liquefaction of biomass. Bioresour. Technol. 362, 127791. https://doi.org/10.1016/j.biortech.2022.127791
 :::
 
 ::: {custom-style="Bibliography"}
-Li, D.-Z., Gong, X.-Q., 2024. Challenges with Literature-Derived Data in Machine Learning for Yield Prediction: A Case Study on Pd-Catalyzed Carbonylation Reactions. J. Phys. Chem. A 128(48), 10423-10430. https://doi.org/10.1021/acs.jpca.4c05489
-:::
-
-::: {custom-style="Bibliography"}
 Libra, J.A., Ro, K.S., Kammann, C., Funke, A., Berge, N.D., Neubauer, Y., Titirici, M.-M., Fühner, C., Bens, O., Kern, J., Emmerich, K.-H., 2011. Hydrothermal carbonization of biomass residuals: a comparative review of the chemistry, processes and applications of wet and dry pyrolysis. Biofuels 2(1), 71-106. https://doi.org/10.4155/bfs.10.81
-:::
-
-::: {custom-style="Bibliography"}
-Patil, P., Parmigiani, G., 2018. Training replicable predictors in multiple studies. Proc. Natl. Acad. Sci. U.S.A. 115(11), 2578-2583. https://doi.org/10.1073/pnas.1708283115
 :::
 
 ::: {custom-style="Bibliography"}
@@ -583,10 +587,6 @@ Tynes, M., Gao, W., Burrill, D.J., Batista, E.R., Perez, D., Yang, P., Lubbers, 
 
 ::: {custom-style="Bibliography"}
 Valdez, P.J., Dickinson, J.G., Savage, P.E., 2011. Characterization of product fractions from hydrothermal liquefaction of Nannochloropsis sp. and the influence of solvents. Energy Fuels 25(7), 3235-3243. https://doi.org/10.1021/ef2004046
-:::
-
-::: {custom-style="Bibliography"}
-Vovk, V., Gammerman, A., Shafer, G., 2022. Algorithmic Learning in a Random World, 2nd ed. Springer, Cham. https://doi.org/10.1007/978-3-031-06649-8
 :::
 
 ::: {custom-style="Bibliography"}

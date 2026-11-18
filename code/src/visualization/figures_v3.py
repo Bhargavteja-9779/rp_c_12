@@ -60,7 +60,7 @@ def fig_case(D):
 def fig_workflow(D):
     fig, ax = plt.subplots(figsize=(7.2, 2.4)); ax.axis("off"); ax.set_xlim(0, 100); ax.set_ylim(0, 30)
     steps = ["1 Feedstock &\nconditions\n(composition,\nT, t, loading)", "2 Literature\nprediction\n(A)", "3 Uncertainty &\napplicability\n(study-calibrated\nPI, domain score)",
-             "4 Local anchoring\n(1–3 runs;\nSTRATA B)\nor local only (C)", "5 Plan next runs\n(screen within\nPI; no fine\noptimisation)", "6 Decision report\n(predictions, PI,\nruns needed,\nlimitations)"]
+             "4 Local anchoring\n(1–3 designed runs;\nSTRATA B, compared\nwith local only C)", "5 Plan next runs\n(screen within\nPI; no fine\noptimisation)", "6 Decision report\n(predictions, PI,\nruns needed,\nlimitations)"]
     for i, t in enumerate(steps):
         x = 1 + i * 16.5
         ax.add_patch(FancyBboxPatch((x, 6), 14.5, 18, boxstyle="round,pad=0.3,rounding_size=1.2", fc="#eef4fc" if i in (2, 3) else "#f3f2ee", ec=MUTED, lw=0.6))
@@ -87,9 +87,34 @@ def fig_pred_obs(D):
     fig.tight_layout(); save(fig, D, "fig17_pred_obs_intervals")
 
 
+def graphical_abstract_v3(D):
+    """Three panels: random split vs new study; study- vs row-calibrated coverage; deployment curve (development bio-oil)."""
+    w = pd.read_csv(os.path.join(D["tables"], "table_e1_benchmark_wide.csv"))
+    b = w[(w.target == "biooil") & (w.features == "base")].sort_values("rmse_grouped_study_cv").iloc[0]
+    S = json.load(open(os.path.join(D["results"], "statistics.json")))
+    cv = {x["calibration"]: x["coverage_studies"] for x in S["e3"]["biooil"]["coverage"] if x["alpha"] == 0.1 and x["features"] == "base+P"}
+    V = json.load(open(os.path.join(D["results"], "statistics_v3.json")))
+    s = pd.DataFrame(V["e15_dev_summary"]); s = s[(s.target == "biooil") & (s.order == "design")]
+    fig, axs = plt.subplots(1, 3, figsize=(6.64, 2.66), gridspec_kw={"width_ratios": [1, 1, 1.5]})
+    axs[0].bar([0, 1], [b["rmse_random_row_cv"], b["rmse_grouped_study_cv"]], color=[ORANGE, BLUE], width=0.6)
+    axs[0].set_xticks([0, 1], ["random\nsplit", "new\nstudy"]); axs[0].set_ylabel("RMSE, bio-oil yield (wt%)")
+    axs[0].set_title("1  Random splits\nhide the gap", loc="left", fontsize=7.5)
+    axs[1].bar([0, 1], [cv["RC"], cv["SC"]], color=[ORANGE, BLUE], width=0.6); axs[1].axhline(0.9, color=INK, ls="--", lw=0.7)
+    axs[1].set_xticks([0, 1], ["row-\ncalibrated", "study-\ncalibrated"]); axs[1].set_ylim(0, 1); axs[1].set_ylabel("Coverage of 90% interval")
+    axs[1].set_title("2  Honest intervals\nfor a new study", loc="left", fontsize=7.5)
+    for m, (c, mk, lab) in STY.items():
+        q = s[s.strategy == m].sort_values("k")
+        if m != "A":
+            q = q[q.k > 0]
+        axs[2].plot(q.k, q.median_rmse, "-" + mk, color=c, ms=4, lw=1.4, label=lab)
+    axs[2].set_xticks([0, 1, 2, 3, 5]); axs[2].set_xlabel("local runs measured (screening design)"); axs[2].set_ylabel("Median per-study RMSE (wt%)")
+    axs[2].set_title("3  A few local runs: anchor,\nbut compare with local-only", loc="left", fontsize=7.5); axs[2].legend(fontsize=6, frameon=False)
+    fig.tight_layout(); save(fig, D, "graphical_abstract_v3")
+
+
 def run(mode="full"):
     D = out_dirs(mode)
-    for f in (fig_deployment, fig_case, fig_workflow, fig_pred_obs):
+    for f in (fig_deployment, fig_case, fig_workflow, fig_pred_obs, graphical_abstract_v3):
         try:
             f(D)
         except Exception as e:

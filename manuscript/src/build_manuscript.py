@@ -96,7 +96,7 @@ def render(values, parts=PARTS, table_prefix="Table ", fig_prefix="Fig. "):
     order = []
     for m in re.finditer(r"\{\{FIG:([\w\-]+)\|", text):
         order.append(m.group(1)) if m.group(1) not in order else None
-    text = re.sub(r"\{\{FIG:([\w\-]+)\|(.+?)\}\}", fig, text)
+    text = re.sub(r"\{\{FIG:([\w\-]+)\|((?:[^{}]|\{\{[\w\.\-]+\}\}|\{[^{}]*\})+?)\}\}", fig, text)
 
     def figref(m):
         if m.group(1) not in order:
@@ -125,7 +125,8 @@ def render(values, parts=PARTS, table_prefix="Table ", fig_prefix="Fig. "):
         return f"{a} ({y})"
     text = re.sub(r"(?<![\w\[])@([A-Z][\w]+\d{4}\w*)", narrative, text)
     if "{{" in text or "[@" in text:
-        raise ValueError("unresolved placeholders remain")
+        i = text.find("{{") if "{{" in text else text.find("[@")
+        raise ValueError("unresolved placeholders remain: " + repr(text[max(0, i - 150):i + 150]))
     refs = sorted(set(used), key=lambda k: REFS[k]["text"].lower())
     text = text.replace("<<REFERENCES>>", "\n".join(f"::: {{custom-style=\"Bibliography\"}}\n{REFS[k]['text']}\n:::\n" for k in refs))
     return text, refs
@@ -227,6 +228,24 @@ def main():
     refs = build(PARTS, "Final_Manuscript", values)
     srefs = build(["supp.md"], "Supplementary_Material", values, table_prefix="Table S", fig_prefix="Fig. S")
     build(["cover_letter.md"], "cover_letter", values, pdf=False)
+    build(["title_page.md"], "Title_Page", values, pdf=False)
+    build(["response_to_review.md"], "Response_to_Review", values, pdf=True)
+    # highlights as a separate file (journal requirement)
+    front = open(os.path.join(HERE, "part0_front.md")).read()
+    hl = front.split("# Highlights")[1].split("# Abstract")[0].strip()
+    open(os.path.join(HERE, "_highlights.md"), "w").write("---\ntitle: \"Highlights\"\n---\n\n" + hl + "\n")
+    build(["_highlights.md"], "Highlights", values, pdf=False)
+    # anonymised manuscript (for double-anonymised review): no names, affiliations, CRediT or acknowledgements
+    anon0 = re.sub(r"\*\*Authors:\*\*.*?(?=# Highlights)", "", front, flags=re.S)
+    back = open(os.path.join(HERE, "part3_back.md")).read()
+    back = re.sub(r"# CRediT authorship contribution statement.*?(?=# Declaration of competing interest)", "", back, flags=re.S)
+    back = re.sub(r"# Acknowledgements.*?(?=# Appendix A)", "", back, flags=re.S)
+    back = back.replace("will be made available by the corresponding author on reasonable request", "will be made available by the corresponding author on reasonable request (contact details on the title page)")
+    open(os.path.join(HERE, "_anon_part0.md"), "w").write(anon0); open(os.path.join(HERE, "_anon_part3.md"), "w").write(back)
+    build(["_anon_part0.md", "part1_intro_methods.md", "part2_results.md", "_anon_part3.md"], "Manuscript_anonymised", values)
+    import shutil
+    for ext in ("png", "pdf"):
+        shutil.copy(os.path.join(FIG, f"graphical_abstract_v3.{ext}"), os.path.join(OUT, f"Graphical_Abstract.{ext}"))
     json.dump(dict(cited_keys=refs, supplementary_cited=srefs, n_refs=len(refs), values=values), open(os.path.join(OUT, "build_log.json"), "w"),
               indent=1, default=str)
     print(f"built manuscript ({len(refs)} references), supplementary, cover letter; {len(values)} values")
