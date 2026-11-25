@@ -229,7 +229,6 @@ def main():
     srefs = build(["supp.md"], "Supplementary_Material", values, table_prefix="Table S", fig_prefix="Fig. S")
     build(["cover_letter.md"], "cover_letter", values, pdf=False)
     build(["title_page.md"], "Title_Page", values, pdf=False)
-    build(["response_to_review.md"], "Response_to_Review", values, pdf=True)
     # highlights as a separate file (journal requirement)
     front = open(os.path.join(HERE, "part0_front.md")).read()
     hl = front.split("# Highlights")[1].split("# Abstract")[0].strip()
@@ -245,7 +244,7 @@ def main():
     build(["_anon_part0.md", "part1_intro_methods.md", "part2_results.md", "_anon_part3.md"], "Manuscript_anonymised", values)
     import shutil
     for ext in ("png", "pdf"):
-        shutil.copy(os.path.join(FIG, f"graphical_abstract_v3.{ext}"), os.path.join(OUT, f"Graphical_Abstract.{ext}"))
+        shutil.copy(os.path.join(FIG, f"graphical_abstract_v4.{ext}"), os.path.join(OUT, f"Graphical_Abstract.{ext}"))
     json.dump(dict(cited_keys=refs, supplementary_cited=srefs, n_refs=len(refs), values=values), open(os.path.join(OUT, "build_log.json"), "w"),
               indent=1, default=str)
     print(f"built manuscript ({len(refs)} references), supplementary, cover letter; {len(values)} values")

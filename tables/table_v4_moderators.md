@@ -1,0 +1,1 @@
+**Table X. Pre-specified moderator analyses of catalyst effects (temperature of the cell, process subtype, feedstock lignin content); differences between subgroup means with z-tests, Holm-corrected within outcome × factor.**

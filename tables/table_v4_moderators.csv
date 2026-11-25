@@ -1,0 +1,37 @@
+Outcome,Catalyst,Moderator,Group A (k),Effect A,Group B (k),Effect B,p,p (Holm)
+Bio-oil yield (wt%),Alkali carbonate,temperature,<300 °C (15),1.88,≥300 °C (26),6.93,0.048,0.382
+Bio-oil yield (wt%),Alkali carbonate,lignin,lignin ≤ 21 wt% (15),7.13,lignin > 21 wt% (19),4.63,0.367,1.0
+Bio-oil yield (wt%),Alkali hydroxide,temperature,<300 °C (10),4.83,≥300 °C (17),7.9,0.56,1.0
+Bio-oil yield (wt%),Alkali hydroxide,lignin,lignin ≤ 24 wt% (13),10.22,lignin > 24 wt% (14),5.44,0.395,1.0
+Bio-oil yield (wt%),Metal / supported metal,temperature,<300 °C (21),6.31,≥300 °C (29),7.99,0.509,1.0
+Bio-oil yield (wt%),Metal / supported metal,lignin,lignin ≤ 22 wt% (18),8.64,lignin > 22 wt% (22),8.29,0.913,1.0
+Bio-oil yield (wt%),Other catalyst,temperature,<300 °C (5),8.04,≥300 °C (10),5.8,0.743,1.0
+Bio-oil yield (wt%),Other catalyst,lignin,lignin ≤ 27 wt% (7),12.08,lignin > 27 wt% (7),1.78,0.195,1.0
+Solid yield (wt%),Alkali carbonate,temperature,<300 °C (10),-3.13,≥300 °C (23),-7.81,0.077,0.54
+Solid yield (wt%),Alkali carbonate,lignin,lignin ≤ 21 wt% (12),-8.28,lignin > 21 wt% (16),-6.47,0.656,1.0
+Solid yield (wt%),Alkali hydroxide,temperature,<300 °C (6),-6.82,≥300 °C (15),-4.59,0.556,1.0
+Solid yield (wt%),Alkali hydroxide,lignin,lignin ≤ 26 wt% (11),-8.84,lignin > 26 wt% (10),-1.98,0.048,0.386
+Solid yield (wt%),Metal / supported metal,temperature,<300 °C (20),-7.78,≥300 °C (26),-8.26,0.883,1.0
+Solid yield (wt%),Metal / supported metal,lignin,lignin ≤ 22 wt% (17),-9.73,lignin > 22 wt% (20),-7.0,0.52,1.0
+Solid yield (wt%),Other catalyst,temperature,<300 °C (5),-10.82,≥300 °C (9),-2.7,0.649,1.0
+Solid yield (wt%),Other catalyst,lignin,lignin ≤ 27 wt% (7),-9.14,lignin > 27 wt% (6),-1.9,0.573,1.0
+Aqueous-phase yield (wt%),Alkali carbonate,lignin,lignin ≤ 23 wt% (6),-1.44,lignin > 23 wt% (8),5.08,0.121,0.121
+Gas yield (wt%),Alkali carbonate,temperature,<300 °C (5),1.01,≥300 °C (12),-1.35,0.269,1.0
+Gas yield (wt%),Alkali carbonate,lignin,lignin ≤ 23 wt% (6),-0.17,lignin > 23 wt% (9),-0.14,0.991,1.0
+Gas yield (wt%),Alkali hydroxide,lignin,lignin ≤ 27 wt% (6),-0.71,lignin > 27 wt% (5),-2.97,0.404,1.0
+Gas yield (wt%),Metal / supported metal,temperature,<300 °C (11),-0.24,≥300 °C (12),1.47,0.388,1.0
+Gas yield (wt%),Metal / supported metal,lignin,lignin ≤ 23 wt% (8),0.6,lignin > 23 wt% (11),-0.06,0.758,1.0
+Bio-oil HHV (MJ/kg),Alkali carbonate,lignin,lignin ≤ 21 wt% (12),1.24,lignin > 21 wt% (11),1.45,0.802,1.0
+Bio-oil HHV (MJ/kg),Alkali hydroxide,temperature,<300 °C (5),0.42,≥300 °C (11),0.48,0.963,1.0
+Bio-oil HHV (MJ/kg),Alkali hydroxide,lignin,lignin ≤ 23 wt% (8),1.33,lignin > 23 wt% (9),0.28,0.419,1.0
+Bio-oil HHV (MJ/kg),Metal / supported metal,temperature,<300 °C (12),2.1,≥300 °C (23),0.67,0.165,0.827
+Bio-oil HHV (MJ/kg),Metal / supported metal,lignin,lignin ≤ 23 wt% (15),1.77,lignin > 23 wt% (17),0.71,0.327,1.0
+Energy recovery to bio-oil (%),Alkali carbonate,lignin,lignin ≤ 21 wt% (10),19.83,lignin > 21 wt% (12),7.86,0.022,0.066
+Energy recovery to bio-oil (%),Alkali hydroxide,lignin,lignin ≤ 23 wt% (7),26.42,lignin > 23 wt% (9),2.45,0.012,0.048
+Energy recovery to bio-oil (%),Metal / supported metal,temperature,<300 °C (10),22.13,≥300 °C (18),15.82,0.464,0.464
+Energy recovery to bio-oil (%),Metal / supported metal,lignin,lignin ≤ 22 wt% (12),25.96,lignin > 22 wt% (13),13.53,0.162,0.324
+Bio-oil N (wt%),Alkali carbonate,lignin,lignin ≤ 20 wt% (10),-0.1,lignin > 20 wt% (10),0.05,0.291,0.872
+Bio-oil N (wt%),Alkali hydroxide,temperature,<300 °C (5),-0.06,≥300 °C (11),0.41,0.06,0.302
+Bio-oil N (wt%),Alkali hydroxide,lignin,lignin ≤ 27 wt% (9),0.51,lignin > 27 wt% (8),0.01,0.107,0.429
+Bio-oil N (wt%),Metal / supported metal,temperature,<300 °C (9),0.05,≥300 °C (14),-0.03,0.371,0.872
+Bio-oil N (wt%),Metal / supported metal,lignin,lignin ≤ 23 wt% (10),-0.05,lignin > 23 wt% (11),0.03,0.333,0.872

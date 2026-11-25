@@ -1,0 +1,4 @@
+Predictor of locked within-study changes,Median per-study RMSE (wt%),Sign agreement,One-sided Wilcoxon vs meta (Holm p)
+Meta-analytic mean effect,5.32,0.60,—
+Pooled XGBoost (counterfactual difference),5.61,0.64,0.94
+No change (zero),5.39,—,0.94

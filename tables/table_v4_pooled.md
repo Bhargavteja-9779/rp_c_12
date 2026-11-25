@@ -1,0 +1,1 @@
+**Table X. Agreement of effects implied by pooled models fitted to all development runs (partial dependence for XGBoost; coefficients for linear models) with the within-study meta-analytic effects (26 factor-level items for bio-oil and solid yields).**

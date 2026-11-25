@@ -1,0 +1,31 @@
+Outcome,Component,Effect per +10 wt%,95% CI,p,Studies,Cells
+Bio-oil yield (wt%),Lignin,-1.32,-4.24 to 1.61,0.363,27,89
+Bio-oil yield (wt%),Cellulose,1.15,-1.35 to 3.65,0.354,27,89
+Bio-oil yield (wt%),Hemicellulose,1.88,-2.03 to 5.79,0.333,27,89
+Bio-oil yield (wt%),Ash,-1.53,-7.04 to 3.98,0.573,27,89
+Bio-oil yield (wt%),Nitrogen,-0.97,-16.68 to 14.74,0.900,27,89
+Solid yield (wt%),Lignin,-0.78,-5.86 to 4.29,0.751,22,85
+Solid yield (wt%),Cellulose,-1.23,-5.08 to 2.61,0.512,22,85
+Solid yield (wt%),Hemicellulose,-8.68,-14.12 to -3.25,0.003,22,85
+Solid yield (wt%),Ash,5.15,-1.56 to 11.87,0.126,22,85
+Solid yield (wt%),Nitrogen,37.02,-34.3 to 108.35,0.293,22,85
+Gas yield (wt%),Lignin,-0.29,-0.62 to 0.04,0.075,10,29
+Gas yield (wt%),Cellulose,0.36,-0.27 to 1.0,0.230,10,29
+Gas yield (wt%),Hemicellulose,0.26,-0.88 to 1.41,0.613,10,29
+Gas yield (wt%),Ash,-0.33,-1.31 to 0.65,0.462,10,29
+Gas yield (wt%),Nitrogen,-22.73,-33.06 to -12.4,<0.001,10,29
+Bio-oil HHV (MJ/kg),Lignin,0.02,-0.49 to 0.54,0.923,22,46
+Bio-oil HHV (MJ/kg),Cellulose,-0.14,-1.05 to 0.77,0.755,22,46
+Bio-oil HHV (MJ/kg),Hemicellulose,-0.71,-2.09 to 0.67,0.298,22,46
+Bio-oil HHV (MJ/kg),Ash,0.49,-0.5 to 1.49,0.316,22,46
+Bio-oil HHV (MJ/kg),Nitrogen,3.68,-4.97 to 12.33,0.386,22,46
+Energy recovery to bio-oil (%),Lignin,-5.41,-12.2 to 1.37,0.112,22,46
+Energy recovery to bio-oil (%),Cellulose,3.45,-1.18 to 8.07,0.136,22,46
+Energy recovery to bio-oil (%),Hemicellulose,-4.44,-14.39 to 5.52,0.364,22,46
+Energy recovery to bio-oil (%),Ash,3.02,-5.21 to 11.25,0.454,22,46
+Energy recovery to bio-oil (%),Nitrogen,-9.99,-36.43 to 16.45,0.441,22,46
+Bio-oil N (wt%),Lignin,-0.02,-0.1 to 0.07,0.659,18,38
+Bio-oil N (wt%),Cellulose,0.03,-0.22 to 0.28,0.789,18,38
+Bio-oil N (wt%),Hemicellulose,0.08,-0.36 to 0.52,0.717,18,38
+Bio-oil N (wt%),Ash,0.59,0.32 to 0.86,<0.001,18,38
+Bio-oil N (wt%),Nitrogen,3.95,2.39 to 5.52,<0.001,18,38

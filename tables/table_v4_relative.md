@@ -1,0 +1,1 @@
+**Table X. Catalyst effects on a relative scale (response ratio: ratio of the mean outcome with catalyst to that without, pooled on the log scale and back-transformed to a percentage change). Post-hoc analysis added during internal review.**

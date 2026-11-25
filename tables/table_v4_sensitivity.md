@@ -1,0 +1,1 @@
+**Table X. Sensitivity of the meta-analytic means to the τ² estimator, to using one contrast per study and to leaving out single studies; 95% CI from 2,000 bootstrap resamples of studies (post hoc); Egger-type test for small-study effects (≥ 10 studies).**

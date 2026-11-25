@@ -1,0 +1,1 @@
+**Table X. Feedstock composition effects estimated from runs of the same study at identical conditions that differ only in feedstock (within-cell regression with cell fixed effects; cluster-robust standard errors by study). Coefficients per +10 wt% of the component, adjusted for the other components.**

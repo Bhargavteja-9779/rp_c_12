@@ -2,8 +2,8 @@
 title: "Highlights"
 ---
 
-- Literature-trained HTL/HTC models were tested as a new laboratory would use them
-- Random data splits overstated accuracy about two-fold for unseen studies
-- Study-calibrated 90% intervals covered {{cov_range_SC}}; row-calibrated {{cov_range_RC}}
-- Three designed local runs cut the median yield error by {{gain3_min}}–{{gain3_max}} wt%
-- For locked bio-oil studies, local runs alone beat literature-anchored models
+- First meta-analysis of hydrothermal liquefaction and carbonization process effects
+- Effects estimated only within studies, so laboratory differences cancel out
+- Catalysts raised bio-oil yield by {{m_biooil_cat_alkali_carbonate}}–{{m_biooil_cat_metal_supported}} wt% and energy recovery by {{m_energy_biooil_cat_alkali_hydroxide}}–{{m_energy_biooil_cat_metal_supported}} points
+- Laboratory effects (SD {{biooil_tau}}–{{lab_mm_biooil_tau}} wt%) exceeded every catalyst effect
+- Effects vary widely between laboratories; a new laboratory should test them locally

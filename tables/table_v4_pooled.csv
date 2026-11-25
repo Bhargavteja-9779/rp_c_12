@@ -1,0 +1,4 @@
+Model,Items compared,Meta effects with CI excluding 0,Sign reversals (of those),Spearman ρ,Outside meta-analytic 95% CI,Median |difference| (wt%)
+pooled XGBoost,26,15,0,0.92,8%,0.95
+pooled linear,26,15,1,0.87,38%,1.61
+study fixed-effects linear,26,15,0,0.91,4%,0.95

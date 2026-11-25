@@ -1,0 +1,1 @@
+**Table X. Within-study meta-analysis for the aqueous and gas phases, bio-oil higher heating value (measured values only) and energy recovery to bio-oil (yield × bio-oil HHV / feed HHV). Definitions as in the primary table.**

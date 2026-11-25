@@ -284,3 +284,37 @@ if __name__ == "__main__":
         run_locked(D)
     if part in ("lab", "dev", "all"):
         lab_effect_mixedlm(D)
+
+
+def review_additions(D):
+    """Post-hoc robustness analyses added during internal review (not in Addendum E):
+    (1) study-level cluster bootstrap CI of each pooled mean; (2) catalyst effects as response ratios (relative change, %)."""
+    from src.meta.within_study import contrasts, study_effects, reml
+    F = frame("dev"); M = pd.read_csv(os.path.join(D["results"], "e18_meta_dev.csv")); S = pd.read_csv(os.path.join(D["results"], "e18_study_effects_dev.csv"))
+    rng = np.random.default_rng(2026); boot = []
+    for (o, f, lv), q in S.groupby(["outcome", "factor", "level"]):
+        q = q.reset_index(drop=True); mus = []
+        for _ in range(2000):
+            b = q.iloc[rng.integers(0, len(q), len(q))]
+            try:
+                mus.append(reml(b.y, b.v)["mu"])
+            except Exception:
+                pass
+        boot.append(dict(outcome=o, factor=f, level=lv, boot_lo=float(np.percentile(mus, 2.5)), boot_hi=float(np.percentile(mus, 97.5))))
+    B = pd.DataFrame(boot); B.to_csv(os.path.join(D["results"], "e18_bootstrap_dev.csv"), index=False)
+    rr = []
+    for o in OUTCOMES:
+        C = contrasts(F, "cat", o)
+        if C.empty or "lnrr" not in C:
+            continue
+        C = C.dropna(subset=["lnrr"]).assign(effect=lambda z: z.lnrr)
+        for lv, q in study_effects(C).groupby("level"):
+            r = reml(q.y, q.v)
+            rr.append(dict(outcome=o, factor="cat", level=lv, k=r["k"], rel_pct=100 * (np.exp(r["mu"]) - 1), rel_lo=100 * (np.exp(r["ci_lo"]) - 1),
+                           rel_hi=100 * (np.exp(r["ci_hi"]) - 1), pi_lo=100 * (np.exp(r["pi_lo"]) - 1), pi_hi=100 * (np.exp(r["pi_hi"]) - 1), I2=r["I2"]))
+    RR = pd.DataFrame(rr); RR.to_csv(os.path.join(D["results"], "e18_response_ratios_dev.csv"), index=False)
+    print(B.merge(M[["outcome", "factor", "level", "mu", "ci_lo", "ci_hi"]]).round(2).to_string()); print(RR.round(1).to_string())
+
+
+if __name__ == "__main__" and len(sys.argv) > 2 and sys.argv[2] == "review":
+    review_additions(out_dirs(sys.argv[1]))

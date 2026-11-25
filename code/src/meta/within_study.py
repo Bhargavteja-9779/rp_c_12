@@ -125,8 +125,9 @@ def contrasts(F: pd.DataFrame, factor: str, outcome: str) -> pd.DataFrame:
                 tr = c[(c.cat == cl) & (c.cat_ratio != 0)]
                 if tr.empty:
                     continue
-                rows.append(dict(study=s, cell=cell, level=cl, effect=float(tr[outcome].mean() - base[outcome].mean()), T=float(c["T"].iloc[0]),
-                                 i=list(base.index), j=list(tr.index), dy=float(tr[outcome].mean() - base[outcome].mean())))
+                mb, mt = base[outcome].mean(), tr[outcome].mean()
+                rows.append(dict(study=s, cell=cell, level=cl, effect=float(mt - mb), T=float(c["T"].iloc[0]),
+                                 i=list(base.index), j=list(tr.index), dy=float(mt - mb), lnrr=float(np.log(mt / mb)) if (mt > 0 and mb > 0) else np.nan))
         elif factor == "med":
             base = c[c.med == "water"]
             if base.empty:

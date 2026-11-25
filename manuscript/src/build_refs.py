@@ -13,7 +13,10 @@ JOURNAL_ABBR = {"Journal of Chemical Information and Modeling": "J. Chem. Inf. M
     "Statistics in Medicine": "Stat. Med.", "Ecography": "Ecography", "Machine Learning": "Mach. Learn.", "Nature": "Nature", "Biometrics Bulletin": "Biom. Bull.",
     "Philosophical Transactions of the Royal Society of London. Series A, Mathematical and Physical Sciences": "Philos. Trans. R. Soc. Lond. A",
     "Advances in Neural Information Processing Systems 35": "Adv. Neural Inf. Process. Syst. 35", "Journal of Machine Learning Research": "J. Mach. Learn. Res.",
-    "Biochar": "Biochar", "Journal of Environmental Chemical Engineering": "J. Environ. Chem. Eng."}
+    "Biochar": "Biochar", "Journal of Environmental Chemical Engineering": "J. Environ. Chem. Eng.", "BMJ Open": "BMJ Open", "BMJ": "BMJ",
+    "Research Synthesis Methods": "Res. Synth. Methods", "Journal of Educational and Behavioral Statistics": "J. Educ. Behav. Stat.", "Ecology": "Ecology",
+    "Prevention Science": "Prev. Sci.", "Chemical Engineering &amp; Technology": "Chem. Eng. Technol.", "Energy &amp; Environmental Science": "Energy Environ. Sci.",
+    "Energies": "Energies"}
 
 def initials(given):
     parts = re.split(r"[\s]+", given.strip())
@@ -85,5 +88,7 @@ for k, doi in [("Elfetni2026data", "10.22000/8bnbhqccf4aq7kea"), ("TU4data", "10
     t = d["titles"][0]["title"]
     refs[k] = dict(text=f"{name_list(au)}, {d['publicationYear']}. {t} [dataset]. {d['publisher'] if isinstance(d['publisher'], str) else d['publisher'].get('name')}. https://doi.org/{doi}",
                    cite=cite_key(au, d["publicationYear"]), doi=doi)
+for _k in refs:
+    refs[_k]['text'] = re.sub(r'\.\.(\s)', r'.\1', re.sub(r'\s+', ' ', refs[_k]['text']))
 json.dump(refs, open(os.path.join(os.path.dirname(__file__), "references.json"), "w"), indent=1, ensure_ascii=False)
 for k, r in sorted(refs.items(), key=lambda kv: kv[1]["text"]): print(f"{k:18s} [{r['cite']}] {r['text'][:170]}")

@@ -1,0 +1,12 @@
+Outcome,Change,Effect,95% CI,95% PI,k,Contrasts,I²,P(increase)
+Bio-oil N (wt%),T +10 °C (<250 °C),-0.03,-0.08 to 0.03,-0.15 to 0.10,5,14,55%,0.24
+Bio-oil N (wt%),T +10 °C (250–300 °C),-0.00,-0.02 to 0.01,-0.02 to 0.01,23,70,0%,0.31
+Bio-oil N (wt%),T +10 °C (300–350 °C),0.01,-0.00 to 0.02,-0.03 to 0.05,20,67,47%,0.73
+Bio-oil N (wt%),T +10 °C (≥350 °C),0.00,-0.02 to 0.02,-0.03 to 0.03,11,20,25%,0.61
+Bio-oil N (wt%),Residence time ×2,0.07,-0.05 to 0.19,-0.05 to 0.19,18,78,0%,0.90
+Bio-oil N (wt%),Solid loading +10 pp,-0.14,-0.36 to 0.07,-0.39 to 0.11,5,17,0%,0.03
+Bio-oil N (wt%),Alkali carbonate,-0.05,-0.20 to 0.11,-0.63 to 0.54,19,43,71%,0.43
+Bio-oil N (wt%),Alkali hydroxide,0.28,-0.13 to 0.70,-1.23 to 1.80,15,31,83%,0.66
+Bio-oil N (wt%),Metal / supported metal,-0.01,-0.10 to 0.08,-0.19 to 0.18,21,27,0%,0.46
+Bio-oil N (wt%),Acid,-0.12,-0.27 to 0.02,-0.43 to 0.18,5,13,27%,0.10
+Bio-oil N (wt%),Other catalyst,-0.20,-0.42 to 0.02,-0.69 to 0.30,9,12,16%,0.17

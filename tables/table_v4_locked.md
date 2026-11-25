@@ -1,0 +1,1 @@
+**Table X. Pre-registered confirmatory test on the 38 locked studies: prediction of their within-study changes (all factors, bio-oil and solid yields) by the development meta-analytic mean effect, by a pooled XGBoost model and by 'no change'.**

@@ -1,6 +1,6 @@
 # 4. Conclusions
 
-Machine-learning models trained on published hydrothermal-conversion data were evaluated as a new laboratory would use them. Random splitting overstated accuracy about two-fold, and most out-of-study error was a study offset that reported work-up descriptors did not explain. Conformal intervals calibrated across studies largely restored coverage for new studies ({{cov_range_SC}}, against {{cov_range_RC}} for row-calibrated intervals) but were ±{{hw_solid_0}}–{{hw_biooil_0}} wt% wide. In a retrospective simulated deployment, three runs placed by a screening design and combined with the literature model reduced the median per-study error by {{gain3_min}}–{{gain3_max}} wt% and narrowed the intervals; this combination outperformed the local runs alone for unseen development studies, but not for the locked bio-oil studies, and an applicability-domain threshold did not anticipate that case. Within-study trends and the choice of optimal conditions did not transfer. Literature-trained hydrothermal models are therefore screening tools: they should be validated by study, reported with study-calibrated intervals, anchored with a few designed local runs and checked against local-only estimates before they guide experiments in a new laboratory.
+A within-study meta-analysis of {{ma_n_studies}} hydrothermal liquefaction and carbonization studies separated process effects from laboratory effects. Within studies, bio-oil yield rose by about {{m_biooil_T_250_300}} wt% per 10 °C up to 300 °C and not beyond, solid yield fell most steeply below 300 °C, and catalysts raised bio-oil yield by {{m_biooil_cat_alkali_carbonate}}–{{m_biooil_cat_metal_supported}} wt% and energy recovery by {{m_energy_biooil_cat_alkali_hydroxide}}–{{m_energy_biooil_cat_metal_supported}} percentage points by shifting mass from the solid to the liquid products. These average effects were robust, and temperature effects replicated in held-out studies, but their size varied strongly between laboratories, and laboratory offsets ({{biooil_tau}}–{{lab_mm_biooil_tau}} wt% for bio-oil) exceeded every process effect on bio-oil yield. Pooled machine-learning models reproduced the average effects but not their variability, and average effects did not predict individual held-out studies better than assuming no change. Quantitative guidance for HTL and HTC should therefore be stated with between-laboratory prediction intervals and confirmed by a few local experiments.
 
 # Declaration of competing interest
 
@@ -20,7 +20,7 @@ All data analysed in this study are publicly available under the CC BY 4.0 licen
 
 # Appendix A. Supplementary data
 
-Supplementary material (Sections S1–S10: literature search, protocol and deviations, additional benchmark and sensitivity results, exploratory adaptive intervals, error analysis by subgroup, STRATA with different base learners, trend and ranking analyses, additional figures, additional deployment results, reproducibility) accompanies this article.
+Supplementary material (Sections S1–S7: literature search, protocol and deviations, data, sensitivity and moderator analyses, nitrogen content, transfer of literature-trained machine-learning models to new studies, reproducibility) accompanies this article.
 
 # References
 

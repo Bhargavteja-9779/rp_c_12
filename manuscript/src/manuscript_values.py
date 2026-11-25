@@ -426,7 +426,7 @@ def compute() -> dict:
                if (b('biooil', 'SC-N', 'winkler') > b('biooil', 'SC', 'winkler') and b('solid', 'SC-N', 'winkler') > b('solid', 'SC', 'winkler')) else
                "The adaptive variant improved interval scores for at least one target. ")
             + "Because this variant was added after inspecting pipeline-verification results, it is reported as exploratory and is not part of the main claims.")
-    return compute_v3(v)
+    return compute_v4(compute_v3(v))
 
 
 def compute_v3(v):
@@ -491,6 +491,102 @@ def compute_v3(v):
     v["lit3_total"] = P["identified_total"]; v["lit3_dedup"] = P["after_deduplication"]; v["lit3_included"] = P["included"]
     v["lit3_with_abs"] = P["included_with_abstract"]; v["lit3_bt"] = P["included_in_bioresource_technology"]
     v["lit3_grouped"] = P["included_mentioning_grouped_or_external"]; v["lit3_uq"] = P["included_mentioning_uncertainty"]
+    return v
+
+
+def _lk(lv):
+    return {"<250 °C": "lt250", "250–300 °C": "250_300", "300–350 °C": "300_350", "≥350 °C": "ge350"}.get(lv, lv)
+
+
+def compute_v4(v):
+    """Tokens for the within-study meta-analysis (PROTOCOL Addendum E)."""
+    M = pd.read_csv(os.path.join(R, "e18_meta_dev.csv"))
+    for r in M.itertuples():
+        b = f"m_{r.outcome}_{r.factor}_{_lk(r.level)}"
+        d = 2 if r.outcome == "n_biooil" else (2 if (r.factor in ("T", "t") and abs(r.mu) < 3) else 1)
+        fm = lambda x: f"{x:.{d}f}".replace("-", "−")
+        v[b] = fm(r.mu); v[b + "_lo"] = fm(r.ci_lo); v[b + "_hi"] = fm(r.ci_hi); v[b + "_plo"] = fm(r.pi_lo); v[b + "_phi"] = fm(r.pi_hi)
+        v[b + "_k"] = int(r.k); v[b + "_n"] = int(r.n_contrasts); v[b + "_I2"] = f"{100 * r.I2:.0f}%"; v[b + "_pb"] = f"{r.p_benefit:.2f}"
+        v[b + "_pd"] = f"{1 - r.p_benefit:.2f}"; v[b + "_tau"] = fm(r.tau); v[b + "_p"] = pfmt(r.p)
+        v[b + "_abs"] = fm(abs(r.mu)); v[b + "_pbpct"] = f"{100 * r.p_benefit:.0f}%"; v[b + "_pdpct"] = f"{100 * (1 - r.p_benefit):.0f}%"
+        v[b + "_absplo"] = fm(abs(r.pi_hi)) if r.mu < 0 else fm(r.pi_lo); v[b + "_absphi"] = fm(abs(r.pi_lo)) if r.mu < 0 else fm(r.pi_hi)
+    C = pd.read_csv(os.path.join(R, "e18_contrasts_dev.csv.gz"))
+    v["ma_n_studies"] = int(C.study.nunique()); v["ma_n_contrasts"] = f"{len(C):,}"
+    for o in ["biooil", "solid"]:
+        v[f"ma_{o}_studies"] = int(C[C.outcome == o].study.nunique()); v[f"ma_{o}_contrasts"] = f"{int((C.outcome == o).sum()):,}"
+    v["ma_n_items"] = int(len(M)); v["ma_n_items_sig"] = int(((M.ci_lo > 0) | (M.ci_hi < 0)).sum())
+    cat = M[(M.factor == "cat") & M.level.isin(["alkali_carbonate", "alkali_hydroxide", "metal_supported"])]
+    v["ma_cat_I2_min"] = f"{100 * cat.I2.min():.0f}%"; v["ma_cat_I2_max"] = f"{100 * cat.I2.max():.0f}%"
+    v["ma_I2_median"] = f"{100 * M.I2.median():.0f}%"
+    sens = (M.mu - M.mu_pm).abs().max(); v["ma_pm_maxdiff"] = f"{sens:.2f}"
+    v["ma_egger_n"] = int(M.egger_p.notna().sum()); v["ma_egger_sig"] = int((M.egger_p < 0.05).sum())
+    from src.meta.within_study import frame as _frame
+    Fd = _frame("dev"); fam = Fd.groupby("study").family.agg(lambda z: z.mode().iloc[0])
+    lig = fam.isin(["Agricultural Residues", "Lignin-rich Streams (Technical)", "Woody Biomass / Hardwood", "Woody Biomass / Softwood", "Mixed Biomass",
+                    "Woody Biomass / Unspecified", "Herbaceous Biomass", "Waste Wood / Construction"])
+    v["ma_lig_share"] = f"{100 * lig.mean():.0f}%"; v["ma_n_dev_studies"] = int(len(fam))
+    v["ma_htc_runs"] = int((Fd.proc == "HTC").sum()); v["ma_htl_runs"] = int(Fd.proc.isin(["HTL", "HTL_solvothermal"]).sum())
+    d24 = json.load(open(os.path.join(R, "statistics", "fig24_design.json")))
+    v["d24_n"] = d24["n"]; v["d24_lo"] = f1(d24["lo300"]); v["d24_hi"] = f1(d24["hi300"])
+    RR = pd.read_csv(os.path.join(R, "e18_response_ratios_dev.csv"))
+    for r in RR.itertuples():
+        b = f"rr_{r.outcome}_{r.level}"; v[b] = f"{r.rel_pct:.0f}"; v[b + "_lo"] = f"{r.rel_lo:.0f}"; v[b + "_hi"] = f"{r.rel_hi:.0f}"
+    Bt = pd.read_csv(os.path.join(R, "e18_bootstrap_dev.csv")).merge(M[["outcome", "factor", "level", "ci_lo", "ci_hi"]])
+    sig_h = (Bt.ci_lo > 0) | (Bt.ci_hi < 0); sig_b = (Bt.boot_lo > 0) | (Bt.boot_hi < 0)
+    v["boot_agree"] = int((sig_h == sig_b).sum()); v["boot_n"] = int(len(Bt))
+    v["boot_lost"] = int((sig_h & ~sig_b).sum()); v["boot_gained"] = int((~sig_h & sig_b).sum())
+    # laboratory effect
+    L = json.load(open(os.path.join(R, "statistics", "e18_lab_effect_mixedlm.json")))
+    for o in L:
+        if "tau" in L[o]:
+            v[f"lab_mm_{o}_tau"] = f1(L[o]["tau"]); v[f"lab_mm_{o}_icc"] = f2(L[o]["icc"]); v[f"lab_mm_{o}_sigma"] = f1(L[o]["sigma"])
+    S = json.load(open(os.path.join(R, "statistics.json")))
+    for o in ["biooil", "solid"]:
+        tau_ml = float(np.sqrt(S["e3"][o]["heterogeneity"]["base"]["tau2"])); slope = float(M[(M.outcome == o) & (M.factor == "T") & (M.level == "250–300 °C")].mu.iloc[0])
+        v[f"lab_{o}_equivT_ml"] = f"{abs(tau_ml / slope * 10):.0f}"; v[f"lab_{o}_equivT_mm"] = f"{abs(L[o]['tau'] / slope * 10):.0f}"
+        cm = M[(M.outcome == o) & (M.factor == "cat") & M.level.isin(["alkali_carbonate", "alkali_hydroxide", "metal_supported"])].mu.abs()
+        v[f"lab_{o}_ratio_cat_min"] = f"{tau_ml / cm.max():.1f}"; v[f"lab_{o}_ratio_cat_max"] = f"{L[o]['tau'] / cm.min():.1f}"
+        v[f"lab_{o}_50C"] = f1(abs(5 * slope))
+    # pooled models
+    E = json.load(open(os.path.join(R, "statistics", "e18_dev.json")))
+    for r in E["pooled_summary"]:
+        b = {"pooled XGBoost": "px", "pooled linear": "pl", "study fixed-effects linear": "pf"}[r["model"]]
+        v[f"{b}_rho"] = f2(r["spearman"]); v[f"{b}_rev"] = r["n_sign_reversal_sig"]; v[f"{b}_nsig"] = r["n_sig_meta"]; v[f"{b}_out"] = f"{100 * r['share_outside_ci']:.0f}%"
+        v[f"{b}_n"] = r["n_items"]; v[f"{b}_mad"] = f2(r["median_abs_diff"])
+    sh = E["shap_group_importance"]
+    for o in ["biooil", "solid"]:
+        rk = sorted(sh[o], key=lambda g: -sh[o][g]); v[f"shap_{o}_top"] = rk[0]; v[f"shap_{o}_second"] = rk[1]
+        v[f"shap_{o}_feed"] = f2(sh[o]["feedstock composition"]); v[f"shap_{o}_T"] = f2(sh[o]["temperature"]); v[f"shap_{o}_cat"] = f2(sh[o]["catalyst"])
+        v[f"shap_{o}_T_rank"] = rk.index("temperature") + 1
+    P = pd.read_csv(os.path.join(R, "e18_pooled_vs_meta_dev.csv"))
+    rev = P[(P.model == "pooled linear") & ((P.ci_lo > 0) | (P.ci_hi < 0)) & (np.sign(P.effect) != np.sign(P.mu))]
+    if len(rev):
+        r = rev.iloc[0]; v["pl_rev_item"] = f"{r.outcome.replace('biooil', 'bio-oil')} yield, {r.factor} {r.level}".replace("cat ", "catalyst ").replace("med ", "medium ").replace("_", " ")
+        v["pl_rev_meta"] = f"{r.mu:.1f}".replace("-", "−"); v["pl_rev_pooled"] = f"{r.effect:.1f}".replace("-", "−")
+    # feedstock
+    FR = pd.read_csv(os.path.join(R, "e18_feedstock_dev.csv"))
+    for r in FR.itertuples():
+        b = f"fs_{r.outcome}_{r.term.replace('feed_', '')}"
+        v[b] = f"{r.coef_per_10wt:.2f}".replace("-", "−"); v[b + "_lo"] = f"{r.ci_lo:.2f}".replace("-", "−"); v[b + "_hi"] = f"{r.ci_hi:.2f}".replace("-", "−")
+        v[b + "_p"] = pfmt(r.p)
+    for o in FR.outcome.unique():
+        q = FR[FR.outcome == o].iloc[0]; v[f"fs_{o}_studies"] = int(q.n_studies); v[f"fs_{o}_cells"] = int(q.n_cells); v[f"fs_{o}_runs"] = int(q.n_runs)
+    v["fs_biooil_nsig"] = int((FR[FR.outcome == "biooil"].p < 0.05).sum())
+    v["fs_n_biooil_N_per1"] = f"{float(FR[(FR.outcome == 'n_biooil') & (FR.term == 'feed_N')].coef_per_10wt.iloc[0]) / 10:.2f}"
+    nb = M[(M.outcome == "n_biooil") & M.factor.isin(["cat", "T"])]
+    v["n_biooil_maxabs"] = f"{nb.mu.abs().max():.2f}"; v["n_biooil_nsig"] = int(((nb.ci_lo > 0) | (nb.ci_hi < 0)).sum())
+    Mo = pd.read_csv(os.path.join(R, "e18_moderators_dev.csv"))
+    v["mod_n"] = int(len(Mo)); v["mod_nsig_holm"] = int((Mo.p_holm < 0.05).sum()); v["mod_nsig_raw"] = int((Mo.p < 0.05).sum())
+    # locked confirmatory test
+    Lk = json.load(open(os.path.join(R, "statistics", "e18_locked.json")))
+    v["lk_n_contrasts"] = Lk["n_contrasts"]; v["lk_n_studies"] = Lk["n_studies"]
+    v["lk_rmse_meta"] = f2(Lk["median_rmse"]["pred_meta"]); v["lk_rmse_xgb"] = f2(Lk["median_rmse"]["pred_xgb"]); v["lk_rmse_zero"] = f2(Lk["median_rmse"]["pred_zero"])
+    v["lk_p_xgb"] = f2(Lk["meta_vs_xgb"]["p_holm"]); v["lk_p_zero"] = f2(Lk["meta_vs_zero"]["p_holm"]); v["lk_picov"] = f2(Lk["pi_coverage_study_effects"])
+    v["lk_n_eff"] = Lk["n_study_effects"]; v["lk_sign_meta"] = f2(Lk["sign_agreement_meta"]); v["lk_sign_xgb"] = f2(Lk["sign_agreement_xgb"])
+    LC = pd.read_csv(os.path.join(R, "e18_locked_contrasts.csv"))
+    Sl = LC.groupby(["outcome", "factor", "level", "study"]).effect.mean().reset_index()
+    for (o, f, lv), q in Sl.groupby(["outcome", "factor", "level"]):
+        b = f"lk_{o}_{f}_{_lk(lv)}"; v[b + "_k"] = int(q.study.nunique()); v[b + "_med"] = f"{q.effect.median():.2f}".replace("-", "−")
     return v
 
 

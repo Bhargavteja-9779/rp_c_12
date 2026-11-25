@@ -199,6 +199,126 @@
   "cite": "Patil and Parmigiani, 2018",
   "doi": "10.1073/pnas.1708283115"
  },
+ "Akhtar2011": {
+  "text": "Akhtar, J., Amin, N.A.S., 2011. A review on process conditions for optimum bio-oil yield in hydrothermal liquefaction of biomass. Renew. Sustain. Energy Rev. 15(3), 1615-1624. https://doi.org/10.1016/j.rser.2010.11.054",
+  "cite": "Akhtar and Amin, 2011",
+  "doi": "10.1016/j.rser.2010.11.054"
+ },
+ "Biller2011": {
+  "text": "Biller, P., Ross, A., 2011. Potential yields and properties of oil from the hydrothermal liquefaction of microalgae with different biochemical content. Bioresour. Technol. 102(1), 215-225. https://doi.org/10.1016/j.biortech.2010.06.028",
+  "cite": "Biller and Ross, 2011",
+  "doi": "10.1016/j.biortech.2010.06.028"
+ },
+ "IntHout2016": {
+  "text": "IntHout, J., Ioannidis, J.P.A., Rovers, M.M., Goeman, J.J., 2016. Plea for routinely presenting prediction intervals in meta-analysis. BMJ Open 6(7), e010247. https://doi.org/10.1136/bmjopen-2015-010247",
+  "cite": "IntHout et al., 2016",
+  "doi": "10.1136/bmjopen-2015-010247"
+ },
+ "Hartung2001": {
+  "text": "Hartung, J., Knapp, G., 2001. On tests of the overall treatment effect in meta‐analysis with normally distributed responses. Stat. Med. 20(12), 1771-1782. https://doi.org/10.1002/sim.791",
+  "cite": "Hartung and Knapp, 2001",
+  "doi": "10.1002/sim.791"
+ },
+ "Sidik2002": {
+  "text": "Sidik, K., Jonkman, J.N., 2002. A simple confidence interval for meta‐analysis. Stat. Med. 21(21), 3153-3159. https://doi.org/10.1002/sim.1262",
+  "cite": "Sidik and Jonkman, 2002",
+  "doi": "10.1002/sim.1262"
+ },
+ "Viechtbauer2005": {
+  "text": "Viechtbauer, W., 2005. Bias and Efficiency of Meta-Analytic Variance Estimators in the Random-Effects Model. J. Educ. Behav. Stat. 30(3), 261-293. https://doi.org/10.3102/10769986030003261",
+  "cite": "Viechtbauer, 2005",
+  "doi": "10.3102/10769986030003261"
+ },
+ "Egger1997": {
+  "text": "Egger, M., Smith, G.D., Schneider, M., Minder, C., 1997. Bias in meta-analysis detected by a simple, graphical test. BMJ 315(7109), 629-634. https://doi.org/10.1136/bmj.315.7109.629",
+  "cite": "Egger et al., 1997",
+  "doi": "10.1136/bmj.315.7109.629"
+ },
+ "Riley2011": {
+  "text": "Riley, R.D., Higgins, J.P.T., Deeks, J.J., 2011. Interpretation of random effects meta-analyses. BMJ 342(feb10 2), d549-d549. https://doi.org/10.1136/bmj.d549",
+  "cite": "Riley et al., 2011",
+  "doi": "10.1136/bmj.d549"
+ },
+ "Friedman2001": {
+  "text": "Friedman, J.H., 2001. Greedy function approximation: A gradient boosting machine. Ann. Stat. 29(5), 1189-1232. https://doi.org/10.1214/aos/1013203451",
+  "cite": "Friedman, 2001",
+  "doi": "10.1214/aos/1013203451"
+ },
+ "Veroniki2016": {
+  "text": "Veroniki, A.A., Jackson, D., Viechtbauer, W., Bender, R., Bowden, J., Knapp, G., Kuss, O., Higgins, J.P., Langan, D., Salanti, G., 2015. Methods to estimate the between‐study variance and its uncertainty in meta‐analysis. Res. Synth. Methods 7(1), 55-79. https://doi.org/10.1002/jrsm.1164",
+  "cite": "Veroniki et al., 2015",
+  "doi": "10.1002/jrsm.1164"
+ },
+ "Karagoz2006": {
+  "text": "KARAGOZ, S., BHASKAR, T., MUTO, A., SAKATA, Y., 2005. Comparative studies of oil compositions produced from sawdust, rice husk, lignin and cellulose by hydrothermal treatment. Fuel 84(7-8), 875-884. https://doi.org/10.1016/j.fuel.2005.01.004",
+  "cite": "KARAGOZ et al., 2005",
+  "doi": "10.1016/j.fuel.2005.01.004"
+ },
+ "Zhu2015": {
+  "text": "Zhu, Z., Toor, S.S., Rosendahl, L., Yu, D., Chen, G., 2015. Influence of alkali catalyst on product yield and properties via hydrothermal liquefaction of barley straw. Energy 80, 284-292. https://doi.org/10.1016/j.energy.2014.11.071",
+  "cite": "Zhu et al., 2015",
+  "doi": "10.1016/j.energy.2014.11.071"
+ },
+ "Castello2018": {
+  "text": "Castello, D., Pedersen, T.H., Rosendahl, L.A., 2018. Continuous Hydrothermal Liquefaction of Biomass: A Critical Review. Energies 11(11), 3165. https://doi.org/10.3390/en11113165",
+  "cite": "Castello et al., 2018",
+  "doi": "10.3390/en11113165"
+ },
+ "Dimitriadis2017": {
+  "text": "Dimitriadis, A., Bezergianni, S., 2017. Hydrothermal liquefaction of various biomass and waste feedstocks for biocrude production: A state of the art review. Renew. Sustain. Energy Rev. 68, 113-125. https://doi.org/10.1016/j.rser.2016.09.120",
+  "cite": "Dimitriadis and Bezergianni, 2017",
+  "doi": "10.1016/j.rser.2016.09.120"
+ },
+ "Hedges1999": {
+  "text": "Hedges, L.V., Gurevitch, J., Curtis, P.S., 1999. THE META-ANALYSIS OF RESPONSE RATIOS IN EXPERIMENTAL ECOLOGY. Ecology 80(4), 1150-1156. https://doi.org/10.1890/0012-9658(1999)080[1150:tmaorr]2.0.co;2",
+  "cite": "Hedges et al., 1999",
+  "doi": "10.1890/0012-9658(1999)080[1150:tmaorr]2.0.co;2"
+ },
+ "Konstantopoulos2011": {
+  "text": "Konstantopoulos, S., 2011. Fixed effects and variance components estimation in three-level meta-analysis. Res. Synth. Methods 2(1), 61-76. https://doi.org/10.1002/jrsm.35",
+  "cite": "Konstantopoulos, 2011",
+  "doi": "10.1002/jrsm.35"
+ },
+ "Pustejovsky2022": {
+  "text": "Pustejovsky, J.E., Tipton, E., 2021. Meta-analysis with Robust Variance Estimation: Expanding the Range of Working Models. Prev. Sci. 23(3), 425-438. https://doi.org/10.1007/s11121-021-01246-3",
+  "cite": "Pustejovsky and Tipton, 2021",
+  "doi": "10.1007/s11121-021-01246-3"
+ },
+ "Hedges2010": {
+  "text": "Hedges, L.V., Tipton, E., Johnson, M.C., 2010. Robust variance estimation in meta‐regression with dependent effect size estimates. Res. Synth. Methods 1(1), 39-65. https://doi.org/10.1002/jrsm.5",
+  "cite": "Hedges et al., 2010",
+  "doi": "10.1002/jrsm.5"
+ },
+ "Kruse2005": {
+  "text": "Kruse, A., Faquir, M., 2007. Hydrothermal Biomass Gasification – Effects of Salts, Backmixing and Their Interaction. Chem. Eng. Technol. 30(6), 749-754. https://doi.org/10.1002/ceat.200600409",
+  "cite": "Kruse and Faquir, 2007",
+  "doi": "10.1002/ceat.200600409"
+ },
+ "Peterson2008": {
+  "text": "Peterson, A.A., Vogel, F., Lachance, R.P., Fröling, M., Antal, J.M.J., Tester, J.W., 2008. Thermochemical biofuel production in hydrothermal media: A review of sub- and supercritical water technologies. Energy Environ. Sci. 1(1), 32. https://doi.org/10.1039/b810100k",
+  "cite": "Peterson et al., 2008",
+  "doi": "10.1039/b810100k"
+ },
+ "Microaeration2026": {
+  "text": "Febroni, L.V., Rosa, A.P., Borges, A.C., 2026. Microaeration enhances methane production in anaerobic digestion: A systematic review and meta-analysis. Bioresour. Technol. 459, 135162. https://doi.org/10.1016/j.biortech.2026.135162",
+  "cite": "Febroni et al., 2026",
+  "doi": "10.1016/j.biortech.2026.135162"
+ },
+ "Composting2026": {
+  "text": "Hussain, T., Ji, M., Xi, Z., Bai, H., Li, R., Liu, Q., Yang, X., Pan, J., 2027. A quantitative synthesis of carbon and nitrogen losses during animal and poultry manure composting: drivers, pathways, and mitigation. Bioresour. Technol. 465, 136142. https://doi.org/10.1016/j.biortech.2026.136142",
+  "cite": "Hussain et al., 2027",
+  "doi": "10.1016/j.biortech.2026.136142"
+ },
+ "IEARR2020": {
+  "text": "Bulsink, P., de Miguel Mercader, F., Sandström, L., van de Beld, B., Preto, F., Zacher, A., Oasmaa, A., Dahmen, N., Funke, A., Bronson, B., 2020. Results of the International Energy Agency Bioenergy Round Robin on the Analysis of Heteroatoms in Biomass Liquefaction Oils. Energy Fuels 34(9), 11123-11133. https://doi.org/10.1021/acs.energyfuels.0c02090",
+  "cite": "Bulsink et al., 2020",
+  "doi": "10.1021/acs.energyfuels.0c02090"
+ },
+ "Jiang2026MPAD": {
+  "text": "Jiang, C., Pang, R., Wang, W., Xie, B., Zhan, M., Luo, J., Su, Y., 2026. Microplastics divert carbon flow in anaerobic digestion: a meta-analysis reveals product-specific effects. Bioresour. Technol. 449, 134381. https://doi.org/10.1016/j.biortech.2026.134381",
+  "cite": "Jiang et al., 2026",
+  "doi": "10.1016/j.biortech.2026.134381"
+ },
  "Romano2019": {
   "text": "Romano, Y., Patterson, E., Candès, E.J., 2019. Conformalized Quantile Regression, in: Adv. Neural Inf. Process. Syst. 32. arXiv:1905.03222",
   "cite": "Romano et al., 2019",

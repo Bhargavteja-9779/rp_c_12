@@ -43,6 +43,11 @@ STAGES = [
     ("e17_locked", [sys.executable, "-W", "ignore", "experiments/e17_case_study.py", "{mode}"]),
     ("analyze_v3_locked", [sys.executable, "-W", "ignore", "-m", "src.statistics.analyze_v3", "{mode}"]),
     ("figures_v3_locked", [sys.executable, "-W", "ignore", "-m", "src.visualization.figures_v3", "{mode}"]),
+    # v4 within-study meta-analysis (PROTOCOL Addendum E); locked replication in full mode only
+    ("e18", [sys.executable, "-W", "ignore", "experiments/e18_meta.py", "{mode}", "dev"]),
+    ("e18_review", [sys.executable, "-W", "ignore", "experiments/e18_meta.py", "{mode}", "review"]),
+    ("e18_locked", [sys.executable, "-W", "ignore", "experiments/e18_meta.py", "{mode}", "locked"]),
+    ("figures_v4_locked", [sys.executable, "-W", "ignore", "-m", "src.visualization.figures_v4", "{mode}"]),
 ]
 
 
