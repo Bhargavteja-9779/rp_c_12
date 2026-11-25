@@ -156,3 +156,44 @@ worse than always-B (reported descriptively with a Wilcoxon test).
 E17 Laboratory case study. Pre-specified selection rule: the locked bio-oil study with ≥ 11 runs and the largest number of distinct
 temperatures (ties → most runs); likewise for solid yield. Shown: strategies A, B, C along the screening-design order, observed vs predicted
 with intervals, error per additional run, and the regret of choosing the predicted-best remaining run (descriptive).
+
+# Addendum E (registered 2026-11-25, BEFORE any effect size was computed): within-study meta-analysis of process and feedstock effects
+Motivation: desk rejection of v3 ("insufficient novelty"). New primary question: which process and feedstock variables change HTL/HTC
+yields and bio-oil quality, by how much, and how consistently across laboratories — estimated only from comparisons WITHIN a study,
+so that laboratory (study) effects cancel. Before registration only the NUMBER of within-study single-factor contrasts per factor and
+outcome was counted (feasibility); no effect was computed.
+
+Data: all 188 studies' development part (150 studies) for estimation; the 38 locked studies are used once, for the confirmatory test E5.
+Outcomes. Primary: bio-oil yield, solid yield (wt%, as in the main analyses). Secondary: aqueous-phase yield, gas yield, bio-oil HHV
+(measured values only), bio-oil energy recovery, bio-oil N content.
+Cells and contrasts. Runs of the same study with identical values of every condition except the factor of interest (feedstock name and
+composition, T, log t, solid loading, heating rate, catalyst class and ratio, medium class, atmosphere/gas, process subtype; missing
+values treated as a category) form a cell. Factors and contrast definitions:
+ F1 temperature: slope (Δy per +10 °C) between adjacent temperatures in a cell, assigned to the band of the pair midpoint
+    (<250, 250–300, 300–350, ≥350 °C); F2 residence time: slope per doubling between adjacent times;
+ F3 catalyst: mean y of runs with catalyst class c minus mean y of uncatalysed runs in the cell (classes: alkali carbonate,
+    alkali hydroxide, acid, metal/supported metal, other); F4 reaction medium: class m minus water (water–alcohol, alcohol,
+    water + H-donor/co-reactant, other organic); F5 solid loading: slope per +10 percentage points of loading;
+ F6 feedstock composition: within-cell (identical conditions, different feedstocks) regression of y on feedstock lignin, cellulose,
+    hemicellulose, ash and N content (fixed cell effects; coefficients per +10 wt%; cluster-robust SE by study); reported only if
+    ≥ 10 studies contribute.
+Study-level effect = mean of its contrasts (for F1 per band); its sampling variance = s²_w / m_j, where m_j is the number of contrasts of the
+study and s²_w the pooled within-study variance of contrasts (studies with ≥ 2 contrasts). Synthesis: random-effects model, REML τ²,
+Hartung–Knapp–Sidik–Jonkman CI, 95% prediction interval (t with k−2 df), I²; reported when ≥ 5 studies. "Probability of benefit" for a
+new laboratory = P(effect > 0) under the predictive distribution N(μ, τ² + SE²). Sensitivity: Paule–Mandel τ²; one-contrast-per-study
+(median) estimator; leave-one-study-out range; Egger-type small-study test (≥ 10 studies) as a reporting-bias check.
+Moderators (pre-specified, only for F3 and F4 with ≥ 10 studies): cell temperature (< 300 vs ≥ 300 °C), process subtype (HTC vs HTL),
+feedstock lignin content (above vs below the median of contributing studies). Holm correction within factor × outcome.
+E2 Laboratory effect. Between-study SD of yields at matched conditions = τ of the out-of-study residual offsets (Section 2.5); expressed as the
+temperature change (from F1) and catalyst effect it equals ("equivalent process change").
+E3 Pooled-model effects vs within-study effects. A pooled learner (XGBoost, base features, all development runs, as typically done in the
+literature) and a pooled linear model (OLS without study effects) are used to compute model-implied effects for each factor (counterfactual
+prediction difference on the runs of the contributing cells; T and t as slopes). Agreement with the meta-analytic effects: sign agreement,
+Spearman correlation and the share of pooled estimates outside the meta-analytic 95% CI. A study-fixed-effects linear model is the third
+comparator. Hypothesis H-E3: pooled estimates disagree in sign with the within-study estimate for at least one factor with a CI excluding 0.
+E4 SHAP-based importance from the pooled XGBoost vs the magnitude ranking of meta-analytic effects (descriptive).
+E5 Confirmatory test on the 38 locked studies (one look): within-study contrasts of locked studies (same definitions) are predicted by
+(a) the meta-analytic mean effect, (b) the pooled XGBoost counterfactual difference, (c) zero (no change). Primary metric: per-study RMSE of
+contrasts (bio-oil and solid yield, all factors pooled); one-sided Wilcoxon (a) < (b) and (a) < (c), Holm. Coverage of the 95% prediction
+interval for locked-study effects is reported.
+Code: src/meta/within_study.py, experiments/e18_meta.py; outputs results/e18_*.
