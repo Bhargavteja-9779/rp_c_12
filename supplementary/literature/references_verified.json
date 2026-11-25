@@ -919,5 +919,455 @@
   "issue": "11",
   "pages": "2578-2583",
   "type": "journal-article"
+ },
+ "Akhtar2011": {
+  "key": "Akhtar2011",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.rser.2010.11.054",
+  "title": "A review on process conditions for optimum bio-oil yield in hydrothermal liquefaction of biomass",
+  "authors": [
+   "Akhtar, Javaid",
+   "Amin, Nor Aishah Saidina"
+  ],
+  "year": 2011,
+  "venue": "Renewable and Sustainable Energy Reviews",
+  "volume": "15",
+  "issue": "3",
+  "pages": "1615-1624",
+  "type": "journal-article"
+ },
+ "Biller2011": {
+  "key": "Biller2011",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.biortech.2010.06.028",
+  "title": "Potential yields and properties of oil from the hydrothermal liquefaction of microalgae with different biochemical content",
+  "authors": [
+   "Biller, P.",
+   "Ross, A.B."
+  ],
+  "year": 2011,
+  "venue": "Bioresource Technology",
+  "volume": "102",
+  "issue": "1",
+  "pages": "215-225",
+  "type": "journal-article"
+ },
+ "IntHout2016": {
+  "key": "IntHout2016",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1136/bmjopen-2015-010247",
+  "title": "Plea for routinely presenting prediction intervals in meta-analysis",
+  "authors": [
+   "IntHout, Joanna",
+   "Ioannidis, John P A",
+   "Rovers, Maroeska M",
+   "Goeman, Jelle J"
+  ],
+  "year": 2016,
+  "venue": "BMJ Open",
+  "volume": "6",
+  "issue": "7",
+  "pages": "e010247",
+  "type": "journal-article"
+ },
+ "Hartung2001": {
+  "key": "Hartung2001",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1002/sim.791",
+  "title": "On tests of the overall treatment effect in meta\u2010analysis with normally distributed responses",
+  "authors": [
+   "Hartung, Joachim",
+   "Knapp, Guido"
+  ],
+  "year": 2001,
+  "venue": "Statistics in Medicine",
+  "volume": "20",
+  "issue": "12",
+  "pages": "1771-1782",
+  "type": "journal-article"
+ },
+ "Sidik2002": {
+  "key": "Sidik2002",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1002/sim.1262",
+  "title": "A simple confidence interval for meta\u2010analysis",
+  "authors": [
+   "Sidik, Kurex",
+   "Jonkman, Jeffrey N."
+  ],
+  "year": 2002,
+  "venue": "Statistics in Medicine",
+  "volume": "21",
+  "issue": "21",
+  "pages": "3153-3159",
+  "type": "journal-article"
+ },
+ "Viechtbauer2005": {
+  "key": "Viechtbauer2005",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.3102/10769986030003261",
+  "title": "Bias and Efficiency of Meta-Analytic Variance Estimators in the Random-Effects Model",
+  "authors": [
+   "Viechtbauer, Wolfgang"
+  ],
+  "year": 2005,
+  "venue": "Journal of Educational and Behavioral Statistics",
+  "volume": "30",
+  "issue": "3",
+  "pages": "261-293",
+  "type": "journal-article"
+ },
+ "Egger1997": {
+  "key": "Egger1997",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1136/bmj.315.7109.629",
+  "title": "Bias in meta-analysis detected by a simple, graphical test",
+  "authors": [
+   "Egger, Matthias",
+   "Smith, George Davey",
+   "Schneider, Martin",
+   "Minder, Christoph"
+  ],
+  "year": 1997,
+  "venue": "BMJ",
+  "volume": "315",
+  "issue": "7109",
+  "pages": "629-634",
+  "type": "journal-article"
+ },
+ "Riley2011": {
+  "key": "Riley2011",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1136/bmj.d549",
+  "title": "Interpretation of random effects meta-analyses",
+  "authors": [
+   "Riley, R. D.",
+   "Higgins, J. P. T.",
+   "Deeks, J. J."
+  ],
+  "year": 2011,
+  "venue": "BMJ",
+  "volume": "342",
+  "issue": "feb10 2",
+  "pages": "d549-d549",
+  "type": "journal-article"
+ },
+ "Friedman2001": {
+  "key": "Friedman2001",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1214/aos/1013203451",
+  "title": "Greedy function approximation: A gradient boosting machine.",
+  "authors": [
+   "Friedman, Jerome H."
+  ],
+  "year": 2001,
+  "venue": "The Annals of Statistics",
+  "volume": "29",
+  "issue": "5",
+  "pages": "1189-1232",
+  "type": "journal-article"
+ },
+ "Veroniki2016": {
+  "key": "Veroniki2016",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1002/jrsm.1164",
+  "title": "Methods to estimate the between\u2010study variance and its uncertainty in meta\u2010analysis",
+  "authors": [
+   "Veroniki, Areti Angeliki",
+   "Jackson, Dan",
+   "Viechtbauer, Wolfgang",
+   "Bender, Ralf",
+   "Bowden, Jack",
+   "Knapp, Guido",
+   "Kuss, Oliver",
+   "Higgins, Julian PT",
+   "Langan, Dean",
+   "Salanti, Georgia"
+  ],
+  "year": 2015,
+  "venue": "Research Synthesis Methods",
+  "volume": "7",
+  "issue": "1",
+  "pages": "55-79",
+  "type": "journal-article"
+ },
+ "Karagoz2006": {
+  "key": "Karagoz2006",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.fuel.2005.01.004",
+  "title": "Comparative studies of oil compositions produced from sawdust, rice husk, lignin and cellulose by hydrothermal treatment",
+  "authors": [
+   "KARAGOZ, S",
+   "BHASKAR, T",
+   "MUTO, A",
+   "SAKATA, Y"
+  ],
+  "year": 2005,
+  "venue": "Fuel",
+  "volume": "84",
+  "issue": "7-8",
+  "pages": "875-884",
+  "type": "journal-article"
+ },
+ "Zhu2015": {
+  "key": "Zhu2015",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.energy.2014.11.071",
+  "title": "Influence of alkali catalyst on product yield and properties via hydrothermal liquefaction of barley straw",
+  "authors": [
+   "Zhu, Zhe",
+   "Toor, Saqib Sohail",
+   "Rosendahl, Lasse",
+   "Yu, Donghong",
+   "Chen, Guanyi"
+  ],
+  "year": 2015,
+  "venue": "Energy",
+  "volume": "80",
+  "issue": null,
+  "pages": "284-292",
+  "type": "journal-article"
+ },
+ "Castello2018": {
+  "key": "Castello2018",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.3390/en11113165",
+  "title": "Continuous Hydrothermal Liquefaction of Biomass: A Critical Review",
+  "authors": [
+   "Castello, Daniele",
+   "Pedersen, Thomas Helmer",
+   "Rosendahl, Lasse Aistrup"
+  ],
+  "year": 2018,
+  "venue": "Energies",
+  "volume": "11",
+  "issue": "11",
+  "pages": "3165",
+  "type": "journal-article"
+ },
+ "Dimitriadis2017": {
+  "key": "Dimitriadis2017",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.rser.2016.09.120",
+  "title": "Hydrothermal liquefaction of various biomass and waste feedstocks for biocrude production: A state of the art review",
+  "authors": [
+   "Dimitriadis, Athanasios",
+   "Bezergianni, Stella"
+  ],
+  "year": 2017,
+  "venue": "Renewable and Sustainable Energy Reviews",
+  "volume": "68",
+  "issue": null,
+  "pages": "113-125",
+  "type": "journal-article"
+ },
+ "Hedges1999": {
+  "key": "Hedges1999",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1890/0012-9658(1999)080[1150:tmaorr]2.0.co;2",
+  "title": "THE META-ANALYSIS OF RESPONSE RATIOS IN EXPERIMENTAL ECOLOGY",
+  "authors": [
+   "Hedges, Larry V.",
+   "Gurevitch, Jessica",
+   "Curtis, Peter S."
+  ],
+  "year": 1999,
+  "venue": "Ecology",
+  "volume": "80",
+  "issue": "4",
+  "pages": "1150-1156",
+  "type": "journal-article"
+ },
+ "Konstantopoulos2011": {
+  "key": "Konstantopoulos2011",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1002/jrsm.35",
+  "title": "Fixed effects and variance components estimation in three-level meta-analysis",
+  "authors": [
+   "Konstantopoulos, Spyros"
+  ],
+  "year": 2011,
+  "venue": "Research Synthesis Methods",
+  "volume": "2",
+  "issue": "1",
+  "pages": "61-76",
+  "type": "journal-article"
+ },
+ "Pustejovsky2022": {
+  "key": "Pustejovsky2022",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1007/s11121-021-01246-3",
+  "title": "Meta-analysis with Robust Variance Estimation: Expanding the Range of Working Models",
+  "authors": [
+   "Pustejovsky, James E",
+   "Tipton, Elizabeth"
+  ],
+  "year": 2021,
+  "venue": "Prevention Science",
+  "volume": "23",
+  "issue": "3",
+  "pages": "425-438",
+  "type": "journal-article"
+ },
+ "Hedges2010": {
+  "key": "Hedges2010",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1002/jrsm.5",
+  "title": "Robust variance estimation in meta\u2010regression with dependent effect size estimates",
+  "authors": [
+   "Hedges, Larry V.",
+   "Tipton, Elizabeth",
+   "Johnson, Matthew C."
+  ],
+  "year": 2010,
+  "venue": "Research Synthesis Methods",
+  "volume": "1",
+  "issue": "1",
+  "pages": "39-65",
+  "type": "journal-article"
+ },
+ "Kruse2005": {
+  "key": "Kruse2005",
+  "ok": true,
+  "score": 0.994,
+  "doi": "10.1002/ceat.200600409",
+  "title": "Hydrothermal Biomass Gasification \u2013 Effects of Salts, Backmixing and Their Interaction",
+  "authors": [
+   "Kruse, A.",
+   "Faquir, M."
+  ],
+  "year": 2007,
+  "venue": "Chemical Engineering &amp; Technology",
+  "volume": "30",
+  "issue": "6",
+  "pages": "749-754",
+  "type": "journal-article"
+ },
+ "Peterson2008": {
+  "key": "Peterson2008",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1039/b810100k",
+  "title": "Thermochemical biofuel production in hydrothermal media: A review of sub- and supercritical water technologies",
+  "authors": [
+   "Peterson, Andrew A.",
+   "Vogel, Fr\u00e9d\u00e9ric",
+   "Lachance, Russell P.",
+   "Fr\u00f6ling, Morgan",
+   "Antal, Jr., Michael J.",
+   "Tester, Jefferson W."
+  ],
+  "year": 2008,
+  "venue": "Energy &amp; Environmental Science",
+  "volume": "1",
+  "issue": "1",
+  "pages": "32",
+  "type": "journal-article"
+ },
+ "Microaeration2026": {
+  "key": "Microaeration2026",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.biortech.2026.135162",
+  "title": "Microaeration enhances methane production in anaerobic digestion: A systematic review and meta-analysis",
+  "authors": [
+   "Febroni, La\u00eds Veloso",
+   "Rosa, Andr\u00e9 Pereira",
+   "Borges, Alisson Carraro"
+  ],
+  "year": 2026,
+  "venue": "Bioresource Technology",
+  "volume": "459",
+  "issue": null,
+  "pages": "135162",
+  "type": "journal-article"
+ },
+ "Composting2026": {
+  "key": "Composting2026",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.biortech.2026.136142",
+  "title": "A quantitative synthesis of carbon and nitrogen losses during animal and poultry manure composting: drivers, pathways, and mitigation",
+  "authors": [
+   "Hussain, Tanveer",
+   "Ji, Mengjiao",
+   "Xi, Ziming",
+   "Bai, Haoduo",
+   "Li, Ronghua",
+   "Liu, Qiang",
+   "Yang, Xu",
+   "Pan, Junting"
+  ],
+  "year": 2027,
+  "venue": "Bioresource Technology",
+  "volume": "465",
+  "issue": null,
+  "pages": "136142",
+  "type": "journal-article"
+ },
+ "IEARR2020": {
+  "key": "IEARR2020",
+  "ok": true,
+  "score": 0.992,
+  "doi": "10.1021/acs.energyfuels.0c02090",
+  "title": "Results of the International Energy Agency Bioenergy\nRound Robin on the Analysis of Heteroatoms in Biomass Liquefaction\nOils",
+  "authors": [
+   "Bulsink, Philip",
+   "de Miguel Mercader, Ferran",
+   "Sandstro\u0308m, Linda",
+   "van de Beld, Bert",
+   "Preto, Fernando",
+   "Zacher, Alan",
+   "Oasmaa, Anja",
+   "Dahmen, Nicolaus",
+   "Funke, Axel",
+   "Bronson, Benjamin"
+  ],
+  "year": 2020,
+  "venue": "Energy &amp; Fuels",
+  "volume": "34",
+  "issue": "9",
+  "pages": "11123-11133",
+  "type": "journal-article"
+ },
+ "Jiang2026MPAD": {
+  "key": "Jiang2026MPAD",
+  "ok": true,
+  "score": 1.0,
+  "doi": "10.1016/j.biortech.2026.134381",
+  "title": "Microplastics divert carbon flow in anaerobic digestion: a meta-analysis reveals product-specific effects",
+  "authors": [
+   "Jiang, Cong",
+   "Pang, Ruirui",
+   "Wang, Wenyue",
+   "Xie, Bing",
+   "Zhan, Min",
+   "Luo, Jingyang",
+   "Su, Yinglong"
+  ],
+  "year": 2026,
+  "venue": "Bioresource Technology",
+  "volume": "449",
+  "issue": null,
+  "pages": "134381",
+  "type": "journal-article"
  }
 }

@@ -1,0 +1,1834 @@
+{
+ "htl_htc_ml": [
+  {
+   "pmid": "43014525",
+   "title": "Temporal decoupling constrains three-product trade-offs in hydrothermal carbonization: A data-driven framework for hydrochar, aqueous-phase nitrogen, and carbon dots.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.136237",
+   "abstract": "Hydrothermal carbonization (HTC) of wet biomass yields three value-added streams: solid hydrochar, nitrogen-rich process water (a precursor for liquid fertilizer), and fluorescent carbon dots. However, single-objective optimization of individual products wastes co-products and undermines circular bioeconomy principles. Here, we establish a data-driven gradient-boosted decision tree (GBDT) framework with SHapley Additive exPlanations (SHAP), trained on 1,062 literature-derived data points across diverse feedstocks, to quantify cross-product regulation mechanisms. The models achieve test R2 of 0.94, 0.93, and 0.91 for hydrochar yield, aqueous-phase total nitrogen (TN), and carbon dots quantum yield (QY), respectively. Global SHAP analysis reveals distinct control regimes: operational parameters dominate solid/liquid products (44-45% contribution), whereas feedstock chemistry governs carbon dots optical properties (>35% contribution). Critically, while temperature (180-220 \u2103) and solid-to-liquid ratio (SLR, 14-22%) permit partial cross-product coordination, SHAP dependence analysis exposes a temporal decoupling-hydrochar formation favors residence times (RT) below approximately 1.4\u00a0h, whereas carbon dots maturation generally demands RT beyond approximately 8\u00a0h-which effectively precludes single-batch three-product maximization within the explored domain. We therefore propose a conceptual two-stage configuration: Stage I (short-cycle primary HTC at approximately 217-220 \u2103, RT of ca. 1-1.5\u00a0h) for co-production of hydrochar and liquid fertilizer, and Stage II (extended secondary processing at 200-220 \u2103 with RT approximately 8\u00a0h) for carbon dots synthesis from residual organics, pending dedicated experimental validation with liquid-phase precursors. An open-access web application enables real-time process design for non-specialists, reducing the technical barrier to data-driven optimization. This work provides theoretical foundations and practical tools for full-stream organic waste valorization.",
+   "keywords": [
+    "Carbon dots",
+    "Circular bioeconomy",
+    "Hydrochar",
+    "Hydrothermal carbonization",
+    "Liquid fertilizer",
+    "Machine learning",
+    "SHAP analysis"
+   ],
+   "dates": {
+    "received": "2026-8-25",
+    "revised": "2026-11-3",
+    "accepted": "2026-11-10",
+    "pubmed": "2026-11-11",
+    "medline": "2026-11-11",
+    "entrez": "2026-11-11"
+   }
+  },
+  {
+   "pmid": "42874818",
+   "title": "Ball-milling medium dictates the reconstruction pathway of hydrochar: Coupling pore opening with functionality retention.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.136066",
+   "abstract": "Hydrochar retains abundant oxygen-containing functional groups but little porosity, and thermal upgrading opens pores at the expense of surface chemistry. Ball milling requires no external heating, so its structural outcome is decided by how freshly fragmented particles reorganize. Here, dry and water-mediated ball milling of corn-straw hydrochar were compared to resolve how the milling medium directs this reorganization, with 600\u2103 biochar as a thermal reference. Without a liquid phase, fragments recontacted and densified: the specific surface area fell from 11.23 to 2.91\u00a0m2\u00b7g-1, the total pore volume from 0.0818 to 0.0179\u00a0cm3\u00b7g-1, and the CO proportion from 26.2\u00a0% to 19.0\u00a0%, so pore closure and carbonyl loss occurred together. In water, dispersion suppressed reagglomeration, increasing the specific surface area, total pore volume, and CO proportion to 34.26\u00a0m2\u00b7g-1, 0.1903\u00a0cm3\u00b7g-1, and 33.3\u00a0%, respectively. HTC-WBM adsorbed 2.53, 2.41, and 3.15 times as much TC as HTC, HTC-DBM, and BC, respectively. Although BC had the highest specific surface area (54.99\u00a0m2\u00b7g-1), its total pore volume and BET-equivalent average pore diameter were only 0.0439\u00a0cm3\u00b7g-1 and 3.19\u00a0nm, compared with 0.1903\u00a0cm3\u00b7g-1 and 22.22\u00a0nm for HTC-WBM. Open meso-/macropores facilitated TC transport to retained oxygen-containing sites, where hydrogen bonding and electrostatic interactions contributed to adsorption. Spectroscopic evidence and SHAP analysis were consistent with this coupled pore-accessibility/functionality effect. Medium-controlled milling therefore couples pore opening with functionality retention.",
+   "keywords": [
+    "Hydrochar",
+    "Machine learning",
+    "Milling medium",
+    "Oxygen-containing functional groups",
+    "Pore reconstruction",
+    "Tetracycline adsorption"
+   ],
+   "dates": {
+    "received": "2026-8-31",
+    "revised": "2026-10-3",
+    "accepted": "2026-10-14",
+    "pubmed": "2026-10-14",
+    "medline": "2026-10-14",
+    "entrez": "2026-10-14"
+   }
+  },
+  {
+   "pmid": "42607776",
+   "title": "Conservation-informed machine learning for physically admissible four-phase hydrothermal liquefaction surrogate modelling.",
+   "year": "2027",
+   "doi": "10.1016/j.biortech.2026.135587",
+   "abstract": "Hydrothermal liquefaction (HTL) distributes wet biomass and residues among bio-oil, char, aqueous product, and gas. Independent phase regressors can produce negative or non-closed allocations, and random validation obscures inter-study heterogeneity. We develop a conservation-informed constrained surrogate treating the four yields as one composition vector. A curated corpus of 3693 records yielded 680 closure-valid HTL and solvothermal experiments from 60 publications and 12 feedstock families. A Level 0-5 hierarchy used a common 408/136/136 training/calibration/test partition. The selected L5 surrogate combines an XGBoost teacher with a softmax admissibility mapping and soft conservation-residual penalties. On the 136-record test set, L5 reached a mean four-phase R2 of 0.844 and a vector root-mean-square error (RMSE) of 6.462 wt%, a small paired difference from the strongest comparator (\u0394R2=-0.0059; 95% confidence interval, -0.013 to \uff0b0.001), while enforcing non-negativity and exact closure and reducing common-basis carbon and higher heating value residuals to 2.390 wt% and 1.028. Under 10% feature perturbation, L5 produced 0% closure failures and 4.02% carbon-balance threshold violations, versus 50.28% and 69.82% for the independent baseline. Publication-aware validation exposed inter-study heterogeneity. Among 38 publications eligible for five-record local calibration, median vector RMSE decreased from 13.91 (k=0) to 7.10 wt% (k=5). Literature-derived HTL surrogates should be evaluated beyond random cross-validation and locally calibrated before transfer. Phase-wise 90% split-conformal coverage ranged from 0.875 to 0.956. The framework supports uncertainty-aware, physically admissible screening within represented data support and calibration-informed deployment, not universal prediction of unseen studies or full process-economic and life-cycle modelling.",
+   "keywords": [
+    "Compositional prediction",
+    "Conformal prediction",
+    "Conservation-informed machine learning",
+    "Constrained surrogate modelling",
+    "Domain shift",
+    "Hydrothermal liquefaction"
+   ],
+   "dates": {
+    "received": "2026-6-5",
+    "revised": "2026-7-16",
+    "accepted": "2026-8-7",
+    "medline": "2026-11-6",
+    "pubmed": "2026-8-17",
+    "entrez": "2026-8-17"
+   }
+  },
+  {
+   "pmid": "42225160",
+   "title": "Machine learning for prediction and experimental validation of hydrochar characteristics via co-hydrothermal carbonization of sewage sludge and pomelo peel.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.135052",
+   "abstract": "Optimizing the co-hydrothermal carbonization (co-HTC) of sludge and biomass requires understanding complex nonlinear relationships among feedstock characteristics, process parameters, and hydrochar properties. This study constructs an integrated machine learning framework encompassing prediction, interpretation, and experimental validation. Ridge Regression was introduced as a linear baseline, while GBR and XGB were used as complementary models to reduce dependence on a single algorithmic structure. Based on the revised feature design, the average test R2 values across the retained prediction targets were 0.8229, 0.8211, 0.8188, and 0.7968 for GBR, XGB, ET, and RF, respectively. GBR-based SHAP, PDP, and ALE analyses identified feedstock ash content, carbon content, and sludge mixing ratio as key predictive variables associated with HHV_char. These trends were interpreted as predictive associations rather than direct causal mechanisms. The model suggested a candidate operating window near a 20% sludge mixing ratio. Targeted triplicate experiments at sludge mixing ratios of 10%-30% further examined this window. Under the 1\u00a0h condition, the relative error for HHV_char was 4.4%. These results show that interpretable machine learning combined with targeted validation can support data-driven screening of co-HTC conditions for sustainable waste-to-resource conversion.",
+   "keywords": [
+    "Co-hydrothermal carbonization",
+    "Experimental validation",
+    "Explainable AI",
+    "Machine learning",
+    "Pomelopeel",
+    "Sewage sludge"
+   ],
+   "dates": {
+    "received": "2026-3-29",
+    "revised": "2026-5-30",
+    "accepted": "2026-5-30",
+    "medline": "2026-6-13",
+    "pubmed": "2026-6-2",
+    "entrez": "2026-6-1"
+   }
+  },
+  {
+   "pmid": "42150639",
+   "title": "Unified interpretable machine learning framework for predicting pellet quality from raw and thermochemically pretreated biomass.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134909",
+   "abstract": "Biomass pellets offer a renewable pathway for decarbonising industrial energy and metallurgical processes, yet inconsistent quality limits widespread adoption. This study presents a unified, interpretable machine learning framework that predicts pellet density and mechanical strength across raw biomass, hydrochar, and torrefied biomass feedstocks. A literature-derived dataset spanning feedstock properties, pretreatment conditions, and densification parameters was compiled to capture heterogeneity in pelletisation systems. Eight algorithms were benchmarked using Bayesian optimisation and 5-fold cross-validation, achieving R2\u00a0>\u00a00.85 with root-mean-square errors within experimental uncertainty. Interpretability analyses revealed critical nonlinear interactions among binder content, feedstock composition, and thermo-mechanical conditions that influence densification performance. The unified framework matched experimental-grade pellet specifications (\u223c1.2\u00a0g cm-3; 6-7\u00a0MPa) while reducing computational cost by approximately 25% compared to pathway-specific models. The framework provides generalisable thermo-mechanical design principles and is deployed through a graphical interface, enabling users to predict pellet quality based on compositional and process inputs.",
+   "keywords": [
+    "Artificial intelligence",
+    "Densification",
+    "Optimisation",
+    "Pelletisation",
+    "Thermochemical conversion"
+   ],
+   "dates": {
+    "received": "2026-3-12",
+    "revised": "2026-4-16",
+    "accepted": "2026-5-16",
+    "medline": "2026-6-5",
+    "pubmed": "2026-5-19",
+    "entrez": "2026-5-18"
+   }
+  },
+  {
+   "pmid": "41794302",
+   "title": "Machine-learning-aided predicting anaerobic digestion of the aqueous phase by-product from biomass hydrothermal conversion.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134360",
+   "abstract": "A significant amount of aqueous phase (AP) by-products is retained after hydrothermal treatment (HTT) of biomass feedstock, and it can be converted into methane using anaerobic digestion (AD). However, experimentally investigating the effects of biomass characteristics, HTT conditions, AP properties, and AD parameters on AD performance is challenging. Therefore, this study employed a series of machine learning (ML) models (Models 1-4) to explore the effect of these variables on methane yield (MY) and methane production rate (MPR). Model 1, incorporating all the four groups of factors, shows that both Random Forest (RF, test R2 of 0.82) and Gradient Boosting Regression (GBR, test R2 of 0.79) demonstrated strong predictive accuracy and generalization capability. Feature analysis revealed that AD parameters were the most significant factor for MY, followed by the biomass characteristics, HTT conditions, and AP properties. Interestingly, Model 2 maintained robust generalization ability despite excluding AP properties that were commonly considered key feed indicators for AD (indicated by Model 4). This is because AP properties could be properly described by the biomass characteristics and HTT conditions (indicated by Model 3). Finally, Models 1 and 2, after out-of-plate samples validation (R2 of 0.65 and 0.62), were developed into software tools for predicting and optimizing AD performance. Under optimal conditions, AP from different biomass feedstocks exhibits distinct MY potential. These models provides valuable insight for understanding how biomass characteristics and HTT conditions impact the AP properties, which in turn affect AD performance.",
+   "keywords": [
+    "Anaerobic digestion",
+    "Aqueous phase",
+    "Biomass",
+    "Hydrothermal carbonization",
+    "Hydrothermal liquefaction",
+    "Machine learning"
+   ],
+   "dates": {
+    "received": "2025-12-29",
+    "revised": "2026-2-26",
+    "accepted": "2026-3-4",
+    "medline": "2026-3-22",
+    "pubmed": "2026-3-8",
+    "entrez": "2026-3-7"
+   }
+  },
+  {
+   "pmid": "41747905",
+   "title": "Prediction of preparation conditions for low PAHs corn straw biochar guided by CatBoost model optimized via genetic algorithm and molecular dynamics simulation.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134279",
+   "abstract": "Biochar shows great potential in cultivated soil improvement, but its polycyclic aromatic hydrocarbons (PAHs) are toxic and may threaten ecological security and human health via the soil-plant system. To optimize low-PAHs biochar production, this study used corn straw as raw material, exploring the correlation between preparation conditions and PAHs formation through hydrothermal carbonization experiments, machine learning, and molecular dynamics simulation. A database with 10 input variables (hydrothermal temperature, time, etc.) and PAHs content as output was built. Among four machine learning models, CatBoost performed best. After genetic algorithm (GA) optimization, its test set R2 reached 0.9914, enhancing analysis of multi-factor nonlinear relationships. Feature importance showed hydrothermal time (30.35%), nitrogen content (18.38%), and hydrogen content (13.37%) were key factors. Partial correlation analysis indicated that beyond 4\u00a0h, prolonged high temperature reduced PAHs via dealkylation, while high nitrogen and hydrogen promoted accumulation. Molecular dynamics confirmed prolonged time accelerated carbon chain fragmentation, with energy changes reflecting reaction shifts. Optimal conditions (240-300\u00a0\u00b0C, 6\u00a0h) controlled PAHs below 347.04\u00a0\u03bcg/kg. Validation showed\u00a0<\u00a02.5% error, confirming GA-CatBoost reliability. This study provides a data-driven strategy for biochar optimization, aiding its safe agricultural application.",
+   "keywords": [
+    "Algorithm optimization",
+    "Density functional theory",
+    "Feature importance analysis",
+    "Partial correlation analysis",
+    "Toxicity reduction process"
+   ],
+   "dates": {
+    "received": "2025-7-10",
+    "revised": "2026-1-23",
+    "accepted": "2026-2-23",
+    "medline": "2026-3-8",
+    "pubmed": "2026-2-27",
+    "entrez": "2026-2-26"
+   }
+  },
+  {
+   "pmid": "41485741",
+   "title": "Machine-learning-aided predicting and engineering of hydrochar nitrogen-containing functional groups.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.133921",
+   "abstract": "Hydrochar produced via hydrothermal treatment (HTT) is an emerging carbonaceous material whose properties are strongly governed by N-containing functional groups (NCFGs). In this study, machine learning (ML) was applied to predict and regulate four key NCFGs: amine-N (N-A), pyrrolic-N (N-5), pyridinic-N (N-6) and quaternary-N (N-Q). Four single-target random forest (RF) models achieved test coefficient of determination (R2) values of 0.904-0.943 with average root mean square error (RMSE) of 2.916-7.204. A multi-target RF model was subsequently constructed with an average test R2 of 0.882 and RMSE of 4.956. External validation using 33 additional hydrochars resulted in an R2 of 0.877 and RMSE of 7.494, confirming the model's robustness. Incorporation of validation data further improved the final multi-target model (R2\u00a0=\u00a00.894, RMSE = 4.747). Subsequently, an online system was developed to enable prediction and process optimization. These findings demonstrated the potential of ML in guiding NCFGs-targeted hydrochar production.",
+   "keywords": [
+    "Biomass",
+    "Hydrothermal treatment",
+    "Process optimization",
+    "Random Forest Algorithm"
+   ],
+   "dates": {
+    "received": "2025-10-21",
+    "revised": "2025-12-30",
+    "accepted": "2026-1-1",
+    "medline": "2026-2-5",
+    "pubmed": "2026-1-5",
+    "entrez": "2026-1-4"
+   }
+  },
+  {
+   "pmid": "41139029",
+   "title": "Bulk metagenomics and machine learning unravels nitrogen metabolism patterns in extreme-temperature marine environments.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133551",
+   "abstract": "The nitrogen metabolism genes and associated microorganisms in polar oceans and hydrothermal vents remain insufficiently studied. In this study, metagenomic data were analyzed to characterize the geographical and biological features of 16 key nitrogen-cycling genes. NasA/B, narG, and nxrB were consistently abundant in both environments. Polar oceans were dominated by common nitrogen-cycling taxa, whereas hydrothermal vents hosted species linked to sulfur and methane metabolism. Environmental extremes exerted a stronger influence on nitrogen cycling than depth. Distinct co-occurrence networks (centralized vs. redundant) and accurate habitat classification (>95\u00a0%) highlighted strong environmental shaping. Differences in amino acid preferences and enzyme thermal stability reflected evolutionary divergence and adaptation to extreme temperatures. Overall, depth and environmental conditions structured community networks, while genetic variation supported ecological adaptation. These findings reveal contrasting nitrogen-cycling strategies and adaptations, with potential implications for biotechnological applications.",
+   "keywords": [
+    "Extreme marine",
+    "Geobiology pattern",
+    "Microbial adaptation",
+    "Mimicking Nature",
+    "Nitrogen cycling"
+   ],
+   "dates": {
+    "received": "2025-4-17",
+    "revised": "2025-10-21",
+    "accepted": "2025-10-21",
+    "medline": "2025-12-11",
+    "pubmed": "2025-10-26",
+    "entrez": "2025-10-25"
+   }
+  },
+  {
+   "pmid": "41130367",
+   "title": "Machine learning-assisted separation of lignin from hydrothermal treatment of biomass by deep eutectic solvents.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133537",
+   "abstract": "Pretreatment of biomass using deep eutectic solvents (DESs) is a promising method for lignin separation. However, the properties of the separated lignin depend on labor-intensive experiments, lacking rational design and optimization. This study integrates machine learning with DES pretreatment to predict lignin yield, purity, weight-average molecular weight (Mw), and number-average molecular weight (Mn). The optimized gradient boosting regression models demonstrated high predictive accuracy and generalization with R2 of 0.95-0.98, 0.78-0.97, and 0.82-0.90 in the training, testing, and validation datasets, respectively. Feature analysis revealed that reaction conditions (e.g., temperature and time) critically influenced lignin yield and purity, whereas DES characteristics primarily determine the Mw and Mn. Appropriately increasing temperature and time enhanced yield and purity, while a higher initial lignin content or surface area of DES was essential for obtaining high-molecular-weight lignin. These findings helped elucidate complex reaction mechanisms and improve the yield and quality of the separated lignin.",
+   "keywords": [
+    "Biomass",
+    "Deep eutectic solvents",
+    "Lignin",
+    "Machine learning",
+    "Prediction and validation"
+   ],
+   "dates": {
+    "received": "2025-8-30",
+    "revised": "2025-10-8",
+    "accepted": "2025-10-18",
+    "medline": "2025-11-13",
+    "pubmed": "2025-10-24",
+    "entrez": "2025-10-23"
+   }
+  },
+  {
+   "pmid": "41062042",
+   "title": "Machine learning assisted analysis: inorganic catalyzed hydrothermal carbonization to enhance biomass carbon stability.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133451",
+   "abstract": "Hydrothermal carbonization (HTC) is an effective method for sustainable waste conversion and carbon fixation. The carbon stability of solid-derived hydrochar (HC) is a key factor in determining the quality of HTC. This study enhanced carbon recovery by 8% using three inorganic layered double hydroxides (LDHs) as catalysts. LDH addition significantly altered dissolved organic matter (DOM) components and structures in HC. The increase in double bond equivalents (DBE-O) indicated carbon skeleton unsaturation, suggesting DOM mainly comprises compounds with higher unsaturation and lower oxidation. Machine learning (ML) has found that DBE-O is closely related to HC carbon content and stability. Feature importance and SHAP analysis have improved the interpretability of the model. In this study, LDH catalyzed HTC to alter the composition and structure of DOM, resulting in improved carbon stability. ML further revealed the mechanism of DBE-O modification of DOM, thereby enhancing carbon recovery and fixation.",
+   "keywords": [
+    "Carbon sequestration",
+    "Hydrochar",
+    "Layered double hydroxides",
+    "Random forest",
+    "SHAP analysis"
+   ],
+   "dates": {
+    "received": "2025-8-11",
+    "revised": "2025-9-23",
+    "accepted": "2025-10-4",
+    "medline": "2025-11-13",
+    "pubmed": "2025-10-9",
+    "entrez": "2025-10-8"
+   }
+  },
+  {
+   "pmid": "40935165",
+   "title": "Predictive modeling and optimization of hydrochar properties from food waste hydrothermal carbonization using machine learning techniques.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133282",
+   "abstract": "Hydrothermal carbonization (HTC) efficiently converts food waste into hydrochar for energy, soil improvement, and environmental remediation. However, optimizing HTC is challenging due to the complex interactions of temperature, residence time, moisture content, and catalyst dosage. This study explores the application of machine learning (ML) techniques for predicting and optimizing hydrochar yield and properties from the HTC of food waste. Key process parameters-temperature (120-360\u00a0\u00b0C), catalyst dosage (0-2\u00a0g), residence time (30-270\u00a0min), and moisture content were analyzed using three ML models: XGBoost (XGB), Support Vector Regression (SVR), and Linear Regression (LR). Among them, XGBoost demonstrated the highest predictive accuracy (R2\u00a0=\u00a00.87, MAE\u00a0=\u00a00.81, RMSE\u00a0=\u00a01.02), outperforming SVR (R2\u00a0=\u00a00.9386, MAE\u00a0=\u00a03.08) and LR (R2\u00a0=\u00a00.85, MAE\u00a0=\u00a00.86). Temperature was identified as the most significant factor (importance score\u00a0=\u00a00.91), followed by catalyst dosage (0.61). Optimized conditions yielded 48.5\u00a0g of hydrochar per 100\u00a0g of dry food waste, with an energy recovery efficiency of 68\u00a0%. The inclusion of TiO2 nanoparticles as a catalyst significantly enhanced hydrochar properties, increasing carbon retention from 56.8\u00a0% to 77.6\u00a0%, bulk density from 0.37\u00a0g/cm3 to 0.89\u00a0g/cm3, and high heating value from 18.4\u00a0MJ/kg to 22.7\u00a0MJ/kg. These findings demonstrate the potential of ML-driven optimization for real-time control of HTC, reducing reliance on trial-and-error experimentation and advancing sustainable waste-to-energy conversion technologies.",
+   "keywords": [
+    "Food Waste",
+    "Hydrochar",
+    "Hydrothermal Carbonization",
+    "Machine Learning",
+    "Process Optimization",
+    "TiO(2) Nanoparticles"
+   ],
+   "dates": {
+    "received": "2025-5-2",
+    "revised": "2025-7-6",
+    "accepted": "2025-9-5",
+    "medline": "2025-10-15",
+    "pubmed": "2025-9-12",
+    "entrez": "2025-9-11"
+   }
+  },
+  {
+   "pmid": "38880266",
+   "title": "Synergistic activation of peroxymonosulfate by 3D CoNiO2/Co core-shell structure biochar catalyst for sulfamethoxazole degradation.",
+   "year": "2024",
+   "doi": "10.1016/j.biortech.2024.130983",
+   "abstract": "In this study, a 3D CoNiO2/Co core-shell structure biochar catalyst derived from walnut shell was synthesized by hydrothermal and ion etching methods. The prepared BC@CoNi-600 catalyst exhibited exceptional peroxymonosulfate (PMS) activation. The system achieved 100\u00a0% degradation of sulfamethoxazole (SMX). The reactive oxygen species in the BC@CoNi-600/PMS system included SO4-, OH, and O2-. Density functional theory calculations explored the synergistic effects between nickel-cobalt bimetallic and carbon matrix during PMS activation. The unique 3D core-shell structure of BC@CoNi-600 features an outer nickel-cobalt bimetallic layer with exceptional PMS adsorption capacity, while protecting the zero-valence Co of the inner layer from oxidation. Based on the experimental-data, machine learning modeling mechanism, and information theory, a nonlinear modeling method was proposed. This study utilizes a machine learning approach to investigate the degradation of SMX in complex aquatic environments. This study synthesized a novel biochar-based catalyst for activated PMS and provided unique insights into its environmental applications.",
+   "keywords": [
+    "Active species transformation",
+    "Biochar",
+    "Density functional theory",
+    "Machine learning",
+    "Peroxymonosulfate"
+   ],
+   "dates": {
+    "received": "2024-2-26",
+    "revised": "2024-6-8",
+    "accepted": "2024-6-14",
+    "medline": "2024-7-23",
+    "pubmed": "2024-6-17",
+    "entrez": "2024-6-16"
+   }
+  },
+  {
+   "pmid": "38151207",
+   "title": "Machine learning for municipal sludge recycling by thermochemical conversion towards sustainability.",
+   "year": "2024",
+   "doi": "10.1016/j.biortech.2023.130254",
+   "abstract": "The sustainable disposal of high-moisture municipal sludge (MS) has received increasing attention. Thermochemical conversion technologies can be used to recycle MS into liquid/gas bio-fuel and value-added solid products. In this review, we compared energy recovery potential of common thermochemical technologies (i.e., incineration, pyrolysis, hydrothermal conversion) for MS disposal via statistical methods, which indicated that hydrothermal conversion had a great potential in achieving energy recovery from MS. The application of machine learning (ML) in MS recycling was discussed to decipher complex relationships among MS components, process parameters and physicochemical reactions. Comprehensive ML models should be developed considering successive reaction processes of thermochemical conversion in future studies. Furthermore, challenges and prospects were proposed to improve effectiveness of ML for energizing thermochemical conversion of MS regarding data collection and preprocessing, model optimization and interpretability. This review sheds light on mechanism exploration of MS thermochemical recycling by ML, and provide practical guidance for MS recycling.",
+   "keywords": [
+    "Carbon storage/utilization",
+    "Machine learning",
+    "Municipal sludge",
+    "Sustainable waste management",
+    "Thermochemical treatment"
+   ],
+   "dates": {
+    "received": "2023-11-3",
+    "revised": "2023-12-9",
+    "accepted": "2023-12-23",
+    "medline": "2024-2-5",
+    "pubmed": "2023-12-28",
+    "entrez": "2023-12-27"
+   }
+  },
+  {
+   "pmid": "38145767",
+   "title": "Machine learning assisted modelling of anaerobic digestion of waste activated sludge coupled with hydrothermal pre-treatment.",
+   "year": "2024",
+   "doi": "10.1016/j.biortech.2023.130255",
+   "abstract": "This study utilizes decision-tree-based models, including Random Forest, XGBoost, artificial neural networks (ANNs), support vector machine regressors, and K nearest neighbors algorithms, to predict sludge solubilization and methane yield in hydrothermal pretreatment (HTP) coupled with anaerobic digestion (AD) processes. Analyzing two decades of published research, we find that ANN models exhibit superior fitting accuracy for solubilization prediction, while decision-tree models excel in methane yield prediction. Pretreatment temperature is identified as pivotal among various variables, and heating time surprisingly emerges as equally significant as holding time for solubilization and surpasses it for methane yield. Contrary to prior expectations, the HTP method's impact on sludge solubilization and AD performance is minimal. This study underscores data-driven models' potential as resource-efficient tools for optimizing advanced AD processes with HTP. Notably, our research spans nearly two decades of lab, pilot, and full-scale studies, offering novel insights not previously explored.",
+   "keywords": [
+    "Anaerobic digestion",
+    "Hydrothermal pretreatment",
+    "Machine learning modeling",
+    "Methane yield",
+    "Waste activated sludge"
+   ],
+   "dates": {
+    "received": "2023-10-21",
+    "revised": "2023-12-5",
+    "accepted": "2023-12-23",
+    "medline": "2024-2-5",
+    "pubmed": "2023-12-26",
+    "entrez": "2023-12-25"
+   }
+  },
+  {
+   "pmid": "37984666",
+   "title": "Machine learning-aided hydrothermal carbonization of biomass for coal-like hydrochar production: Parameters optimization and experimental verification.",
+   "year": "2024",
+   "doi": "10.1016/j.biortech.2023.130073",
+   "abstract": "Biomass to coal-like hydrochar via hydrothermal carbonization (HTC) is a promising route for sustainability development. Yet conventional experimental method is time-consuming and costly to optimize HTC conditions and characterize hydrochar. Herein, machine learning was employed to predict the fuel properties of hydrochar. Random forest (RF), support vector machine (SVM), and extreme gradient boosting (XGB) models were developed, presenting acceptable prediction performance with R2 at 0.825---0.985 and root mean square error (RMSE) at 1.119---5.426, and XGB outperformed RF and SVM. The model interpretation indicated feedstock ash content, reaction temperature, and solid to liquid ratio were the three decisive factors. The optimized XGB multi-task model via feature re-examination illustrated improved generalization ability with R2 at 0.927 and RMSE at 3.279. Besides, the parameters optimization and experimental verification with wheat straw as feedstock further demonstrated the huge application potential of machine learning in hydrochar engineering.",
+   "keywords": [
+    "Biomass",
+    "Experimental verification",
+    "Fuel properties",
+    "Hydrothermal carbonization",
+    "Machine learning"
+   ],
+   "dates": {
+    "received": "2023-8-29",
+    "revised": "2023-11-5",
+    "accepted": "2023-11-17",
+    "medline": "2024-1-18",
+    "pubmed": "2023-11-21",
+    "entrez": "2023-11-20"
+   }
+  },
+  {
+   "pmid": "37244307",
+   "title": "Prediction of heavy metals adsorption by hydrochars and identification of critical factors using machine learning algorithms.",
+   "year": "2023",
+   "doi": "10.1016/j.biortech.2023.129223",
+   "abstract": "Hydrochar has become a popular product for immobilizing heavy metals in water bodies. However, the relationships between the preparation conditions, hydrochar properties, adsorption conditions, heavy metal types, and the maximum adsorption capacity (Qm) of hydrochar are not adequately explored. Four artificial intelligence models were used in this study to predict the Qm of hydrochar and identify the key influencing factors. The gradient boosting decision tree (GBDT) showed excellent predictive capability for this study (R2\u00a0=\u00a00.93, RMSE\u00a0=\u00a025.65). Hydrochar properties (37%) controlled heavy metal adsorption. Meanwhile, the optimal hydrochar properties were revealed, including the C, H, N, and O contents of 57.28-78.31%, 3.56-5.61%, 2.01-6.42%, and 20.78-25.37%. Higher hydrothermal temperatures (>220\u00a0\u00b0C) and longer hydrothermal time (>10\u00a0h) lead to the optimal type and density of surface functional groups for heavy metal adsorption, which increased the Qm values. This study has great potential for instructing industrial applications of hydrochar in treating heavy metal pollution.",
+   "keywords": [
+    "Adsorption",
+    "Gradient boosting decision tree",
+    "Hydrothermal treatment",
+    "Pollution remediation",
+    "Simulation"
+   ],
+   "dates": {
+    "received": "2023-3-8",
+    "revised": "2023-5-18",
+    "accepted": "2023-5-20",
+    "medline": "2023-6-16",
+    "pubmed": "2023-5-28",
+    "entrez": "2023-5-27"
+   }
+  },
+  {
+   "pmid": "37030420",
+   "title": "Application of life cycle assessment and machine learning for the production and environmental sustainability assessment of hydrothermal bio-oil.",
+   "year": "2023",
+   "doi": "10.1016/j.biortech.2023.129027",
+   "abstract": "The hydrothermal bio-oil (HBO) production from biomass conversion can achieve sustainable and low-carbon development. It is always time-consuming and labor-intensive to quantitative relationship between influential variables and bio-oil yield and environmental sustainability impact in the hydrothermal conditions. Machine learning was used to predict bio-oil yield. Life cycle assessment (LCA) is further conducted to assess its environmental sustainability effect. The results demonstrated that gradient boosting decision tree regression (GBDT) have the most optimal prediction performance for the HBO yield (Training R2\u00a0=\u00a00.97, Testing R2\u00a0=\u00a00.92, RMSE\u00a0=\u00a00.05, MAE\u00a0=\u00a00.03). Lipid content is the most significant influential factor for HBO yield. LCA result further suggested that 1\u00a0kg of bio-oil production can cause 0.02\u00a0kg ep of SO2, 2.05\u00a0kg ep of CO2, and 0.01\u00a0kg ep of NOx emission, and environmental sustainability assessment of HBO is exhibited. This study provides meaningful insights to ML model prediction performance improvement and carbon footprint of HBO.",
+   "keywords": [
+    "Biomass",
+    "Hydrothermal bio-oil",
+    "Life cycle assessment",
+    "Machine learning"
+   ],
+   "dates": {
+    "received": "2023-3-17",
+    "revised": "2023-4-3",
+    "accepted": "2023-4-4",
+    "medline": "2023-5-2",
+    "pubmed": "2023-4-9",
+    "entrez": "2023-4-8"
+   }
+  },
+  {
+   "pmid": "36931444",
+   "title": "Characteristics prediction of hydrothermal biochar using data enhanced interpretable machine learning.",
+   "year": "2023",
+   "doi": "10.1016/j.biortech.2023.128893",
+   "abstract": "Hydrothermal biochar is a promising sustainable soil remediation agent for plant growth. Demands for biochar properties differ due to the diversity of soil environment. In order to achieve accurate biochar properties prediction and overcome the interpretability bottleneck of machine learning models, this study established a series of data-enhanced machine learning models and conducted relevant sensitivity analysis. Compared with traditional support vector machine, artificial neural network, and random forest models, the accuracy after data enhancement increased in average from 5.8% to 15.8%, where the optimal random forest model showed the average of accuracy was 94.89%. According to sensitivity analysis results, the essential factors influencing the predicting results of the models were reaction temperature, reaction pressure, and specific element of biomass feedstock. As a result, data-enhanced interpretable machine learning proved promising for the characteristics prediction of hydrothermal biochar.",
+   "keywords": [
+    "Correlation analysis",
+    "Feature analysis",
+    "Hydrothermal carbonization",
+    "Random forest"
+   ],
+   "dates": {
+    "received": "2023-2-1",
+    "revised": "2023-3-4",
+    "accepted": "2023-3-11",
+    "medline": "2023-4-11",
+    "pubmed": "2023-3-18",
+    "entrez": "2023-3-17"
+   }
+  },
+  {
+   "pmid": "36584720",
+   "title": "Machine learning for hydrothermal treatment of biomass: A review.",
+   "year": "2023",
+   "doi": "10.1016/j.biortech.2022.128547",
+   "abstract": "Hydrothermal treatment (HTT) (i.e., hydrothermal carbonization, liquefaction, and gasification) is a promising technology for biomass valorization. However, diverse variables, including biomass compositions and hydrothermal processes parameters, have impeded in-depth mechanistic understanding on the reaction and engineering in HTT. Recently, machine learning (ML) has been widely employed to predict and optimize the production of biofuels, chemicals, and materials from HTT by feeding experimental data. This review comprehensively analyzed the application of ML for HTT of biomass and systematically illustrated basic ML procedure and descriptors for inputs and outputs of ML models (e.g., biomass compositions, operation conditions, yield and physicochemical properties of derived products) that could be applied in HTT. Moreover, this review summarized ML-aided HTT prediction of yield, compositions, and physicochemical properties of HTT hydrochar or biochar, bio-oil, syngas, and aqueous phase. Ultimately, future prospects were proposed to enhance predictive performance, mechanistic interpretation, process optimization, data sharing, and model application during ML-aided HTT.",
+   "keywords": [
+    "Biomass",
+    "Hydrothermal carbonization",
+    "Hydrothermal gasification",
+    "Hydrothermal liquefaction",
+    "Machine learning"
+   ],
+   "dates": {
+    "received": "2022-10-30",
+    "revised": "2022-12-24",
+    "accepted": "2022-12-26",
+    "pubmed": "2022-12-31",
+    "medline": "2023-1-19",
+    "entrez": "2022-12-30"
+   }
+  },
+  {
+   "pmid": "36503096",
+   "title": "Machine learning-assisted exploration for carbon neutrality potential of municipal sludge recycling via hydrothermal carbonization.",
+   "year": "2023",
+   "doi": "10.1016/j.biortech.2022.128454",
+   "abstract": "In the context of advocating carbon neutrality, there are new requirements for sustainable management of municipal sludge (MS). Hydrothermal carbonization (HTC) is a promising technology to deal with high-moisture MS considering its low energy consumption (without drying pretreatment) and value-added products (i.e., hydrochar). This study applied machine learning (ML) methods to conduct a holistic assessment with higher heating value (HHV) of hydrochar, carbon recovery (CR), and energy recovery (ER) as model targets, yielding accurate prediction models with R2 of 0.983, 0.844 and 0.858, respectively. Furthermore, MS properties showed positive (e.g., carbon content, HHV) and negative (e.g., ash content, O/C, and N/C) influences on the hydrochar HHV. By comparison, HTC parameters play a critical role for CR (51.7%) and ER (52.5%) prediction. The primary sludge was an optimal HTC feedstock while anaerobic digestion sludge had the lowest potential. This study provided a comprehensive reference for sustainable MS treatment and industrial application.",
+   "keywords": [
+    "Biochar technology",
+    "Hydrothermal carbonization",
+    "Machine learning",
+    "Municipal sludge",
+    "Sustainable waste management"
+   ],
+   "dates": {
+    "received": "2022-10-28",
+    "revised": "2022-12-2",
+    "accepted": "2022-12-4",
+    "pubmed": "2022-12-13",
+    "medline": "2023-1-6",
+    "entrez": "2022-12-12"
+   }
+  },
+  {
+   "pmid": "36257525",
+   "title": "Improving green hydrogen production from Chlorella vulgaris via formic acid-mediated hydrothermal carbonisation and neural network modelling.",
+   "year": "2022",
+   "doi": "10.1016/j.biortech.2022.128071",
+   "abstract": "This study investigates the formic acid-mediated hydrothermal carbonisation (HTC) of microalgae biomass to enhance green hydrogen production. The effects of combined severity factor (CSF) and feedstock-to-suspension ratio (FSR) are examined on HTC gas formation, hydrochar yield and quality, and composition of the liquid phase. The hydrothermal conversion of Chlorella vulgaris was investigated in a CSF and FSR range of -2.529 and 2.943; and 5.0 wt.% - 25.0 wt.%. Artificial neural networks (ANNs) were developed based on experimental data to model and analyse the HTC process. The results show that green hydrogen formation can be increased up to 3.04\u00a0mol kg-1 by applying CSF 2.433 and 12.5\u00a0wt.% FSR reaction conditions. The developed ANN model (BR-2-11-9-11) describes the hydrothermal process with high testing and training performance (MSEz\u00a0=\u00a01.71E-06 & 1.40E-06) and accuracy (R2\u00a0=\u00a00.9974 & R2\u00a0=\u00a00.9781). The enhanced H2 yield indicates an effective alternative green hydrogen production scenario at low temperatures using high-moisture-containing biomass feedstocks.",
+   "keywords": [
+    "Combined severity factor",
+    "Gas formation",
+    "Green hydrogen",
+    "Hydrothermal carbonisation",
+    "Machine learning",
+    "Microalgae"
+   ],
+   "dates": {
+    "received": "2022-8-28",
+    "revised": "2022-9-29",
+    "accepted": "2022-10-1",
+    "pubmed": "2022-10-19",
+    "medline": "2022-11-9",
+    "entrez": "2022-10-18"
+   }
+  },
+  {
+   "pmid": "35985462",
+   "title": "Machine learning prediction of nitrogen heterocycles in bio-oil produced from hydrothermal liquefaction of biomass.",
+   "year": "2022",
+   "doi": "10.1016/j.biortech.2022.127791",
+   "abstract": "Hydrothermal liquefaction (HTL) of high-moisture biomass or biowaste to produce bio-oil is a promising technology. However, nitrogen-heterocycles (NH) presence in bio-oil is a bottleneck to the upgrading and utilization of bio-oil. The present study applied the machine learning (ML) method (random forest) to predict and help control the bio-oil NH, bio-oil yield, and N content of bio-oil (N_oil). The results indicated that the predictive performance of the yield and N_oil were better than previous studies, achieving test R2 of 0.92 and 0.95, respectively. Acceptable predictive performance (test R2 of 0.82 and RMSE of 7.60) for the prediction of NH was also achieved. The feature importance analysis, partial dependence, and Shapely value were used to interpret the prediction models and study the NH formation mechanisms and behavior. Then, forward optimization of NH was implemented based on optimal predictive models, indicating the high potential of ML-aided bio-oil production and engineering.",
+   "keywords": [
+    "Bio-crude oil",
+    "Data mining",
+    "Hydrothermal conversion",
+    "Nitrogen containing heterocyclic compounds",
+    "Nitrogenous bio-oil",
+    "Random forest"
+   ],
+   "dates": {
+    "received": "2022-7-6",
+    "revised": "2022-8-11",
+    "accepted": "2022-8-12",
+    "pubmed": "2022-8-20",
+    "medline": "2022-9-15",
+    "entrez": "2022-8-19"
+   }
+  },
+  {
+   "pmid": "35605769",
+   "title": "Machine learning predicting wastewater properties of the aqueous phase derived from hydrothermal treatment of biomass.",
+   "year": "2022",
+   "doi": "10.1016/j.biortech.2022.127348",
+   "abstract": "Hydrothermal treatment (HTT) is a potential technology for producing biofuel from wet biomass. However, the aqueous phase (AP) is generated inevitably in the process of HTT, and studies are lacking on the detailed exploration of AP properties. Therefore, machine learning (ML) models were built for predicting the pH, total nitrogen (TN), total organic carbon (TOC), and total phosphorus (TP) of the AP based on biomass feedstock and HTT parameters. Results showed that the gradient boosting decision tree (average testing R2 0.85-0.96) can accurately predict the above wastewater properties for both single- and multi-target models. ML-based feature importance indicated that nitrogen content of biomass, solid content, and temperature were the top three critical features for pH, TN, and TP, while those for TOC were reaction time, lipid, and temperature. This ML approach provides new insights to understand the formation and properties of the HTT AP by ML rather than time-consuming experiments.",
+   "keywords": [
+    "Aqueous phase",
+    "Biomass",
+    "Hydrothermal treatment",
+    "Machine learning",
+    "Wastewater properties"
+   ],
+   "dates": {
+    "received": "2022-4-26",
+    "revised": "2022-5-15",
+    "accepted": "2022-5-18",
+    "pubmed": "2022-5-24",
+    "medline": "2022-6-22",
+    "entrez": "2022-5-23"
+   }
+  },
+  {
+   "pmid": "35240274",
+   "title": "Effects of hydration parameters on chemical properties of biocrudes based on machine learning and experiments.",
+   "year": "2022",
+   "doi": "10.1016/j.biortech.2022.126923",
+   "abstract": "To investigate the effects of temperature and biomass concentration of Hydrothermal liquefaction (HTL) on chemical properties of biocrudes, machine learning (ML) was used to predict the weight of hydration parameters on the properties of biocrudes. The elemental compositions, molecular weights, functional groups, thermal degradation, molecular structure of biocrudes were studied. The optimum yield of biocrudes was 65% and the highest heat value reached up to 34.28\u00a0kJ/g, showing comparable fuel properties. It was found that the hydration temperature significantly affects the elemental components, functional groups and molecular weight and structures of biocrudes. In addition, biomass concentration also affect the functional groups and structures of biocrudes. ML results indicated that Support Vector Machine Linear Kernel method is suitable for heat value prediction.",
+   "keywords": [
+    "Algorithm optimization",
+    "Chemical property",
+    "Hydrothermal liquefaction",
+    "Machine learning",
+    "Woody biocrude"
+   ],
+   "dates": {
+    "received": "2022-1-20",
+    "revised": "2022-2-24",
+    "accepted": "2022-2-25",
+    "pubmed": "2022-3-4",
+    "medline": "2022-3-16",
+    "entrez": "2022-3-3"
+   }
+  },
+  {
+   "pmid": "34798249",
+   "title": "Influence of catalyst and solvent on the hydrothermal liquefaction of woody biomass.",
+   "year": "2022",
+   "doi": "10.1016/j.biortech.2021.126354",
+   "abstract": "Hydrothermal liquefaction of woody biomass with catalysts was commonly applied in bio-energy research, but the effects of catalyst and solvent on yield and properties of bio-energy are not clear. In this work, the influences of catalyst and solvent on bio-energy production were studied, during which four solvents and three catalysts were used, and the liquefaction parameters were optimized by experimental and Machine learning (ML) method. Results show that the maximum yields of bio-oil and biochar are 65.0% and 32.0%, respectively, and the caloricvalues of bio-oil and biochar are 31.2\u00a0MJ/kg and 26.5\u00a0MJ/kg, respectively. Alkaline catalysts and 1,4-butanediol-triethanolamine mix solvent can benefit the bio-energy generation. In addition, a Random Forest (RF) was developed to forecast the yields, and the method performed well with experimental results.",
+   "keywords": [
+    "Bio-energy",
+    "Catalyst",
+    "Hydrothermal liquefaction mechanism",
+    "Machine learning",
+    "Woody biomass"
+   ],
+   "dates": {
+    "received": "2021-9-29",
+    "revised": "2021-11-9",
+    "accepted": "2021-11-11",
+    "pubmed": "2021-11-20",
+    "medline": "2022-2-3",
+    "entrez": "2021-11-19"
+   }
+  },
+  {
+   "pmid": "34752893",
+   "title": "Machine learning prediction of biocrude yields and higher heating values from hydrothermal liquefaction of wet biomass and wastes.",
+   "year": "2022",
+   "doi": "10.1016/j.biortech.2021.126278",
+   "abstract": "Machine learning (ML) approach was applied for the prediction of biocrude yields (BY) and higher heating values (HHV) from hydrothermal liquefaction (HTL) of wet biomass and wastes using 17 input features from feedstock characteristics (biological and elemental properties) and operating conditions. Several novel ML algorithms were evaluated, based on 10-fold cross-validation, with 3 different sets of input features. An extreme gradient boosting (XGB) model proved to give the best prediction accuracy at nearly 0.9 R2 with normal root mean square error (NRMSE) of 0.16 for BY and about 0.87 R2 with NRMSE of about 0.04 for HHV. Temperature was found to be the most influential feature on the predictions for both BY and HHV. Meanwhile, feedstock characteristics contributed to the XGB model for more than 55%. Individual effects and interactions of most important features on the predictions were also exposed, leading to better understanding of the HTL system.",
+   "keywords": [
+    "Artificial intelligence",
+    "Biofuels",
+    "Hydrothermal liquefaction",
+    "Multidimensional analysis",
+    "Waste utilization"
+   ],
+   "dates": {
+    "received": "2021-9-22",
+    "revised": "2021-10-29",
+    "accepted": "2021-10-30",
+    "pubmed": "2021-11-10",
+    "medline": "2021-12-15",
+    "entrez": "2021-11-9"
+   }
+  },
+  {
+   "pmid": "34637907",
+   "title": "Recent advances of thermochemical conversion processes for biorefinery.",
+   "year": "2022",
+   "doi": "10.1016/j.biortech.2021.126109",
+   "abstract": "Lignocellulosic biomass is one of the most promising renewable resources and can replace fossil fuels via various biorefinery processes. Through this study, we addressed and analyzed recent advances in the thermochemical conversion of various lignocellulosic biomasses. We summarized the operation conditions and results related to each thermochemical conversion processes such as pyrolysis (torrefaction), hydrothermal treatment, gasification and combustion. This review indicates that using thermochemical conversion processes in biorefineries is techno-economically feasible, easy, and effective compared with biological processes. The challenges experienced in thermochemical conversion processes are also presented in this study for better understanding the future of thermochemical conversion processes for biorefinery. With the aid of artificial intelligence and machine learning, we can reduce time-consumption and experimental work for bio-oil production and syngas production processes.",
+   "keywords": [
+    "Biorefinery",
+    "Gasification",
+    "Lignocellulosic biomass",
+    "Pyrolysis",
+    "Thermochemical conversion"
+   ],
+   "dates": {
+    "received": "2021-8-30",
+    "revised": "2021-10-5",
+    "accepted": "2021-10-6",
+    "pubmed": "2021-10-13",
+    "medline": "2021-11-25",
+    "entrez": "2021-10-12"
+   }
+  }
+ ],
+ "meta_analysis": [
+  {
+   "pmid": "43044779",
+   "title": "Optimal biochar strategies for simultaneous Cd immobilization and GHG mitigation in paddy soils: A meta-analysis with Boosted regression tree modeling.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.136284",
+   "abstract": "Cadmium (Cd) contamination and greenhouse gas (GHG) emissions are two critical environmental challenges in paddy soil ecosystems. While biochar has shown promise in addressing each issue individually, its potential to simultaneously reduce soil Cd availability and GHG emissions remains inadequately explored. In this study, we combined meta-analysis and boosted regression tree (BRT) modeling to identify the main drivers and optimal ranges for co-managing soil Cd availability and GHGs across different experimental systems (soil incubation, pot, and field). Incubation experiments demonstrated that soil Cd immobilization was most effective under low soil organic matter (SOM\u00a0<\u00a010\u00a0g kg-1, 97.1% reduction) and high biochar pH (>9.5, 77.2% reduction). N2O emissions in incubation experiments were reduced by up to 78.3% (biochar application rate\u00a0>\u00a030\u00a0g kg-1) and 51.8% (SOM 10-30\u00a0g kg-1). CH4 mitigation in incubation experiments (38.2-54.4%) was governed by biochar properties, specifically particle size (0.25-2\u00a0mm) and high pH (>9.5). In pot experiments, biochar application for 90-180\u00a0\u00a0days reduced grain Cd by up to 46.7%. For N2O in the field, key mitigation factors included incorporation duration (180-1095 d, 25.0% reduction), soil pH (5.5-6.5, 22.8% reduction), and N fertilization rate (>150\u00a0kg N ha-1, 18.9% reduction). Field CH4 emissions were reduced by 15.1% with 180-1095 d biochar presence and by 29.2% in coarse-textured soils. These results demonstrate that biochar can simultaneously mitigate soil Cd contamination and GHG emissions in the soil-plant system when tailored to system-specific conditions, thereby supporting sustainable rice production, enhanced food safety, and climate change mitigation.",
+   "keywords": [
+    "Biochar",
+    "Boosted Regression Trees",
+    "Cd fixation",
+    "GHG emission reduction",
+    "Meta-analysis",
+    "Paddy soil"
+   ],
+   "dates": {
+    "received": "2026-4-24",
+    "revised": "2026-10-6",
+    "accepted": "2026-11-16",
+    "pubmed": "2026-11-17",
+    "medline": "2026-11-17",
+    "entrez": "2026-11-17"
+   }
+  },
+  {
+   "pmid": "42951150",
+   "title": "A quantitative synthesis of carbon and nitrogen losses during animal and poultry manure composting: drivers, pathways, and mitigation.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.136142",
+   "abstract": "Animal and poultry manure can be recycled through aerobic composting, but reported carbon (C) and nitrogen (N) losses are quite high. A global-scale study is needed to explore the main factors driving C and N losses and the technologies used to mitigate them. This study includes 117 peer-reviewed research articles, encompassing 492 treatments, for a meta-analysis. Overall, 45% of initial total carbon (TC) and 28% of initial total nitrogen (TN) were lost during composting. For N, NH3-N volatilization was the dominant pathway, accounting for 16%, while N2O-N accounted for 1.2% of initial TN. CO2-C was the dominant pathway for C loss, accounting for 34%, and CH4-C contributed 0.7% of initial TC. Furthermore, only NH3-N-based emissions were significantly influenced by both composting method and scale. Moreover, applying chemical, physical, and microbial additives during composting reduced CH4, CO2, NH3, and N2O by 49%, 6.8%, 27.6%, and 30%, respectively. Compost piles covered with membranes and organic materials effectively reduced CH4 and N2O emissions, whereas negative-pressure aeration significantly reduced ammonia volatilization. In brief, low-emission manure composting requires integrated regulation of feedstock composition, C/N ratio, moisture content, and maximum temperature, along with targeted additive application. Furthermore, future composting studies should focus on applying mixed additives as mitigation strategies to reduce greenhouse gas (GHG) emissions and ammonia volatilization, as meta-analysis results show that these are effective in reducing nitrogen and carbon losses during aerobic composting.",
+   "keywords": [
+    "Carbon loss",
+    "Greenhouse gas emissions",
+    "Livestock manure composting",
+    "Mitigation strategies",
+    "Nitrogen loss"
+   ],
+   "dates": {
+    "received": "2026-6-3",
+    "revised": "2026-10-16",
+    "accepted": "2026-10-27",
+    "pubmed": "2026-10-28",
+    "medline": "2026-10-28",
+    "entrez": "2026-10-28"
+   }
+  },
+  {
+   "pmid": "42805415",
+   "title": "Integrating machine learning and model-based causal attribution to decipher stage-specific trade-offs in nitrogen mitigation and maturation during composting.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.135968",
+   "abstract": "It is difficult to reconcile nitrogen mitigation with maturation due to nonlinear interactions and temporal autocorrelation. This study integrated machine learning, background-shuffling causal attribution, and phased meta-analysis to decode stage-specific mechanisms in 513 samples. Rank normalization within each study ensured robust generalization, resulting in R2 values exceeding 0.85 and mean absolute errors below 0.18. To quantitatively evaluate the trade-offs between gaseous emissions and maturation, a composite performance index (CPI) was constructed. Results showed a benefit offset in the active phase, where the benefits in maturation were outweighed by penalties in emissions, especially at aeration rates of 0.10-0.40\u00a0L min-1 kg-1. pH showed a minimum benefit at the median rank (pH 7.80\u00a0\u00b1\u00a00.71), after which increased maturation and nitrous oxide suppression outweighed ammonia emission penalties. Ammonium nitrogen showed a benefit plateau at rank 0.25 (2429.58\u00a0\u00b1\u00a01473.78\u00a0mg kg-1), where nitrogen retention benefits were offset by phytotoxicity. The estimated driver effect of organic matter on CPI showed a reversal between phases, with a critical inflection at rank -0.25 (59.07\u00a0\u00b1\u00a011.07%) during maturation due to reduced emission risks and increased humification. Composite additives were the most effective intervention, increasing CPI by 40.1-40.9 percentile points, as revealed by phased meta-analysis. This framework offers reference ranges and strategies for stage-specific parameter control to balance environmental sustainability and resource recovery during composting.",
+   "keywords": [
+    "Aerobic composting",
+    "Causal attribution",
+    "Compost maturity",
+    "Interpretable machine learning",
+    "Multiple objective trade-off",
+    "Nitrogen-containing gas mitigation"
+   ],
+   "dates": {
+    "received": "2026-5-27",
+    "revised": "2026-9-16",
+    "accepted": "2026-9-26",
+    "pubmed": "2026-9-28",
+    "medline": "2026-9-28",
+    "entrez": "2026-9-28"
+   }
+  },
+  {
+   "pmid": "42700901",
+   "title": "Metal-directed root foraging in hyperaccumulators is masked in soil systems.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.135781",
+   "abstract": "Metal hyperaccumulators are promising plants for phytoextraction, but the root traits that help them grow toward metal-rich soil remain unclear. Metal-directed root foraging has been proposed as a unique trait of hyperaccumulators, yet inconsistent observations have obscured its functional significance. Here, we combined a meta-analysis of 128 published observations with split-root experiments in Sedum alfredii to evaluate the recurrence, environmental sensitivity, and physiological relevance of metal-directed root foraging. A meta-analysis showed a broad but context-dependent tendency for hyperaccumulators to allocate more roots to metal-enriched patches, and this response was positively associated with shoot metal accumulation and biomass. However, this response was strongly shaped by soil conditions, particularly soil texture and soil source. Split-root experiments further revealed a clear ecotype-specific response in hydroponics. The hyperaccumulating ecotype (HE) allocated more than 60\u00a0% of its root biomass to the Cd-enriched compartment, whereas the non-hyperaccumulating ecotype (NHE) showed reduced root allocation to this compartment. This ecotype-specific contrast was not fully retained in the tested soil system: Cd-directed foraging by HE was no longer detectable, whereas Cd avoidance by NHE persisted. These findings identify metal-directed root foraging as a recurrent but soil-dependent trait of hyperaccumulators. By showing that soil conditions can constrain the detectability of this trait, our study reconciles inconsistent observations and points to soil management as a potential strategy to strengthen root foraging and enhance phytoextraction in contaminated soils.",
+   "keywords": [
+    "Hyperaccumulator",
+    "Metal heterogeneity",
+    "Phytoextraction",
+    "Root foraging",
+    "Soil condition"
+   ],
+   "dates": {
+    "received": "2026-7-14",
+    "revised": "2026-8-26",
+    "accepted": "2026-9-4",
+    "pubmed": "2026-9-6",
+    "medline": "2026-9-6",
+    "entrez": "2026-9-5"
+   }
+  },
+  {
+   "pmid": "42476380",
+   "title": "Three-Level cascading defense mechanism of silicon-based materials for mitigating heavy metals stress in crops.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.135466",
+   "abstract": "Silicon-based materials (SBMs) are widely used to alleviate heavy metals (HMs) stress in crops, yet their integrated effects on soil-plants systems remain insufficiently understood owing to the complex interactions among soil properties, amendment characteristics and experimental conditions. This study presents a global meta-analysis to comprehensively evaluate the effects of SBMs on crop response to HMs stresses, and machine learning (ML) approaches are employed complementarily to identify key drivers and predict HMs accumulation in grain (GHMs) following SBMs application. Our findings reveal that SBMs application increased soil available silicon by 42.40%, reduced HMs transfer from roots to grains by 19.25%, and enhanced photosynthetic performance by 44.02%, while decreasing GHMs by an average of 29.90%. Together, these results indicate that SBMs alleviate HMs stress through coordinated effects on soil immobilization, internal HMs transfer, and plant physiological resilience, supporting a three-level cascading soil-plant defense mechanism. Among 13 ML models, the AdaBoost algorithm delivered the optimal predictive performance with a coefficient of determination (R2) ranging from 0.84 to 0.95. SHAP analysis identified soil HMs content as the most important predictor of GHMs, followed by soil available P, fertilizer P application rate, and soil pH. The predicted median grain HMs concentration (0.255\u00a0mg/kg) closely matched the observed value (0.276\u00a0mg/kg). By integrating mechanistic understanding with interpretable prediction, this study provides a framework for optimizing SBMs selection and application strategies based on site-specific soil conditions, which has important implications for the risk control and sustainable management of contaminated farmlands.",
+   "keywords": [
+    "Cascading defense",
+    "Heavy metals",
+    "Machine learning",
+    "Resource utilization",
+    "Silicon-based materials"
+   ],
+   "dates": {
+    "received": "2026-6-10",
+    "revised": "2026-7-11",
+    "accepted": "2026-7-19",
+    "medline": "2026-9-25",
+    "pubmed": "2026-7-21",
+    "entrez": "2026-7-20"
+   }
+  },
+  {
+   "pmid": "42289253",
+   "title": "Microaeration enhances methane production in anaerobic digestion: A systematic review and meta-analysis.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.135162",
+   "abstract": "Microaeration (MA) has emerged as a promising strategy to intensify anaerobic digestion (AD) of solid waste and wastewater. This systematic review and meta-analysis aimed to evaluate the operational parameters most frequently applied in MA and their effects on methane production in comparison to conventional AD. The Scopus, Web of Science, and PubMed databases were searched, yielding 47 studies eligible for a meta-analysis. The qualitative analysis revealed that research on this strategy has increased in recent years, with 50.0\u00a0% of the studies published between 2020 and 2025. However, most studies have been conducted at a small scale, with a predominance of batch experiments and direct application in the liquid phase, which limits extrapolation of the results to real operational conditions. Based on the meta-analysis, MA promotes a significant overall increase in methane production in batch systems, with an average gain of 9.0\u00a0% for biomass, 28.8\u00a0% for animal manure, and 18.8\u00a0% for co-digestion, particularly under mesophilic conditions and intermediate volatile solids concentrations (10-30\u00a0g L-1). In continuous-feeding reactors, MA has a relatively limited, non-significant effect; nevertheless, it markedly increases biomass (+6.6\u00a0%). Overall, the results indicate that MA has clear potential to intensify rate-limiting steps of AD; however, its effectiveness is highly dependent on the interaction between substrate characteristics and operational conditions. Its broader implementation therefore requires greater standardisation of oxygen input and control strategies, improved data reporting, and validation at pilot and large scales under realistic treatment conditions.",
+   "keywords": [
+    "Bioenergy",
+    "Methane production",
+    "Micro-aeration",
+    "Microaerophilic",
+    "Organic waste",
+    "Pretreatment",
+    "Wastewater treatment"
+   ],
+   "dates": {
+    "received": "2026-1-31",
+    "revised": "2026-6-11",
+    "accepted": "2026-6-13",
+    "medline": "2026-8-21",
+    "pubmed": "2026-6-15",
+    "entrez": "2026-6-14"
+   }
+  },
+  {
+   "pmid": "41806918",
+   "title": "Microplastics divert carbon flow in anaerobic digestion: a meta-analysis reveals product-specific effects.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134381",
+   "abstract": "Microplastics (MPs) are pervasive contaminants in organic waste streams destined for anaerobic digestion (AD), yet their net effect on resource recovery remains a contentious issue with contradictory findings. To resolve this ambiguity, we conducted a robust three-level random-effects meta-analysis, synthesizing data from 55 studies, for disentangling the product-specific impacts of MPs on AD performance. Our analysis revealed that MPs shift carbon flow within AD: they suppress methanogenesis (-6.29% methane yield) while promoting acidogenesis (+23.73% total VFAs), with propionic, butyric, and valeric acids increasing by 12.74%, 14.55%, and 22.18%, respectively. This demonstrates that MPs do not simply inhibit AD but rather redirect its carbon flow, and this carbon rerouting is determined by polymer type. The effects of MPs on AD process could be conceptualized as novel hypothetical \"Toxic Stress vs. Substrate Perturbation\" models. Conventional polymers (e.g., polyvinyl chloride, polyethylene terephthalate) exert toxic stress, inhibiting methanogens and causing upstream VFA accumulation. Conversely, biodegradable polymers (e.g., polylactic acid, polybutylene adipate terephthalate) act as slow-release carbon sources, perturbing substrate availability to enhance methanogenesis. Furthermore, these effects are strongly modulated by MP concentration, size, and operational conditions like temperature, which can even reverse the inhibitory effects. This study reframes MPs from being simple inhibitors to active biogeochemical agents within engineered ecosystems. By clarifying MPs' product-specific effects, this study provides theoretical foundation of MPs affecting AD process, improving resilience and efficiency of AD-based resource recovery.",
+   "keywords": [
+    "Anaerobic digestion",
+    "Meta analysis",
+    "Methane",
+    "Microplastics",
+    "Volatile fatty acids"
+   ],
+   "dates": {
+    "received": "2026-1-8",
+    "revised": "2026-3-5",
+    "accepted": "2026-3-6",
+    "medline": "2026-3-22",
+    "pubmed": "2026-3-11",
+    "entrez": "2026-3-10"
+   }
+  },
+  {
+   "pmid": "41242561",
+   "title": "Who calls granules \"home\"? Domain-spanning meta-analysis charting microbial ecosystems underlying aerobic granular sludge reactors.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133657",
+   "abstract": "The theatre of activity of complex microbial communities underpins the Aerobic Granular Sludge (AGS) systems, resulting in efficient wastewater treatment. Here, we present the first meta-analysis of DNA sequencing data from both published and newly generated AGS samples, aiming to define the \"core microbiota\" of AGS reactors, consisting of bacteria, archaea, eukaryotes and DNA viruses consistently featured and shared across different scales and operational settings. Briefly, the results indicated that a sequencing depth of at least 10\u00a0GB is required to profile the majority of the AGS community, revealed the core taxa, detected the recurrent presence of the uncultured genus ADurb.Bin028 in full-scale reactors and identified Rotaria and Diploscapter, as well as the sessile ciliates Stentor and Thuricola, as the most abundant eukaryotes in AGS. In conclusion, this work provided a taxonomic overview of AGS' common microbes and addressed potential technical caveats, aiming to establish a reference for future studies.",
+   "keywords": [
+    "Aerobic granular sludge",
+    "Ecology",
+    "Meta-analysis",
+    "Microbial ecology",
+    "Microbiota",
+    "Wastewater treatment"
+   ],
+   "dates": {
+    "received": "2025-9-2",
+    "revised": "2025-11-9",
+    "accepted": "2025-11-13",
+    "medline": "2025-12-11",
+    "pubmed": "2025-11-17",
+    "entrez": "2025-11-16"
+   }
+  },
+  {
+   "pmid": "40784501",
+   "title": "Critical factors for carbon fixation efficiency in semiconductor-biohybrid systems: insights from a meta-analysis.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.133133",
+   "abstract": "Semiconductor biohybrid systems are emerging as promising strategies for enhanced carbon dioxide fixation and synthesis of organic compounds, with the potential to transcend biological limitations. However, the effects of experimental variables on the efficiency of CO2 fixation in these systems have not been systematically explored, which has hindered insights into the general patterns in this field of research. In this study, we pioneered a comprehensive meta-analysis of 300 observations from 28 studies and used machine learning models to assess the effects of key experimental variables (e.g., microbial and material type, reaction temperature and duration, and light intensity) on CO2 fixation efficiencies and related outcomes (organic compound yields, electron transfer efficiencies, and quantum yields). The results showed that the inorganic semiconductor and bacterial systems outperformed in terms of CO2 fixation and organic compound yields, while the results emphasized that temperature, light intensity, and reaction time are the main experimental variables determining the CO2 fixation efficiency. Notably, this study is the first to apply the XGBoost algorithm to predict optimal CO2 fixation conditions (t\u00a0=\u00a096.9\u00a0h, L = 445.6\u00a0W/m2 and T = 28.3\u00a0\u2103). This study paves the way for a rational design of experiments aimed at maximizing CO2 fixation and organic matter production in semiconductor biohybrid systems.",
+   "keywords": [
+    "Experimental variables",
+    "Machine learning",
+    "Meta-analysis",
+    "Semiconductor-biohybrid systems"
+   ],
+   "dates": {
+    "received": "2025-6-4",
+    "revised": "2025-7-25",
+    "accepted": "2025-8-7",
+    "medline": "2025-9-3",
+    "pubmed": "2025-8-11",
+    "entrez": "2025-8-10"
+   }
+  },
+  {
+   "pmid": "40701415",
+   "title": "Multi-omics insights into the regulatory mechanism of citric acid in silage fermentation.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.133025",
+   "abstract": "A meta-analysis was conducted to assess the effects of citric acid (CA) on silage fermentation, and then used whole-plant cassava silage as a model to explore the underlying microbiological mechanisms with metagenomic and metabolomic data. The meta-analysis revealed that CA supplementation increased the dry matter, crude protein, water-soluble carbohydrate, and lactic acid contents in silage, but decreased the pH, dry matter loss, and the contents of fiber, NH3-N, and acetic acid, all of which meet the expectations for an ideal silage additive. The fermentation parameter responses of whole-plant cassava silage to CA were consistent with those in the meta-analysis. Metabolomic analysis revealed that CA increased the level of antimicrobial metabolites and decreased the level of amino acids and their derivatives in cassava silage. By constructing microbial genome and gene catalogs, we found that CA supplementation increased the abundance of lactic acid-rods (Levilactobacillus, Lentilactobacillus, and Companillactobacillus) and inhibited the abundance of lactic acid cocci (Leuconostoc, Pediococcus, and Weissella) and undesirable bacteria (Acinetobacter, Serratia, Klebsiella, and Pantoea), which resulted in an increased abundance of genes involved in structural carbohydrate hydrolysis (cellulase and pectinase), lactic acid production (ldh), and amino acid synthesis (CKase and CPS1) and a decreased abundance of genes involved in acetate (porA, acs, pdhC, and pct) and NH3 production (glsA). Additionally, CA reduced the abundance of antibiotic resistance genes in silage by inhibiting the bacteria that hosted more resistance genes. Accordingly, CA supplementation could improve the nutritional value, preservation, and biosafety of silage by regulating its microbial composition and function.",
+   "keywords": [
+    "Citric acid",
+    "Meta-analysis",
+    "Metabolome",
+    "Metagenome",
+    "Whole-plant cassava silage"
+   ],
+   "dates": {
+    "received": "2025-6-4",
+    "revised": "2025-7-17",
+    "accepted": "2025-7-21",
+    "medline": "2025-8-12",
+    "pubmed": "2025-7-24",
+    "entrez": "2025-7-23"
+   }
+  },
+  {
+   "pmid": "40592358",
+   "title": "Meta-analysis and empirical research on the effectiveness of biochar in remediating tetracyclines pollution in water bodies.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.132917",
+   "abstract": "The rapid increase in tetracycline pollution from intensive aquaculture necessitates urgent action to reduce tetracycline levels in water bodies, as its stability promotes antibiotic resistance, disrupts aquatic ecosystems, and poses health risks to humans through bioaccumulation. Current treatment methods like ozone oxidation are often costly or ineffective. Biochar, recognised for its cost-effectiveness and adsorption capacity, provides a promising solution. Through a meta-analysis of 110 research articles integrating 537observations focused on plant-based biomass, this study identified the following: 1) key factors influencing biochar's adsorption of tetracyclines include preparation processes and environmental conditions; 2)higher pyrolysis temperatures can boost adsorption capacity, especially above 600 \u00b0C; 3)pre-treatment using acids or salts is more effective than other modifiers. Additionally, a linear mixed-effects model predicted that specific pyrolysis temperatures combined with acid or salt modification would produce biochar with superior performance. Verification experiments with pine, poplar, and straw from wheat, rice, and corn modified with salts (CaCl2, ZnCl2, MgSO4, AlCl3, FeCl3, K2FeO4) and acids (H3PO4, H2SO4, HNO3) revealed significantly increased adsorption capacities, as predicted by the linear mixed-effects model. The adsorption capacity of biochar prepared from biomass modified with 1\u00a0M H2SO4 for 24 h and pyrolysed at 700\u00a0\u00b0C can reach 637.71\u00a0mg/g, and the biochar exhibits enhanced adsorption capacity compared with those previously reported. Results of this study demonstrate the feasibility and accuracy of using meta-analysis to predict the performance of biochar in the efficient adsorption of tetracycline from water and provide a robust scientific framework for customised biochar preparation with specific functions.",
+   "keywords": [
+    "Adsorption enhancement",
+    "Model validation",
+    "Modification optimisation",
+    "Simulation"
+   ],
+   "dates": {
+    "received": "2025-4-18",
+    "revised": "2025-6-9",
+    "accepted": "2025-6-28",
+    "medline": "2025-7-20",
+    "pubmed": "2025-7-2",
+    "entrez": "2025-7-1"
+   }
+  },
+  {
+   "pmid": "40383313",
+   "title": "Ecological effects of biochar in heavy metal-contaminated soils from multidimensional perspective: Using meta-analysis.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.132695",
+   "abstract": "The application of biochar in the remediation of heavy metal-contaminated soil shows great potential, but its comprehensive impacts on metal dynamics and the soil ecosystem have not been quantified. This study conducted a meta - analysis of 496 observations from 41 studies. The results indicated that biochar can significantly decrease the bioavailability of cationic metals, but has limited effect on anionic heavy metals. After application, soil nutrient content and enzyme activity significantly increased. Microbial network analysis revealed enhanced interactions between species, and the reconstruction of the core microbial community indicated a shift in microbial survival strategies from resisting heavy metal stress to nutrient cycling and plant symbiosis. FAPROTAX analysis showed that microbial communities related to nitrogen and sulfur cycles were significantly stimulated. This study explores the role of biochar in restoring soil multifunctionality while addressing metal pollution issues from multiple perspectives, offering key insights for developing targeted soil remediation strategies.",
+   "keywords": [
+    "Core microbiome",
+    "Microbial community",
+    "Microbial network",
+    "Soil function",
+    "Soil health"
+   ],
+   "dates": {
+    "received": "2025-2-19",
+    "revised": "2025-5-14",
+    "accepted": "2025-5-15",
+    "medline": "2025-6-2",
+    "pubmed": "2025-5-19",
+    "entrez": "2025-5-18"
+   }
+  },
+  {
+   "pmid": "40268093",
+   "title": "Unveiling the factors shaping variability in biomass productivity: Meta-analysis of outdoor pilot-scale microalgal cultures.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.132566",
+   "abstract": "Meta-analysis and machine learning is used to investigate factors influencing variation in biomass productivity in outdoor algal systems. Understanding these factors is essential for optimizing algal systems. Mean productivity across the analysed studies is 11\u00a0g m-2day-1, with 6\u00a0% of observations surpassing 25\u00a0g m-2day-1. Analysis reveals that algal species alone is insufficient to optimize productivity, as indicated by wide intra-species variation (5 to 42\u00a0gm-2day-1). A negative linear relationship between productivity and culture depth (Pearson correlation coefficient, \u03c1=0.56), growth period (\u03c1=0.56), and media salinity (\u03c1=0.64) is identified. Other variables exhibit non-linear associations. Inoculum density, CO2 content, sulfate concentration, and growth period can enhance productivity while temperature, pH, photosynthetically active radiation, and photoperiod show limited potential. Targeted optimization of key input variables offers a promising pathway to significantly boost productivity and accelerate the deployment of algal systems for sustainable bioproduction.",
+   "keywords": [
+    "Artificial neural network",
+    "Correlation analysis",
+    "Multiple linear regression",
+    "Open raceway ponds",
+    "Photobioreactors"
+   ],
+   "dates": {
+    "received": "2025-2-28",
+    "revised": "2025-4-18",
+    "accepted": "2025-4-20",
+    "medline": "2025-5-12",
+    "pubmed": "2025-4-24",
+    "entrez": "2025-4-23"
+   }
+  },
+  {
+   "pmid": "40157580",
+   "title": "Current advances in microalgae-based fucoxanthin production and downstream processes.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.132455",
+   "abstract": "Fucoxanthin, a marine carotenoid primarily found in brown algae and microalgae, offers significant health benefits, including antioxidant, anti-obesity, and anti-cancer effects. While brown algae remain the dominant commercial source, microalgae such as Phaeodactylum tricornutum are emerging as promising candidates for large-scale, sustainable fucoxanthin production. This review explores advancements in fucoxanthin biosynthesis, focusing on cultivation methods, extraction techniques, and genetic engineering strategies. Different cultivation systems - including autotrophic, heterotrophic, and mixotrophic approaches - have been assessed for their biomass yield, cost-effectiveness, and scalability, together with a quantitative meta-analysis to highlight specific trends or correlations in fucoxanthin production. The efficiency and environmental impact of extraction methods, such as supercritical fluid extraction, ultrasound-assisted extraction, and microwave-assisted extraction, have also been evaluated. In addition, synthetic biology and Clustered Regularly Interspaced Short Palindromic Repeats (CRISPR)-based genetic modifications show potential for enhancing fucoxanthin biosynthesis. However, challenges remain in terms of cost, scalability, and regulatory constraints. This review highlights the need for integrated biotechnological solutions to enhance commercial viability, combining metabolic engineering, efficient extraction techniques, and optimized cultivation strategies. As demand continues to grow in the nutraceutical, pharmaceutical, and cosmetic industries, ongoing advancements in microalgae-based fucoxanthin production will be critical for ensuring sustainable and cost-effective manufacturing.",
+   "keywords": [
+    "Bioactivities",
+    "Carotenoids",
+    "Economic Analysis",
+    "Extraction",
+    "Quantitative meta-analysis",
+    "Synthetic Biology"
+   ],
+   "dates": {
+    "received": "2025-1-28",
+    "revised": "2025-3-25",
+    "accepted": "2025-3-25",
+    "medline": "2025-4-17",
+    "pubmed": "2025-3-30",
+    "entrez": "2025-3-29"
+   }
+  },
+  {
+   "pmid": "39694113",
+   "title": "Fueling the protein transition: Can waste-derived ethanol enable efficient and high-quality microbial protein production?",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2024.131990",
+   "abstract": "Meeting the protein needs of a growing population will require significant resources. In this context, microbial protein (MP) offers a nutritious and versatile protein source from recovered resources. This meta-analysis of over 100 studies examines the efficiency and nutritional quality of MP production using ethanol. Ethanol, a feedstock derived from CO2 and biological waste, is used by various microorganisms, and has an established role in the food sector. Results show that ethanol-based MP production is technically feasible for food applications, reaching biomass concentrations of 14-230\u00a0g/L and productivities of 11-13\u00a0g/L/h. The protein content of MP correlates with productivity, and the nutritional quality of ethanol-grown MP matches common sources like pork and tofu. Lastly, operational choices affect the techno-economic feasibility of using waste-derived ethanol and other recovered resources. This meta-analysis highlights the potential of ethanol-grown MP, though further research is needed to close existing knowledge gaps.",
+   "keywords": [
+    "Alternative protein",
+    "Ethanol",
+    "Microbial food",
+    "Nutritional quality",
+    "Operational mode",
+    "Process efficiency",
+    "Recovered resources"
+   ],
+   "dates": {
+    "received": "2024-7-3",
+    "revised": "2024-10-27",
+    "accepted": "2024-12-15",
+    "medline": "2025-1-28",
+    "pubmed": "2024-12-19",
+    "entrez": "2024-12-18"
+   }
+  },
+  {
+   "pmid": "39244105",
+   "title": "Insights from meta-analysis on carbon to nitrogen ratios in aerobic composting of agricultural residues.",
+   "year": "2024",
+   "doi": "10.1016/j.biortech.2024.131416",
+   "abstract": "Given the heterogeneity of raw materials, the diversity of composting processes, and the complexity of biological transformations, systematically exploring the critical role of the initial carbon-to-nitrogen (C/N) ratio in the aerobic composting of agricultural residues is challenging within a single experimental study. This study employs meta-analysis to investigate this role. Statistical analysis of 192 scholarly articles confirmed that most studies adhere to the recommended optimal initial C/N range of 25 and 30, where enhanced compost maturity and nutrient accumulation are observed. The findings indicate that optimal initial C/N ratios vary by agricultural residue type. A C/N ratio of 20 to 30 facilitates controlling the composting duration within 45\u00a0days, while a C/N ratio of 30 to 35 necessitates extending the duration beyond 45\u00a0days. The study highlights the effectiveness of adjusting the C/N ratio and applying microbial inoculants and physical amendments to optimize composting outcomes and control the composting duration.",
+   "keywords": [
+    "Composting duration",
+    "Maturity indices",
+    "Natural logarithm of response ratio",
+    "Ratio of final to initial C/N",
+    "Seed germination index"
+   ],
+   "dates": {
+    "received": "2024-7-31",
+    "revised": "2024-8-30",
+    "accepted": "2024-9-1",
+    "medline": "2024-10-23",
+    "pubmed": "2024-9-8",
+    "entrez": "2024-9-7"
+   }
+  },
+  {
+   "pmid": "38925406",
+   "title": "Algae-constructed wetland integrated system for wastewater treatment: A review.",
+   "year": "2024",
+   "doi": "10.1016/j.biortech.2024.131003",
+   "abstract": "Integrating algae into constructed wetlands (CWs) enhances wastewater treatment, although the results vary. This review evaluates the role of algae in CWs and the performance of different algae-CW (A-CW) configurations based on literature and meta-analysis. Algae considerably improve N removal, although their impact on other parameters varies. Statistical analysis revealed that 70\u00a0% of studies report improved treatment efficiencies with A-CWs, achieving average removal rates of 75\u00a0% for chemical oxygen demand (COD), 74\u00a0% for total nitrogen and ammonium nitrogen, and 79\u00a0% for total phosphorus (TP). This review identifies hydraulic retention times, which average 3.1\u00a0days, and their varied impact on treatment efficacy. Mixed-effects models showed a slight increase in COD and TP removal efficiencies of 0.6\u00a0% every ten days in the A-CWs. Future research should focus on robust experimental designs, adequate algal storage and separation techniques, and advanced modeling to optimize the treatment potential of algae in CWs.",
+   "keywords": [
+    "Bioremediation",
+    "Ecological engineering",
+    "Nutrient removal",
+    "Organic load reduction",
+    "Sewage"
+   ],
+   "dates": {
+    "received": "2024-4-12",
+    "revised": "2024-6-15",
+    "accepted": "2024-6-15",
+    "medline": "2024-7-23",
+    "pubmed": "2024-6-27",
+    "entrez": "2024-6-26"
+   }
+  }
+ ],
+ "thermo_ml": [
+  {
+   "pmid": "43068773",
+   "title": "Reverse engineering of biochar from agricultural waste: A function-driven strategy for the circular bioeconomy.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.136313",
+   "abstract": "Agricultural waste constitutes a globally significant yet underutilized bioenergy resource pool whose valorization is central to the transition toward a circular bioeconomy. This review critically examines the upcycling of diverse agricultural waste streams into multifunctional materials through pyrolytic conversion, with particular emphasis on biochar, a carbon-rich co-product of bioenergy production, reframing it from a conventional soil amendment into an engineerable platform for integrated agricultural applications. Central to this review is the emerging shift toward function-driven reverse engineering, a strategy that tailors the physicochemical properties of biochar to specific agricultural requirements, including controlled nutrient delivery, targeted pollutant immobilization, and soil ecosystem regulation. The role of machine learning in accelerating data-driven design is also assessed. However, the transition from laboratory design to field application reveals a multifunctionality dilemma whereby optimization of one function frequently compromises another. Through three mechanistic case studies, the critical trade-offs and synergies involved are dissected. Furthermore, the implementation of closed-loop biochar systems within circular agriculture is analyzed, and the urgent need for robust quality control and standardization is underscored. We argue that systems-level integration, balancing functional trade-offs against economic, energy, and environmental constraints, offers the most viable pathway to advancing the valorization of agricultural waste valorization for sustainable energy and climate change mitigation.",
+   "keywords": [
+    "Agricultural waste",
+    "Circular bioeconomy",
+    "Functional biochar",
+    "Machine learning",
+    "Reverse engineering",
+    "Systems integration"
+   ],
+   "dates": {
+    "received": "2026-7-21",
+    "revised": "2026-11-17",
+    "accepted": "2026-11-21",
+    "medline": "2026-11-22",
+    "pubmed": "2026-11-22",
+    "entrez": "2026-11-22"
+   }
+  },
+  {
+   "pmid": "43033997",
+   "title": "Mixup-augmented learning for syngas prediction and inverse process screening in small, imbalanced biomass gasification datasets.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.136250",
+   "abstract": "Biomass gasification converts renewable carbon resources, including agricultural and forestry residues, into low-carbon syngas, providing an environmentally compatible route for waste valorization, fossil-energy substitution, and clean-energy production. Accurate syngas-composition prediction supports carbon conversion, emission reduction, and process optimization. However, literature-derived datasets are typically limited in size, unevenly distributed across operating conditions, and characterized by long-tailed low-abundance components, which restricts the reliable application of conventional data-driven models to environmentally oriented process design. Here, we propose MIDAS-Gas (Manifold-Informed Data Augmentation and Screening Framework for Biomass Gasification), using 252 experimental records from 28 publications and 11 inputs covering proximate analysis, ultimate analysis, gasification temperature, and steam-to-biomass ratio (S/B). The data were split into 201 training records and 51 held-out test records. Physically constrained Mixup interpolation expanded sparse regions while preserving relationships among feedstock properties, operating conditions, and gas composition. The resulting R2 values for H2, CO, CO2, and CH4 were 0.87, 0.69, 0.77, and 0.80, respectively; notably, the CH4 R2 increased from 0.55 to 0.80 compared with the unaugmented Stacking baseline. SHAP analysis identified temperature and S/B as important operating variables. Experimental validation at S/B\u00a0=\u00a01.67 and 857\u00a0\u00b0C yielded H2, CO, CO2, and CH4 fractions of 46.21\u00a0\u00b1\u00a00.09\u00a0%, 25.90\u00a0\u00b1\u00a00.27\u00a0%, 19.27\u00a0\u00b1\u00a00.22\u00a0%, and 8.63\u00a0\u00b1\u00a00.14\u00a0%, respectively, with H2\u00a0+\u00a0CO reaching 72.11\u00a0\u00b1\u00a00.36\u00a0%; the maximum and mean absolute deviations were 4.10 and 2.05 percentage points, respectively. MIDAS-Gas supports syngas prediction and candidate-condition screening for limited, imbalanced datasets.",
+   "keywords": [
+    "Biomass gasification",
+    "Data augmentation",
+    "Machine learning",
+    "Process optimization"
+   ],
+   "dates": {
+    "received": "2026-7-19",
+    "revised": "2026-10-26",
+    "accepted": "2026-11-11",
+    "pubmed": "2026-11-15",
+    "medline": "2026-11-15",
+    "entrez": "2026-11-14"
+   }
+  },
+  {
+   "pmid": "43033993",
+   "title": "From unsupervised property clustering to supervised production-condition-based classification of pyrolyzed biochar: A machine learning framework with independent experimental validation.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.136243",
+   "abstract": "Pyrolyzed biochar is widely used in environmental applications, yet its efficacy depends on physicochemical properties that are often unavailable in engineering practice. This necessitates rapid and cost-effective prediction of biochar functional classes from feedstocks and production conditions. This study developed a machine learning framework integrating unsupervised clustering and supervised classification for this purpose. A literature-sourced dataset encompassing biochar properties, feedstocks, modification methods, and pyrolysis conditions was compiled and preprocessed using imputation and Box-Cox transformation. Among the five evaluated unsupervised clustering algorithms, agglomerative clustering (AC), balanced iterative reducing and clustering using hierarchies (BIRCH), and K-Means initially and consistently identified two natural clusters (silhouette coefficient\u00a0=\u00a00.78, Davies-Bouldin index\u00a0=\u00a00.43-0.44). The larger cluster was further refined through secondary AC/BIRCH clustering into two subclusters, which together with the smaller cluster yielded three final clusters (Class 0, Class 1, Class 2). These cluster labels were then used as prediction targets for supervised classification with feedstocks, modification methods, and pyrolysis conditions as input features. Among the five supervised classification models, eXtreme gradient boosting (XGBoost) achieved the optimal classification performance, as evidenced by its superior per-class metrics and the highest overall accuracy (87%), with feedstock type and pyrolysis temperature as the most influential features. Independent validation using four biochar samples produced from different feedstocks and pyrolysis conditions showed that the XGBoost predictions were fully consistent with the clustering labels derived from characterization results. This study provides a data-driven approach for predicting biochar functional classes from feedstocks and production conditions, thereby enhancing engineering applicability.",
+   "keywords": [
+    "Biochar",
+    "Independent validation",
+    "Secondary clustering",
+    "Supervised classification",
+    "Unsupervised clustering"
+   ],
+   "dates": {
+    "received": "2026-7-3",
+    "revised": "2026-9-30",
+    "accepted": "2026-11-10",
+    "pubmed": "2026-11-15",
+    "medline": "2026-11-15",
+    "entrez": "2026-11-14"
+   }
+  },
+  {
+   "pmid": "42874818",
+   "title": "Ball-milling medium dictates the reconstruction pathway of hydrochar: Coupling pore opening with functionality retention.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.136066",
+   "abstract": "Hydrochar retains abundant oxygen-containing functional groups but little porosity, and thermal upgrading opens pores at the expense of surface chemistry. Ball milling requires no external heating, so its structural outcome is decided by how freshly fragmented particles reorganize. Here, dry and water-mediated ball milling of corn-straw hydrochar were compared to resolve how the milling medium directs this reorganization, with 600\u2103 biochar as a thermal reference. Without a liquid phase, fragments recontacted and densified: the specific surface area fell from 11.23 to 2.91\u00a0m2\u00b7g-1, the total pore volume from 0.0818 to 0.0179\u00a0cm3\u00b7g-1, and the CO proportion from 26.2\u00a0% to 19.0\u00a0%, so pore closure and carbonyl loss occurred together. In water, dispersion suppressed reagglomeration, increasing the specific surface area, total pore volume, and CO proportion to 34.26\u00a0m2\u00b7g-1, 0.1903\u00a0cm3\u00b7g-1, and 33.3\u00a0%, respectively. HTC-WBM adsorbed 2.53, 2.41, and 3.15 times as much TC as HTC, HTC-DBM, and BC, respectively. Although BC had the highest specific surface area (54.99\u00a0m2\u00b7g-1), its total pore volume and BET-equivalent average pore diameter were only 0.0439\u00a0cm3\u00b7g-1 and 3.19\u00a0nm, compared with 0.1903\u00a0cm3\u00b7g-1 and 22.22\u00a0nm for HTC-WBM. Open meso-/macropores facilitated TC transport to retained oxygen-containing sites, where hydrogen bonding and electrostatic interactions contributed to adsorption. Spectroscopic evidence and SHAP analysis were consistent with this coupled pore-accessibility/functionality effect. Medium-controlled milling therefore couples pore opening with functionality retention.",
+   "keywords": [
+    "Hydrochar",
+    "Machine learning",
+    "Milling medium",
+    "Oxygen-containing functional groups",
+    "Pore reconstruction",
+    "Tetracycline adsorption"
+   ],
+   "dates": {
+    "received": "2026-8-31",
+    "revised": "2026-10-3",
+    "accepted": "2026-10-14",
+    "pubmed": "2026-10-14",
+    "medline": "2026-10-14",
+    "entrez": "2026-10-14"
+   }
+  },
+  {
+   "pmid": "42665107",
+   "title": "A machine learning-based dual system coupling model of catalytic-gasification: a calcium-based case study with mechanistic interpretability.",
+   "year": "2027",
+   "doi": "10.1016/j.biortech.2026.135743",
+   "abstract": "Predictive modeling of catalytic biomass gasification suffers from simplified categorical representations of catalysts. This study developed a dual system machine learning framework coupling catalyst properties with gasification outputs. The Bayesian-optimized gradient boosting was utilized to train a catalytic model on 149 experimental datasets, achieving a carbon conversion efficiency prediction accuracy of R2\u00a0=\u00a00.937. Principal component analysis was applied to compress seven catalyst descriptors (including specifies surface area and active site size) into a single performance score (PC1), explaining 47.3% of the variance. This score serves as the continuous input for the multi-output gasification model to predict CH4, H2, CO, and CO2 yields (R2\u00a0=\u00a00.940, 0.976, 0.916, and 0.920, respectively). Independent validation using pine sawdust and calcium oxide confirmed that the model predicts syngas composition with less than five percentage points of absolute deviation. This framework provides a tool for catalyst screening and process parameter optimization in biomass clean energy conversion systems.",
+   "keywords": [
+    "Biomass",
+    "Catalyst",
+    "Gasification",
+    "Machine learning",
+    "Syngas"
+   ],
+   "dates": {
+    "received": "2026-6-5",
+    "revised": "2026-8-9",
+    "accepted": "2026-8-27",
+    "medline": "2026-11-6",
+    "pubmed": "2026-8-28",
+    "entrez": "2026-8-28"
+   }
+  },
+  {
+   "pmid": "42607778",
+   "title": "Predicting methane production in biochar-assisted anaerobic digestion using random forest and SHAP analysis of multi-study experimental data.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.135652",
+   "abstract": "Anaerobic digestion (AD) optimization for enhanced biogas production remains challenging because methane production is governed by complex interactions among substrate characteristics, biochar (BC) properties, and operating conditions. In this study, a literature-derived dataset comprising 623 experimental conditions from 107 peer-reviewed studies was compiled to develop an interpretable machine learning framework for predicting methane production in BC-assisted AD systems. Principal component analysis showed that the first two principal components explained 34.5\u00a0% of the total variance (PC1: 18.4\u00a0%; PC2: 16.1\u00a0%), highlighting the intrinsic heterogeneity of multi-study datasets and supporting the application of nonlinear predictive models. A Random Forest model achieved R2\u00a0=\u00a00.683, RMSE\u00a0=\u00a0159.75, and MAE\u00a0=\u00a082.41\u00a0\u00a0mL CH4/gVS under conventional validation, whereas Group K-Fold cross-validation yielded a more conservative estimate of model generalization (R2\u00a0=\u00a00.36) by preventing study-level data leakage. Feature importance analysis identified BC specific surface area, pyrolysis temperature, and BC dosage as the strongest structural predictors, while SHAP analysis indicated that substrate composition, particularly food waste, exhibited the greatest positive statistical contribution to methane production predictions, whereas sewage sludge showed a negative contribution. These statistical associations were consistent with previously reported experimental observations but should not be interpreted as direct biological causality. Overall, the proposed framework provides a interpretable approach for integrating heterogeneous literature-derived datasets, quantifying the relative contribution of intrinsic variables, and supporting hypothesis generation and future model development for BC-assisted AD systems.",
+   "keywords": [
+    "Biogas Yield",
+    "Carbonaceous Materials",
+    "Explainable Artificial Intelligence",
+    "Organic Waste Treatment",
+    "Pyrolysis Conditions",
+    "Substrate Composition"
+   ],
+   "dates": {
+    "received": "2026-5-27",
+    "revised": "2026-8-12",
+    "accepted": "2026-8-16",
+    "medline": "2026-10-3",
+    "pubmed": "2026-8-17",
+    "entrez": "2026-8-17"
+   }
+  },
+  {
+   "pmid": "42556547",
+   "title": "Prediction enhancement through data augmentation techniques in AI-ML modelling of H2 production from biomass gasification in a two-stage reactor.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.135569",
+   "abstract": "Accurate prediction of hydrogen production in two-stage biomass gasification requires robust machine learning (ML) models, yet the scarcity of experimental data constrains model generalization. This study addresses data scarcity through integrated data augmentation strategies: permutation-invariant catalyst composition augmentation (PICCA) and Generative Adversarial Networks (GANs). A baseline literature dataset of 202 experimental samples was expanded to 1,450 datapoints across four hierarchical datasets with the combination of PICCA and GANs. Feature engineering via Spearman correlation eliminated redundancies, six regression ML models (Lasso, Ridge, Support Vector, Gaussian Process, Random Forest, and Gradient Boosting regressors) were trained using 5-fold cross-validation with randomized grid search hyperparameter optimization. Gradient Boosting Regression Trees (GBRT) achieved superior performance on the GAN\u00a0+\u00a0PICCA dataset (R2\u00a0=\u00a00.94, RMSE\u00a0=\u00a03.11, AAD\u00a0=\u00a02.30), representing a 43% accuracy boost over baseline dataset. Model interpretability via SHAP (i.e., Beeswarm & Waterfall) and partial dependence analysis revealed biomass type, bed material type & composition, and reformer & gasifier temperature as primary drivers of hydrogen yield. Results demonstrate that combined data augmentation strategies significantly enhance ML model predictive accuracy, enabling reliable integrated process and catalyst-driven optimization of biomass gasification for sustainable hydrogen production.",
+   "keywords": [
+    "Biomass gasification",
+    "Catalyst permutation augmentation",
+    "Catalytic reforming",
+    "Data augmentation",
+    "Generative adversarial networks",
+    "Machine learning prediction"
+   ],
+   "dates": {
+    "received": "2026-5-19",
+    "revised": "2026-8-2",
+    "accepted": "2026-8-4",
+    "medline": "2026-10-3",
+    "pubmed": "2026-8-6",
+    "entrez": "2026-8-5"
+   }
+  },
+  {
+   "pmid": "42379320",
+   "title": "Decoupling the etching-collapse competition in biochar activation: A domain-robust machine learning framework for porosity engineering.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.135277",
+   "abstract": "Potassium hydroxide (KOH) activation is widely used to enhance the porosity of biomass-derived biochar, yet rational optimization remains difficult because activation outcomes depend on precursor texture and vary across literature sources. Here, 123 literature-derived records from 29 distinct literature sources were compiled to develop a domain-aware and interpretable machine-learning framework for biochar porosity engineering. A baseline-normalized target, \u0394log(SBET), was defined to quantify activation-induced specific surface area gain relative to the precursor state. Under source-grouped holdout validation, tree-based ensemble models retained relatively stable performance for \u0394log(SBET), with a median R2 close to 0.8, whereas micropore-volume prediction showed weaker transferability. Shapley additive explanations (SHAP) and permutation-based analyses indicated that precursor baseline texture dominated the model response, with KOH/Char providing a controllable signal for activation severity. The response patterns support a literature-consistent trade-off between pore development and over-activation-induced degradation. Applicability-domain analysis was used to delineate locally supported and extrapolative regions of the design space, rather than to quantify predictive uncertainty. This framework provides domain-qualified guidance for matching activation severity to precursor texture and reducing empirical trial-and-error in biomass-derived porous carbon production.",
+   "keywords": [
+    "Biochar",
+    "Cross-source generalization",
+    "KOH activation",
+    "Machine learning",
+    "Porosity engineering"
+   ],
+   "dates": {
+    "received": "2026-3-23",
+    "revised": "2026-6-24",
+    "accepted": "2026-6-29",
+    "medline": "2026-8-21",
+    "pubmed": "2026-7-1",
+    "entrez": "2026-6-30"
+   }
+  },
+  {
+   "pmid": "42365881",
+   "title": "Unveiling the relationships between process parameters and nitrogen-containing chemicals via machine learning: A strategy for selective production from macroalgae pyrolysis.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.135269",
+   "abstract": "Machine learning (ML)-driven analysis of biomass fast pyrolysis provides a promising strategy to uncover the complex relationships between process parameters and nitrogen-containing chemicals (NCCs), thus facilitating experimental optimization and enhancing the valorization of biomass resources. In this work, the optimized random forest model achieved satisfactory predictive performance (Training R2\u00a0=\u00a00.91, Test R2\u00a0=\u00a00.80), which was further verified experimentally with an accuracy of 78.09%. Visual interpretation of the ML results indicated that a high nitrogen content in the feedstock favored NCCs formation, while high temperatures imposed an inhibitory effect. To improve the production of NCCs, both intrinsic nitrogen (derived from macroalgae) and extrinsic nitrogen sources (urea, melamine, and ammonium bicarbonate) were introduced to elevate the nitrogen content of feedstock, and the product distribution of NCCs was explored at relatively low pyrolysis temperatures. Results demonstrated that urea addition at 550\u00a0\u00b0C exhibited high selectivity for pyridines (> 70% of N-heterocycles). Melamine introduction at 650\u00a0\u00b0C was more suitable for amides production, while ammonium bicarbonate incorporation at 350---450\u00a0\u00b0C facilitated azoles preparation (pyrazoles, imidazoles). Finally, probable reaction pathways for extrinsic-nitrogen-driven NCCs synthesis were proposed, providing mechanistic insights for selective NCCs production from macroalgae N- enriched pyrolysis.",
+   "keywords": [
+    "Machine learning",
+    "Macroalgae",
+    "N-enriched pyrolysis",
+    "Nitrogen-containing chemicals",
+    "Selectivity"
+   ],
+   "dates": {
+    "received": "2026-5-4",
+    "revised": "2026-6-25",
+    "accepted": "2026-6-27",
+    "medline": "2026-8-21",
+    "pubmed": "2026-6-29",
+    "entrez": "2026-6-28"
+   }
+  },
+  {
+   "pmid": "42324045",
+   "title": "A dominance-based ternary framework for ML-guided interpretable analysis of biomass pyrolysis products.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.135221",
+   "abstract": "Biomass pyrolysis is a complex thermochemical process in which bio-oil, biochar, and gas are simultaneously generated under coupled material and energy constraints. Although machine learning (ML) has been widely applied to predict individual product yields with high accuracy, most existing studies primarily emphasize statistical performance and provide limited insight into the structured relationships governing multi-product distribution. This study introduces a dominance-based ternary regime mapping method that converts ML-predicted yields into interpretable oil/char/gas dominance regions under controlled compositional scanning. A data-driven yet physically interpretable analytical framework is proposed to investigate biomass pyrolysis behaviour by combining controlled compositional data scanning with a dominance-based ternary representation. A comprehensive dataset comprising over 1,400 experimental records from more than 100 studies was compiled, covering biomass proximate and ultimate analyses, lignocellulosic composition, and pyrolysis operating conditions. To ensure data consistency, the dataset was harmonized through basis standardization and mass-closure filtering. Proximate analysis variables (volatile matter, fixed carbon, and ash) and elemental composition variables (C, H, and O) were systematically scanned within the min-max bounds observed in the dataset, while other variables were fixed. A dominance-based ternary framework was then employed to map experimental data into a unified compositional space, explicitly distinguishing oil-rich, char-rich, gas-rich, and mixed regimes. The results show that temperature governs product dominance migration, while feedstock compositions impose systematic, yet non-deterministic, geometric constraints. This framework enables investigation of competitive multi-product formation pathways in biomass pyrolysis.",
+   "keywords": [
+    "Artificial Intelligence",
+    "Biomass Pyrolysis",
+    "Dominance Mapping",
+    "Machine Learning",
+    "Regime Classification",
+    "Sustainability"
+   ],
+   "dates": {
+    "received": "2026-3-19",
+    "revised": "2026-6-8",
+    "accepted": "2026-6-20",
+    "medline": "2026-8-21",
+    "pubmed": "2026-6-22",
+    "entrez": "2026-6-21"
+   }
+  },
+  {
+   "pmid": "42190968",
+   "title": "Insights into distinct biocarbon assembly and graphitization derived from large-scale bioresource by integrating machine learning with Raman and XRD spectroscopic profiling.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134978",
+   "abstract": "Understanding and predicting the elemental composition and assembly of diverse biocarbon materials are critical for quickly tailoring their physicochemical properties and functional applications. However, it remains challenging to sort out the complex coupling between pyrolysis conditions and carbon structural evolutions. By collecting all major sugars and lignocellulose resources, this study obtained a comprehensive dataset comprising 240 biocarbon samples derived from 17 precursors pyrolysis. Raman spectroscopy and X-ray diffraction profiling were employed to characterize all biocarbon samples, and multiple machine learning models were integrated to predict carbon/C, hydrogen/H, and oxygen/O contents. Among eleven regression algorithms, Gradient Boosting model exhibited the best performance, achieving robust predictions for C, H, and O contents and outperforming linear models in capturing nonlinear structure and composition relationships. Pearson correlation, SHAP interpretation, and partial dependence analysis could consistently sort out the dominant factor of pyrolysis temperature for governing carbon enrichment and H/O depletion, reflecting progressive aromatization, dehydrogenation and deoxygenation during pyrolysis. Structural descriptors including ID/IG, I26\u00b0/(I22\u00b0\u00a0+\u00a0I26\u00b0), and interlayer spacing d002, provided complementary information by linking defect density and graphitic ordering to elemental composition. Overall, this work has established an interpretable modeling framework that combines spectroscopic characterization with machine learning to enable rapid and non-destructive prediction of biocarbon composition and property, thereby providing mechanistic insights into biocarbon evolution for specific biocarbon design and assembly.",
+   "keywords": [
+    "Biocarbon",
+    "Carbon graphitization",
+    "Lignocellulose",
+    "Machine learning",
+    "Raman profiling",
+    "XRD spectroscopy"
+   ],
+   "dates": {
+    "received": "2026-2-2",
+    "revised": "2026-4-15",
+    "accepted": "2026-5-23",
+    "medline": "2026-6-8",
+    "pubmed": "2026-5-27",
+    "entrez": "2026-5-26"
+   }
+  },
+  {
+   "pmid": "42150638",
+   "title": "A machine learning-assisted engineering of activation-free hierarchical and microporous biochars for selective adsorption.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134905",
+   "abstract": "Biochar surface engineering for targeted applications is critical but typically relies on environmentally and economically burdensome activation processes. Here, we present a systematic, side-by-side comparison of cellulose (C) and cellulose acetate (CA) pyrolyzed under identical, activation-free conditions. We demonstrate how a single chemical modification dictates divergent structural evolution, supported by a machine learning-assisted exploratory analysis that quantified the substrate-specific divergence in thermochemical behaviour. CA-biochars developed hierarchical structures, reaching a peak surface area of 626\u00a0m2/g (CA-600-2hr) and mesopore/micropore volumes of 0.26/0.13\u00a0cc/g (CA-500-1hr). Conversely, C-biochars were predominantly microporous, with C-600-2hr achieving peak micropore volume (0.21\u00a0cc/g), mesopore volume (0.030\u00a0cc/g), and surface area (590\u00a0m2/g), closely aligning with predicted cellulose carbonization trajectories (R2\u00a0=\u00a00.80, RMSE\u00a0=\u00a05.8) via a voting regressor ensemble algorithm. To verify the effectiveness of this approach, four biochars were tested in size-selective micropollutant adsorption and small-molecule CO2 capture. For planar Methylene Blue, the highly graphitic, microporous C-600-2hr had superior adsorption capacity (qm = 38.17\u00a0mg/g) and binding affinity (KL = 1.96\u00a0L/mg), attributable to its compatible pore dimensions (\u223c1.9\u00a0nm) and dominant \u03c0-\u03c0 interactions. Conversely, hierarchical CA-600-2hr excelled for bulkier Rhodamine B (qm = 47.62\u00a0mg/g), mitigating diffusion limitations. Dubinin-Radushkevich modelling further confirmed that C-600-2hr's superior CO2 capture (2.07\u00a0mmol/g) was driven by its optimized micropore capacity (W0: 5.24\u00a0mmol/g) rather than surface functionalization. These findings suggest that precursor selection and pyrolysis conditions can be systematically varied to engineer biochar platforms with tunable functionalities for size-selective adsorption applications.",
+   "keywords": [
+    "Adsorbent",
+    "Artificial intelligence",
+    "Biochar engineering",
+    "CO(2) adsorption",
+    "Methylene Blue",
+    "Micropollutant",
+    "Pyrolysis",
+    "Rhodamine B"
+   ],
+   "dates": {
+    "received": "2026-2-23",
+    "revised": "2026-4-9",
+    "accepted": "2026-5-16",
+    "medline": "2026-6-7",
+    "pubmed": "2026-5-19",
+    "entrez": "2026-5-18"
+   }
+  },
+  {
+   "pmid": "42150634",
+   "title": "Comparative investigation of microwave-assisted and conventional pyrolysis: a machine learning-based approach.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134907",
+   "abstract": "Pyrolysis can convert biomass into renewable energy carriers and chemicals. While microwave-assisted pyrolysis (MAP) enables volumetric heating with higher energy efficiency than conventional pyrolysis (CONV) relying on conductive-convective heat transfer, the benefits of MAP with respect to product profiles have yet to be conclusively demonstrated. There is still a lack of coherent understanding of how feedstock properties and operating conditions differentially shape pyrolysis outcomes under MAP versus CONV. To address this gap, we examine literature data on sludge pyrolysis with multiple machine-learning algorithms and SHapley Additive exPlanations (SHAP) analysis, systematically comparing the key input features impacting product distributions in MAP and CONV processes. Model comparison indicates that the ridge regression model offers an appropriate balance between generalizability and predictive performance, and was selected for subsequent analyses. Both feature importance and SHAP analyses consistently reveal that, in CONV, product partitioning is predominantly explained by proximate composition (e.g., fixed carbon and ash), which collectively account for 36-68% of the total feature contribution across gas, liquid, and solid products. In contrast, in MAP, ultimate composition (elemental analysis, e.g., C, H, and N) emerges as a more powerful descriptor, contributing up to\u00a054% of the explained variance in product distributions. Furthermore, the dielectric loss tangent of microwave-absorbing additives is identified as a pivotal factor that ranks among the top three influential variables in MAP, plausibly operating independently of the bulk temperature considered in this study. Our findings offer new insights into the fundamental similarities and differences between the control regimes of the two pyrolysis methods.",
+   "keywords": [
+    "Biomass conversion",
+    "Conventional pyrolysis",
+    "Machine learning",
+    "Microwave-assisted pyrolysis",
+    "Product distribution",
+    "Sludge"
+   ],
+   "dates": {
+    "received": "2026-2-24",
+    "revised": "2026-4-6",
+    "accepted": "2026-5-16",
+    "medline": "2026-6-15",
+    "pubmed": "2026-5-19",
+    "entrez": "2026-5-18"
+   }
+  },
+  {
+   "pmid": "42140595",
+   "title": "A comparative study on in-situ and ex-situ microwave catalytic co-pyrolysis for phenolic bio-oil production through machine learning and response surface methodology.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134882",
+   "abstract": "The production of phenolic-rich bio-oil from biomass is a promising route for sustainable chemical generation. This study investigates the effects of the co-feeding ratio of corn stover and rice husk and the Fe-biochar catalyst ratio on bio-oil and phenolic yields under microwave heating in both in-situ and ex-situ catalytic modes. Increasing the rice husk proportion and catalyst ratio in the in-situ mode enhanced microwave absorption, resulting in rapid internal heating (48\u00a0\u00b0C/min), higher reaction temperature (710\u00a0\u00b0C), and intensified secondary cracking, which favored gas formation. In contrast, the ex-situ mode enabled controlled vapor-phase upgrading, limiting excessive cracking and preserving condensable products. The highest bio-oil yield of 52 w.t% with 40 w.t% phenolic content was obtained at a corn stover to rice husk ratio of 25:75 with 15\u00a0% catalyst in the ex-situ configuration. Mechanistically, rice husk contributes lignin for phenolic formation and mineral components that enhance microwave absorption, while the catalyst promotes lignin depolymerization, deoxygenation, and aromatization. Statistical modelling showed that response surface methodology accurately predicted bio-oil and phenolic yields with high reliability (R2\u00a0=\u00a00.90 and 0.94 vs R2\u00a0=\u00a00.86 and 0.67), indicating structured reaction behavior. Machine learning models effectively captured nonlinear relationships among heating performance, gas yield, and biochar yield, but showed lower accuracy in predicting bio-oil due to complex multistep formation pathways. The combined approach provides a comprehensive understanding of process optimization and reaction mechanisms.",
+   "keywords": [
+    "Catalytic effect",
+    "Catalytic mode",
+    "Machine learning",
+    "Microwave pyrolysis",
+    "Optimization",
+    "Phenolic bio-oil"
+   ],
+   "dates": {
+    "received": "2026-4-16",
+    "revised": "2026-5-12",
+    "accepted": "2026-5-12",
+    "medline": "2026-5-25",
+    "pubmed": "2026-5-16",
+    "entrez": "2026-5-15"
+   }
+  },
+  {
+   "pmid": "42134587",
+   "title": "Efficiently quantifying thermodynamic and kinetic effects of biochar pyrolysis parameters on antibiotic adsorption from water using interpretable causal machine learning.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134793",
+   "abstract": "Antibiotic pollution in aquatic environments threatens ecological and public health. Biochar is a promising biomass-derived adsorbent, yet its performance is profoundly influenced by pyrolysis parameters. This study aimed to develop an interpretable causal machine learning (ICML) framework to quantify the net causal effects of pyrolysis parameters, thereby providing targeted guidance for biochar pyrolysis processes. The framework integrated ML prediction, SHAP interpretability, and causal inference to analyze thermodynamic and kinetic adsorption behavior, identify key pyrolysis-related features, and estimate average and heterogeneous treatment effects of selected pyrolysis parameters. The results indicate that this framework achieved high-precision predictions for adsorption capacity (qm) and rate constant (k2) (test R2\u00a0=\u00a00.928-0.972) and revealed the dominant roles of pyrolysis temperature on qm (8% contribution) and pyrolysis time on k2 (23% contribution). By controlling for confounders, the positive causal effects of pyrolysis temperature on qm (ATE\u00a0=\u00a00.116) and pyrolysis time on k2 (ATE\u00a0=\u00a00.031) were confirmed. Heterogeneity analysis showed that the temperature effect on qm was strongest under short duration and low heating rate (CATE\u00a0=\u00a00.208), while excessively long durations diminished this effect. The time effect on k2 peaked under synergistic high-temperature and slow-heating conditions (CATE\u00a0=\u00a00.036). Based on these causal insights, this study proposes differentiated pyrolysis strategies targeting high capacity (> 600\u00b0C, 1-3\u00a0h) versus rapid removal (600-800\u00b0C, > 3h). This work extends biochar adsorption modeling from prediction and interpretation to causal effect estimation, providing a generalizable framework for the rational production and environmental application of high-performance biochar adsorbents.",
+   "keywords": [
+    "Antibiotics",
+    "Biochar",
+    "Interpretable Causal Machine Learning",
+    "Pyrolysis process"
+   ],
+   "dates": {
+    "received": "2026-3-16",
+    "revised": "2026-4-23",
+    "accepted": "2026-5-3",
+    "medline": "2026-6-5",
+    "pubmed": "2026-5-15",
+    "entrez": "2026-5-14"
+   }
+  },
+  {
+   "pmid": "42035964",
+   "title": "Magnesite-modified seaweed biochar-chitosan hydrogel beads for phosphate removal: adsorption mechanism, interpretable machine learning and life cycle assessment.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134715",
+   "abstract": "Although seaweed waste and magnesite tailings are abundant, their co-utilization as precursors for phosphate adsorbents remains rarely explored. Herein, a high-efficiency and regenerable magnesite-modified seaweed biochar-chitosan hydrogel bead composite (Mg@SBC/CS) was developed for phosphate removal from wastewater. Under optimized conditions, Mg@SBC/CS exhibited a theoretical maximum adsorption capacity of 142.77\u00a0mg g-1, markedly higher than those of the unmodified materials, while also showing tolerance to common coexisting anions and acceptable capacity retention over five adsorption-desorption cycles. Density functional theory (DFT) calculations coupled with adsorption-energy analysis identified the NH2-functionalized site as the most favorable binding site for phosphate (Eads\u00a0=\u00a0-\u00a044.6\u00a0kcal mol-1), followed by the hydroxyl group (-37.7\u00a0kcal mol-1) and the Mg-coordinated site (-18.6\u00a0kcal mol-1). Mechanistic investigations further revealed that phosphate removal proceeded through multiple pathways, including surface precipitation, coordination interactions, and electrostatic attraction. Interpretable machine learning analysis based on tree-based models further showed that the initial phosphate concentration and contact time were the dominant variables governing adsorption performance, contributing\u00a0\u223c\u00a055% and\u00a0\u223c\u00a020%, respectively. A Python-based graphical user interface was additionally developed to facilitate experimental design and practical implementation. Life-cycle assessment indicated that the principal environmental impacts centered on marine and freshwater ecotoxicity, while carbon emissions were mainly associated with NaOH consumption and energy use. Overall, this work provides an effective waste-derived composite for phosphate removal and resource recovery, while offering mechanistic and sustainability insights for future optimization and greener fabrication.",
+   "keywords": [
+    "Biochar",
+    "Chitosan",
+    "Hydrogel bead",
+    "Life cycle assessment",
+    "Machine learning",
+    "Phosphorus recovery"
+   ],
+   "dates": {
+    "received": "2026-2-24",
+    "revised": "2026-4-16",
+    "accepted": "2026-4-23",
+    "medline": "2026-5-14",
+    "pubmed": "2026-4-27",
+    "entrez": "2026-4-26"
+   }
+  },
+  {
+   "pmid": "41974387",
+   "title": "Beyond Linearity: Transfer Learning Reveals Optimal Biochar Surface Area Window and Suggests Potential Syntrophic Mechanisms in Food Waste Co-Digestion.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134609",
+   "abstract": "Anaerobic co-digestion of food waste and paper mill wastewater offers a sustainable waste-to-energy solution, but performance instability limits its efficiency. While biochar (BC) is a promising additive, the specific surface area (SSA) required for optimal performance remains poorly contentious. This study developed a BC-physicochemical physics-informed residual transfer learning model (BP-PIRTL) framework. By integrating 1,971 literature samples and 264 experimental datasets, the model achieved high-precision cross-domain prediction (R2\u00a0=\u00a00.99). Guided by model predictions, corncob-derived BCs with a wide SSA gradient (26\u00a0\u223c\u00a02040\u00a0m2/g) were tested experimentally. A distinct nonlinear relationship emerged: moderate SSA (500\u00a0\u223c\u00a0800\u00a0m2/g) enhanced methane yield by up to 55.18%. Conversely, excessively high SSA (>1000\u00a0m2/g) exhibited inhibitory effects. SHAP analysis decoupled mechanistic contributions, suggesting that lag phase reduction may be associated with enhanced microbial attachment, while maximum production rate improvement potentially relates to direct interspecies electron transfer (DIET) pathway activation. Microbial profiling unveiled the underlying cause: optimal SSA BC selectively enriched syntrophic consortia (Clostridium, Syntrophomonadaceae, Methanobacterium). In contrast, excessive SSA triggered metabolic dysbiosis, likely through competitive substrate adsorption. These results suggest SSA is as a potential key factor influencing microbial syntrophy, providing hypothesis-driven guidelines for rational BC design in waste-to-energy processes. Biochar (BC) amendment stabilizes anaerobic co-digestion (AcoD). However, contradictory literature regarding specific surface area (SSA) effects reveals critical knowledge gaps. Unified frameworks to predict optimal SSA ranges and elucidate microbial mechanisms remain lacking. A BC-physicochemical physics-informed residual transfer learning (BP-PIRTL) framework integrated 1,971 literature samples and 264 experimental datasets. XGBoost pre-training followed by gradient boosting regressor residual correction achieved cross-domain prediction. Model-guided experiments tested corncob-derived BCs spanning 26\u00a0\u223c\u00a02040\u00a0m2/g SSA in mesophilic batch AcoD (F/S\u00a0=\u00a03:1, 35\u00b0C). SHAP analysis decoupled SSA contributions to kinetic parameters, while 16S rRNA sequencing elucidated microbial mechanisms. BP-PIRTL achieved high-precision prediction (R2\u00a0=\u00a00.99). Moderate SSA (500\u00a0\u223c\u00a0800\u00a0m2/g) enhanced methane yield by up to 55.18%, whereas excessive SSA (>1000\u00a0m2/g) reduced yield by 29.4%. SHAP revealed that lag phase reduction may be associated with microbial attachment, and rate improvements potentially relate to DIET activation. Optimal SSA enriched syntrophic consortia, whereas excessive SSA triggered dysbiosis. This study pioneers transfer learning in BC-enhanced AD. By introducing baseline methane yield as an anchor feature, the model quantitatively decouples SSA contributions. The optimal SSA window (500\u00a0\u223c\u00a0800\u00a0m2/g) provides hypothesis-driven design guidelines that warrant further mechanistic investigation.",
+   "keywords": [
+    "Anaerobic co-digestion",
+    "Biochar surface area",
+    "Food waste valorization",
+    "Machine learning interpretability",
+    "Syntrophic consortia",
+    "Transfer learning"
+   ],
+   "dates": {
+    "received": "2026-1-20",
+    "revised": "2026-2-23",
+    "accepted": "2026-4-10",
+    "medline": "2026-4-26",
+    "pubmed": "2026-4-14",
+    "entrez": "2026-4-13"
+   }
+  },
+  {
+   "pmid": "41794299",
+   "title": "Innovative model-optimized machine learning for high-accuracy predicting and exploring nitrogen transformation in biomass pyrolysis.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134335",
+   "abstract": "To enhance the environmental benefits of producing \"zero-carbon\" fuels from waste biomass pyrolysis, it is essential to suppress the formation of nitrogen oxides (NOx) at the source. The key lies in precisely regulating the migration and transformation behavior of nitrogen during the pyrolysis process. Addressing the limitations of traditional experimental methods in analyzing this complex process, this study proposes for the first time the Pyro-SPIN (Source Parameter-based Integrated Nitrogen Migration) model, which enables the synergistic prediction and optimization of nitrogen migration pathways in biomass pyrolysis. The results indicate that temperature, nitrogen content, and oxygen content are the three key factors governing nitrogen migration. Based on the synergistic analysis of model predictions and experimental data, it was found that under the co-regulation of multi-parameters composed of particle size (<200\u00a0\u03bcm), low temperature (<500\u00b0C), pyrolysis duration (<60\u00a0min), and slow heating, nitrogen migration pathways are directed toward enrichment in the solid char. Through model optimization strategies such as chain modeling and multi-output joint training, the predictive results maintain mass conservation (the sum of nitrogen in the three phases equals 100%) while significantly improving prediction consistency. This study developed a machine learning approach to predict and regulate nitrogen migration during biomass pyrolysis, offering a new way to understand its mechanisms and optimize the process. Furthermore, the predictive model and collaborative optimization strategy established in this research can also serve as a technical reference for predicting the migration behavior of other key elements during biomass thermochemical conversion processes.",
+   "keywords": [
+    "Biomass pyrolysis",
+    "Machine learning",
+    "Model optimization",
+    "Nitrogen migration"
+   ],
+   "dates": {
+    "received": "2025-12-25",
+    "revised": "2026-1-26",
+    "accepted": "2026-3-2",
+    "medline": "2026-3-22",
+    "pubmed": "2026-3-8",
+    "entrez": "2026-3-7"
+   }
+  },
+  {
+   "pmid": "41747905",
+   "title": "Prediction of preparation conditions for low PAHs corn straw biochar guided by CatBoost model optimized via genetic algorithm and molecular dynamics simulation.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134279",
+   "abstract": "Biochar shows great potential in cultivated soil improvement, but its polycyclic aromatic hydrocarbons (PAHs) are toxic and may threaten ecological security and human health via the soil-plant system. To optimize low-PAHs biochar production, this study used corn straw as raw material, exploring the correlation between preparation conditions and PAHs formation through hydrothermal carbonization experiments, machine learning, and molecular dynamics simulation. A database with 10 input variables (hydrothermal temperature, time, etc.) and PAHs content as output was built. Among four machine learning models, CatBoost performed best. After genetic algorithm (GA) optimization, its test set R2 reached 0.9914, enhancing analysis of multi-factor nonlinear relationships. Feature importance showed hydrothermal time (30.35%), nitrogen content (18.38%), and hydrogen content (13.37%) were key factors. Partial correlation analysis indicated that beyond 4\u00a0h, prolonged high temperature reduced PAHs via dealkylation, while high nitrogen and hydrogen promoted accumulation. Molecular dynamics confirmed prolonged time accelerated carbon chain fragmentation, with energy changes reflecting reaction shifts. Optimal conditions (240-300\u00a0\u00b0C, 6\u00a0h) controlled PAHs below 347.04\u00a0\u03bcg/kg. Validation showed\u00a0<\u00a02.5% error, confirming GA-CatBoost reliability. This study provides a data-driven strategy for biochar optimization, aiding its safe agricultural application.",
+   "keywords": [
+    "Algorithm optimization",
+    "Density functional theory",
+    "Feature importance analysis",
+    "Partial correlation analysis",
+    "Toxicity reduction process"
+   ],
+   "dates": {
+    "received": "2025-7-10",
+    "revised": "2026-1-23",
+    "accepted": "2026-2-23",
+    "medline": "2026-3-8",
+    "pubmed": "2026-2-27",
+    "entrez": "2026-2-26"
+   }
+  },
+  {
+   "pmid": "41747898",
+   "title": "Microbial fuel cells for sustainable energy and wastewater treatment: Integrating seaweed biomass, machine learning, and hybrid systems for enhanced performance.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134281",
+   "abstract": "Seaweeds (SWs) have been widely used in food, agricultural, pharmaceutical industries, and biofuel production (especially biogas) and have been well-reviewed. Recently, emerging research has explored the SWs utilization in microbial fuel cells (MFCs) for electricity production. However, no review provides a comprehensive scenario for SWs conversion in MFCs for biofuel generation. Thus, the motivation of this review is to provide an in-depth insight into the SWs utilization as anodic substrates, cathode oxygenators, and electrode modifiers. Strategies for integrating SWs-based MFCs with other systems have been discussed. This review also went one step deeper by integrating artificial intelligence (AI) in SWs-based MFCs. Brown SWs Laminaria digitata (carbohydrates, 51.9%) showed potential as anodic substrate by achieving power density up to 120\u00a0mW m-2, while green SWs Ulva intestinalis (carbohydrates, 55.4%) as cathodic photosynthetic oxygenation enhanced power density up to 46.15\u00a0mW m-2. SWs-derived biochar electrodes improve power output to 45.2\u00a0W m-3. The co-substrates of SWs with protein and lipid-rich can be a potential approach for boosting electricity generation. The AI integration models (XGBoost and deep neural networks) might offer advanced optimization for operational conditions. Future research should focus on novel electrode materials and genetically engineered microbes to maximize electricity production in SWs-based MFCs.",
+   "keywords": [
+    "Artificial intelligence",
+    "Cathode",
+    "Co-substrate",
+    "Microbial fuel cells",
+    "Seaweeds"
+   ],
+   "dates": {
+    "received": "2025-10-7",
+    "revised": "2026-1-24",
+    "accepted": "2026-2-23",
+    "medline": "2026-3-16",
+    "pubmed": "2026-2-27",
+    "entrez": "2026-2-26"
+   }
+  },
+  {
+   "pmid": "41539622",
+   "title": "Hybrid data-driven machine learning model for predicting performance of lignocellulosic biomass gasification.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.134001",
+   "abstract": "Gasification is a promising technology for converting lignocellulosic residues into valuable energy and fuels. However, widespread adoption is challenging due to technical barriers in biomass thermoconversion, notably feedstock variability and tar formation. To advance in this field, modeling strategies have been employed to optimize the conversion process and reduce the need for costly and time-consuming experimental tests. This study introduces a hybrid machine learning (ML) model designed to predict gas, yield, syngas composition, and tar concentration from the gasification of different lignocellulosic feedstocks. The model combines advanced ensemble ML methods: gradient boosting machines (GBM), eXtreme Gradient Boosting (XGBoost), Categorical Boosting (CatBoost), and Natural Gradient Boosting (NGBoost), which were rigorously selected from a pool of ten ML methods using k-fold cross-validation and extensive performance evaluation. The model was trained on a comprehensive dataset of 270 experimental data points collected from 31 peer-reviewed studies, featuring varied levels of cellulose (0-69.85\u00a0%), hemicellulose (5.15-87\u00a0%), and lignin (8.55-62.86\u00a0%) under different processing conditions. Initial performance metrics (R2) of individual algorithms ranged from 0.59 to 0.93, and after hyperparameter optimization, the model's predictive accuracies significantly improved, with R2 values ranging from 0.77 to 0.94. Model interpretability tools were then employed to quantify the influence of each input feature, providing insight into the prediction mechanism. Thus, this hybrid ML model holds the potential to greatly reduce the experimental efforts required to optimize the gasification process for diverse lignocellulosic residues.",
+   "keywords": [
+    "Ensemble models",
+    "Gasification modeling",
+    "Lignocellulosic biomass",
+    "Syngas prediction"
+   ],
+   "dates": {
+    "received": "2025-4-25",
+    "revised": "2025-10-22",
+    "accepted": "2026-1-11",
+    "medline": "2026-2-5",
+    "pubmed": "2026-1-16",
+    "entrez": "2026-1-15"
+   }
+  },
+  {
+   "pmid": "41534668",
+   "title": "Development of a digital twin framework for biomass pyrolysis: Leveraging machine learning for enhanced fuel flexibility.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2026.133998",
+   "abstract": "There is an increasing need for fuel flexibility in the conversion of biomass through thermochemical processes such as pyrolysis. Achieving fuel flexibility only through an experimental approach is both expensive and time consuming. Therefore, a number of computational models are available that can capture the physics of the process. However, most of these models are developed for single-feedstock conditions and they can be quite computationally expensive. An alternative approach to modeling is the utilization of machine learning techniques which can learn the behavior of a process and, once trained using computational or experimental data, they can provide predictions in a timescale of seconds. In this work, a one-dimensional finite volume model was developed to simulate the pyrolysis process in a top-lit updraft (TLUD) biomass pyrolyzer. The model incorporates dynamic porosity change and a global single-step reaction scheme calibrated using experimental results for peach pit pyrolysis. The simulations captured the propagation of a self-sustained pyrolysis front under an opposed-airflow configuration. Data generated with the physics-based model were used to train an XGBoost machine learning model for which a sensitivity analysis was performed to identify the most influential parameters in the pyrolysis process. The trained model was then used to predict pyrolysis front propagation and peak solid temperature in a multi-feedstock experiment using peach and plum pits utilizing a digital twin framework. This work could be utilized to optimize process operating conditions for fuel flexibility, ensuring product homogeneity.",
+   "keywords": [
+    "Biomass fuel flexibility",
+    "Biomass pyrolysis",
+    "Digital twin",
+    "Machine learning"
+   ],
+   "dates": {
+    "received": "2025-10-4",
+    "revised": "2026-1-10",
+    "accepted": "2026-1-11",
+    "medline": "2026-2-5",
+    "pubmed": "2026-1-15",
+    "entrez": "2026-1-14"
+   }
+  },
+  {
+   "pmid": "41475598",
+   "title": "Sustainable hydrogen from lignocellulosic biomass: bridging technology innovations, policy frameworks, and net-zero pathways.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133904",
+   "abstract": "Hydrogen is recognized as an environmentally sustainable energy source. Lignocellulosic biomass (LB) offers a carbon-neutral pathway for hydrogen production. However, overcoming biomass recalcitrance, optimizing process efficiency, and aligning with policy frameworks remain critical challenges. To bridge this gap, this review critically analyzes thermochemical and biotechnological pathways for lignocellulosic biomass (LB)-to-hydrogen conversion, integrating techno-economic assessment and life cycle assessment to identify viable strategies for a net-zero hydrogen economy. Key findings from a techno-economic perspective reveal that gasification as the most technologically mature (TRL 8-9), producing hydrogen at $1.4-2.2/kg for large-scale plants, while dark fermentation (TRL 5-6) achieves yields of 2.83\u00a0mol H2/mol hexose via optimized microbial consortia. Pyrolysis ($2.1-2.8/kg) and photo-fermentation ($3.5/kg) follow in cost competitiveness. Hybrid systems (e.g., gasification with microbial electrolysis) further reduce costs to $1.8/kg by valorizing residual carbon. Besides, performing a life cycle assessment of these processes could significantly reduce carbon emissions associated with existing industrial practices. Beyond technical and environmental metrics, this review bridges innovations in genetic engineering, machine learning, and blockchain-enabled supply chains with policy frameworks to outline a coherent strategy for scaling biorefining systems. Cross-cutting strategies, such as insect gut-inspired biocatalysis, oxygen-tolerant enzyme engineering, and AI-assisted process control, are examined for their potential to overcome longstanding bottlenecks in pretreatment, microbial efficiency, and system integration. This work provides a multi-dimensional framework to guide researchers, industry stakeholders, and policymakers in advancing a sustainable, economically viable, and policy-supported lignocellulosic hydrogen economy.",
+   "keywords": [
+    "Carbon neutrality",
+    "Life cycle assessment",
+    "Lignocellulosic hydrogen",
+    "Policy innovation",
+    "Techno-economic analysis"
+   ],
+   "dates": {
+    "received": "2025-10-16",
+    "revised": "2025-12-22",
+    "accepted": "2025-12-28",
+    "medline": "2026-2-5",
+    "pubmed": "2026-1-1",
+    "entrez": "2025-12-31"
+   }
+  },
+  {
+   "pmid": "41443563",
+   "title": "High-precision multi-target prediction and interpretability analysis of biomass gasification via ensemble machine learning.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133863",
+   "abstract": "Machine learning exhibits notable advantages in simulating complex thermochemical processes such as gasification, with its robust nonlinear fitting capabilities effectively capturing the coupling relationships among multiple variables. In this study, missing values are addressed through model imputation, combined with categorical variable encoding and rigorous standardization, thereby significantly enhancing data quality. On this foundation, predictions of biomass gasification product composition, yield, and process efficiency were performed using six mainstream machine learning models under four hyperparameter optimization strategies, and the performance of these models was evaluated. Following optimization, the coefficient of determination (R2) for most models exceeded 0.90. Additionally, various ensemble methods are compared to integrate the strengths of individual models, aiming to achieve more stable and superior overall performance in multi-target prediction tasks. The predictive accuracy of machine learning in gasification applications is further improved by ensemble models, with the Weighted Averaging ensemble attaining an average test R2 of 0.9251, markedly outperforming single-model approaches. High-precision prediction methods, coupled with global and local interpretability techniques, provide more reliable and transparent decision support for policymakers and investors in the selection and design of gasification technologies and processes.",
+   "keywords": [
+    "Bayesian optimization",
+    "Biomass gasification",
+    "Ensemble models",
+    "SHAP",
+    "Weighted averaging"
+   ],
+   "dates": {
+    "received": "2025-11-7",
+    "revised": "2025-12-13",
+    "accepted": "2025-12-21",
+    "medline": "2026-1-23",
+    "pubmed": "2025-12-25",
+    "entrez": "2025-12-24"
+   }
+  },
+  {
+   "pmid": "41443559",
+   "title": "Unveiling sulfonamide adsorption on biochar using explainable machine learning.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133867",
+   "abstract": "Sulfonamide antibiotics are emerging aquatic contaminants due to environmental persistence and antimicrobial resistance risks. Biochar is a promising adsorbent for sulfonamide removal, but experimental optimization remains resource intensive. This study applies machine learning to predict biochar adsorption capacity using molecular properties of sulfonamides, adsorbent structural descriptors, and operating conditions. Artificial neural networks, Gaussian process regression, and gradient boosting were developed using grid-search cross-validation. Gradient boosting achieved the best performance (R2\u202f=\u202f0.997, RMSE\u202f=\u202f6.06\u202fmg g-1, MAE\u202f=\u202f2.18\u202fmg g-1). Explainability analysis using SHAP and partial dependence identified BET surface area as the dominant driver, with initial concentration and dosage as key operational factors, while pore diameter and pore volume showed secondary influence. This framework enables interpretable analysis of structure-performance relationships and provides guidance for biochar evaluation in water treatment applications.",
+   "keywords": [
+    "Antibiotics removal",
+    "Model interpretability",
+    "Predictive analysis",
+    "Pyrolyzed biomass",
+    "Water remediation"
+   ],
+   "dates": {
+    "received": "2025-11-10",
+    "revised": "2025-12-22",
+    "accepted": "2025-12-22",
+    "medline": "2026-1-23",
+    "pubmed": "2025-12-25",
+    "entrez": "2025-12-24"
+   }
+  },
+  {
+   "pmid": "41418991",
+   "title": "Hybrid framework combining machine learning with mechanism models for enhanced forecasting of biomass gasification products.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133816",
+   "abstract": "Owing to the inherent complexity and nonlinear variable interactions in biomass gasification, accurate products prediction with limited data poses a significant challenge. Herein, in this study, we proposed a hybrid model framework by mixing thermodynamic equilibrium models (Aspen Plus) with machine learning (ML) models. The improved simulator generative adversarial network (SimGAN) based on Wasserstein Loss was utilized to compensate the mismatch between the simulated and experimental data due to underlying assumptions. Subsequently, the artificial neural network (ANN) model showed the most excellent predictive performance with the average coefficient of determination (R2) and root mean square error (RMSE) of 0.931 and 1.146. Additionally, shapley additive explanations (SHAP) analysis and partial dependence plots (PDP) revealed the most influential features and the strong interactive effects on the gasification products. The proposed hybrid framework integrates data-driven with mechanism modeling approaches to improve the prediction accuracy of biomass gasification products.",
+   "keywords": [
+    "Artificial neural network",
+    "Aspen Plus",
+    "Generative adversarial network",
+    "Products prediction",
+    "Shapley additive explanations"
+   ],
+   "dates": {
+    "received": "2025-10-12",
+    "revised": "2025-11-22",
+    "accepted": "2025-12-16",
+    "medline": "2026-1-23",
+    "pubmed": "2025-12-20",
+    "entrez": "2025-12-19"
+   }
+  },
+  {
+   "pmid": "41352465",
+   "title": "The role of artificial intelligence in biomass pyrolysis: Advancing predictive modelling and mechanistic understanding through machine learning - A comprehensive review.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133777",
+   "abstract": "Biomass pyrolysis is a promising thermochemical pathway for producing renewable fuels and chemicals, yet its optimization remains challenging due to the complex interactions among feedstock properties, operating conditions, and reactor configurations. Artificial intelligence (AI), particularly machine learning (ML), is emerging as a powerful tool to improve predictive modelling and mechanistic understanding of pyrolysis. This review critically examines four pyrolysis regimes (slow, intermediate, fast, and flash) and advanced strategies such as co-pyrolysis, catalytic enhancement, and microwave heating, before discussing how ML algorithms are reshaping data-driven modelling. Supervised models, including random forests (RF), extreme gradient boosting (XGBoost), and artificial neural networks (ANNs), have achieved high accuracy in predicting product yields, while unsupervised and reinforcement learning approaches reveal hidden trends and enable adaptive process control. Furthermore, explainable AI frameworks (XAI), such as Shapley Additive Explanations (SHAP) and partial dependence plots (PDP), provide mechanistic insights that bridge data with reaction pathways. By combining AI with reactor optimization and mechanistic explanation, this field offers a pathway to efficient and scalable pyrolysis systems. Finally, we outline research gaps and future directions, emphasising the need for interpretable and generalisable models that can guide large-scale deployment.",
+   "keywords": [
+    "Artificial Intelligence",
+    "Biofuel",
+    "Biomass",
+    "Machine Learning",
+    "Pyrolysis",
+    "Sustainability"
+   ],
+   "dates": {
+    "received": "2025-10-10",
+    "revised": "2025-11-15",
+    "accepted": "2025-12-3",
+    "medline": "2026-1-23",
+    "pubmed": "2025-12-7",
+    "entrez": "2025-12-6"
+   }
+  },
+  {
+   "pmid": "41325951",
+   "title": "Real-time process design enabled by an interpretable GBDT model for high-fidelity prediction of pyrolysis products from crop residues.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133742",
+   "abstract": "The precise prediction of product distribution during crop biomass pyrolysis is critical for its valorization but remains challenging due to complex nonlinear interactions between feedstock heterogeneity and process parameters. This study developed an interpretable machine learning (ML) framework integrating Gradient Boosting Decision Trees (GBDT) optimized via Bayesian hyperparameter tuning (Optuna) to elucidate the coupling effects of proximate/ultimate composition and temperature on biochar, bio-oil, and gas yields. The GBDT model, trained on 265 data points from 28 types of crop residues, demonstrated the highest accuracy (test set R2\u00a0\u2265\u00a00.89). Mechanistic interpretation using Shapley Additive exPlanations (SHAP) and Partial Dependence Plots (PDP) identified the O/C molar ratio as the most critical feature governing product distribution, with a threshold (O/C > 0.4) triggering pronounced deoxygenation towards gases. Ash content catalytically promoted secondary cracking reactions via inherent alkali metal oxides (e.g., K2O), reducing bio-oil yield, while pyrolysis temperature governed the selection of reaction pathways. Through the innovative integration of ML with Response Surface Methodology (RSM), distinct optimal process windows were established for maximizing each product: biochar (300\u00a0\u00b0C, 12\u00a0\u00b0C/min), bio-oil (523\u00a0\u00b0C, 79\u00a0\u00b0C/min), and gas (713\u00a0\u00b0C, 103\u00a0\u00b0C/min). Furthermore, an online predictive tool was developed to enable intelligent real-time regulation, effectively bridging the gap between model-based insight and industrial implementation of optimized pyrolysis processes.",
+   "keywords": [
+    "Biomass pyrolysis",
+    "Explainable AI",
+    "Machine learning",
+    "Process optimization",
+    "Response surface methodology",
+    "SHAP analysis"
+   ],
+   "dates": {
+    "received": "2025-10-23",
+    "revised": "2025-11-28",
+    "accepted": "2025-11-28",
+    "medline": "2026-1-14",
+    "pubmed": "2025-12-2",
+    "entrez": "2025-12-1"
+   }
+  },
+  {
+   "pmid": "41110709",
+   "title": "Integrating multiple feature engineering methods with CatBoost algorithm for the prediction and interpretation of nitrogenous components in bio-oil from biomass pyrolysis.",
+   "year": "2026",
+   "doi": "10.1016/j.biortech.2025.133505",
+   "abstract": "Nitrogenous components (NCs) in bio-oil exhibit a dual nature: they are regarded as valuable chemicals, yet are unfavorable for bio-oil using as combustible biofuels due to the NOx precursor behavior. Understanding the formation of NCs is of great importance for regulating bio-oil quality according to its end-use. However, this is fulling of challenges due to the diversity of experiments in existing studies. In this study, a novel framework integrating feature engineering methods with CatBoost algorithm was constructed to accurately predict and explain the formation of NCs from biomass properties and pyrolysis conditions. Statistical analysis revealed that NCs in bio-oil were mainly existed as N-heterocyclics, followed by amides/amines and nitriles. By eliminating the linear relations among features, PLS-CatBoost framework exhibited optimal performance for the prediction of oil N content while PCC-CatBoost for the NCs species, the R2 values of which were all higher than 0.94. N content in biomass was the common feature which possessed dominant and positive importance to each output. When verifying with our experiments, PLS-CatBoost exhibited excellent prediction performance using the least features.",
+   "keywords": [
+    "Bio-oil",
+    "CatBoost",
+    "Feature engineering",
+    "Machine learning",
+    "Nitrogenous components"
+   ],
+   "dates": {
+    "received": "2025-5-29",
+    "revised": "2025-9-2",
+    "accepted": "2025-10-12",
+    "medline": "2025-11-13",
+    "pubmed": "2025-10-20",
+    "entrez": "2025-10-19"
+   }
+  },
+  {
+   "pmid": "40780363",
+   "title": "Predicting biomass gasification products for bubbling fluidised beds using high order polynomial regression with regularisation: a simple but highly effective strategy.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.133109",
+   "abstract": "For the design of biomass gasification it is beneficial to have models which can predict the composition of gas products for a wide range of different biomass feedstocks. Complex machine learning models (e.g. neural networks and tree-based methods) are now being used for this purpose which are difficult to reproduce with large numbers of parameters involved. In this study the potential for higher order polynomials is investigated for the modelling of bubbling fluidised bed gasification. To reduce the number of parameters and to avoid over-fitting Least Absolute Shrinkage and Selection Operator (LASSO) regularisation is used. This is a novel application of high order polynomial regression with regularisation which allows the prediction of hydrogen composition with coefficient of performance of 0.9228 and only 85 fitted parameters. The next best existing methods give coefficients of performance of 0.8823 and 0.868 but require 261 parameters and more than 1000 parameters respectively. So this polynomial approach is shown to give accurate model prediction with simpler model equations.",
+   "keywords": [
+    "Bioenergy",
+    "Biomass gasification",
+    "Gas products",
+    "Hydrogen",
+    "LASSO regularisation",
+    "Polynomial regression",
+    "Syngas"
+   ],
+   "dates": {
+    "received": "2025-4-10",
+    "revised": "2025-8-4",
+    "accepted": "2025-8-4",
+    "medline": "2025-9-3",
+    "pubmed": "2025-8-9",
+    "entrez": "2025-8-8"
+   }
+  },
+  {
+   "pmid": "40683472",
+   "title": "Comprehensive evaluation framework for compost maturity with biochar amendment.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.132970",
+   "abstract": "A predictive framework combining machine learning and weighting techniques was established to resolve inconsistencies in maturity evaluation of biochar-amended composting. The results indicated that the nonlinear model showed superior compost maturity prediction accuracy. Specifically, Gradient boosting (GB), extra trees (ET, used for both GI and NO3--N), and extreme gradient boosting (XGB) achieved the highest R2 values for C/N ratio (0.84), GI (0.64), NO3--N (0.77), and NH4+-N (0.81), respectively. SHAP analysis identified composting process parameters such as moisture content (MC_P), temperature (TEMP_P), and pH (pH_P) as key drivers of enzymatic activity and microbial succession, significantly affecting maturity. The model's applicability and predictive capability were validated through cosine similarity and real-world composting experiments. An integrated maturity score, based on weighted predicted indicators, highlighted GI as the most influential factor (47.62\u00a0%). This framework enhances intelligent composting, safer agriculture, and environmental management through predictive accuracy and systematic evaluation.",
+   "keywords": [
+    "Integrated maturity score",
+    "Machine learning",
+    "Weighting technique"
+   ],
+   "dates": {
+    "received": "2025-5-24",
+    "revised": "2025-6-28",
+    "accepted": "2025-7-10",
+    "medline": "2025-8-12",
+    "pubmed": "2025-7-20",
+    "entrez": "2025-7-19"
+   }
+  },
+  {
+   "pmid": "40582422",
+   "title": "Pyrolysis of nitrogen-rich microalgae: kinetics, products, and amino acid contributions.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.132899",
+   "abstract": "Pyrolysis offers a promising pathway for converting microalgae into high-value products. However, the governing mechanisms, particularly those involving amino acids, remain inadequately understood. Clarifying the behavior of amino acids during pyrolysis is essential for optimizing conversion efficiency and controlling pollution from N-containing products. This study investigates the pyrolysis of N-rich microalgae using three kinetic approaches, alongside product characterization. The model fitting quality is ranked as follows: the machine learning (ML) model (0.999), the model-free methods (0.981), and the independent parallel reaction model combined with particle swarm optimization algorithms (IPR-PSO) (0.910). With respect to actual components specificity, the ranking is reversed: IPR-PSO (actual components), model-free methods (pseudo-components), and ML model (component-independent). Compared with purely data-driven approaches, the IPR-PSO model provides mechanistic insights by associating reaction kinetics with specific amino acid contributions, identifying Leucine, Tyrosine, and Aspartate as key contributors with weights of 0.188, 0.149, and 0.081, respectively. Pyrolysis products were characterized by X-ray photoelectron spectroscopy (XPS), gas chromatography-mass spectrometry (GC-MS), Fourier transform ion cyclotron resonance mass spectrometry (FT-ICR-MS), and a gas analyzer. Results indicate that as temperature increases, the protein-N in microalgae transforms into quaternary-N in biochar; pyridines, amides, unsaturated amide with carbon chain in bio-oil; and NH3 in syngas-these products primarily originate from amino acid decomposition and reforming. This investigation elucidates the significant role that amino acids play in optimizing microalgae pyrolysis as a sustainable resource recovery technology.",
+   "keywords": [
+    "Biomass",
+    "FT-ICR-MS",
+    "Machine learning",
+    "Thermogravimetry"
+   ],
+   "dates": {
+    "received": "2025-4-24",
+    "revised": "2025-6-13",
+    "accepted": "2025-6-26",
+    "medline": "2025-7-20",
+    "pubmed": "2025-7-1",
+    "entrez": "2025-6-29"
+   }
+  },
+  {
+   "pmid": "40554018",
+   "title": "Applications of machine learning and multi-objective optimization in agricultural waste management: A techno-economic study of hydrogen production from olive waste via combined air-steam gasification.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.132844",
+   "abstract": "This study investigates the potential of olive cake, a widely available agricultural residue in Jordan, as a sustainable biomass feedstock for hydrogen production via advanced gasification techniques. The goal is to optimize hydrogen yield by employing a combined steam-air gasification method, addressing challenges such as high ash and lignin content, variable moisture, and complex chemical composition Advanced optimization techniques, including machine learning models (Extreme Gradient Boosting, XGBoost) and the modified fire hawk optimizer, are used to optimize key gasification parameters: steam-to-biomass ratio, temperature, pressure, and air-to-biomass ratio. The gasification process is modelled by focusing on key thermochemical stages like decomposition, pyrolysis, combustion, and reduction. The results show that optimizing these parameters significantly enhances hydrogen production, achieving a rate of 329.25\u00a0kg/hr and a gasification efficiency of 82.1\u00a0%. The optimal conditions include a biomass flow rate of 5000\u00a0kg/hr, a gasification temperature of 778\u00a0\u00b0C, and a pressure of 2.2\u00a0bar. The system's hydrogen yield is most sensitive to changes in steam-to-biomass ratio and gasification temperature, with higher steam flows resulting in increased hydrogen content. The XGBoost model demonstrates high accuracy, with a coefficient of determination (R2) of 0.995 for hydrogen production and 0.998 for methane production. Further analysis reveals that increasing biomass flow rate and gasification temperature improves hydrogen yield, while higher pressures at elevated temperatures slightly reduce production. The economic analysis reveals a levelized cost of hydrogen of $1.23/kg, a net present value exceeding $213 million, and a payback period of 1.26\u00a0years.",
+   "keywords": [
+    "Agricultural waste",
+    "Biomass gasification",
+    "Economic analysis",
+    "Hydrogen production",
+    "Machine learning",
+    "Multi-objective optimization"
+   ],
+   "dates": {
+    "received": "2025-4-3",
+    "revised": "2025-5-18",
+    "accepted": "2025-6-16",
+    "medline": "2025-7-1",
+    "pubmed": "2025-6-24",
+    "entrez": "2025-6-24"
+   }
+  },
+  {
+   "pmid": "40523416",
+   "title": "Machine learning framework to predict product distribution of lignocellulosic biomass pyrolysis.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.132746",
+   "abstract": "Machine learning methods have become a trend to model distinct chemical processes, as an alternative to complex first-principles models. Given the complexity of biomass pyrolysis mechanisms, these methods offer a promising approach but often face challenges regarding data scarcity and lack of interpretability. This study aims to develop an interpretable framework for modeling biomass pyrolysis using data from fixed-bed lignocellulosic biomass pyrolysis experiments. A mass change basis was proposed to construct machine learning models, including artificial neural network (ANN) and symbolic regression (SR) models. Feature importance was assessed using Shapley Additive Explanations (SHAP) and compared to Partial Least Squares (PLS) regression, with PLS consistently identifying the best features for symbolic regression. Both ANN and SR models showed similar accuracy, achieving coefficient of determination (R2) greater than 0.85 across all phase products in the testing set. Additionally, an uncertainty assessment of SR parameters was conducted to improve model robustness ensuring prediction stability. SR models exhibited superior generalization capacity during extrapolation tests, achieving R2 values above 0.9 for char and gas phases. For oil values exceeding 10 grams, the SR models struggled with generalization. Overall, the proposed framework provides a valuable tool for interpreting and modeling pyrolysis process data, enabling its use in the decision-making process.",
+   "keywords": [
+    "Artificial neural network",
+    "Extrapolation assessment",
+    "Feature selection techniques",
+    "Interpretable machine learning",
+    "Symbolic regression",
+    "Uncertainty assessment"
+   ],
+   "dates": {
+    "received": "2025-3-16",
+    "revised": "2025-5-19",
+    "accepted": "2025-5-29",
+    "medline": "2025-7-1",
+    "pubmed": "2025-6-17",
+    "entrez": "2025-6-16"
+   }
+  },
+  {
+   "pmid": "40480527",
+   "title": "Data-driven machine learning improves prediction of sulfonamide antibiotic adsorption by biochar in aqueous phase.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.132773",
+   "abstract": "Sulfonamide antibiotics (SAs) have attracted much attention due to their environmental risks to aquatic ecosystems. Biochars (BCs), as excellent adsorbent materials, have been used to remove SAs from aqueous phases. To achieve effective evaluation of adsorption, machine learning (ML) strategies are increasingly being developed. However, no applicable data-driven ML models have been studied to predict the adsorption of SAs by BCs in water. Therefore, this study employed an ML approach based on Wasserstein generative adversarial network (WGAN) data augmentation to predict the adsorption of SAs on BCs in the aqueous phase. The results indicated that the WGAN could generate virtual data highly similar to the original adsorption dataset. By expanding the original data using WGAN, the performance of the extreme gradient boosting model in predicting the adsorption amount improved. This study provides new insights into predicting the adsorption behavior of waste-based BCs for SAs in water environments.",
+   "keywords": [
+    "Data augmentation",
+    "Generative artificial intelligence",
+    "Wasserstein generative adversarial network",
+    "Wastewater"
+   ],
+   "dates": {
+    "received": "2025-3-11",
+    "revised": "2025-5-3",
+    "accepted": "2025-6-3",
+    "medline": "2025-7-1",
+    "pubmed": "2025-6-7",
+    "entrez": "2025-6-6"
+   }
+  },
+  {
+   "pmid": "39988010",
+   "title": "Integrated learning framework for enhanced specific surface area, pore size, and pore volume prediction of biochar.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2025.132279",
+   "abstract": "Specific surface area, pore size, and pore volume are essential biochar properties. Optimization typically reduces yield by focusing on per gram of biochar. This work introduces new indicators and an integrated model to balance quality and quantity, emphasizing overall adsorption potential per gram of raw biomass. The integrated model outperformed nine machine learning models with 91.93% accuracy, RMSE of 0.73, and R2 of 0.965. SHAP analysis identified temperature, volatile matter and ash content as the most influential factors. PDP analysis provided insights into their interactions, while PSO determined the optimal conditions for maximizing adsorption efficiency. Among three indicators, temperature emerged as the common key parameter, with optimal averages identified at 720\u2103. Furthermore, A user-friendly interface was developed for visualizing training and prediction, enhancing model applicability. This work achieves a quality-quantity balanced biochar design with interpretable mechanisms, advancing adsorption optimization and practical implementation.",
+   "keywords": [
+    "Adsorption composite index",
+    "Cooperative analysis",
+    "Machine learning",
+    "PDP analysis",
+    "User interface design"
+   ],
+   "dates": {
+    "received": "2024-10-29",
+    "revised": "2025-1-26",
+    "accepted": "2025-2-20",
+    "medline": "2025-3-13",
+    "pubmed": "2025-2-24",
+    "entrez": "2025-2-23"
+   }
+  },
+  {
+   "pmid": "39615764",
+   "title": "Design optimization of bimetal-modified biochar for enhanced phosphate removal performance in livestock wastewater using machine learning.",
+   "year": "2025",
+   "doi": "10.1016/j.biortech.2024.131898",
+   "abstract": "Mg-modified biochar shows high adsorption performance under weakly acidic and neutral water conditions. However, its phosphate removal efficiency markedly decreases in naturally alkaline wastewater, such as that released in livestock farming (anaerobic wastewater with a high phosphate concentration). This research employed six machine learning models to predict and optimize the phosphate removal performance of bimetal-modified biochar (i.e., Mg-Ca/Al/Fe/La) to develop material design strategies suitable for achieving high removal efficiency in alkaline wastewater. Random forest, gradient boosting regressor, and extreme gradient boosting models achieved high prediction accuracy (R2\u00a0> 0.98). Model predictions and experimental validations indicated that Mg-Ca-modified biochar still maintained high adsorption capacity under acidic conditions and could effectively realize phosphate adsorption under alkaline conditions, with a removal rate of 99.33\u00a0%. Overall, this research focuses on material performance optimization using machine learning, offering insights and methods for developing biochar materials for practical water-treatment applications.",
+   "keywords": [
+    "Bimetal-modified biochar",
+    "Design optimization",
+    "Machine learning",
+    "Performance enhancement",
+    "Phosphate"
+   ],
+   "dates": {
+    "received": "2024-10-14",
+    "revised": "2024-11-18",
+    "accepted": "2024-11-26",
+    "medline": "2025-1-28",
+    "pubmed": "2024-12-1",
+    "entrez": "2024-11-30"
+   }
+  }
+ ]
+}

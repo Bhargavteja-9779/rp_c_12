@@ -1,0 +1,29 @@
+{
+ "n_contrasts": 621,
+ "n_studies": 30,
+ "median_rmse": {
+  "pred_meta": 5.322097514147087,
+  "pred_xgb": 5.606888620096598,
+  "pred_zero": 5.394718461657787
+ },
+ "meta_vs_xgb": {
+  "p": 0.5,
+  "p_holm": 0.935398668050766,
+  "n": 30,
+  "median_diff": -0.10921913907155911,
+  "ci_low": -0.8409360275277391,
+  "ci_high": 0.8810939586864113
+ },
+ "meta_vs_zero": {
+  "p": 0.467699334025383,
+  "p_holm": 0.935398668050766,
+  "n": 30,
+  "median_diff": 0.40982669203983635,
+  "ci_low": -1.104998477397675,
+  "ci_high": 0.6404900240691752
+ },
+ "pi_coverage_study_effects": 0.8582089552238806,
+ "n_study_effects": 134,
+ "sign_agreement_meta": 0.5958132045088567,
+ "sign_agreement_xgb": 0.644122383252818
+}

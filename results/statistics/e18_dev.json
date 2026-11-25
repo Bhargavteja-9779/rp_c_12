@@ -1,0 +1,56 @@
+{
+ "pooled_summary": [
+  {
+   "model": "pooled XGBoost",
+   "n_items": 26,
+   "n_sig_meta": 15,
+   "sign_agree_sig": 1.0,
+   "n_sign_reversal_sig": 0,
+   "spearman": 0.9234188034188033,
+   "share_outside_ci": 0.07692307692307693,
+   "median_abs_diff": 0.9546482030688541
+  },
+  {
+   "model": "pooled linear",
+   "n_items": 26,
+   "n_sig_meta": 15,
+   "sign_agree_sig": 0.9333333333333333,
+   "n_sign_reversal_sig": 1,
+   "spearman": 0.8694017094017094,
+   "share_outside_ci": 0.38461538461538464,
+   "median_abs_diff": 1.608413423514608
+  },
+  {
+   "model": "study fixed-effects linear",
+   "n_items": 26,
+   "n_sig_meta": 15,
+   "sign_agree_sig": 1.0,
+   "n_sign_reversal_sig": 0,
+   "spearman": 0.9056410256410257,
+   "share_outside_ci": 0.038461538461538464,
+   "median_abs_diff": 0.9482894204789036
+  }
+ ],
+ "shap_group_importance": {
+  "biooil": {
+   "temperature": 2.208646059036255,
+   "residence time": 0.8506544828414917,
+   "solid loading": 0.8296788334846497,
+   "heating rate": 0.7315648794174194,
+   "catalyst": 4.686834812164307,
+   "reaction medium": 2.2737882137298584,
+   "feedstock composition": 8.54800796508789,
+   "process / gas": 4.2777838706970215
+  },
+  "solid": {
+   "temperature": 6.224789142608643,
+   "residence time": 0.9928998947143555,
+   "solid loading": 1.0431748628616333,
+   "heating rate": 0.870718240737915,
+   "catalyst": 4.094717502593994,
+   "reaction medium": 2.866640567779541,
+   "feedstock composition": 8.39748764038086,
+   "process / gas": 4.2956318855285645
+  }
+ }
+}

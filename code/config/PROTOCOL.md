@@ -197,3 +197,10 @@ E5 Confirmatory test on the 38 locked studies (one look): within-study contrasts
 contrasts (bio-oil and solid yield, all factors pooled); one-sided Wilcoxon (a) < (b) and (a) < (c), Holm. Coverage of the 95% prediction
 interval for locked-study effects is reported.
 Code: src/meta/within_study.py, experiments/e18_meta.py; outputs results/e18_*.
+Deviation E-1 (2026-11-25, after the first development run, before any locked analysis): the first run produced absurd solid-loading slopes
+because floating-point noise created near-identical "different" levels (Δ ≈ 1e-15 percentage points). Factor levels are now rounded
+(T to 1 °C, log2 t to 0.01, loading to 0.1 pp) and adjacent steps smaller than 5 °C, 0.25 log2 units (≈ 19 % change in time) or
+1 percentage point of loading are ignored. All other definitions unchanged; the first-run output is kept as results/e18_meta_dev_run1.csv.
+Deviation E-2 (2026-11-25, after the first development run): the database column "Energy_yield_biooil_pct" equals bio-oil yield × bio-oil
+HHV / 100 (correlation 0.9998), i.e. MJ per kg of feed, not an energy recovery. The secondary outcome "bio-oil energy recovery" is therefore
+computed as yield × measured bio-oil HHV / feed HHV (%).
