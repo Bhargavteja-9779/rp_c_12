@@ -1,0 +1,1 @@
+**Table X. Exploratory feedstock-family moderators (Addendum F): random-effects mean effects (number of studies) for agricultural residues, woody biomass and technical lignin; Q-test for differences between families, Holm-corrected within outcome × factor.**

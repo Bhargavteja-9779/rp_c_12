@@ -10,7 +10,7 @@ A reproducible multi-database search was run on {{lit3_date}} with a script that
 
 # S2. Protocol, addenda and deviations
 
-The analysis protocol and the list of 38 locked studies were committed to a version-controlled repository hosted on GitHub before any model was fitted in our earlier work; later analyses were registered as addenda before they were run ({{TREF:table_v2_timeline}}). The meta-analysis reported here is Addendum E, registered on 2026-11-25 after the previous version of this work had been rejected and before any effect size was computed; only the number of available contrasts per factor and outcome had been counted. Deviations: (E-1) after the first development run, absurd solid-loading slopes were traced to floating-point noise that created near-identical "different" levels; levels are now rounded (temperature to 1 °C, log~2~ time to 0.01, loading to 0.1 percentage points) and adjacent steps smaller than 5 °C, 0.25 log~2~ units or 1 percentage point are not used; the first-run output is archived. (E-2) The database column labelled energy yield equals bio-oil yield × bio-oil HHV / 100 (correlation 0.9998), i.e. MJ per kg feed; energy recovery was therefore computed as yield × measured bio-oil HHV / feed HHV. (E-3) A linear mixed model was added as a second estimator of the laboratory effect. Both E-1 and E-2 were made before the locked studies were analysed. The protocol was not deposited in a public registry; the repository and its commit history are available from the corresponding author on request.
+The analysis protocol and the list of 38 locked studies were committed to a version-controlled repository hosted on GitHub before any model was fitted in our earlier work; later analyses were registered as addenda before they were run ({{TREF:table_v2_timeline}}). The meta-analysis reported here is Addendum E, registered on 2026-11-25 after the previous version of this work had been rejected and before any effect size was computed; only the number of available contrasts per factor and outcome had been counted. Deviations: (E-1) after the first development run, absurd solid-loading slopes were traced to floating-point noise that created near-identical "different" levels; levels are now rounded (temperature to 1 °C, log~2~ time to 0.01, loading to 0.1 percentage points) and adjacent steps smaller than 5 °C, 0.25 log~2~ units or 1 percentage point are not used; the first-run output is archived. (E-2) The database column labelled energy yield equals bio-oil yield × bio-oil HHV / 100 (correlation 0.9998), i.e. MJ per kg feed; energy recovery was therefore computed as yield × measured bio-oil HHV / feed HHV. (E-3) A linear mixed model was added as a second estimator of the laboratory effect; a study-level bootstrap and response ratios were added during internal review. Addendum F (catalyst dose–response, feedstock-family moderators; exploratory) was registered after the Addendum E results were known and before it was computed. Both E-1 and E-2 were made before the locked studies were analysed. The protocol was not deposited in a public registry; the repository and its commit history are available from the corresponding author on request.
 
 {{TABLE:table_v2_timeline}}
 
@@ -25,6 +25,10 @@ The analysis protocol and the list of 38 locked studies were committed to a vers
 {{TABLE:table_v4_moderators}}
 
 {{TABLE:table_v4_relative}}
+
+{{TABLE:table_v4_dose}}
+
+{{TABLE:table_v4_family}}
 
 # S5. Nitrogen content of bio-oil
 

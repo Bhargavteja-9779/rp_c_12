@@ -234,11 +234,26 @@ def tables(D, tau_ml):
                     "Egger p": M.egger_p.map(lambda p: "—" if pd.isna(p) else f"{p:.2f}"),
                     "Study-bootstrap 95% CI": M.boot_lo.round(2).astype(str) + " to " + M.boot_hi.round(2).astype(str)})
     S[["Outcome", "Change", "REML", "Paule–Mandel", "One per study (median)", "Leave-one-study-out range", "Study-bootstrap 95% CI", "Egger p"]].to_csv(os.path.join(T, "table_v4_sensitivity.csv"), index=False)
+    Do = pd.read_csv(os.path.join(D["results"], "e18_dose_dev.csv"))
+    Do.assign(Outcome=Do.outcome.map(OUT_L), Catalyst=Do.level.map(LEV_L), **{"Effect per doubling of loading": Do.mu.round(2),
+              "95% CI": Do.ci_lo.round(2).astype(str) + " to " + Do.ci_hi.round(2).astype(str), "95% PI": Do.pi_lo.round(1).astype(str) + " to " + Do.pi_hi.round(1).astype(str),
+              "I²": (100 * Do.I2).round(0).astype(int).astype(str) + "%"}).rename(columns={"k": "Studies", "n_contrasts": "Contrasts"})[
+        ["Outcome", "Catalyst", "Studies", "Contrasts", "Effect per doubling of loading", "95% CI", "95% PI", "I²"]].to_csv(os.path.join(T, "table_v4_dose.csv"), index=False)
+    Fa = pd.read_csv(os.path.join(D["results"], "e18_family_dev.csv")); rows = []
+    for _, r in Fa.iterrows():
+        d = r.to_dict()
+        cell = lambda g: (f"{d.get('mu_' + g):.2f} ({int(d.get('k_' + g))})" if pd.notna(d.get('mu_' + g)) else "—")
+        rows.append({"Outcome": OUT_L[r.outcome], "Change": label(r.factor, r.level), "Agricultural residues (k)": cell("agricultural residues"),
+                     "Woody biomass (k)": cell("woody biomass"), "Technical lignin (k)": cell("technical lignin"), "Q (df)": f"{r.Q_between:.2f} ({int(r.df)})",
+                     "p": f"{r.p:.3f}", "p (Holm)": f"{r.p_holm:.3f}"})
+    pd.DataFrame(rows).to_csv(os.path.join(T, "table_v4_family.csv"), index=False)
     RR = pd.read_csv(os.path.join(D["results"], "e18_response_ratios_dev.csv"))
     RR.assign(Outcome=RR.outcome.map(OUT_L), Catalyst=RR.level.map(LEV_L), k=RR.k, **{"Relative change (%)": RR.rel_pct.round(1),
               "95% CI": RR.rel_lo.round(1).astype(str) + " to " + RR.rel_hi.round(1).astype(str), "95% PI": RR.pi_lo.round(0).astype(int).astype(str) + " to " + RR.pi_hi.round(0).astype(int).astype(str),
               "I²": (100 * RR.I2).round(0).astype(int).astype(str) + "%"})[["Outcome", "Catalyst", "k", "Relative change (%)", "95% CI", "95% PI", "I²"]].to_csv(os.path.join(T, "table_v4_relative.csv"), index=False)
     caps = {
+        "table_v4_dose": "Table X. Exploratory catalyst dose–response (Addendum F): within-study change per doubling of the catalyst-to-biomass ratio, for the same catalyst class at otherwise identical conditions (classes with ≥ 5 studies).",
+        "table_v4_family": "Table X. Exploratory feedstock-family moderators (Addendum F): random-effects mean effects (number of studies) for agricultural residues, woody biomass and technical lignin; Q-test for differences between families, Holm-corrected within outcome × factor.",
         "table_v4_relative": "Table X. Catalyst effects on a relative scale (response ratio: ratio of the mean outcome with catalyst to that without, pooled on the log scale and back-transformed to a percentage change). Post-hoc analysis added during internal review.",
         "table_v4_meta_primary": "Table X. Within-study meta-analysis of process effects on bio-oil and solid yields (development studies). Effect: random-effects mean change (REML, Hartung–Knapp–Sidik–Jonkman CI); PI: 95% prediction interval for the effect in a new study; k: studies; I²: share of variance due to between-study heterogeneity; P(increase): probability that the change increases the outcome in a new study, from the predictive distribution. Temperature effects per +10 °C in the stated band; catalysts vs uncatalysed runs and media vs water at otherwise identical conditions.",
         "table_v4_meta_secondary": "Table X. Within-study meta-analysis for the aqueous and gas phases, bio-oil higher heating value (measured values only) and energy recovery to bio-oil (yield × bio-oil HHV / feed HHV). Definitions as in the primary table.",

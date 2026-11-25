@@ -29,7 +29,7 @@ A reproducible multi-database search was run on 2026-11-18 with a script that st
 
 # S2. Protocol, addenda and deviations
 
-The analysis protocol and the list of 38 locked studies were committed to a version-controlled repository hosted on GitHub before any model was fitted in our earlier work; later analyses were registered as addenda before they were run (Table S2). The meta-analysis reported here is Addendum E, registered on 2026-11-25 after the previous version of this work had been rejected and before any effect size was computed; only the number of available contrasts per factor and outcome had been counted. Deviations: (E-1) after the first development run, absurd solid-loading slopes were traced to floating-point noise that created near-identical "different" levels; levels are now rounded (temperature to 1 °C, log~2~ time to 0.01, loading to 0.1 percentage points) and adjacent steps smaller than 5 °C, 0.25 log~2~ units or 1 percentage point are not used; the first-run output is archived. (E-2) The database column labelled energy yield equals bio-oil yield × bio-oil HHV / 100 (correlation 0.9998), i.e. MJ per kg feed; energy recovery was therefore computed as yield × measured bio-oil HHV / feed HHV. (E-3) A linear mixed model was added as a second estimator of the laboratory effect. Both E-1 and E-2 were made before the locked studies were analysed. The protocol was not deposited in a public registry; the repository and its commit history are available from the corresponding author on request.
+The analysis protocol and the list of 38 locked studies were committed to a version-controlled repository hosted on GitHub before any model was fitted in our earlier work; later analyses were registered as addenda before they were run (Table S2). The meta-analysis reported here is Addendum E, registered on 2026-11-25 after the previous version of this work had been rejected and before any effect size was computed; only the number of available contrasts per factor and outcome had been counted. Deviations: (E-1) after the first development run, absurd solid-loading slopes were traced to floating-point noise that created near-identical "different" levels; levels are now rounded (temperature to 1 °C, log~2~ time to 0.01, loading to 0.1 percentage points) and adjacent steps smaller than 5 °C, 0.25 log~2~ units or 1 percentage point are not used; the first-run output is archived. (E-2) The database column labelled energy yield equals bio-oil yield × bio-oil HHV / 100 (correlation 0.9998), i.e. MJ per kg feed; energy recovery was therefore computed as yield × measured bio-oil HHV / feed HHV. (E-3) A linear mixed model was added as a second estimator of the laboratory effect; a study-level bootstrap and response ratios were added during internal review. Addendum F (catalyst dose–response, feedstock-family moderators; exploratory) was registered after the Addendum E results were known and before it was computed. Both E-1 and E-2 were made before the locked studies were analysed. The protocol was not deposited in a public registry; the repository and its commit history are available from the corresponding author on request.
 
 
 **Table S2.** Audit trail: version-control commits establishing that the protocol, the locked study list and each addendum preceded the analyses they govern.
@@ -233,10 +233,42 @@ The analysis protocol and the list of 38 locked studies were committed to a vers
 
 
 
+
+**Table S7.** Exploratory catalyst dose–response (Addendum F): within-study change per doubling of the catalyst-to-biomass ratio, for the same catalyst class at otherwise identical conditions (classes with ≥ 5 studies).
+
+| Outcome | Catalyst | Studies | Contrasts | Effect per doubling of loading | 95% CI | 95% PI | I² |
+|---|---|---|---|---|---|---|---|
+| Bio-oil yield (wt%) | Alkali carbonate | 7 | 51 | 0.51 | -4.99 to 6.0 | -11.4 to 12.4 | 63% |
+| Bio-oil yield (wt%) | Alkali hydroxide | 5 | 12 | 0.34 | -7.58 to 8.26 | -20.6 to 21.3 | 88% |
+| Bio-oil yield (wt%) | Metal / supported metal | 14 | 40 | 4.51 | 0.01 to 9.02 | -10.4 to 19.4 | 77% |
+| Solid yield (wt%) | Metal / supported metal | 10 | 29 | -2.3 | -5.22 to 0.61 | -5.3 to 0.7 | 15% |
+| Bio-oil HHV (MJ/kg) | Metal / supported metal | 5 | 22 | 0.36 | -2.27 to 2.99 | -4.5 to 5.2 | 44% |
+| Energy recovery to bio-oil (%) | Metal / supported metal | 5 | 22 | 4.62 | -3.45 to 12.69 | -16.7 to 25.9 | 85% |
+
+
+
+
+**Table S8.** Exploratory feedstock-family moderators (Addendum F): random-effects mean effects (number of studies) for agricultural residues, woody biomass and technical lignin; Q-test for differences between families, Holm-corrected within outcome × factor.
+
+| Outcome | Change | Agricultural residues (k) | Woody biomass (k) | Technical lignin (k) | Q (df) | p | p (Holm) |
+|---|---|---|---|---|---|---|---|
+| Bio-oil yield (wt%) | T +10 °C (250–300 °C) | 1.00 (25) | 1.03 (20) | 1.77 (6) | 0.29 (2) | 0.866 | 1.0 |
+| Bio-oil yield (wt%) | T +10 °C (300–350 °C) | -0.87 (22) | -0.64 (15) | -1.69 (8) | 1.31 (2) | 0.52 | 1.0 |
+| Bio-oil yield (wt%) | Alkali carbonate | 8.16 (15) | 4.90 (11) | — | 1.41 (1) | 0.235 | 0.471 |
+| Bio-oil yield (wt%) | Alkali hydroxide | 8.50 (10) | 12.28 (8) | — | 0.28 (1) | 0.594 | 0.594 |
+| Bio-oil yield (wt%) | Metal / supported metal | 5.39 (16) | 11.61 (15) | — | 2.88 (1) | 0.09 | 0.27 |
+| Solid yield (wt%) | T +10 °C (250–300 °C) | -1.71 (28) | -1.80 (20) | -0.59 (6) | 4.26 (2) | 0.119 | 0.139 |
+| Solid yield (wt%) | T +10 °C (300–350 °C) | -0.53 (19) | -1.16 (14) | 0.20 (8) | 5.34 (2) | 0.069 | 0.139 |
+| Solid yield (wt%) | Alkali carbonate | -6.05 (11) | -10.84 (10) | — | 1.01 (1) | 0.314 | 0.314 |
+| Solid yield (wt%) | Alkali hydroxide | -2.33 (8) | -9.60 (7) | — | 2.95 (1) | 0.086 | 0.172 |
+| Solid yield (wt%) | Metal / supported metal | -3.21 (16) | -15.36 (12) | — | 6.22 (1) | 0.013 | 0.038 |
+
+
+
 # S5. Nitrogen content of bio-oil
 
 
-**Table S7.** Within-study meta-analysis for the nitrogen content of bio-oil (wt%).
+**Table S9.** Within-study meta-analysis for the nitrogen content of bio-oil (wt%).
 
 | Outcome | Change | Effect | 95% CI | 95% PI | k | Contrasts | I² | P(increase) |
 |---|---|---|---|---|---|---|---|---|
@@ -256,10 +288,10 @@ The analysis protocol and the list of 38 locked studies were committed to a vers
 
 # S6. Transfer of literature-trained machine-learning models to new studies
 
-Earlier analyses of the same database, carried out under the original protocol and its addenda A–D, evaluated twelve learners for bio-oil and solid yields with study-grouped cross-validation, on the 38 locked studies and on an external hydrochar database (Abdeldayem et al., 2025). They are summarised here because they establish the size of the laboratory effect used in Section 3.5 and the value of local runs used in Section 3.8. Random splitting of runs overstated accuracy about two-fold compared with predicting unseen studies (Table S8, Fig. S1). The between-study share of out-of-study residual variance was 0.65 (95% CI 0.53–0.76) for bio-oil and 0.49 (0.40–0.61) for solid yield (Table S9), with offset standard deviations of 12.5 and 9.7 wt%; reported work-up and yield-basis descriptors did not explain these offsets. Conformal prediction intervals calibrated across studies covered 0.82–0.91 of runs of new studies, compared with 0.46–0.61 for intervals calibrated on random runs (Table S10). In a retrospective simulated deployment, three runs measured in a screening design and combined with the literature model reduced the median per-study error by 1.6–6.4 wt% across development, locked and external settings, although for locked bio-oil studies the local runs alone were more accurate (Table S11, Fig. S2).
+Earlier analyses of the same database, carried out under the original protocol and its addenda A–D, evaluated twelve learners for bio-oil and solid yields with study-grouped cross-validation, on the 38 locked studies and on an external hydrochar database (Abdeldayem et al., 2025). They are summarised here because they establish the size of the laboratory effect used in Section 3.5 and the value of local runs used in Section 3.8. Random splitting of runs overstated accuracy about two-fold compared with predicting unseen studies (Table S10, Fig. S1). The between-study share of out-of-study residual variance was 0.65 (95% CI 0.53–0.76) for bio-oil and 0.49 (0.40–0.61) for solid yield (Table S11), with offset standard deviations of 12.5 and 9.7 wt%; reported work-up and yield-basis descriptors did not explain these offsets. Conformal prediction intervals calibrated across studies covered 0.82–0.91 of runs of new studies, compared with 0.46–0.61 for intervals calibrated on random runs (Table S12). In a retrospective simulated deployment, three runs measured in a screening design and combined with the literature model reduced the median per-study error by 1.6–6.4 wt% across development, locked and external settings, although for locked bio-oil studies the local runs alone were more accurate (Table S13, Fig. S2).
 
 
-**Table S8.** Random-row versus study-grouped cross-validation on development studies (base features; grouped CV averaged over 3 seeds).
+**Table S10.** Random-row versus study-grouped cross-validation on development studies (base features; grouped CV averaged over 3 seeds).
 
 | Target | Learner | Random CV RMSE | Random CV R² | Grouped CV RMSE | Grouped CV R² | RMSE ratio (grouped/random) |
 |---|---|---|---|---|---|---|
@@ -291,7 +323,7 @@ Earlier analyses of the same database, carried out under the original protocol a
 
 
 
-**Table S9.** Decomposition of out-of-study error and contribution of work-up/reporting descriptors (P).
+**Table S11.** Decomposition of out-of-study error and contribution of work-up/reporting descriptors (P).
 
 | Target | τ² (between) | σ²w (within) | Between-study share [95% CI] | Median study RMSE base → base+P | Δ median [95% CI]; p (one-sided) | Rank-biserial | Meta-regression LOSO R² (perm. p) |
 |---|---|---|---|---|---|---|---|
@@ -301,7 +333,7 @@ Earlier analyses of the same database, carried out under the original protocol a
 
 
 
-**Table S10.** Empirical coverage of 90% prediction intervals: row-calibrated (RC) vs study-calibrated (SC).
+**Table S12.** Empirical coverage of 90% prediction intervals: row-calibrated (RC) vs study-calibrated (SC).
 
 | Target | Setting | α | Calibration | Coverage (rows) | Coverage (studies) | Width (wt%) | Studies <0.8 coverage |
 |---|---|---|---|---|---|---|---|
@@ -327,7 +359,7 @@ Earlier analyses of the same database, carried out under the original protocol a
 
 
 
-**Table S11.** Retrospective simulated deployment (E15): a new laboratory measures k runs in screening-design order, and the runs from position 6 onward are predicted by A (literature model only), B (STRATA: literature model shifted by the shrunk mean residual of the k runs) or C (mean of the k local runs). RMSE: median per-study RMSE (wt%); Cov.: study-weighted coverage of 90% intervals re-calibrated for each k and strategy; ±HW: mean interval half-width (wt%). Dev.: unseen development studies in study-grouped CV (3 seeds); Locked: studies held out before modelling (≥ 11 runs); 4TU: external hydrochar database (feedstock series as pseudo-studies). MAE is given in the supplementary deployment table.
+**Table S13.** Retrospective simulated deployment (E15): a new laboratory measures k runs in screening-design order, and the runs from position 6 onward are predicted by A (literature model only), B (STRATA: literature model shifted by the shrunk mean residual of the k runs) or C (mean of the k local runs). RMSE: median per-study RMSE (wt%); Cov.: study-weighted coverage of 90% intervals re-calibrated for each k and strategy; ±HW: mean interval half-width (wt%). Dev.: unseen development studies in study-grouped CV (3 seeds); Locked: studies held out before modelling (≥ 11 runs); 4TU: external hydrochar database (feedstock series as pseudo-studies). MAE is given in the supplementary deployment table.
 
 | Setting | Target | k | Studies | RMSE A | RMSE B | RMSE C | Cov. A | Cov. B | Cov. C | ±HW A | ±HW B | ±HW C |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

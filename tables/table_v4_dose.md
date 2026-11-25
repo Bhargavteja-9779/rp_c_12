@@ -1,0 +1,1 @@
+**Table X. Exploratory catalyst dose–response (Addendum F): within-study change per doubling of the catalyst-to-biomass ratio, for the same catalyst class at otherwise identical conditions (classes with ≥ 5 studies).**

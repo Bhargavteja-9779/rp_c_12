@@ -72,7 +72,7 @@ def frame(split: str = "dev") -> pd.DataFrame:
 
 CONDS = ["feed", "feed_lignin", "feed_cellulose", "feed_hemicellulose", "feed_ash", "feed_N", "T", "log2t", "load", "hr", "cat", "cat_ratio",
          "med", "atm", "gas_p", "proc"]
-FACTOR_COLS = {"T": ["T"], "t": ["log2t"], "load": ["load"], "cat": ["cat", "cat_ratio"], "med": ["med"],
+FACTOR_COLS = {"T": ["T"], "t": ["log2t"], "load": ["load"], "cat": ["cat", "cat_ratio"], "med": ["med"], "dose": ["cat_ratio"],
                "feed": ["feed", "feed_lignin", "feed_cellulose", "feed_hemicellulose", "feed_ash", "feed_N"]}
 
 
@@ -94,6 +94,9 @@ def contrasts(F: pd.DataFrame, factor: str, outcome: str) -> pd.DataFrame:
     if factor in ("T", "t", "load"):
         col = FACTOR_COLS[factor][0]
         q = q[q[col].notna()]
+    if factor == "dose":
+        q = q[(q.cat != "none") & (q.cat_ratio > 0)].copy()
+        q["log2dose"] = np.log2(q.cat_ratio.round(3).clip(lower=1e-3))
     q["_cell"] = cell_keys(q, factor).values
     rows = []
     for cell, c in q.groupby("_cell"):
@@ -117,6 +120,13 @@ def contrasts(F: pd.DataFrame, factor: str, outcome: str) -> pd.DataFrame:
                 band = next(BAND_LABEL[bb] for bb in T_BANDS if bb[0] <= mid < bb[1]) if factor == "T" else "all"
                 rows.append(dict(study=s, cell=cell, level=band, effect=float(eff), x_lo=float(a), x_hi=float(b), T=float(mid),
                                  i=idx[a], j=idx[b], dy=float(lv[b] - lv[a])))
+        elif factor == "dose":
+            g = c.groupby("log2dose"); lv = g[outcome].mean(); idx = g.apply(lambda z: list(z.index)); xs = lv.index.to_numpy()
+            for a_, b_ in zip(xs[:-1], xs[1:]):
+                if b_ - a_ < 0.25:
+                    continue
+                rows.append(dict(study=s, cell=cell, level=str(c.cat.iloc[0]), effect=float((lv[b_] - lv[a_]) / (b_ - a_)), x_lo=float(a_), x_hi=float(b_),
+                                 T=float(c["T"].iloc[0]), i=idx[a_], j=idx[b_], dy=float(lv[b_] - lv[a_])))
         elif factor == "cat":
             base = c[c.cat == "none"]
             if base.empty:

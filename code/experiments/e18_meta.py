@@ -318,3 +318,48 @@ def review_additions(D):
 
 if __name__ == "__main__" and len(sys.argv) > 2 and sys.argv[2] == "review":
     review_additions(out_dirs(sys.argv[1]))
+
+
+FAMILY_GROUPS = {"Agricultural Residues": "agricultural residues", "Woody Biomass / Hardwood": "woody biomass", "Woody Biomass / Softwood": "woody biomass",
+                 "Woody Biomass / Unspecified": "woody biomass", "Lignin-rich Streams (Technical)": "technical lignin"}
+
+
+def addendum_f(D):
+    """Addendum F (exploratory): catalyst dose-response and feedstock-family moderators."""
+    from src.meta.within_study import contrasts, study_effects, reml
+    F = frame("dev"); out = []
+    for o in OUTCOMES:
+        C = contrasts(F, "dose", o)
+        if C.empty:
+            continue
+        for lv, q in study_effects(C).groupby("level"):
+            r = reml(q.y, q.v); out.append(dict(outcome=o, level=lv, n_contrasts=int((C.level == lv).sum()), **r))
+    pd.DataFrame(out).to_csv(os.path.join(D["results"], "e18_dose_dev.csv"), index=False)
+    fam = F.groupby("study").family.agg(lambda z: z.mode().iloc[0]).map(FAMILY_GROUPS)
+    rows = []
+    for o in PRIMARY:
+        for fac, levels in [("T", ["250–300 °C", "300–350 °C"]), ("cat", ["alkali_carbonate", "alkali_hydroxide", "metal_supported"])]:
+            C = contrasts(F, fac, o); fam_rows = []
+            for lv in levels:
+                q = C[C.level == lv].assign(group=lambda z: z.study.map(fam)).dropna(subset=["group"])
+                res = {}
+                for g, sub in q.groupby("group"):
+                    S = study_effects(sub.assign(level="x"))
+                    if len(S) >= 5:
+                        res[g] = reml(S.y, S.v)
+                if len(res) >= 2:
+                    mu = np.array([r["mu"] for r in res.values()]); se = np.array([r["se"] for r in res.values()]); w = 1 / se ** 2
+                    Qb = float(np.sum(w * (mu - np.sum(w * mu) / np.sum(w)) ** 2)); p = float(stats.chi2.sf(Qb, len(mu) - 1))
+                    fam_rows.append(dict(outcome=o, factor=fac, level=lv, Q_between=Qb, df=len(mu) - 1, p=p,
+                                         **{f"mu_{g}": r["mu"] for g, r in res.items()}, **{f"k_{g}": r["k"] for g, r in res.items()},
+                                         **{f"lo_{g}": r["ci_lo"] for g, r in res.items()}, **{f"hi_{g}": r["ci_hi"] for g, r in res.items()}))
+            for r, pa in zip(fam_rows, holm([x["p"] for x in fam_rows]) if fam_rows else []):
+                r["p_holm"] = float(pa)
+            rows.extend(fam_rows)
+    pd.DataFrame(rows).to_csv(os.path.join(D["results"], "e18_family_dev.csv"), index=False)
+    print(pd.DataFrame(out)[["outcome", "level", "k", "n_contrasts", "mu", "ci_lo", "ci_hi", "pi_lo", "pi_hi", "I2"]].round(2).to_string())
+    print(pd.DataFrame(rows).round(2).to_string())
+
+
+if __name__ == "__main__" and len(sys.argv) > 2 and sys.argv[2] == "addf":
+    addendum_f(out_dirs(sys.argv[1]))

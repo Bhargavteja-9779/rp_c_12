@@ -535,6 +535,16 @@ def compute_v4(v):
     sig_h = (Bt.ci_lo > 0) | (Bt.ci_hi < 0); sig_b = (Bt.boot_lo > 0) | (Bt.boot_hi < 0)
     v["boot_agree"] = int((sig_h == sig_b).sum()); v["boot_n"] = int(len(Bt))
     v["boot_lost"] = int((sig_h & ~sig_b).sum()); v["boot_gained"] = int((~sig_h & sig_b).sum())
+    Do = pd.read_csv(os.path.join(R, "e18_dose_dev.csv"))
+    for r in Do.itertuples():
+        b = f"dose_{r.outcome}_{r.level}"; v[b] = f"{r.mu:.1f}".replace("-", "−"); v[b + "_lo"] = f"{r.ci_lo:.1f}".replace("-", "−"); v[b + "_hi"] = f"{r.ci_hi:.1f}".replace("-", "−"); v[b + "_k"] = int(r.k)
+    Fa = pd.read_csv(os.path.join(R, "e18_family_dev.csv"))
+    for _, r in Fa.iterrows():
+        b = f"fam_{r.outcome}_{r.factor}_{_lk(r.level)}"; v[b + "_p"] = f"{r.p:.3f}"; v[b + "_ph"] = f"{r.p_holm:.3f}"
+        for g, gk in [("agricultural residues", "agri"), ("woody biomass", "wood"), ("technical lignin", "lignin")]:
+            if pd.notna(r.get("mu_" + g)):
+                v[f"{b}_{gk}"] = f"{r['mu_' + g]:.1f}".replace("-", "−"); v[f"{b}_{gk}_k"] = int(r["k_" + g])
+    v["fam_nsig_holm"] = int((Fa.p_holm < 0.05).sum()); v["fam_n"] = int(len(Fa))
     # laboratory effect
     L = json.load(open(os.path.join(R, "statistics", "e18_lab_effect_mixedlm.json")))
     for o in L:
