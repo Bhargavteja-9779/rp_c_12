@@ -503,7 +503,7 @@ def compute_v4(v):
     M = pd.read_csv(os.path.join(R, "e18_meta_dev.csv"))
     for r in M.itertuples():
         b = f"m_{r.outcome}_{r.factor}_{_lk(r.level)}"
-        d = 2 if r.outcome == "n_biooil" else (2 if (r.factor in ("T", "t") and abs(r.mu) < 3) else 1)
+        d = 2 if (r.outcome in ("n_biooil", "hhv_biooil") or (r.factor in ("T", "t") and abs(r.mu) < 3)) else 1
         fm = lambda x: f"{x:.{d}f}".replace("-", "−")
         v[b] = fm(r.mu); v[b + "_lo"] = fm(r.ci_lo); v[b + "_hi"] = fm(r.ci_hi); v[b + "_plo"] = fm(r.pi_lo); v[b + "_phi"] = fm(r.pi_hi)
         v[b + "_k"] = int(r.k); v[b + "_n"] = int(r.n_contrasts); v[b + "_I2"] = f"{100 * r.I2:.0f}%"; v[b + "_pb"] = f"{r.p_benefit:.2f}"
@@ -527,7 +527,7 @@ def compute_v4(v):
     v["ma_lig_share"] = f"{100 * lig.mean():.0f}%"; v["ma_n_dev_studies"] = int(len(fam))
     v["ma_htc_runs"] = int((Fd.proc == "HTC").sum()); v["ma_htl_runs"] = int(Fd.proc.isin(["HTL", "HTL_solvothermal"]).sum())
     d24 = json.load(open(os.path.join(R, "statistics", "fig24_design.json")))
-    v["d24_n"] = d24["n"]; v["d24_lo"] = f1(d24["lo300"]); v["d24_hi"] = f1(d24["hi300"])
+    v["d24_n"] = d24["n"]; v["d24_lo"] = f1(d24["lo300"]); v["d24_hi"] = f1(d24["hi300"]); v["d24_med"] = f1(d24["median_within_range"]); v["d24_max"] = f1(d24["max_within_range"])
     RR = pd.read_csv(os.path.join(R, "e18_response_ratios_dev.csv"))
     for r in RR.itertuples():
         b = f"rr_{r.outcome}_{r.level}"; v[b] = f"{r.rel_pct:.0f}"; v[b + "_lo"] = f"{r.rel_lo:.0f}"; v[b + "_hi"] = f"{r.rel_hi:.0f}"
@@ -574,14 +574,14 @@ def compute_v4(v):
     v["fs_biooil_nsig"] = int((FR[FR.outcome == "biooil"].p < 0.05).sum())
     v["fs_n_biooil_N_per1"] = f"{float(FR[(FR.outcome == 'n_biooil') & (FR.term == 'feed_N')].coef_per_10wt.iloc[0]) / 10:.2f}"
     nb = M[(M.outcome == "n_biooil") & M.factor.isin(["cat", "T"])]
-    v["n_biooil_maxabs"] = f"{nb.mu.abs().max():.2f}"; v["n_biooil_nsig"] = int(((nb.ci_lo > 0) | (nb.ci_hi < 0)).sum())
+    v["n_biooil_maxabs"] = f"{np.ceil(nb.mu.abs().max() * 10) / 10:.1f}"; v["n_biooil_nsig"] = int(((nb.ci_lo > 0) | (nb.ci_hi < 0)).sum())
     Mo = pd.read_csv(os.path.join(R, "e18_moderators_dev.csv"))
     v["mod_n"] = int(len(Mo)); v["mod_nsig_holm"] = int((Mo.p_holm < 0.05).sum()); v["mod_nsig_raw"] = int((Mo.p < 0.05).sum())
     # locked confirmatory test
     Lk = json.load(open(os.path.join(R, "statistics", "e18_locked.json")))
     v["lk_n_contrasts"] = Lk["n_contrasts"]; v["lk_n_studies"] = Lk["n_studies"]
     v["lk_rmse_meta"] = f2(Lk["median_rmse"]["pred_meta"]); v["lk_rmse_xgb"] = f2(Lk["median_rmse"]["pred_xgb"]); v["lk_rmse_zero"] = f2(Lk["median_rmse"]["pred_zero"])
-    v["lk_p_xgb"] = f2(Lk["meta_vs_xgb"]["p_holm"]); v["lk_p_zero"] = f2(Lk["meta_vs_zero"]["p_holm"]); v["lk_picov"] = f2(Lk["pi_coverage_study_effects"])
+    v["lk_p_xgb"] = f2(Lk["meta_vs_xgb"]["p_holm"]); v["lk_p_zero"] = f2(Lk["meta_vs_zero"]["p_holm"]); v["lk_picov"] = f2(Lk["pi_coverage_study_effects"]); v["lk_picov_pct"] = f"{100 * Lk['pi_coverage_study_effects']:.0f}%"
     v["lk_n_eff"] = Lk["n_study_effects"]; v["lk_sign_meta"] = f2(Lk["sign_agreement_meta"]); v["lk_sign_xgb"] = f2(Lk["sign_agreement_xgb"])
     LC = pd.read_csv(os.path.join(R, "e18_locked_contrasts.csv"))
     Sl = LC.groupby(["outcome", "factor", "level", "study"]).effect.mean().reset_index()

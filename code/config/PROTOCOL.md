@@ -204,3 +204,11 @@ because floating-point noise created near-identical "different" levels (Δ ≈ 1
 Deviation E-2 (2026-11-25, after the first development run): the database column "Energy_yield_biooil_pct" equals bio-oil yield × bio-oil
 HHV / 100 (correlation 0.9998), i.e. MJ per kg of feed, not an energy recovery. The secondary outcome "bio-oil energy recovery" is therefore
 computed as yield × measured bio-oil HHV / feed HHV (%).
+
+# Addendum F (registered 2026-11-25, after Addendum E results, BEFORE computing anything below; exploratory)
+F1 Catalyst dose–response: within cells that hold everything constant except the catalyst loading (same catalyst class, loading > 0),
+    slope between adjacent loadings per doubling of the catalyst-to-biomass ratio (levels rounded to 0.001 kg/kg; steps < 0.25 log2 units
+    ignored); synthesis as in Addendum E, per catalyst class with ≥ 5 studies; outcomes as in Addendum E.
+F2 Feedstock-family moderators of the temperature (250–300 and 300–350 °C) and catalyst (alkali carbonate, alkali hydroxide, metal) effects
+    on bio-oil and solid yields: subgroups agricultural residues, woody biomass (hardwood/softwood/unspecified), technical lignin; subgroup
+    means with ≥ 5 studies; heterogeneity between subgroups by Q-test; Holm within outcome × factor. Exploratory; reported as such.

@@ -174,16 +174,17 @@ def fig_design(D):
     F = frame("dev"); q = F[F.biooil.notna() & F["T"].notna()].copy(); q["cell"] = cell_keys(q, "T").values
     nT = q.groupby("cell")["T"].nunique(); cells = nT[nT >= 4].index
     best = q[q.cell.isin(cells)].groupby("cell").agg(study=("study", "first"), n=("T", "nunique")).sort_values("n", ascending=False).drop_duplicates("study").head(10)
-    fig, ax = plt.subplots(figsize=(5.0, 3.2)); cmap = plt.get_cmap("tab10"); at300 = []
+    fig, ax = plt.subplots(figsize=(5.0, 3.2)); cmap = plt.get_cmap("tab10"); at300 = []; ranges = []
     for i, c in enumerate(best.index):
         z = q[q.cell == c].groupby("T").biooil.mean()
-        ax.plot(z.index, z.values, "-o", color=cmap(i % 10), ms=2.5, lw=1)
+        ax.plot(z.index, z.values, "-o", color=cmap(i % 10), ms=2.5, lw=1); ranges.append(float(z.max() - z.min()))
         if 300 in z.index:
             at300.append(z.loc[300])
     ax.set_xlabel("Temperature (°C)"); ax.set_ylabel("Bio-oil yield (wt%)")
     ax.set_title(f"Single-factor temperature series of {len(best)} studies (one line each;\nall other conditions constant within a line)", loc="left", fontsize=7.5)
     fig.tight_layout(); save(fig, D, "fig24_within_study_design")
-    return dict(n=len(best), lo300=float(min(at300)), hi300=float(max(at300)), n300=len(at300))
+    return dict(n=len(best), lo300=float(min(at300)), hi300=float(max(at300)), n300=len(at300), median_within_range=float(np.median(ranges)),
+                max_within_range=float(max(ranges)))
 
 
 # ------------------------------------------------------------------ tables
