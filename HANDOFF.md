@@ -38,3 +38,13 @@ author all roles except supervision; second author supervision + review & editin
 Keep improving until the paper is top quality; compare with BT papers and match their style; save everything; continue autonomously.
 Journal constraint: Q1, high IF, not MDPI, verified final acceptance ≤ 72 days. Never fabricate results or citations.
 If a session limit is reached, schedule a resume reminder (~5h15m) and continue from PROGRESS.md / this file.
+
+## Status at end of session (2026-11-25)
+- v4 manuscript complete and built: manuscript/Final_Manuscript.{docx,pdf}, Manuscript_anonymised, Supplementary_Material, Title_Page,
+  Highlights, cover_letter, Graphical_Abstract; ZIP: submission/BioresourceTechnology_submission_v4.zip.
+- Review log: REVIEW/review_v4_rounds.md; risk report: REVIEW/rejection_risk_report.md (v4 section on top).
+- Journal: Bioresource Technology remains the best verified fit (median received→accepted 75 d for all research articles; fallbacks
+  measured slower: journal_selection/data/fallback_timelines_v4.json). No journal can guarantee ≤ 72 d.
+- Ideas for further strengthening (not done): extract additional HTL/HTC experiments published after the database cut-off (2026) as a
+  truly prospective replication; three-level/robust-variance meta-analysis as additional sensitivity; mechanistic discussion with
+  full-text-verified literature; experimental validation of the catalyst prior in the author's laboratory (would most raise impact).

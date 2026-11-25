@@ -43,3 +43,11 @@ Branch: claude/autonomous-research-discovery-1uqqmr. Resume by reading this file
 - Manuscript rewritten (new title, STRATA-Lab framing, novelty table, scope Option A, new Sections 3.4–3.6 and 3.9, condensed 3.8),
   authors P N Bhargav Teja + second (corresponding) author placeholder, CRediT, no funding, no competing interests, data DOIs, code on request.
 - New files: Title_Page, Manuscript_anonymised, Response_to_Review; submission ZIP in submission/.
+
+
+## REVISION v4 (2026-11-25) — after desk rejection of v3 by Bioresource Technology
+- Diagnosis + BT benchmark (REVIEW/v4_rejection_diagnosis_and_bt_benchmark.md); new paper = within-study meta-analysis (Addendum E registered
+  before computing; deviations E-1..E-3), exploratory Addendum F (dose, feedstock families); E18 code/tests; locked test run once (not supported).
+- Manuscript fully rewritten: "Process effects versus laboratory effects in hydrothermal liquefaction and carbonization of lignocellulosic
+  biomass: a within-study meta-analysis"; 8 main figures (fig24, fig18–23), new tables table_v4_*; supplement S1–S7; cover letter; title page.
+- Review rounds v4-1..3 (REVIEW/review_v4_rounds.md); risk report v4; HANDOFF.md for continuation; ZIP in submission/.

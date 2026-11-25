@@ -1,0 +1,23 @@
+{
+ "Waste Manag": {
+  "n": 400,
+  "median": 111.5,
+  "share_le72": 0.1875
+ },
+ "Biotechnol Biofuels Bioprod": {
+  "n": 128,
+  "median": 100.5,
+  "share_le72": 0.219
+ },
+ "Green Chem": {
+  "n": 30,
+  "median": 86.0,
+  "share_le72": 0.367
+ },
+ "Bioresour Technol": {
+  "n": 399,
+  "median": 75,
+  "share_le72": 0.456
+ },
+ "note": "values from the run of scripts/measure_fallbacks_v4.py on 2026-11-25 (research articles 2025-07-01..2026-10-31)"
+}

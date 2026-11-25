@@ -1,3 +1,21 @@
+# Rejection-risk report — v4 (2026-11-25), after desk rejection of v3 by Bioresource Technology
+
+v4 is a different paper: the first within-study meta-analysis of HTL/HTC process effects (Addenda E, F), written in the style of BT
+meta-analyses (benchmark: REVIEW/v4_rejection_diagnosis_and_bt_benchmark.md).
+
+| # | Risk | Severity | Mitigation / status |
+|---|---|---|---|
+| 1 | Editor sees "same authors, same database, rejected before" | Moderate | Different question, positive process findings; cover letter discloses the earlier rejection honestly |
+| 2 | "Meta-analysis of one curated database, not a systematic review" | Moderate–high | Stated in methods and limitations; novelty search documented; scope restricted to lignocellulosic biomass |
+| 3 | Dependence/variance approximation of contrasts | Moderate | Bootstrap, one-per-study estimator, PM τ², LOO; limitation stated |
+| 4 | Failed confirmatory locked test | Moderate | Reported transparently; interpreted (heterogeneity), temperature effects replicated |
+| 5 | No new experiments | Moderate for BT | Usual for BT meta-analyses; stated |
+| 6 | Mechanistic depth (why catalysts shift solid → liquid) | Moderate | Cautious, cited to reviews; no unsupported mechanism claims |
+| 7 | Timeline ≤ 72 d not guaranteed | — | BT all-article median 75 d (46 % ≤ 72 d); ML-hydrothermal subset faster; BT meta-analyses 57–206 d in the benchmark; fallbacks measured slower (Waste Manag 112 d, Biotechnol Biofuels Bioprod 101 d, Green Chem 86 d) |
+| 8 | Placeholders (second author, affiliations) and AI declaration | Blocking until filled | Author action |
+
+---
+
 # Rejection-risk report — updated for v3 (2026-11-18), after an external pre-submission review
 
 ## What changed in v3
